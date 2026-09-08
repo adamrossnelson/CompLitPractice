@@ -2,4 +2,1139 @@
 title: "Windows Command-Line Walkthrough"
 ---
 
-Coming soon. This page will mirror the [macOS walkthrough](macos.qmd), adapted for the **Anaconda Prompt** on Windows.
+This is a self-paced, ~2.5 hour hands-on walkthrough for Windows users. Work through the parts in order — later parts assume you have done the earlier ones.
+
+**Open the Anaconda Prompt now** before reading further: click the Start menu, begin typing `Anaconda Prompt`, and press `Enter` when you see it. A window with a text prompt appears. That is where you will type every command in this guide.
+
+::: {.callout-important}
+## Use the Anaconda Prompt, not any of the other terminals
+Windows comes with several different terminal programs, and they behave differently. You may have seen or heard of:
+
+- **Anaconda Prompt** — a specially configured command line that has Python and the `conda` tool ready to use. **This is the one you should use for this guide.**
+- **Command Prompt** (`cmd.exe`) — the classic Windows command line. Similar to Anaconda Prompt but without Python and conda preconfigured.
+- **PowerShell** — a newer, more powerful Windows shell. It uses different command names for many of the same operations.
+- **Windows Terminal** — a modern window that can host any of the three above.
+- **Git Bash** — a Unix-style shell installed alongside Git.
+
+When this guide says "at the prompt" or "in the terminal," always use the Anaconda Prompt.
+:::
+
+::: {.callout-note}
+## What is a "prompt"?
+The **prompt** is the short bit of text the terminal shows when it is waiting for you to type your next command. In Anaconda Prompt, it typically looks something like `(base) C:\Users\yourname>`. The `(base)` at the start is telling you which conda environment is active; the `C:\Users\yourname` is your current directory; the `>` character marks the end of the prompt. Whenever this guide says "at the prompt," it means: type this command into the Anaconda Prompt window, then press `Enter`.
+:::
+
+::: {.callout-note}
+## Vocabulary as we go
+Words like *directory*, *parent*, *child*, `%USERPROFILE%`, and *absolute path* get introduced in short callouts the first time they appear. Do not skip the callouts — they are the point of this walkthrough.
+:::
+
+---
+
+## Part 1 — Getting oriented
+
+### 1.1 Where am I?
+
+Type this exactly and press `Enter`:
+
+```bat
+cd
+```
+
+At an Anaconda Prompt, `cd` with no argument does something specific and useful: it **prints the current directory** — the folder the terminal considers "where you are right now." Every command you type looks at that folder first, unless you tell it to look somewhere else.
+
+You will see something like `C:\Users\yourname`. That is your **home directory**.
+
+::: {.callout-note}
+## Folder = directory
+"Folder" is the word File Explorer uses. "Directory" is the word programmers use. **They mean exactly the same thing.** This guide uses "directory" from here on.
+:::
+
+::: {.callout-note}
+## What `%USERPROFILE%` means
+`%USERPROFILE%` is a Windows **environment variable** — a named shortcut, provided by the operating system, that stands in for your home directory. On most Windows machines it expands to `C:\Users\yourname`. Anywhere in a command that you could type your full home path, you can instead type `%USERPROFILE%` and Windows will substitute the real value for you. So `%USERPROFILE%\Desktop` and `C:\Users\yourname\Desktop` refer to exactly the same folder. Every user account on the machine has its own `%USERPROFILE%`.
+:::
+
+### 1.2 What is in here?
+
+```bat
+dir
+```
+
+`dir` lists the contents of the current directory. You will see `Desktop`, `Documents`, `Downloads`, and so on, along with the size and last-modified date of each item.
+
+### 1.3 The `dir` flag worth memorizing
+
+Try:
+
+```bat
+dir /a
+```
+
+Memorize that combination — `dir /a`. The `/a` flag tells `dir` to list **all** files, including hidden ones (files whose names would ordinarily be kept out of view).
+
+Other flags worth knowing:
+
+- `dir /a` — show **all** files, including hidden ones
+- `dir /o:d` — order the listing by modification date (oldest first)
+- `dir /o:-d` — order by modification date, newest first (the minus sign reverses the order)
+- `dir /s` — recursively list contents of every subdirectory as well
+- `dir /p` — pause after each screenful (useful for long listings)
+
+::: {.callout-note}
+## What is a "flag"?
+A **flag** (also sometimes called an *option* or a *switch*) is a short modifier you add after a command to change how that command behaves. On Windows, flags almost always begin with a forward slash: `/a`, `/s`, `/p`. (On Mac and Linux, flags begin with a hyphen instead. When you read Unix examples on the internet you will see `-a`, `-l`, `-r` — same idea, different punctuation.)
+:::
+
+::: {.callout-note}
+## Hidden files
+Any file or directory that has the **hidden** attribute set is kept out of the default `dir` listing. Files whose names start with a dot — such as `.gitconfig` — also tend to be hidden by convention when they are present. Plain `dir` will not show any of these; `dir /a` will.
+:::
+
+::: {.callout-tip collapse="true"}
+## Try it: what hidden files are in your home directory?
+Run `dir /a %USERPROFILE%` and read the leftmost column of names. You may see items such as `AppData`, `.conda`, `.jupyter`, `.ipython`. These are configuration and system files — leave them alone for now, but know they exist.
+:::
+
+### 1.4 Moving around: `cd`
+
+`cd` stands for **"change directory."** Try each of these, one at a time, running `cd` (with no argument) after each so you can see which directory you end up in:
+
+```bat
+cd %USERPROFILE%\Desktop
+cd
+cd ..
+cd
+cd %USERPROFILE%
+cd
+```
+
+What each did:
+
+- `cd %USERPROFILE%\Desktop` — go to your Desktop.
+- `cd ..` — go up one level to the **parent** directory. `..` always means "the parent of where I am."
+- `cd %USERPROFILE%` — go to your home directory.
+
+::: {.callout-note}
+## What is an "argument"?
+An **argument** is an extra word you type after a command to tell it what to act on. In `cd %USERPROFILE%\Desktop`, the string `%USERPROFILE%\Desktop` is the argument — it tells `cd` where to go. In `dir /a %USERPROFILE%`, the flag `/a` and the path `%USERPROFILE%` are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as `cd` alone falls back to reporting your current directory).
+:::
+
+::: {.callout-note}
+## Parent, child, sibling
+Directories form a **tree**. If `Desktop` lives inside `C:\Users\jsmith`, then `C:\Users\jsmith` is the **parent** of `Desktop`, and `Desktop` is a **child** of `C:\Users\jsmith`. Two directories that share the same parent (`Desktop` and `Downloads`, for example) are **siblings**.
+:::
+
+::: {.callout-note}
+## What is a "path"?
+A **path** is the address of a file or a directory on your computer — the sequence of directory names, separated by backslashes on Windows, that tells the system exactly where to find that item. `C:\Users\jsmith\Desktop\notes.txt` is a path; so is `drafts\readme.txt`; so is `..`. Almost every command that touches a file or folder takes a path as one of its arguments.
+:::
+
+::: {.callout-note}
+## Absolute vs. relative paths
+- An **absolute path** starts with a drive letter and a backslash (`C:\...`, `D:\...`) or with `%USERPROFILE%`, which is replaced by an absolute path. It works no matter where you currently are. Example: `C:\Users\jsmith\Desktop\notes.txt`.
+- A **relative path** does *not* start with a drive letter. It is understood in terms of your current working directory. If you are in `C:\Users\jsmith\Desktop`, then `notes.txt` refers to `C:\Users\jsmith\Desktop\notes.txt`.
+
+When a command "cannot find" a file, the most common reason is confusing relative and absolute paths.
+:::
+
+::: {.callout-note}
+## Slashes: `\` versus `/`
+On Windows, paths use the **backslash** `\` between directory names. On macOS and Linux, they use the **forward slash** `/`. The Anaconda Prompt is forgiving — it will often accept either — but every example in this guide uses `\` to match Windows conventions.
+:::
+
+### 1.5 Tab completion — the most useful shortcut
+
+::: {.callout-note}
+## What is the "shell"?
+The **shell** is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. The Anaconda Prompt is a shell — technically, it is the classic Windows `cmd.exe` shell, with some environment variables set so that Python and conda are ready to use. When this guide says "the shell will complete it," it means the program listening to your keystrokes inside the Anaconda Prompt window.
+:::
+
+Type `cd %USERPROFILE%\Doc` and then, before pressing Enter, press the **Tab** key. The shell will complete it to `%USERPROFILE%\Documents` for you.
+
+If there are multiple matches (e.g., `Documents` and `Downloads` both start with `Do`), pressing Tab repeatedly will cycle through the possibilities. Type another letter or two to narrow the choices, then Tab again.
+
+**Use Tab constantly.** It prevents typos, and it is a check on reality: if Tab will not complete a name, that name does not exist where you think it does.
+
+### 1.6 Set up your practice folder
+
+You will do all the rest of this walkthrough inside a dedicated practice folder so that early mistakes do not disturb anything else on your computer.
+
+::: {.callout-tip collapse="true"}
+## Challenge: create `%USERPROFILE%\Projects\computer-literacy` and `cd` into it
+Two commands. Try to write them yourself before revealing.
+
+```bat
+mkdir %USERPROFILE%\Projects\computer-literacy
+cd %USERPROFILE%\Projects\computer-literacy
+```
+
+`mkdir` = "make directory." On Windows, `mkdir` will automatically create any missing parent directories along the way — so if `%USERPROFILE%\Projects` does not exist yet, `mkdir` makes it too.
+
+Confirm you are in the right place:
+
+```bat
+cd
+```
+
+You should see `C:\Users\yourname\Projects\computer-literacy`.
+:::
+
+---
+
+## Part 2 — Making, moving, renaming, deleting
+
+You are inside `%USERPROFILE%\Projects\computer-literacy`. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run `cd %USERPROFILE%\Projects\computer-literacy` to return to the practice folder.
+
+### 2.1 Create an empty file
+
+There is no single dedicated command for "create an empty file" in Anaconda Prompt, but this idiom works well:
+
+```bat
+type nul > notes.txt
+dir
+```
+
+That command reads `nul` (a special empty source) and redirects the empty output into a new file called `notes.txt`. The result is a zero-byte file with the name you asked for.
+
+::: {.callout-note}
+## File extensions
+The `.txt` at the end is a **file extension**. Extensions are naming conventions — the operating system looks at the extension to guess what kind of file it is and which program should open it. They are not magic: `notes.txt`, `notes.csv`, and `notes` are all just files with different names. But the convention matters, because tools (and humans) read the extension to decide what to expect. You will encounter `.txt`, `.csv`, `.md`, `.qmd`, `.ipynb`, `.py`, and `.html` in this guide.
+:::
+
+### 2.2 Rename with `ren`
+
+```bat
+ren notes.txt readme.txt
+dir
+```
+
+`ren` is short for **"rename."** It changes the name of a file without moving it to a new folder.
+
+### 2.3 Move into a child directory with `move`
+
+::: {.callout-tip collapse="true"}
+## Challenge: create a `drafts` folder and move `readme.txt` into it
+```bat
+mkdir drafts
+move readme.txt drafts\
+dir
+dir drafts
+```
+
+After this, `readme.txt` should appear inside `drafts\` and not in the current directory. The trailing `\` on `drafts\` is not required, but it signals "this is a folder" to your future self reading the command.
+:::
+
+::: {.callout-note}
+## Idea: watch the changes happen in File Explorer
+Open File Explorer alongside your Anaconda Prompt and navigate to `%USERPROFILE%\Projects\computer-literacy`. As you run `move`, `ren`, `mkdir`, `del`, and so on at the prompt, refresh File Explorer (press `F5`) to watch the same files appear, disappear, and change places. Seeing the command line and the point-and-click interface act on the same folder is one of the fastest ways to build a durable mental model.
+:::
+
+### 2.4 Move a file from a child back to the current directory
+
+::: {.callout-tip collapse="true"}
+## Challenge: move `readme.txt` from `drafts\` back to where you are now
+```bat
+move drafts\readme.txt .
+dir
+```
+
+The `.` is not a typo. **`.` means "the current directory."** So `move drafts\readme.txt .` means "move the file `drafts\readme.txt` into the directory `.`" — that is, into wherever you are now.
+:::
+
+### 2.5 Move a file up to the parent
+
+::: {.callout-tip collapse="true"}
+## Challenge: move `readme.txt` up to `%USERPROFILE%\Projects`, then back
+```bat
+move readme.txt ..
+dir
+dir ..
+move ..\readme.txt .
+dir
+```
+
+`..` means "the parent directory," so `move readme.txt ..` moves the file up one level. Then `move ..\readme.txt .` brings it back.
+:::
+
+### 2.6 Copy with `copy` and `xcopy`
+
+For a single file, use `copy`:
+
+```bat
+copy readme.txt readme-backup.txt
+dir
+```
+
+For a directory (which contains other files, and possibly other directories inside it), use `xcopy` with two flags:
+
+```bat
+xcopy /E /I drafts drafts-backup
+dir
+```
+
+- `/E` tells `xcopy` to copy every subdirectory, even empty ones.
+- `/I` tells `xcopy` to assume the target (`drafts-backup`) is meant to be a directory, so it does not stop and ask you.
+
+### 2.7 Delete with `del` and `rmdir` — **read this carefully**
+
+::: {.callout-warning}
+## `del` and `rmdir` are permanent
+Files deleted with `del` or `rmdir` at the command line **do not go to the Recycle Bin**. There is no undo. Read every deletion command twice before pressing Enter, and never, ever run `rmdir /s /q C:\` or `del /s /q *` while you are still learning.
+:::
+
+Delete a single file:
+
+```bat
+del readme-backup.txt
+dir
+```
+
+Delete an entire directory (and everything inside it):
+
+```bat
+rmdir /s drafts-backup
+```
+
+The `/s` flag tells `rmdir` to recursively remove the directory and every file inside it. Windows will pause and ask you `Are you sure (Y/N)?` — type `Y` and press Enter to proceed. Leave `readme.txt` and `drafts\` alone — you will use them in Part 3.
+
+---
+
+## Part 3 — Editing text with Notepad
+
+Windows does not include the `nano` editor that Mac and Linux users often rely on. Instead, we will use **Notepad**, which ships with every copy of Windows and can be launched directly from the Anaconda Prompt. Open your `readme.txt`:
+
+```bat
+notepad readme.txt
+```
+
+A separate Notepad window appears. The Anaconda Prompt hands off control to Notepad but does *not* freeze — you can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).
+
+Type these exact lines into Notepad (you can copy them from your browser and paste with `Ctrl + V`):
+
+```
+Computer Literacy Practice
+==========================
+This is my practice readme.
+
+TODO: add a list of my favorite CLI commands
+TODO: try findstr on this file later
+```
+
+Save the file with `Ctrl + S` and close the Notepad window (`Alt + F4` or click the red `X`). Now verify what you wrote:
+
+```bat
+type readme.txt
+```
+
+`type` prints a file's contents to the terminal. It is great for short files. **Do not `type` a huge file** — it will flood your terminal with output.
+
+::: {.callout-note}
+## What does "concatenate" mean?
+On Mac and Linux, the command that plays the role Windows gives to `type` is called `cat`, which is short for *concatenate*. To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain" — so *concatenation* is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux `cat` command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
+:::
+
+::: {.callout-tip}
+## The `TODO:` lines are on purpose
+You just added two `TODO` markers to your file. You will search for them with `findstr` in Part 6. Experienced developers leave `TODO` notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.
+:::
+
+---
+
+## Part 4 — Downloading and previewing real data
+
+You will download three CSV files, then practice looking at them without opening a spreadsheet.
+
+### 4.1 Make a `data\` folder and go into it
+
+```bat
+mkdir data
+cd data
+cd
+```
+
+### 4.2 Download files with `curl`
+
+Modern versions of Windows include `curl` as a built-in command. `curl -O` downloads a file from a URL and saves it using the filename from the URL. Run these three commands (each is one long line):
+
+```bat
+curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv
+curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt.csv
+curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books.csv
+```
+
+### 4.3 See what you got
+
+```bat
+dir
+```
+
+You will see three CSV files listed with their sizes in bytes. Which of the three CSVs is largest?
+
+### 4.4 Peek at contents — the right way
+
+::: {.callout-note}
+## What is a CSV file?
+**CSV** stands for **comma-separated values**. It is the simplest, most portable format for **tabular data** — that is, data arranged in rows and columns, the way you would lay it out in a spreadsheet or a printed table. Each row is one *observation* or *record* (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one *variable* or *field* (that respondent's age, the transaction's amount, the book's title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a **header** listing the column names.
+
+CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself — no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.
+:::
+
+::: {.callout-note}
+## What does "portable" mean?
+When programmers describe a file format, a program, or a piece of code as **portable**, they mean that it works well across many different systems and situations — the way a paperback book is portable in the everyday sense of "you can take it anywhere." A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.
+:::
+
+::: {.callout-note}
+## What is an API?
+**API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a **web API**: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
+:::
+
+Do **not** `type complaints-bank.csv` — it is big and will fill your terminal with noise. Instead, look at the first several lines. Windows has no direct built-in equivalent of the Unix `head` command, but we can borrow one command from PowerShell for this specific job. Run:
+
+```bat
+powershell -Command "Get-Content confident_fictional_books.csv -TotalCount 10"
+```
+
+That shows the first 10 lines. Change `10` to `5` to see only the first five:
+
+```bat
+powershell -Command "Get-Content confident_fictional_books.csv -TotalCount 5"
+```
+
+::: {.callout-note}
+## We are borrowing one command from PowerShell
+Windows has two main shells: the older Anaconda Prompt / Command Prompt shell (which is what you have been typing into so far), and the newer **PowerShell**. PowerShell has richer commands for handling text and files. You can borrow a single PowerShell command from inside the Anaconda Prompt by writing `powershell -Command "..."`. We will use this trick a couple of times in this walkthrough because the equivalent Anaconda Prompt commands are clumsier.
+:::
+
+For scrolling through a larger file, use `more`:
+
+```bat
+more complaints-bank.csv
+```
+
+You are now "inside" `more`. Press the space bar to advance one screen at a time. **Press `q` to quit.** Getting stuck inside `more` is a common frustration for beginners — remember `q`.
+
+::: {.callout-note}
+## When a program takes over your prompt
+Some commands hand control over to a program (Notepad opens in its own window; `more` and running Python servers stay inside the terminal). Your normal prompt disappears until you exit the program. If you ever feel stuck: try `q` (for `more`), close the window (for Notepad), or press `Control + C` (which sends a stop request to most other running programs).
+:::
+
+### 4.5 Count rows
+
+::: {.callout-note}
+## Why count rows from the command line?
+A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, a one-line command tells you in a fraction of a second whether you are looking at 50 rows, 50 thousand, or 50 million. That number changes what you will do next — whether it is safe to open the whole file at once in a program, whether you should take a smaller sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is an important habit for working with data.
+:::
+
+On Anaconda Prompt, the idiomatic way to count lines is with the built-in `find` command:
+
+```bat
+find /c /v "" complaints-bank.csv
+```
+
+That reads a little oddly at first — but it works. `find /v ""` means "find every line that does not contain the empty string" (which is every line), and `/c` says "count how many." So the whole line reports the total number of lines in the file.
+
+That first line is the CSV header, so the number of *data* rows is one less than what `find` reports.
+
+Try it on all three CSVs at once using a **wildcard**:
+
+```bat
+find /c /v "" *.csv
+```
+
+The `*` matches any characters, so `*.csv` matches every file in the current directory ending in `.csv`. Wildcards are powerful — and dangerous when combined with `del`. Be extra careful whenever you combine `*` with a deleting command.
+
+---
+
+## Part 5 — Redirection: saving output to a file
+
+Very often you want to *save* what a command prints, rather than just look at it. That is called **redirection**.
+
+### 5.1 The `>` operator
+
+```bat
+powershell -Command "Get-Content complaints-bank.csv -TotalCount 20" > %USERPROFILE%\Desktop\complaints-sample.csv
+```
+
+Read that out loud: "Take the first 20 lines of `complaints-bank.csv`, and instead of printing them to the terminal, **redirect** them into a new file called `complaints-sample.csv` on my Desktop."
+
+Now open your Desktop in File Explorer (or run `explorer %USERPROFILE%\Desktop`) — you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
+
+::: {.callout-warning}
+## `>` overwrites without warning
+If `%USERPROFILE%\Desktop\complaints-sample.csv` already existed, `>` would replace it without asking. There is no "are you sure?" prompt. If you want to *append* to a file instead of overwriting it, use `>>` (two greater-than signs).
+:::
+
+### 5.2 Try `>>`
+
+```bat
+powershell -Command "Get-Content mpg_excerpt.csv -TotalCount 3" >> %USERPROFILE%\Desktop\complaints-sample.csv
+type %USERPROFILE%\Desktop\complaints-sample.csv
+```
+
+You just appended a few rows of a different CSV onto the end of the sample file. (In real work you would only append data that has the same columns — but the mechanics are worth seeing.)
+
+::: {.callout-tip collapse="true"}
+## Challenge: make a 50-row sample of `mpg_excerpt.csv` on your Desktop
+```bat
+powershell -Command "Get-Content mpg_excerpt.csv -TotalCount 50" > %USERPROFILE%\Desktop\mpg-sample.csv
+```
+:::
+
+---
+
+## Part 6 — Searching with `findstr`
+
+`findstr` searches for text inside files. It is the Anaconda Prompt equivalent of the Unix `grep` command, and it is one of the most useful text-searching tools on Windows.
+
+Go back up to your practice folder:
+
+```bat
+cd %USERPROFILE%\Projects\computer-literacy
+cd
+```
+
+### 6.1 Search in a single file
+
+You added `TODO:` markers to `readme.txt` back in Part 3. Find them:
+
+```bat
+findstr TODO readme.txt
+```
+
+`findstr` prints every line in `readme.txt` that contains the string `TODO`. Add `/n` to include line numbers:
+
+```bat
+findstr /n TODO readme.txt
+```
+
+### 6.2 Make a Python file with more TODOs
+
+Now let us give `findstr` a more realistic file to search through. Create a Python file with Notepad:
+
+```bat
+notepad cleanup.py
+```
+
+Type or paste in the following (this uses only Python's built-in features — you do not need to install anything, and you do not need to *run* it; you are just going to search it):
+
+```python
+# cleanup.py — a small script for tidying up a text file
+
+import os
+import sys
+
+# TODO: accept the input filename as a command-line argument
+INPUT_FILE = "notes.txt"
+OUTPUT_FILE = "notes-clean.txt"
+
+
+def strip_blank_lines(lines):
+    """Return only the non-empty lines."""
+    return [line for line in lines if line.strip() != ""]
+
+
+def lowercase_all(lines):
+    # TODO: preserve proper nouns instead of lowercasing everything
+    return [line.lower() for line in lines]
+
+
+def main():
+    if not os.path.exists(INPUT_FILE):
+        print(f"No such file: {INPUT_FILE}")
+        sys.exit(1)
+
+    with open(INPUT_FILE) as f:
+        lines = f.readlines()
+
+    lines = strip_blank_lines(lines)
+    lines = lowercase_all(lines)
+
+    # TODO: also remove duplicate lines before writing out
+    with open(OUTPUT_FILE, "w") as f:
+        f.writelines(lines)
+
+    print(f"Wrote {len(lines)} lines to {OUTPUT_FILE}")
+    # TODO: report how many blank lines were removed
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Save with `Ctrl + S` and close the Notepad window.
+
+### 6.3 Find all TODOs in one file
+
+```bat
+findstr /n TODO cleanup.py
+```
+
+You should see four TODO lines with their line numbers.
+
+### 6.4 Find TODOs across every file in the folder
+
+::: {.callout-tip collapse="true"}
+## Challenge: search across every file in the current folder and all its subfolders
+```bat
+findstr /s /n TODO *.*
+```
+
+- `/s` means search *every subdirectory* under the current one, not just the current directory itself.
+- `/n` adds line numbers.
+- `*.*` matches every file in each directory that has both a name and an extension.
+
+You should see hits from both `readme.txt` and `cleanup.py`. This is how you find every leftover TODO in a project.
+:::
+
+### 6.5 Case-insensitive search
+
+```bat
+findstr /s /n /i todo *.*
+```
+
+`/i` makes the match case-insensitive, so it would find `TODO`, `Todo`, and `todo` all at once.
+
+---
+
+## Part 7 — Multiple terminal sessions and local web servers
+
+Some commands **take over your prompt and do not give it back** until you stop them. This is normal, and it is why programmers who use the terminal often keep two or three Anaconda Prompt windows open at once.
+
+### 7.1 Open a second Anaconda Prompt window
+
+Return to the Start menu and open Anaconda Prompt a second time, so that you now have two Anaconda Prompt windows on your screen at once. Each one is an independent terminal session, and each has its own current working directory.
+
+Confirm this:
+
+- In the new window, run `cd`. It will probably say `C:\Users\yourname` — a newly opened Anaconda Prompt always starts at your home directory.
+- In the old window, run `cd`. It should show wherever you last navigated to.
+
+**Two windows, two directories, one machine.** Files you create in one are immediately visible from the other.
+
+### 7.2 Start a mini web server
+
+In your original Anaconda Prompt, make sure you are in the practice folder, then run:
+
+```bat
+cd %USERPROFILE%\Projects\computer-literacy
+python -m http.server 8000
+```
+
+You will see something like `Serving HTTP on :: port 8000`. **Your prompt is gone** — Python is now running a small web server that makes the files in this folder available to a web browser on your own computer.
+
+Open a web browser and go to <http://localhost:8000>. You will see a listing of your practice folder — click `readme.txt` to view it, click into `data/` to see the CSVs, and so on.
+
+::: {.callout-note}
+## What is `localhost`?
+`localhost` (also written as `127.0.0.1`) is a special network name that always means **"this same computer."** When a program serves at `localhost:8000`, it is only reachable from your own machine — nobody on the internet can see it. That is why local previews are safe: they are visible only to you.
+:::
+
+The first time you start a Python web server on Windows, the Windows Firewall may pop up a dialog asking whether to allow Python to accept network connections. Since we are only using `localhost`, you can safely dismiss it in either direction — the local preview will work regardless.
+
+### 7.3 Why the second terminal matters
+
+Your first Anaconda Prompt is "busy" running the web server. If you want to keep working — running `dir`, `cd`, editing files — you *need* the second Anaconda Prompt window you opened in 7.1. Try it: switch to the second window and run `dir` in the practice folder. It works, because that terminal session is independent of the one running the server.
+
+### 7.4 Stopping the server
+
+Switch back to the terminal running the server and press **`Control + C`**. The server stops, and your prompt returns. `Control + C` sends a stop request — it is the standard way to tell a running command-line program to stop.
+
+::: {.callout-tip}
+## The same pattern applies to `quarto preview` and `jupyter lab`
+When you run `quarto preview` on a Quarto project (like the site you are reading right now), or `jupyter lab` / `jupyter notebook` to open notebooks, those tools **also** start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use `Control + C` to shut the server down when you are done.
+:::
+
+---
+
+## Part 8 — Three flavors of notebook
+
+A **notebook** is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague's screen.
+
+### 8.1 Jupyter Notebook (classic)
+
+- **File extension:** `.ipynb`
+- **How you open it:** run `jupyter notebook` in an Anaconda Prompt; a browser tab opens.
+- **Feel:** simple, one notebook per browser tab. The older interface.
+- **File format under the hood:** JSON. Not human-friendly to read as plain text, and hard to compare across versions.
+
+::: {.callout-note}
+## What does "under the hood" mean?
+"**Under the hood**" is an idiom borrowed from car mechanics. The *hood* of a car is the metal cover over the engine; to look "under the hood" is to see how the machine actually works, hidden from the ordinary driver. In writing about software, "under the hood" describes the internal mechanism of something — how a program actually stores its data, or how a feature is actually implemented — as opposed to the polished surface the user sees. When this guide says a `.ipynb` file is JSON *under the hood*, it means: the friendly notebook you see in your browser is, at bottom, stored on disk as a JSON document.
+:::
+
+::: {.callout-note}
+## What is JSON?
+**JSON** (pronounced *jay-son*) stands for **JavaScript Object Notation**. It is a plain-text format for storing structured data — data with named fields, nested lists, and hierarchies. A JSON file looks something like `{"name": "Ada", "age": 36, "skills": ["math", "engineering"]}`. It is designed to be read and written by programs rather than by humans, and although it *is* technically plain text, a large JSON file is tedious to read directly. JSON is one of the two most common formats (alongside CSV) that programs and web services use to exchange data.
+:::
+
+::: {.callout-note}
+## What does it mean to "compare across versions"?
+Writers, researchers, and programmers routinely want to answer a very specific question: **what changed between the earlier version of this file and the current one?** Specialized tools produce a side-by-side or line-by-line report of the differences — such a report is often called a *diff*, from the word *difference*. Files that are stored as clean plain text (a `.qmd` file, a Python script, a Markdown document) produce readable diffs: you can see, line by line, exactly what was added, removed, or changed. Files that are stored in complicated binary or nested formats (a Jupyter `.ipynb` file, a Word document, a Photoshop file) produce diffs full of noise, because a small visible change on screen can cause many invisible changes in the underlying storage.
+:::
+
+### 8.2 JupyterLab
+
+- **File extension:** *still* `.ipynb` — same file format as classic Jupyter.
+- **How you open it:** run `jupyter lab` in an Anaconda Prompt.
+- **Feel:** a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
+- **Same version-comparison problem** as classic Jupyter, because the underlying file format is identical.
+
+::: {.callout-note}
+## What is an IDE?
+**IDE** stands for **Integrated Development Environment**. It is a single application that bundles together the several tools a programmer typically needs — a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more — into one coordinated window. Popular IDEs you may encounter include Visual Studio Code, PyCharm, RStudio, and Spyder (which itself ships with Anaconda). JupyterLab is described as *IDE-like* because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.
+:::
+
+### 8.3 Quarto notebooks
+
+- **File extension:** `.qmd`
+- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in an Anaconda Prompt.
+- **Feel:** plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
+- **Version-comparison-friendly:** because a `.qmd` file is plain text, comparing two versions of one is straightforward and readable.
+
+### 8.4 Quick comparison
+
+| | Jupyter Notebook | JupyterLab | Quarto |
+|---|---|---|---|
+| File extension | `.ipynb` | `.ipynb` | `.qmd` |
+| File format | JSON | JSON | Plain text (Markdown) |
+| Launched by | `jupyter notebook` | `jupyter lab` | `quarto preview` / `quarto render` |
+| Runs a local web server? | Yes | Yes | Yes (for `preview`) |
+| Good for | Quick exploration | Multi-file projects | Websites, reports, books |
+| Comparing versions | Painful | Painful | Clean |
+
+::: {.callout-tip collapse="true"}
+## Try it: peek at a `.qmd` file with commands you already know
+The pages you are reading are `.qmd` files. If you have downloaded the source of this website into a folder called `CompLitPractice`, try:
+
+```bat
+cd %USERPROFILE%\Projects\CompLitPractice
+dir /a
+powershell -Command "Get-Content windows.qmd -TotalCount 10"
+```
+
+Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.
+:::
+
+::: {.callout-note}
+## What are "code fences"?
+In Markdown, a **code fence** is a line of three backtick characters (```` ``` ````) that marks the beginning or end of a block of code. Anything between an opening fence and a closing fence is treated as literal code — rendered in a monospaced font, not interpreted as prose, and (in Quarto and similar tools) sometimes actually executed as a program. You can also write the language name after the opening fence, as in ```` ```python ```` or ```` ```bat ````, so that the code is displayed with the correct syntax highlighting. Every code example in this walkthrough is written between a pair of code fences.
+:::
+
+---
+
+## Part 9 — Cheatsheet and gotchas
+
+### Commands you now know
+
+| Command | What it does |
+|---|---|
+| `cd` (no argument) | Print current directory |
+| `cd path` | Change directory. `cd ..` = up one. `cd %USERPROFILE%` = home. |
+| `dir`, `dir /a` | List directory contents (`/a` includes hidden) |
+| `mkdir name`, `mkdir a\b\c` | Make a directory (parents created automatically) |
+| `type nul > name` | Create an empty file |
+| `ren old new` | Rename a file |
+| `move src dst` | Move a file or directory |
+| `copy src dst` | Copy a single file |
+| `xcopy /E /I src dst` | Copy a directory and everything inside it |
+| `del name` | **Permanently** delete a file (no Recycle Bin) |
+| `rmdir /s name` | **Permanently** delete a directory and its contents |
+| `notepad file` | Edit a text file in Notepad |
+| `type file` | Print a file to the terminal |
+| `powershell -Command "Get-Content f -TotalCount N"` | First N lines of a file |
+| `more file` | Scroll through a file (`q` to quit) |
+| `find /c /v "" file` | Count lines |
+| `curl -O url` | Download a file |
+| `findstr /s /n TEXT *.*` | Search recursively for `TEXT` |
+| `python -m http.server` | Start a local web server |
+| `Control + C` | Stop the running program |
+| `Tab` | Autocomplete a name |
+
+### Common gotchas
+
+- **`del` and `rmdir` have no undo, and no Recycle Bin.** Read every deletion command twice.
+- **`>` overwrites without warning.** Use `>>` to append.
+- **`%USERPROFILE%` is different for each user.** It always points at *your* home.
+- **Relative paths depend on where you are.** When something "cannot be found," run `cd` (no argument) and check.
+- **Tab-complete constantly.** If Tab will not complete a name, that thing is not there.
+- **Backslashes and forward slashes are not always interchangeable.** Use `\` in Windows paths to be safe.
+- **Filenames with spaces need quotes:** `move "My File.txt" backup\` — or, better, avoid spaces in filenames you will handle from the command line.
+- **Some commands take over your prompt.** Ways to get unstuck: `q` (for `more`), close the window (for Notepad), `Control + C` (for most other running programs).
+- **Anaconda Prompt is not PowerShell.** Commands like `Get-Content`, `Select-Object`, and `ls` (in the PowerShell sense) do not work directly in Anaconda Prompt. When you need one, wrap it in `powershell -Command "..."`.
+
+### You now know enough to…
+
+- Follow along in a Python or R tutorial that says "open a terminal and run…"
+- Download a project archive from the internet and explore its contents.
+- Preview a Quarto site or run a Jupyter notebook.
+- Fix minor project problems yourself by reading and searching files instead of asking someone else.
+
+Nice work. Close the Anaconda Prompt windows when you are ready — you did great.
+
+---
+
+## Part 10 — Check your understanding
+
+Thirty multiple-choice questions covering everything above. Try to answer each one from memory, then click to reveal the correct answer with a short explanation.
+
+### Q1. In an Anaconda Prompt, how do you print the current directory?
+
+- A. `pwd`
+- B. `dir /c`
+- C. `cd` (with no argument)
+- D. `where`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** On Windows, typing `cd` alone (no argument) prints the current directory. On Mac and Linux, the equivalent command is `pwd` — but that does not work in Anaconda Prompt.
+:::
+
+### Q2. In a filesystem tree, which of these is true about `%USERPROFILE%\Documents` and `%USERPROFILE%`?
+
+- A. They are siblings.
+- B. `%USERPROFILE%` is a child of `%USERPROFILE%\Documents`.
+- C. `%USERPROFILE%\Documents` is a child of `%USERPROFILE%`.
+- D. They are the same directory.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `%USERPROFILE%\Documents` lives inside `%USERPROFILE%`, so `%USERPROFILE%` is the parent and `%USERPROFILE%\Documents` is the child.
+:::
+
+### Q3. Which flag makes `dir` show hidden files as well as ordinary ones?
+
+- A. `dir /h`
+- B. `dir /a`
+- C. `dir /s`
+- D. `dir /p`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** The `/a` flag stands for "all" — it tells `dir` to include files that would ordinarily be kept out of the listing.
+:::
+
+### Q4. What does `%USERPROFILE%` expand to?
+
+- A. The root of the filesystem (`C:\`).
+- B. The current working directory.
+- C. Your home directory (typically `C:\Users\yourname`).
+- D. The Desktop.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `%USERPROFILE%` is an environment variable that Windows sets to the path of the current user's home directory.
+:::
+
+### Q5. You are in `C:\Users\jsmith\Projects`. Which of the following is a *relative* path?
+
+- A. `C:\Users\jsmith\Projects\notes.txt`
+- B. `%USERPROFILE%\notes.txt`
+- C. `..\notes.txt`
+- D. `D:\backup\notes.txt`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Anything that does not start with a drive letter (and is not an environment variable that expands to an absolute path) is relative. `..\notes.txt` refers to a file in the parent directory of wherever you currently are.
+:::
+
+### Q6. Which command sends you to your home directory?
+
+- A. `cd -`
+- B. `cd`
+- C. `cd %USERPROFILE%`
+- D. `home`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Unlike Mac and Linux, plain `cd` on Windows does *not* send you home — it prints the current directory. To go home, use `cd %USERPROFILE%`.
+:::
+
+### Q7. What does `mkdir %USERPROFILE%\Projects\computer-literacy` do when `%USERPROFILE%\Projects` does not yet exist?
+
+- A. It fails with an error.
+- B. It creates `%USERPROFILE%\Projects` and then `%USERPROFILE%\Projects\computer-literacy` in one step.
+- C. It creates only `%USERPROFILE%\Projects\computer-literacy` and leaves the parent missing.
+- D. It prompts you to create the parent.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** On Windows, `mkdir` automatically creates any missing parent directories along the way. (On Mac and Linux you need to add a `-p` flag for the same behavior.)
+:::
+
+### Q8. What does the `Tab` key do at the Anaconda Prompt?
+
+- A. Inserts four spaces.
+- B. Autocompletes filenames and directory names.
+- C. Runs the current command.
+- D. Switches between open windows.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Tab completion is the single most useful time-saving feature of the shell. If Tab will not complete a name, that name probably does not exist where you think it does.
+:::
+
+### Q9. Which command creates an empty file called `hello.txt` in the current directory?
+
+- A. `mkdir hello.txt`
+- B. `touch hello.txt`
+- C. `type nul > hello.txt`
+- D. `notepad hello.txt`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Windows has no `touch` command; the idiomatic way to create an empty file is to redirect the empty source `nul` into a new filename.
+:::
+
+### Q10. You have a file called `draft.txt` and want to rename it to `final.txt`. Which command works in Anaconda Prompt?
+
+- A. `mv draft.txt final.txt`
+- B. `rename draft.txt final.txt`
+- C. `ren draft.txt final.txt`
+- D. `notepad rename`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `ren` is the built-in Windows command for renaming a file in place. (Confusingly, `rename` also works in some versions of Windows, but `ren` is the classic form.)
+:::
+
+### Q11. What does the `.` refer to in `move drafts\readme.txt .`?
+
+- A. The parent directory.
+- B. The home directory.
+- C. The current directory.
+- D. A hidden file.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** A single dot always means "the current directory." So this command moves `drafts\readme.txt` into wherever you are right now.
+:::
+
+### Q12. What does `..` mean in a path?
+
+- A. The current directory.
+- B. The home directory.
+- C. The parent directory.
+- D. The root of the drive.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Two dots always mean "the parent directory." `cd ..` moves up one level.
+:::
+
+### Q13. Which command correctly copies an entire folder called `drafts` to a new folder called `drafts-backup`?
+
+- A. `copy drafts drafts-backup`
+- B. `xcopy /E /I drafts drafts-backup`
+- C. `move drafts drafts-backup`
+- D. `ren drafts drafts-backup`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Plain `copy` only handles single files. To copy a directory and everything inside it, use `xcopy` with `/E` (include all subdirectories) and `/I` (treat the destination as a directory).
+:::
+
+### Q14. What is the biggest danger of `del` (and `rmdir /s`) in Anaconda Prompt?
+
+- A. They require an internet connection.
+- B. They are slow on large files.
+- C. They delete files permanently — files do not go to the Recycle Bin.
+- D. They only work on files inside your home directory.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Unlike deleting a file in File Explorer, `del` and `rmdir /s` bypass the Recycle Bin entirely. There is no undo. Read every deletion command twice.
+:::
+
+### Q15. Which shortcut saves the file you are editing in Notepad?
+
+- A. `Ctrl + O`
+- B. `Ctrl + W`
+- C. `Ctrl + S`
+- D. `Ctrl + X`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Notepad uses the standard Windows save shortcut, `Ctrl + S`. Use `Alt + F4` (or click the red `X`) to close the window when you are done.
+:::
+
+### Q16. When you run `notepad readme.txt` from the Anaconda Prompt, what happens?
+
+- A. The Anaconda Prompt freezes until Notepad is closed.
+- B. Notepad opens in a separate window and the Anaconda Prompt remains usable.
+- C. Notepad prints the contents of the file directly to the prompt.
+- D. Nothing — `notepad` is not a valid command.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `notepad` launches the graphical Notepad application in its own window. The Anaconda Prompt hands off control but does not block, so you could continue working there if you wanted.
+:::
+
+### Q17. Why should you avoid running `type` on a large CSV file?
+
+- A. It will corrupt the file.
+- B. It will dump thousands of lines into your terminal all at once.
+- C. `type` does not work on CSV files.
+- D. It requires a special password.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `type` prints the entire file to the terminal. For a big file that is a flood of unreadable output. Use `more`, or a `powershell -Command "Get-Content ... -TotalCount N"` command, or `find /c /v ""` for a row count, instead.
+:::
+
+### Q18. You are stuck inside `more` and want to get back to your normal prompt. What do you press?
+
+- A. `Control + C`
+- B. `q`
+- C. `Escape`
+- D. `Control + X`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** In `more`, pressing `q` quits back to the shell.
+:::
+
+### Q19. What does `find /c /v "" data.csv` report?
+
+- A. The number of words in the file.
+- B. The number of characters in the file.
+- C. The number of lines in the file.
+- D. The file size in bytes.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `find /v ""` matches every line that does not contain the empty string — which is every line — and `/c` says "count how many." Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).
+:::
+
+### Q20. Which command downloads a file from a URL and saves it using the filename from that URL?
+
+- A. `wget url`
+- B. `curl url`
+- C. `curl -O url`
+- D. `download url`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Plain `curl url` prints the response to the terminal. The `-O` flag (capital O) tells `curl` to save the response as a file, using the name from the URL. Modern Windows includes `curl` as a built-in command.
+:::
+
+### Q21. What is a CSV file?
+
+- A. A compressed archive of spreadsheets.
+- B. A binary format for storing databases.
+- C. A plain-text file where each row is a line and columns are separated by commas.
+- D. A Microsoft Excel workbook.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** "CSV" = comma-separated values. It is plain text, portable, and readable by virtually every data tool.
+:::
+
+### Q22. What does `powershell -Command "Get-Content data.csv -TotalCount 20" > sample.csv` do?
+
+- A. Prints the first 20 lines to the terminal *and* to `sample.csv`.
+- B. Appends the first 20 lines of `data.csv` to `sample.csv`.
+- C. Writes the first 20 lines of `data.csv` into `sample.csv`, overwriting `sample.csv` if it exists.
+- D. Renames `data.csv` to `sample.csv`.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `>` is the redirection symbol: send the output that would have printed into a file. It overwrites the target without warning — no confirmation prompt.
+:::
+
+### Q23. What is the difference between `>` and `>>`?
+
+- A. `>` prints to the screen; `>>` writes to a file.
+- B. `>` overwrites the target file; `>>` appends to the target file.
+- C. `>` works on files; `>>` works on directories.
+- D. They are identical.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Single `>` overwrites without warning; double `>>` appends onto the end of an existing file (or creates it if it does not exist).
+:::
+
+### Q24. Which command searches inside the current folder and all folders inside it for the text `TODO`, showing line numbers?
+
+- A. `findstr TODO`
+- B. `findstr /n TODO`
+- C. `findstr /s TODO *.*`
+- D. `findstr /s /n TODO *.*`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**D.** `/s` looks inside every subdirectory, `/n` adds line numbers, and `*.*` matches every file. Together these are how you find every leftover TODO in a project.
+:::
+
+### Q25. Which `findstr` flag makes the search case-insensitive?
+
+- A. `/c`
+- B. `/i`
+- C. `/v`
+- D. `/x`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `/i` makes the pattern case-insensitive, so `findstr /i todo` matches `TODO`, `Todo`, and `todo`.
+:::
+
+### Q26. Why would you ever want two Anaconda Prompt windows open at the same time?
+
+- A. To run commands faster in parallel (at the same time).
+- B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work.
+- C. Because Windows requires it.
+- D. To share files between windows.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Commands that keep running for a long time — web servers, `quarto preview`, `jupyter lab`, `more`, and so on — keep the first terminal busy. A second window gives you a place to keep working.
+:::
+
+### Q27. What is `localhost`?
+
+- A. A public web server you can share with others.
+- B. A special name that always refers to *your own* computer.
+- C. The name of the Anaconda Prompt application.
+- D. Another word for `%USERPROFILE%`.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `localhost` (also written as `127.0.0.1`) means "this same machine." A server running at `localhost:8000` is only reachable from your own computer.
+:::
+
+### Q28. You are running `python -m http.server 8000` and want to stop it. What do you press?
+
+- A. `q`
+- B. `Control + X`
+- C. `Control + C`
+- D. `Escape`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `Control + C` sends a stop request — the standard way to tell a running command-line program to stop.
+:::
+
+### Q29. Classic Jupyter Notebook and JupyterLab open which file extension?
+
+- A. `.qmd`
+- B. `.py`
+- C. `.ipynb`
+- D. `.html`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Both tools use the same `.ipynb` notebook file format — JupyterLab is essentially a more modern editor for the same files.
+:::
+
+### Q30. Why is it easier to see what changed between two versions of a `.qmd` file than between two versions of a `.ipynb` file?
+
+- A. Because Quarto is newer software.
+- B. Because `.qmd` files are plain text (Markdown), while `.ipynb` files are stored as JSON.
+- C. Because Quarto files are always smaller.
+- D. Because Windows has a special mode for Quarto.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** A `.qmd` file is Markdown — ordinary readable text with code fences. Comparing two versions produces a clear, line-by-line report of what changed. A `.ipynb` file is a JSON document that also stores hidden information about each cell and each run, so even a small visible change on screen can cause many invisible changes in the file, making the comparison noisy and hard to read.
+:::

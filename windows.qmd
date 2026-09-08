@@ -1,0 +1,5 @@
+---
+title: "Windows Command-Line Walkthrough"
+---
+
+Coming soon. This page will mirror the [macOS walkthrough](macos.qmd), adapted for the **Anaconda Prompt** on Windows.

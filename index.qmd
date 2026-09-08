@@ -1,0 +1,12 @@
+---
+title: "Computer Literacy Practice"
+---
+
+A self-guided, hands-on walkthrough for building command-line literacy. Plan on about **2.5 hours** from start to finish.
+
+Pick the page that matches your machine:
+
+- [**macOS walkthrough**](macos.qmd) — for MacBooks and iMacs. Uses the built-in **Terminal** app.
+- [**Windows walkthrough**](windows.qmd) — uses the **Anaconda Prompt**.
+
+Each challenge shows a prompt, and the answer is hidden behind a **Click to reveal answer** panel. Try the challenge on your own first; only reveal the answer when you're stuck or want to check your work.

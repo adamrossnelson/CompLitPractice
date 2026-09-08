@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -115,8 +149,107 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1-getting-oriented" id="toc-part-1-getting-oriented" class="nav-link active" data-scroll-target="#part-1-getting-oriented">Part 1 — Getting oriented</a>
+  <ul class="collapse">
+  <li><a href="#where-am-i" id="toc-where-am-i" class="nav-link" data-scroll-target="#where-am-i">1.1 Where am I?</a></li>
+  <li><a href="#what-is-in-here" id="toc-what-is-in-here" class="nav-link" data-scroll-target="#what-is-in-here">1.2 What is in here?</a></li>
+  <li><a href="#the-dir-flag-worth-memorizing" id="toc-the-dir-flag-worth-memorizing" class="nav-link" data-scroll-target="#the-dir-flag-worth-memorizing">1.3 The <code>dir</code> flag worth memorizing</a></li>
+  <li><a href="#moving-around-cd" id="toc-moving-around-cd" class="nav-link" data-scroll-target="#moving-around-cd">1.4 Moving around: <code>cd</code></a></li>
+  <li><a href="#tab-completion-the-most-useful-shortcut" id="toc-tab-completion-the-most-useful-shortcut" class="nav-link" data-scroll-target="#tab-completion-the-most-useful-shortcut">1.5 Tab completion — the most useful shortcut</a></li>
+  <li><a href="#set-up-your-practice-folder" id="toc-set-up-your-practice-folder" class="nav-link" data-scroll-target="#set-up-your-practice-folder">1.6 Set up your practice folder</a></li>
+  </ul></li>
+  <li><a href="#part-2-making-moving-renaming-deleting" id="toc-part-2-making-moving-renaming-deleting" class="nav-link" data-scroll-target="#part-2-making-moving-renaming-deleting">Part 2 — Making, moving, renaming, deleting</a>
+  <ul class="collapse">
+  <li><a href="#create-an-empty-file" id="toc-create-an-empty-file" class="nav-link" data-scroll-target="#create-an-empty-file">2.1 Create an empty file</a></li>
+  <li><a href="#rename-with-ren" id="toc-rename-with-ren" class="nav-link" data-scroll-target="#rename-with-ren">2.2 Rename with <code>ren</code></a></li>
+  <li><a href="#move-into-a-child-directory-with-move" id="toc-move-into-a-child-directory-with-move" class="nav-link" data-scroll-target="#move-into-a-child-directory-with-move">2.3 Move into a child directory with <code>move</code></a></li>
+  <li><a href="#move-a-file-from-a-child-back-to-the-current-directory" id="toc-move-a-file-from-a-child-back-to-the-current-directory" class="nav-link" data-scroll-target="#move-a-file-from-a-child-back-to-the-current-directory">2.4 Move a file from a child back to the current directory</a></li>
+  <li><a href="#move-a-file-up-to-the-parent" id="toc-move-a-file-up-to-the-parent" class="nav-link" data-scroll-target="#move-a-file-up-to-the-parent">2.5 Move a file up to the parent</a></li>
+  <li><a href="#copy-with-copy-and-xcopy" id="toc-copy-with-copy-and-xcopy" class="nav-link" data-scroll-target="#copy-with-copy-and-xcopy">2.6 Copy with <code>copy</code> and <code>xcopy</code></a></li>
+  <li><a href="#delete-with-del-and-rmdir-read-this-carefully" id="toc-delete-with-del-and-rmdir-read-this-carefully" class="nav-link" data-scroll-target="#delete-with-del-and-rmdir-read-this-carefully">2.7 Delete with <code>del</code> and <code>rmdir</code> — <strong>read this carefully</strong></a></li>
+  </ul></li>
+  <li><a href="#part-3-editing-text-with-notepad" id="toc-part-3-editing-text-with-notepad" class="nav-link" data-scroll-target="#part-3-editing-text-with-notepad">Part 3 — Editing text with Notepad</a></li>
+  <li><a href="#part-4-downloading-and-previewing-real-data" id="toc-part-4-downloading-and-previewing-real-data" class="nav-link" data-scroll-target="#part-4-downloading-and-previewing-real-data">Part 4 — Downloading and previewing real data</a>
+  <ul class="collapse">
+  <li><a href="#make-a-data-folder-and-go-into-it" id="toc-make-a-data-folder-and-go-into-it" class="nav-link" data-scroll-target="#make-a-data-folder-and-go-into-it">4.1 Make a <code>data\</code> folder and go into it</a></li>
+  <li><a href="#download-files-with-curl" id="toc-download-files-with-curl" class="nav-link" data-scroll-target="#download-files-with-curl">4.2 Download files with <code>curl</code></a></li>
+  <li><a href="#see-what-you-got" id="toc-see-what-you-got" class="nav-link" data-scroll-target="#see-what-you-got">4.3 See what you got</a></li>
+  <li><a href="#peek-at-contents-the-right-way" id="toc-peek-at-contents-the-right-way" class="nav-link" data-scroll-target="#peek-at-contents-the-right-way">4.4 Peek at contents — the right way</a></li>
+  <li><a href="#count-rows" id="toc-count-rows" class="nav-link" data-scroll-target="#count-rows">4.5 Count rows</a></li>
+  </ul></li>
+  <li><a href="#part-5-redirection-saving-output-to-a-file" id="toc-part-5-redirection-saving-output-to-a-file" class="nav-link" data-scroll-target="#part-5-redirection-saving-output-to-a-file">Part 5 — Redirection: saving output to a file</a>
+  <ul class="collapse">
+  <li><a href="#the-operator" id="toc-the-operator" class="nav-link" data-scroll-target="#the-operator">5.1 The <code>&gt;</code> operator</a></li>
+  <li><a href="#try" id="toc-try" class="nav-link" data-scroll-target="#try">5.2 Try <code>&gt;&gt;</code></a></li>
+  </ul></li>
+  <li><a href="#part-6-searching-with-findstr" id="toc-part-6-searching-with-findstr" class="nav-link" data-scroll-target="#part-6-searching-with-findstr">Part 6 — Searching with <code>findstr</code></a>
+  <ul class="collapse">
+  <li><a href="#search-in-a-single-file" id="toc-search-in-a-single-file" class="nav-link" data-scroll-target="#search-in-a-single-file">6.1 Search in a single file</a></li>
+  <li><a href="#make-a-python-file-with-more-todos" id="toc-make-a-python-file-with-more-todos" class="nav-link" data-scroll-target="#make-a-python-file-with-more-todos">6.2 Make a Python file with more TODOs</a></li>
+  <li><a href="#find-all-todos-in-one-file" id="toc-find-all-todos-in-one-file" class="nav-link" data-scroll-target="#find-all-todos-in-one-file">6.3 Find all TODOs in one file</a></li>
+  <li><a href="#find-todos-across-every-file-in-the-folder" id="toc-find-todos-across-every-file-in-the-folder" class="nav-link" data-scroll-target="#find-todos-across-every-file-in-the-folder">6.4 Find TODOs across every file in the folder</a></li>
+  <li><a href="#case-insensitive-search" id="toc-case-insensitive-search" class="nav-link" data-scroll-target="#case-insensitive-search">6.5 Case-insensitive search</a></li>
+  </ul></li>
+  <li><a href="#part-7-multiple-terminal-sessions-and-local-web-servers" id="toc-part-7-multiple-terminal-sessions-and-local-web-servers" class="nav-link" data-scroll-target="#part-7-multiple-terminal-sessions-and-local-web-servers">Part 7 — Multiple terminal sessions and local web servers</a>
+  <ul class="collapse">
+  <li><a href="#open-a-second-anaconda-prompt-window" id="toc-open-a-second-anaconda-prompt-window" class="nav-link" data-scroll-target="#open-a-second-anaconda-prompt-window">7.1 Open a second Anaconda Prompt window</a></li>
+  <li><a href="#start-a-mini-web-server" id="toc-start-a-mini-web-server" class="nav-link" data-scroll-target="#start-a-mini-web-server">7.2 Start a mini web server</a></li>
+  <li><a href="#why-the-second-terminal-matters" id="toc-why-the-second-terminal-matters" class="nav-link" data-scroll-target="#why-the-second-terminal-matters">7.3 Why the second terminal matters</a></li>
+  <li><a href="#stopping-the-server" id="toc-stopping-the-server" class="nav-link" data-scroll-target="#stopping-the-server">7.4 Stopping the server</a></li>
+  </ul></li>
+  <li><a href="#part-8-three-flavors-of-notebook" id="toc-part-8-three-flavors-of-notebook" class="nav-link" data-scroll-target="#part-8-three-flavors-of-notebook">Part 8 — Three flavors of notebook</a>
+  <ul class="collapse">
+  <li><a href="#jupyter-notebook-classic" id="toc-jupyter-notebook-classic" class="nav-link" data-scroll-target="#jupyter-notebook-classic">8.1 Jupyter Notebook (classic)</a></li>
+  <li><a href="#jupyterlab" id="toc-jupyterlab" class="nav-link" data-scroll-target="#jupyterlab">8.2 JupyterLab</a></li>
+  <li><a href="#quarto-notebooks" id="toc-quarto-notebooks" class="nav-link" data-scroll-target="#quarto-notebooks">8.3 Quarto notebooks</a></li>
+  <li><a href="#quick-comparison" id="toc-quick-comparison" class="nav-link" data-scroll-target="#quick-comparison">8.4 Quick comparison</a></li>
+  </ul></li>
+  <li><a href="#part-9-cheatsheet-and-gotchas" id="toc-part-9-cheatsheet-and-gotchas" class="nav-link" data-scroll-target="#part-9-cheatsheet-and-gotchas">Part 9 — Cheatsheet and gotchas</a>
+  <ul class="collapse">
+  <li><a href="#commands-you-now-know" id="toc-commands-you-now-know" class="nav-link" data-scroll-target="#commands-you-now-know">Commands you now know</a></li>
+  <li><a href="#common-gotchas" id="toc-common-gotchas" class="nav-link" data-scroll-target="#common-gotchas">Common gotchas</a></li>
+  <li><a href="#you-now-know-enough-to" id="toc-you-now-know-enough-to" class="nav-link" data-scroll-target="#you-now-know-enough-to">You now know enough to…</a></li>
+  </ul></li>
+  <li><a href="#part-10-check-your-understanding" id="toc-part-10-check-your-understanding" class="nav-link" data-scroll-target="#part-10-check-your-understanding">Part 10 — Check your understanding</a>
+  <ul class="collapse">
+  <li><a href="#q1.-in-an-anaconda-prompt-how-do-you-print-the-current-directory" id="toc-q1.-in-an-anaconda-prompt-how-do-you-print-the-current-directory" class="nav-link" data-scroll-target="#q1.-in-an-anaconda-prompt-how-do-you-print-the-current-directory">Q1. In an Anaconda Prompt, how do you print the current directory?</a></li>
+  <li><a href="#q2.-in-a-filesystem-tree-which-of-these-is-true-about-userprofiledocuments-and-userprofile" id="toc-q2.-in-a-filesystem-tree-which-of-these-is-true-about-userprofiledocuments-and-userprofile" class="nav-link" data-scroll-target="#q2.-in-a-filesystem-tree-which-of-these-is-true-about-userprofiledocuments-and-userprofile">Q2. In a filesystem tree, which of these is true about <code>%USERPROFILE%\Documents</code> and <code>%USERPROFILE%</code>?</a></li>
+  <li><a href="#q3.-which-flag-makes-dir-show-hidden-files-as-well-as-ordinary-ones" id="toc-q3.-which-flag-makes-dir-show-hidden-files-as-well-as-ordinary-ones" class="nav-link" data-scroll-target="#q3.-which-flag-makes-dir-show-hidden-files-as-well-as-ordinary-ones">Q3. Which flag makes <code>dir</code> show hidden files as well as ordinary ones?</a></li>
+  <li><a href="#q4.-what-does-userprofile-expand-to" id="toc-q4.-what-does-userprofile-expand-to" class="nav-link" data-scroll-target="#q4.-what-does-userprofile-expand-to">Q4. What does <code>%USERPROFILE%</code> expand to?</a></li>
+  <li><a href="#q5.-you-are-in-cusersjsmithprojects.-which-of-the-following-is-a-relative-path" id="toc-q5.-you-are-in-cusersjsmithprojects.-which-of-the-following-is-a-relative-path" class="nav-link" data-scroll-target="#q5.-you-are-in-cusersjsmithprojects.-which-of-the-following-is-a-relative-path">Q5. You are in <code>C:\Users\jsmith\Projects</code>. Which of the following is a <em>relative</em> path?</a></li>
+  <li><a href="#q6.-which-command-sends-you-to-your-home-directory" id="toc-q6.-which-command-sends-you-to-your-home-directory" class="nav-link" data-scroll-target="#q6.-which-command-sends-you-to-your-home-directory">Q6. Which command sends you to your home directory?</a></li>
+  <li><a href="#q7.-what-does-mkdir-userprofileprojectscomputer-literacy-do-when-userprofileprojects-does-not-yet-exist" id="toc-q7.-what-does-mkdir-userprofileprojectscomputer-literacy-do-when-userprofileprojects-does-not-yet-exist" class="nav-link" data-scroll-target="#q7.-what-does-mkdir-userprofileprojectscomputer-literacy-do-when-userprofileprojects-does-not-yet-exist">Q7. What does <code>mkdir %USERPROFILE%\Projects\computer-literacy</code> do when <code>%USERPROFILE%\Projects</code> does not yet exist?</a></li>
+  <li><a href="#q8.-what-does-the-tab-key-do-at-the-anaconda-prompt" id="toc-q8.-what-does-the-tab-key-do-at-the-anaconda-prompt" class="nav-link" data-scroll-target="#q8.-what-does-the-tab-key-do-at-the-anaconda-prompt">Q8. What does the <code>Tab</code> key do at the Anaconda Prompt?</a></li>
+  <li><a href="#q9.-which-command-creates-an-empty-file-called-hello.txt-in-the-current-directory" id="toc-q9.-which-command-creates-an-empty-file-called-hello.txt-in-the-current-directory" class="nav-link" data-scroll-target="#q9.-which-command-creates-an-empty-file-called-hello.txt-in-the-current-directory">Q9. Which command creates an empty file called <code>hello.txt</code> in the current directory?</a></li>
+  <li><a href="#q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works-in-anaconda-prompt" id="toc-q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works-in-anaconda-prompt" class="nav-link" data-scroll-target="#q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works-in-anaconda-prompt">Q10. You have a file called <code>draft.txt</code> and want to rename it to <code>final.txt</code>. Which command works in Anaconda Prompt?</a></li>
+  <li><a href="#q11.-what-does-the-.-refer-to-in-move-draftsreadme.txt-." id="toc-q11.-what-does-the-.-refer-to-in-move-draftsreadme.txt-." class="nav-link" data-scroll-target="#q11.-what-does-the-.-refer-to-in-move-draftsreadme.txt-.">Q11. What does the <code>.</code> refer to in <code>move drafts\readme.txt .</code>?</a></li>
+  <li><a href="#q12.-what-does-..-mean-in-a-path" id="toc-q12.-what-does-..-mean-in-a-path" class="nav-link" data-scroll-target="#q12.-what-does-..-mean-in-a-path">Q12. What does <code>..</code> mean in a path?</a></li>
+  <li><a href="#q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup" id="toc-q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup" class="nav-link" data-scroll-target="#q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup">Q13. Which command correctly copies an entire folder called <code>drafts</code> to a new folder called <code>drafts-backup</code>?</a></li>
+  <li><a href="#q14.-what-is-the-biggest-danger-of-del-and-rmdir-s-in-anaconda-prompt" id="toc-q14.-what-is-the-biggest-danger-of-del-and-rmdir-s-in-anaconda-prompt" class="nav-link" data-scroll-target="#q14.-what-is-the-biggest-danger-of-del-and-rmdir-s-in-anaconda-prompt">Q14. What is the biggest danger of <code>del</code> (and <code>rmdir /s</code>) in Anaconda Prompt?</a></li>
+  <li><a href="#q15.-which-shortcut-saves-the-file-you-are-editing-in-notepad" id="toc-q15.-which-shortcut-saves-the-file-you-are-editing-in-notepad" class="nav-link" data-scroll-target="#q15.-which-shortcut-saves-the-file-you-are-editing-in-notepad">Q15. Which shortcut saves the file you are editing in Notepad?</a></li>
+  <li><a href="#q16.-when-you-run-notepad-readme.txt-from-the-anaconda-prompt-what-happens" id="toc-q16.-when-you-run-notepad-readme.txt-from-the-anaconda-prompt-what-happens" class="nav-link" data-scroll-target="#q16.-when-you-run-notepad-readme.txt-from-the-anaconda-prompt-what-happens">Q16. When you run <code>notepad readme.txt</code> from the Anaconda Prompt, what happens?</a></li>
+  <li><a href="#q17.-why-should-you-avoid-running-type-on-a-large-csv-file" id="toc-q17.-why-should-you-avoid-running-type-on-a-large-csv-file" class="nav-link" data-scroll-target="#q17.-why-should-you-avoid-running-type-on-a-large-csv-file">Q17. Why should you avoid running <code>type</code> on a large CSV file?</a></li>
+  <li><a href="#q18.-you-are-stuck-inside-more-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" id="toc-q18.-you-are-stuck-inside-more-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="nav-link" data-scroll-target="#q18.-you-are-stuck-inside-more-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q18. You are stuck inside <code>more</code> and want to get back to your normal prompt. What do you press?</a></li>
+  <li><a href="#q19.-what-does-find-c-v-data.csv-report" id="toc-q19.-what-does-find-c-v-data.csv-report" class="nav-link" data-scroll-target="#q19.-what-does-find-c-v-data.csv-report">Q19. What does <code>find /c /v "" data.csv</code> report?</a></li>
+  <li><a href="#q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" id="toc-q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="nav-link" data-scroll-target="#q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q20. Which command downloads a file from a URL and saves it using the filename from that URL?</a></li>
+  <li><a href="#q21.-what-is-a-csv-file" id="toc-q21.-what-is-a-csv-file" class="nav-link" data-scroll-target="#q21.-what-is-a-csv-file">Q21. What is a CSV file?</a></li>
+  <li><a href="#q22.-what-does-powershell--command-get-content-data.csv--totalcount-20-sample.csv-do" id="toc-q22.-what-does-powershell--command-get-content-data.csv--totalcount-20-sample.csv-do" class="nav-link" data-scroll-target="#q22.-what-does-powershell--command-get-content-data.csv--totalcount-20-sample.csv-do">Q22. What does <code>powershell -Command "Get-Content data.csv -TotalCount 20" &gt; sample.csv</code> do?</a></li>
+  <li><a href="#q23.-what-is-the-difference-between-and" id="toc-q23.-what-is-the-difference-between-and" class="nav-link" data-scroll-target="#q23.-what-is-the-difference-between-and">Q23. What is the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</a></li>
+  <li><a href="#q24.-which-command-searches-inside-the-current-folder-and-all-folders-inside-it-for-the-text-todo-showing-line-numbers" id="toc-q24.-which-command-searches-inside-the-current-folder-and-all-folders-inside-it-for-the-text-todo-showing-line-numbers" class="nav-link" data-scroll-target="#q24.-which-command-searches-inside-the-current-folder-and-all-folders-inside-it-for-the-text-todo-showing-line-numbers">Q24. Which command searches inside the current folder and all folders inside it for the text <code>TODO</code>, showing line numbers?</a></li>
+  <li><a href="#q25.-which-findstr-flag-makes-the-search-case-insensitive" id="toc-q25.-which-findstr-flag-makes-the-search-case-insensitive" class="nav-link" data-scroll-target="#q25.-which-findstr-flag-makes-the-search-case-insensitive">Q25. Which <code>findstr</code> flag makes the search case-insensitive?</a></li>
+  <li><a href="#q26.-why-would-you-ever-want-two-anaconda-prompt-windows-open-at-the-same-time" id="toc-q26.-why-would-you-ever-want-two-anaconda-prompt-windows-open-at-the-same-time" class="nav-link" data-scroll-target="#q26.-why-would-you-ever-want-two-anaconda-prompt-windows-open-at-the-same-time">Q26. Why would you ever want two Anaconda Prompt windows open at the same time?</a></li>
+  <li><a href="#q27.-what-is-localhost" id="toc-q27.-what-is-localhost" class="nav-link" data-scroll-target="#q27.-what-is-localhost">Q27. What is <code>localhost</code>?</a></li>
+  <li><a href="#q28.-you-are-running-python--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" id="toc-q28.-you-are-running-python--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="nav-link" data-scroll-target="#q28.-you-are-running-python--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q28. You are running <code>python -m http.server 8000</code> and want to stop it. What do you press?</a></li>
+  <li><a href="#q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" id="toc-q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="nav-link" data-scroll-target="#q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q29. Classic Jupyter Notebook and JupyterLab open which file extension?</a></li>
+  <li><a href="#q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" id="toc-q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" class="nav-link" data-scroll-target="#q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file">Q30. Why is it easier to see what changed between two versions of a <code>.qmd</code> file than between two versions of a <code>.ipynb</code> file?</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -140,9 +273,1857 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Coming soon. This page will mirror the <a href="./macos.html">macOS walkthrough</a>, adapted for the <strong>Anaconda Prompt</strong> on Windows.</p>
+<p>This is a self-paced, ~2.5 hour hands-on walkthrough for Windows users. Work through the parts in order — later parts assume you have done the earlier ones.</p>
+<p><strong>Open the Anaconda Prompt now</strong> before reading further: click the Start menu, begin typing <code>Anaconda Prompt</code>, and press <code>Enter</code> when you see it. A window with a text prompt appears. That is where you will type every command in this guide.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use the Anaconda Prompt, not any of the other terminals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Windows comes with several different terminal programs, and they behave differently. You may have seen or heard of:</p>
+<ul>
+<li><strong>Anaconda Prompt</strong> — a specially configured command line that has Python and the <code>conda</code> tool ready to use. <strong>This is the one you should use for this guide.</strong></li>
+<li><strong>Command Prompt</strong> (<code>cmd.exe</code>) — the classic Windows command line. Similar to Anaconda Prompt but without Python and conda preconfigured.</li>
+<li><strong>PowerShell</strong> — a newer, more powerful Windows shell. It uses different command names for many of the same operations.</li>
+<li><strong>Windows Terminal</strong> — a modern window that can host any of the three above.</li>
+<li><strong>Git Bash</strong> — a Unix-style shell installed alongside Git.</li>
+</ul>
+<p>When this guide says “at the prompt” or “in the terminal,” always use the Anaconda Prompt.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a “prompt”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>prompt</strong> is the short bit of text the terminal shows when it is waiting for you to type your next command. In Anaconda Prompt, it typically looks something like <code>(base) C:\Users\yourname&gt;</code>. The <code>(base)</code> at the start is telling you which conda environment is active; the <code>C:\Users\yourname</code> is your current directory; the <code>&gt;</code> character marks the end of the prompt. Whenever this guide says “at the prompt,” it means: type this command into the Anaconda Prompt window, then press <code>Enter</code>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Vocabulary as we go
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Words like <em>directory</em>, <em>parent</em>, <em>child</em>, <code>%USERPROFILE%</code>, and <em>absolute path</em> get introduced in short callouts the first time they appear. Do not skip the callouts — they are the point of this walkthrough.</p>
+</div>
+</div>
+<hr>
+<section id="part-1-getting-oriented" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-getting-oriented">Part 1 — Getting oriented</h2>
+<section id="where-am-i" class="level3">
+<h3 class="anchored" data-anchor-id="where-am-i">1.1 Where am I?</h3>
+<p>Type this exactly and press <code>Enter</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At an Anaconda Prompt, <code>cd</code> with no argument does something specific and useful: it <strong>prints the current directory</strong> — the folder the terminal considers “where you are right now.” Every command you type looks at that folder first, unless you tell it to look somewhere else.</p>
+<p>You will see something like <code>C:\Users\yourname</code>. That is your <strong>home directory</strong>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Folder = directory
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Folder” is the word File Explorer uses. “Directory” is the word programmers use. <strong>They mean exactly the same thing.</strong> This guide uses “directory” from here on.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What <code>%USERPROFILE%</code> means
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>%USERPROFILE%</code> is a Windows <strong>environment variable</strong> — a named shortcut, provided by the operating system, that stands in for your home directory. On most Windows machines it expands to <code>C:\Users\yourname</code>. Anywhere in a command that you could type your full home path, you can instead type <code>%USERPROFILE%</code> and Windows will substitute the real value for you. So <code>%USERPROFILE%\Desktop</code> and <code>C:\Users\yourname\Desktop</code> refer to exactly the same folder. Every user account on the machine has its own <code>%USERPROFILE%</code>.</p>
+</div>
+</div>
+</section>
+<section id="what-is-in-here" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-in-here">1.2 What is in here?</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>dir</code> lists the contents of the current directory. You will see <code>Desktop</code>, <code>Documents</code>, <code>Downloads</code>, and so on, along with the size and last-modified date of each item.</p>
+</section>
+<section id="the-dir-flag-worth-memorizing" class="level3">
+<h3 class="anchored" data-anchor-id="the-dir-flag-worth-memorizing">1.3 The <code>dir</code> flag worth memorizing</h3>
+<p>Try:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> <span class="at">/a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Memorize that combination — <code>dir /a</code>. The <code>/a</code> flag tells <code>dir</code> to list <strong>all</strong> files, including hidden ones (files whose names would ordinarily be kept out of view).</p>
+<p>Other flags worth knowing:</p>
+<ul>
+<li><code>dir /a</code> — show <strong>all</strong> files, including hidden ones</li>
+<li><code>dir /o:d</code> — order the listing by modification date (oldest first)</li>
+<li><code>dir /o:-d</code> — order by modification date, newest first (the minus sign reverses the order)</li>
+<li><code>dir /s</code> — recursively list contents of every subdirectory as well</li>
+<li><code>dir /p</code> — pause after each screenful (useful for long listings)</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a “flag”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>flag</strong> (also sometimes called an <em>option</em> or a <em>switch</em>) is a short modifier you add after a command to change how that command behaves. On Windows, flags almost always begin with a forward slash: <code>/a</code>, <code>/s</code>, <code>/p</code>. (On Mac and Linux, flags begin with a hyphen instead. When you read Unix examples on the internet you will see <code>-a</code>, <code>-l</code>, <code>-r</code> — same idea, different punctuation.)</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hidden files
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Any file or directory that has the <strong>hidden</strong> attribute set is kept out of the default <code>dir</code> listing. Files whose names start with a dot — such as <code>.gitconfig</code> — also tend to be hidden by convention when they are present. Plain <code>dir</code> will not show any of these; <code>dir /a</code> will.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try it: what hidden files are in your home directory?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Run <code>dir /a %USERPROFILE%</code> and read the leftmost column of names. You may see items such as <code>AppData</code>, <code>.conda</code>, <code>.jupyter</code>, <code>.ipython</code>. These are configuration and system files — leave them alone for now, but know they exist.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="moving-around-cd" class="level3">
+<h3 class="anchored" data-anchor-id="moving-around-cd">1.4 Moving around: <code>cd</code></h3>
+<p><code>cd</code> stands for <strong>“change directory.”</strong> Try each of these, one at a time, running <code>cd</code> (with no argument) after each so you can see which directory you end up in:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Desktop</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What each did:</p>
+<ul>
+<li><code>cd %USERPROFILE%\Desktop</code> — go to your Desktop.</li>
+<li><code>cd ..</code> — go up one level to the <strong>parent</strong> directory. <code>..</code> always means “the parent of where I am.”</li>
+<li><code>cd %USERPROFILE%</code> — go to your home directory.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is an “argument”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An <strong>argument</strong> is an extra word you type after a command to tell it what to act on. In <code>cd %USERPROFILE%\Desktop</code>, the string <code>%USERPROFILE%\Desktop</code> is the argument — it tells <code>cd</code> where to go. In <code>dir /a %USERPROFILE%</code>, the flag <code>/a</code> and the path <code>%USERPROFILE%</code> are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as <code>cd</code> alone falls back to reporting your current directory).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Parent, child, sibling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Directories form a <strong>tree</strong>. If <code>Desktop</code> lives inside <code>C:\Users\jsmith</code>, then <code>C:\Users\jsmith</code> is the <strong>parent</strong> of <code>Desktop</code>, and <code>Desktop</code> is a <strong>child</strong> of <code>C:\Users\jsmith</code>. Two directories that share the same parent (<code>Desktop</code> and <code>Downloads</code>, for example) are <strong>siblings</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a “path”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>path</strong> is the address of a file or a directory on your computer — the sequence of directory names, separated by backslashes on Windows, that tells the system exactly where to find that item. <code>C:\Users\jsmith\Desktop\notes.txt</code> is a path; so is <code>drafts\readme.txt</code>; so is <code>..</code>. Almost every command that touches a file or folder takes a path as one of its arguments.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Absolute vs.&nbsp;relative paths
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>An <strong>absolute path</strong> starts with a drive letter and a backslash (<code>C:\...</code>, <code>D:\...</code>) or with <code>%USERPROFILE%</code>, which is replaced by an absolute path. It works no matter where you currently are. Example: <code>C:\Users\jsmith\Desktop\notes.txt</code>.</li>
+<li>A <strong>relative path</strong> does <em>not</em> start with a drive letter. It is understood in terms of your current working directory. If you are in <code>C:\Users\jsmith\Desktop</code>, then <code>notes.txt</code> refers to <code>C:\Users\jsmith\Desktop\notes.txt</code>.</li>
+</ul>
+<p>When a command “cannot find” a file, the most common reason is confusing relative and absolute paths.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Slashes: <code>\</code> versus <code>/</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On Windows, paths use the <strong>backslash</strong> <code>\</code> between directory names. On macOS and Linux, they use the <strong>forward slash</strong> <code>/</code>. The Anaconda Prompt is forgiving — it will often accept either — but every example in this guide uses <code>\</code> to match Windows conventions.</p>
+</div>
+</div>
+</section>
+<section id="tab-completion-the-most-useful-shortcut" class="level3">
+<h3 class="anchored" data-anchor-id="tab-completion-the-most-useful-shortcut">1.5 Tab completion — the most useful shortcut</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is the “shell”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>shell</strong> is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. The Anaconda Prompt is a shell — technically, it is the classic Windows <code>cmd.exe</code> shell, with some environment variables set so that Python and conda are ready to use. When this guide says “the shell will complete it,” it means the program listening to your keystrokes inside the Anaconda Prompt window.</p>
+</div>
+</div>
+<p>Type <code>cd %USERPROFILE%\Doc</code> and then, before pressing Enter, press the <strong>Tab</strong> key. The shell will complete it to <code>%USERPROFILE%\Documents</code> for you.</p>
+<p>If there are multiple matches (e.g., <code>Documents</code> and <code>Downloads</code> both start with <code>Do</code>), pressing Tab repeatedly will cycle through the possibilities. Type another letter or two to narrow the choices, then Tab again.</p>
+<p><strong>Use Tab constantly.</strong> It prevents typos, and it is a check on reality: if Tab will not complete a name, that name does not exist where you think it does.</p>
+</section>
+<section id="set-up-your-practice-folder" class="level3">
+<h3 class="anchored" data-anchor-id="set-up-your-practice-folder">1.6 Set up your practice folder</h3>
+<p>You will do all the rest of this walkthrough inside a dedicated practice folder so that early mistakes do not disturb anything else on your computer.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: create <code>%USERPROFILE%\Projects\computer-literacy</code> and <code>cd</code> into it
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Two commands. Try to write them yourself before revealing.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">mkdir</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Projects\computer-literacy</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Projects\computer-literacy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>mkdir</code> = “make directory.” On Windows, <code>mkdir</code> will automatically create any missing parent directories along the way — so if <code>%USERPROFILE%\Projects</code> does not exist yet, <code>mkdir</code> makes it too.</p>
+<p>Confirm you are in the right place:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should see <code>C:\Users\yourname\Projects\computer-literacy</code>.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-2-making-moving-renaming-deleting" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-making-moving-renaming-deleting">Part 2 — Making, moving, renaming, deleting</h2>
+<p>You are inside <code>%USERPROFILE%\Projects\computer-literacy</code>. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run <code>cd %USERPROFILE%\Projects\computer-literacy</code> to return to the practice folder.</p>
+<section id="create-an-empty-file" class="level3">
+<h3 class="anchored" data-anchor-id="create-an-empty-file">2.1 Create an empty file</h3>
+<p>There is no single dedicated command for “create an empty file” in Anaconda Prompt, but this idiom works well:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> nul <span class="kw">&gt;</span> notes.txt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That command reads <code>nul</code> (a special empty source) and redirects the empty output into a new file called <code>notes.txt</code>. The result is a zero-byte file with the name you asked for.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+File extensions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>.txt</code> at the end is a <strong>file extension</strong>. Extensions are naming conventions — the operating system looks at the extension to guess what kind of file it is and which program should open it. They are not magic: <code>notes.txt</code>, <code>notes.csv</code>, and <code>notes</code> are all just files with different names. But the convention matters, because tools (and humans) read the extension to decide what to expect. You will encounter <code>.txt</code>, <code>.csv</code>, <code>.md</code>, <code>.qmd</code>, <code>.ipynb</code>, <code>.py</code>, and <code>.html</code> in this guide.</p>
+</div>
+</div>
+</section>
+<section id="rename-with-ren" class="level3">
+<h3 class="anchored" data-anchor-id="rename-with-ren">2.2 Rename with <code>ren</code></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">ren</span> notes.txt readme.txt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>ren</code> is short for <strong>“rename.”</strong> It changes the name of a file without moving it to a new folder.</p>
+</section>
+<section id="move-into-a-child-directory-with-move" class="level3">
+<h3 class="anchored" data-anchor-id="move-into-a-child-directory-with-move">2.3 Move into a child directory with <code>move</code></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: create a <code>drafts</code> folder and move <code>readme.txt</code> into it
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb9"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">mkdir</span> drafts</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">move</span> readme.txt drafts\</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> drafts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After this, <code>readme.txt</code> should appear inside <code>drafts\</code> and not in the current directory. The trailing <code>\</code> on <code>drafts\</code> is not required, but it signals “this is a folder” to your future self reading the command.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Idea: watch the changes happen in File Explorer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Open File Explorer alongside your Anaconda Prompt and navigate to <code>%USERPROFILE%\Projects\computer-literacy</code>. As you run <code>move</code>, <code>ren</code>, <code>mkdir</code>, <code>del</code>, and so on at the prompt, refresh File Explorer (press <code>F5</code>) to watch the same files appear, disappear, and change places. Seeing the command line and the point-and-click interface act on the same folder is one of the fastest ways to build a durable mental model.</p>
+</div>
+</div>
+</section>
+<section id="move-a-file-from-a-child-back-to-the-current-directory" class="level3">
+<h3 class="anchored" data-anchor-id="move-a-file-from-a-child-back-to-the-current-directory">2.4 Move a file from a child back to the current directory</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: move <code>readme.txt</code> from <code>drafts\</code> back to where you are now
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb10"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">move</span> drafts\readme.txt .</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>.</code> is not a typo. <strong><code>.</code> means “the current directory.”</strong> So <code>move drafts\readme.txt .</code> means “move the file <code>drafts\readme.txt</code> into the directory <code>.</code>” — that is, into wherever you are now.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="move-a-file-up-to-the-parent" class="level3">
+<h3 class="anchored" data-anchor-id="move-a-file-up-to-the-parent">2.5 Move a file up to the parent</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: move <code>readme.txt</code> up to <code>%USERPROFILE%\Projects</code>, then back
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">move</span> readme.txt ..</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> ..</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">move</span> ..\readme.txt .</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>..</code> means “the parent directory,” so <code>move readme.txt ..</code> moves the file up one level. Then <code>move ..\readme.txt .</code> brings it back.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="copy-with-copy-and-xcopy" class="level3">
+<h3 class="anchored" data-anchor-id="copy-with-copy-and-xcopy">2.6 Copy with <code>copy</code> and <code>xcopy</code></h3>
+<p>For a single file, use <code>copy</code>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">copy</span> readme.txt readme<span class="at">-backup</span>.txt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For a directory (which contains other files, and possibly other directories inside it), use <code>xcopy</code> with two flags:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">xcopy</span> <span class="at">/E</span> <span class="at">/I</span> drafts drafts<span class="at">-backup</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>/E</code> tells <code>xcopy</code> to copy every subdirectory, even empty ones.</li>
+<li><code>/I</code> tells <code>xcopy</code> to assume the target (<code>drafts-backup</code>) is meant to be a directory, so it does not stop and ask you.</li>
+</ul>
+</section>
+<section id="delete-with-del-and-rmdir-read-this-carefully" class="level3">
+<h3 class="anchored" data-anchor-id="delete-with-del-and-rmdir-read-this-carefully">2.7 Delete with <code>del</code> and <code>rmdir</code> — <strong>read this carefully</strong></h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>del</code> and <code>rmdir</code> are permanent
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Files deleted with <code>del</code> or <code>rmdir</code> at the command line <strong>do not go to the Recycle Bin</strong>. There is no undo. Read every deletion command twice before pressing Enter, and never, ever run <code>rmdir /s /q C:\</code> or <code>del /s /q *</code> while you are still learning.</p>
+</div>
+</div>
+<p>Delete a single file:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">del</span> readme<span class="at">-backup</span>.txt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Delete an entire directory (and everything inside it):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">rmdir</span> <span class="at">/s</span> drafts<span class="at">-backup</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>/s</code> flag tells <code>rmdir</code> to recursively remove the directory and every file inside it. Windows will pause and ask you <code>Are you sure (Y/N)?</code> — type <code>Y</code> and press Enter to proceed. Leave <code>readme.txt</code> and <code>drafts\</code> alone — you will use them in Part 3.</p>
+<hr>
+</section>
+</section>
+<section id="part-3-editing-text-with-notepad" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-editing-text-with-notepad">Part 3 — Editing text with Notepad</h2>
+<p>Windows does not include the <code>nano</code> editor that Mac and Linux users often rely on. Instead, we will use <strong>Notepad</strong>, which ships with every copy of Windows and can be launched directly from the Anaconda Prompt. Open your <code>readme.txt</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>notepad readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A separate Notepad window appears. The Anaconda Prompt hands off control to Notepad but does <em>not</em> freeze — you can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).</p>
+<p>Type these exact lines into Notepad (you can copy them from your browser and paste with <code>Ctrl + V</code>):</p>
+<pre><code>Computer Literacy Practice
+==========================
+This is my practice readme.
+
+TODO: add a list of my favorite CLI commands
+TODO: try findstr on this file later</code></pre>
+<p>Save the file with <code>Ctrl + S</code> and close the Notepad window (<code>Alt + F4</code> or click the red <code>X</code>). Now verify what you wrote:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>type</code> prints a file’s contents to the terminal. It is great for short files. <strong>Do not <code>type</code> a huge file</strong> — it will flood your terminal with output.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What does “concatenate” mean?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On Mac and Linux, the command that plays the role Windows gives to <code>type</code> is called <code>cat</code>, which is short for <em>concatenate</em>. To <strong>concatenate</strong> two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin <em>catena</em>, meaning “chain” — so <em>concatenation</em> is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux <code>cat</code> command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where “string concatenation” means gluing two pieces of text together (for example, joining <code>"Hello, "</code> and <code>"world"</code> to produce <code>"Hello, world"</code>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The <code>TODO:</code> lines are on purpose
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You just added two <code>TODO</code> markers to your file. You will search for them with <code>findstr</code> in Part 6. Experienced developers leave <code>TODO</code> notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="part-4-downloading-and-previewing-real-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-downloading-and-previewing-real-data">Part 4 — Downloading and previewing real data</h2>
+<p>You will download three CSV files, then practice looking at them without opening a spreadsheet.</p>
+<section id="make-a-data-folder-and-go-into-it" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-data-folder-and-go-into-it">4.1 Make a <code>data\</code> folder and go into it</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">mkdir</span> data</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="download-files-with-curl" class="level3">
+<h3 class="anchored" data-anchor-id="download-files-with-curl">4.2 Download files with <code>curl</code></h3>
+<p>Modern versions of Windows include <code>curl</code> as a built-in command. <code>curl -O</code> downloads a file from a URL and saves it using the filename from the URL. Run these three commands (each is one long line):</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>curl <span class="at">-O</span> https:/<span class="at">/raw</span>.githubusercontent.com<span class="at">/adamrossnelson/confident/refs/heads/main/data/complaints-bank</span>.csv</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>curl <span class="at">-O</span> https:/<span class="at">/raw</span>.githubusercontent.com<span class="at">/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt</span>.csv</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>curl <span class="at">-O</span> https:/<span class="at">/raw</span>.githubusercontent.com<span class="at">/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="see-what-you-got" class="level3">
+<h3 class="anchored" data-anchor-id="see-what-you-got">4.3 See what you got</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will see three CSV files listed with their sizes in bytes. Which of the three CSVs is largest?</p>
+</section>
+<section id="peek-at-contents-the-right-way" class="level3">
+<h3 class="anchored" data-anchor-id="peek-at-contents-the-right-way">4.4 Peek at contents — the right way</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is a CSV file?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>CSV</strong> stands for <strong>comma-separated values</strong>. It is the simplest, most portable format for <strong>tabular data</strong> — that is, data arranged in rows and columns, the way you would lay it out in a spreadsheet or a printed table. Each row is one <em>observation</em> or <em>record</em> (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one <em>variable</em> or <em>field</em> (that respondent’s age, the transaction’s amount, the book’s title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a <strong>header</strong> listing the column names.</p>
+<p>CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself — no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What does “portable” mean?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When programmers describe a file format, a program, or a piece of code as <strong>portable</strong>, they mean that it works well across many different systems and situations — the way a paperback book is portable in the everyday sense of “you can take it anywhere.” A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is an API?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>API</strong> stands for <strong>application programming interface</strong>. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a <strong>web API</strong>: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.</p>
+</div>
+</div>
+<p>Do <strong>not</strong> <code>type complaints-bank.csv</code> — it is big and will fill your terminal with noise. Instead, look at the first several lines. Windows has no direct built-in equivalent of the Unix <code>head</code> command, but we can borrow one command from PowerShell for this specific job. Run:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content confident_fictional_books.csv -TotalCount 10"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That shows the first 10 lines. Change <code>10</code> to <code>5</code> to see only the first five:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content confident_fictional_books.csv -TotalCount 5"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+We are borrowing one command from PowerShell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Windows has two main shells: the older Anaconda Prompt / Command Prompt shell (which is what you have been typing into so far), and the newer <strong>PowerShell</strong>. PowerShell has richer commands for handling text and files. You can borrow a single PowerShell command from inside the Anaconda Prompt by writing <code>powershell -Command "..."</code>. We will use this trick a couple of times in this walkthrough because the equivalent Anaconda Prompt commands are clumsier.</p>
+</div>
+</div>
+<p>For scrolling through a larger file, use <code>more</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">more</span> complaints<span class="at">-bank</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You are now “inside” <code>more</code>. Press the space bar to advance one screen at a time. <strong>Press <code>q</code> to quit.</strong> Getting stuck inside <code>more</code> is a common frustration for beginners — remember <code>q</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+When a program takes over your prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some commands hand control over to a program (Notepad opens in its own window; <code>more</code> and running Python servers stay inside the terminal). Your normal prompt disappears until you exit the program. If you ever feel stuck: try <code>q</code> (for <code>more</code>), close the window (for Notepad), or press <code>Control + C</code> (which sends a stop request to most other running programs).</p>
+</div>
+</div>
+</section>
+<section id="count-rows" class="level3">
+<h3 class="anchored" data-anchor-id="count-rows">4.5 Count rows</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why count rows from the command line?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A row count is the fastest possible answer to a basic data-science question: <strong>how many observations (records) does this dataset have?</strong> Before you open a file in Python, R, or a spreadsheet, a one-line command tells you in a fraction of a second whether you are looking at 50 rows, 50 thousand, or 50 million. That number changes what you will do next — whether it is safe to open the whole file at once in a program, whether you should take a smaller sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is an important habit for working with data.</p>
+</div>
+</div>
+<p>On Anaconda Prompt, the idiomatic way to count lines is with the built-in <code>find</code> command:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">find</span> <span class="at">/c</span> <span class="at">/v</span> <span class="st">""</span> complaints<span class="at">-bank</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That reads a little oddly at first — but it works. <code>find /v ""</code> means “find every line that does not contain the empty string” (which is every line), and <code>/c</code> says “count how many.” So the whole line reports the total number of lines in the file.</p>
+<p>That first line is the CSV header, so the number of <em>data</em> rows is one less than what <code>find</code> reports.</p>
+<p>Try it on all three CSVs at once using a <strong>wildcard</strong>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">find</span> <span class="at">/c</span> <span class="at">/v</span> <span class="st">""</span> *.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>*</code> matches any characters, so <code>*.csv</code> matches every file in the current directory ending in <code>.csv</code>. Wildcards are powerful — and dangerous when combined with <code>del</code>. Be extra careful whenever you combine <code>*</code> with a deleting command.</p>
+<hr>
+</section>
+</section>
+<section id="part-5-redirection-saving-output-to-a-file" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-redirection-saving-output-to-a-file">Part 5 — Redirection: saving output to a file</h2>
+<p>Very often you want to <em>save</em> what a command prints, rather than just look at it. That is called <strong>redirection</strong>.</p>
+<section id="the-operator" class="level3">
+<h3 class="anchored" data-anchor-id="the-operator">5.1 The <code>&gt;</code> operator</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content complaints-bank.csv -TotalCount 20"</span> <span class="kw">&gt;</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Desktop\complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Read that out loud: “Take the first 20 lines of <code>complaints-bank.csv</code>, and instead of printing them to the terminal, <strong>redirect</strong> them into a new file called <code>complaints-sample.csv</code> on my Desktop.”</p>
+<p>Now open your Desktop in File Explorer (or run <code>explorer %USERPROFILE%\Desktop</code>) — you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: <strong>make a small excerpt of a big data file so you can inspect it quickly.</strong></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>&gt;</code> overwrites without warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <code>%USERPROFILE%\Desktop\complaints-sample.csv</code> already existed, <code>&gt;</code> would replace it without asking. There is no “are you sure?” prompt. If you want to <em>append</em> to a file instead of overwriting it, use <code>&gt;&gt;</code> (two greater-than signs).</p>
+</div>
+</div>
+</section>
+<section id="try" class="level3">
+<h3 class="anchored" data-anchor-id="try">5.2 Try <code>&gt;&gt;</code></h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content mpg_excerpt.csv -TotalCount 3"</span> <span class="kw">&gt;&gt;</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Desktop\complaints-sample.csv</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Desktop\complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You just appended a few rows of a different CSV onto the end of the sample file. (In real work you would only append data that has the same columns — but the mechanics are worth seeing.)</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: make a 50-row sample of <code>mpg_excerpt.csv</code> on your Desktop
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb29"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content mpg_excerpt.csv -TotalCount 50"</span> <span class="kw">&gt;</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Desktop\mpg-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-6-searching-with-findstr" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-searching-with-findstr">Part 6 — Searching with <code>findstr</code></h2>
+<p><code>findstr</code> searches for text inside files. It is the Anaconda Prompt equivalent of the Unix <code>grep</code> command, and it is one of the most useful text-searching tools on Windows.</p>
+<p>Go back up to your practice folder:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Projects\computer-literacy</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="search-in-a-single-file" class="level3">
+<h3 class="anchored" data-anchor-id="search-in-a-single-file">6.1 Search in a single file</h3>
+<p>You added <code>TODO:</code> markers to <code>readme.txt</code> back in Part 3. Find them:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">findstr</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>findstr</code> prints every line in <code>readme.txt</code> that contains the string <code>TODO</code>. Add <code>/n</code> to include line numbers:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">findstr</span> <span class="at">/n</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="make-a-python-file-with-more-todos" class="level3">
+<h3 class="anchored" data-anchor-id="make-a-python-file-with-more-todos">6.2 Make a Python file with more TODOs</h3>
+<p>Now let us give <code>findstr</code> a more realistic file to search through. Create a Python file with Notepad:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>notepad cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Type or paste in the following (this uses only Python’s built-in features — you do not need to install anything, and you do not need to <em>run</em> it; you are just going to search it):</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup.py — a small script for tidying up a text file</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: accept the input filename as a command-line argument</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>INPUT_FILE <span class="op">=</span> <span class="st">"notes.txt"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE <span class="op">=</span> <span class="st">"notes-clean.txt"</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strip_blank_lines(lines):</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return only the non-empty lines."""</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line <span class="cf">for</span> line <span class="kw">in</span> lines <span class="cf">if</span> line.strip() <span class="op">!=</span> <span class="st">""</span>]</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lowercase_all(lines):</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: preserve proper nouns instead of lowercasing everything</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line.lower() <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(INPUT_FILE):</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No such file: </span><span class="sc">{</span>INPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>        sys.exit(<span class="dv">1</span>)</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(INPUT_FILE) <span class="im">as</span> f:</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>        lines <span class="op">=</span> f.readlines()</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> strip_blank_lines(lines)</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> lowercase_all(lines)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: also remove duplicate lines before writing out</span></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(OUTPUT_FILE, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>        f.writelines(lines)</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Wrote </span><span class="sc">{</span><span class="bu">len</span>(lines)<span class="sc">}</span><span class="ss"> lines to </span><span class="sc">{</span>OUTPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: report how many blank lines were removed</span></span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save with <code>Ctrl + S</code> and close the Notepad window.</p>
+</section>
+<section id="find-all-todos-in-one-file" class="level3">
+<h3 class="anchored" data-anchor-id="find-all-todos-in-one-file">6.3 Find all TODOs in one file</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">findstr</span> <span class="at">/n</span> TODO cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should see four TODO lines with their line numbers.</p>
+</section>
+<section id="find-todos-across-every-file-in-the-folder" class="level3">
+<h3 class="anchored" data-anchor-id="find-todos-across-every-file-in-the-folder">6.4 Find TODOs across every file in the folder</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Challenge: search across every file in the current folder and all its subfolders
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb36"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">findstr</span> <span class="at">/s</span> <span class="at">/n</span> TODO *.*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>/s</code> means search <em>every subdirectory</em> under the current one, not just the current directory itself.</li>
+<li><code>/n</code> adds line numbers.</li>
+<li><code>*.*</code> matches every file in each directory that has both a name and an extension.</li>
+</ul>
+<p>You should see hits from both <code>readme.txt</code> and <code>cleanup.py</code>. This is how you find every leftover TODO in a project.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="case-insensitive-search" class="level3">
+<h3 class="anchored" data-anchor-id="case-insensitive-search">6.5 Case-insensitive search</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">findstr</span> <span class="at">/s</span> <span class="at">/n</span> <span class="at">/i</span> todo *.*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>/i</code> makes the match case-insensitive, so it would find <code>TODO</code>, <code>Todo</code>, and <code>todo</code> all at once.</p>
+<hr>
+</section>
+</section>
+<section id="part-7-multiple-terminal-sessions-and-local-web-servers" class="level2">
+<h2 class="anchored" data-anchor-id="part-7-multiple-terminal-sessions-and-local-web-servers">Part 7 — Multiple terminal sessions and local web servers</h2>
+<p>Some commands <strong>take over your prompt and do not give it back</strong> until you stop them. This is normal, and it is why programmers who use the terminal often keep two or three Anaconda Prompt windows open at once.</p>
+<section id="open-a-second-anaconda-prompt-window" class="level3">
+<h3 class="anchored" data-anchor-id="open-a-second-anaconda-prompt-window">7.1 Open a second Anaconda Prompt window</h3>
+<p>Return to the Start menu and open Anaconda Prompt a second time, so that you now have two Anaconda Prompt windows on your screen at once. Each one is an independent terminal session, and each has its own current working directory.</p>
+<p>Confirm this:</p>
+<ul>
+<li>In the new window, run <code>cd</code>. It will probably say <code>C:\Users\yourname</code> — a newly opened Anaconda Prompt always starts at your home directory.</li>
+<li>In the old window, run <code>cd</code>. It should show wherever you last navigated to.</li>
+</ul>
+<p><strong>Two windows, two directories, one machine.</strong> Files you create in one are immediately visible from the other.</p>
+</section>
+<section id="start-a-mini-web-server" class="level3">
+<h3 class="anchored" data-anchor-id="start-a-mini-web-server">7.2 Start a mini web server</h3>
+<p>In your original Anaconda Prompt, make sure you are in the practice folder, then run:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Projects\computer-literacy</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>python <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will see something like <code>Serving HTTP on :: port 8000</code>. <strong>Your prompt is gone</strong> — Python is now running a small web server that makes the files in this folder available to a web browser on your own computer.</p>
+<p>Open a web browser and go to <a href="http://localhost:8000" class="uri">http://localhost:8000</a>. You will see a listing of your practice folder — click <code>readme.txt</code> to view it, click into <code>data/</code> to see the CSVs, and so on.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is <code>localhost</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>localhost</code> (also written as <code>127.0.0.1</code>) is a special network name that always means <strong>“this same computer.”</strong> When a program serves at <code>localhost:8000</code>, it is only reachable from your own machine — nobody on the internet can see it. That is why local previews are safe: they are visible only to you.</p>
+</div>
+</div>
+<p>The first time you start a Python web server on Windows, the Windows Firewall may pop up a dialog asking whether to allow Python to accept network connections. Since we are only using <code>localhost</code>, you can safely dismiss it in either direction — the local preview will work regardless.</p>
+</section>
+<section id="why-the-second-terminal-matters" class="level3">
+<h3 class="anchored" data-anchor-id="why-the-second-terminal-matters">7.3 Why the second terminal matters</h3>
+<p>Your first Anaconda Prompt is “busy” running the web server. If you want to keep working — running <code>dir</code>, <code>cd</code>, editing files — you <em>need</em> the second Anaconda Prompt window you opened in 7.1. Try it: switch to the second window and run <code>dir</code> in the practice folder. It works, because that terminal session is independent of the one running the server.</p>
+</section>
+<section id="stopping-the-server" class="level3">
+<h3 class="anchored" data-anchor-id="stopping-the-server">7.4 Stopping the server</h3>
+<p>Switch back to the terminal running the server and press <strong><code>Control + C</code></strong>. The server stops, and your prompt returns. <code>Control + C</code> sends a stop request — it is the standard way to tell a running command-line program to stop.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The same pattern applies to <code>quarto preview</code> and <code>jupyter lab</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you run <code>quarto preview</code> on a Quarto project (like the site you are reading right now), or <code>jupyter lab</code> / <code>jupyter notebook</code> to open notebooks, those tools <strong>also</strong> start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use <code>Control + C</code> to shut the server down when you are done.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-8-three-flavors-of-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="part-8-three-flavors-of-notebook">Part 8 — Three flavors of notebook</h2>
+<p>A <strong>notebook</strong> is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague’s screen.</p>
+<section id="jupyter-notebook-classic" class="level3">
+<h3 class="anchored" data-anchor-id="jupyter-notebook-classic">8.1 Jupyter Notebook (classic)</h3>
+<ul>
+<li><strong>File extension:</strong> <code>.ipynb</code></li>
+<li><strong>How you open it:</strong> run <code>jupyter notebook</code> in an Anaconda Prompt; a browser tab opens.</li>
+<li><strong>Feel:</strong> simple, one notebook per browser tab. The older interface.</li>
+<li><strong>File format under the hood:</strong> JSON. Not human-friendly to read as plain text, and hard to compare across versions.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What does “under the hood” mean?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“<strong>Under the hood</strong>” is an idiom borrowed from car mechanics. The <em>hood</em> of a car is the metal cover over the engine; to look “under the hood” is to see how the machine actually works, hidden from the ordinary driver. In writing about software, “under the hood” describes the internal mechanism of something — how a program actually stores its data, or how a feature is actually implemented — as opposed to the polished surface the user sees. When this guide says a <code>.ipynb</code> file is JSON <em>under the hood</em>, it means: the friendly notebook you see in your browser is, at bottom, stored on disk as a JSON document.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is JSON?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>JSON</strong> (pronounced <em>jay-son</em>) stands for <strong>JavaScript Object Notation</strong>. It is a plain-text format for storing structured data — data with named fields, nested lists, and hierarchies. A JSON file looks something like <code>{"name": "Ada", "age": 36, "skills": ["math", "engineering"]}</code>. It is designed to be read and written by programs rather than by humans, and although it <em>is</em> technically plain text, a large JSON file is tedious to read directly. JSON is one of the two most common formats (alongside CSV) that programs and web services use to exchange data.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What does it mean to “compare across versions”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Writers, researchers, and programmers routinely want to answer a very specific question: <strong>what changed between the earlier version of this file and the current one?</strong> Specialized tools produce a side-by-side or line-by-line report of the differences — such a report is often called a <em>diff</em>, from the word <em>difference</em>. Files that are stored as clean plain text (a <code>.qmd</code> file, a Python script, a Markdown document) produce readable diffs: you can see, line by line, exactly what was added, removed, or changed. Files that are stored in complicated binary or nested formats (a Jupyter <code>.ipynb</code> file, a Word document, a Photoshop file) produce diffs full of noise, because a small visible change on screen can cause many invisible changes in the underlying storage.</p>
+</div>
+</div>
+</section>
+<section id="jupyterlab" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterlab">8.2 JupyterLab</h3>
+<ul>
+<li><strong>File extension:</strong> <em>still</em> <code>.ipynb</code> — same file format as classic Jupyter.</li>
+<li><strong>How you open it:</strong> run <code>jupyter lab</code> in an Anaconda Prompt.</li>
+<li><strong>Feel:</strong> a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.</li>
+<li><strong>Same version-comparison problem</strong> as classic Jupyter, because the underlying file format is identical.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What is an IDE?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>IDE</strong> stands for <strong>Integrated Development Environment</strong>. It is a single application that bundles together the several tools a programmer typically needs — a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more — into one coordinated window. Popular IDEs you may encounter include Visual Studio Code, PyCharm, RStudio, and Spyder (which itself ships with Anaconda). JupyterLab is described as <em>IDE-like</em> because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.</p>
+</div>
+</div>
+</section>
+<section id="quarto-notebooks" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-notebooks">8.3 Quarto notebooks</h3>
+<ul>
+<li><strong>File extension:</strong> <code>.qmd</code></li>
+<li><strong>How you open it:</strong> any text editor. To <em>render</em> it into a webpage or PDF, run <code>quarto render</code> or <code>quarto preview</code> in an Anaconda Prompt.</li>
+<li><strong>Feel:</strong> plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from <code>.qmd</code> files.</li>
+<li><strong>Version-comparison-friendly:</strong> because a <code>.qmd</code> file is plain text, comparing two versions of one is straightforward and readable.</li>
+</ul>
+</section>
+<section id="quick-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="quick-comparison">8.4 Quick comparison</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Jupyter Notebook</th>
+<th>JupyterLab</th>
+<th>Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>File extension</td>
+<td><code>.ipynb</code></td>
+<td><code>.ipynb</code></td>
+<td><code>.qmd</code></td>
+</tr>
+<tr class="even">
+<td>File format</td>
+<td>JSON</td>
+<td>JSON</td>
+<td>Plain text (Markdown)</td>
+</tr>
+<tr class="odd">
+<td>Launched by</td>
+<td><code>jupyter notebook</code></td>
+<td><code>jupyter lab</code></td>
+<td><code>quarto preview</code> / <code>quarto render</code></td>
+</tr>
+<tr class="even">
+<td>Runs a local web server?</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes (for <code>preview</code>)</td>
+</tr>
+<tr class="odd">
+<td>Good for</td>
+<td>Quick exploration</td>
+<td>Multi-file projects</td>
+<td>Websites, reports, books</td>
+</tr>
+<tr class="even">
+<td>Comparing versions</td>
+<td>Painful</td>
+<td>Painful</td>
+<td>Clean</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Try it: peek at a <code>.qmd</code> file with commands you already know
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The pages you are reading are <code>.qmd</code> files. If you have downloaded the source of this website into a folder called <code>CompLitPractice</code>, try:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bat code-with-copy"><code class="sourceCode dosbat"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="pp">%</span><span class="va">USERPROFILE</span><span class="pp">%</span>\Projects\CompLitPractice</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span> <span class="at">/a</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>powershell <span class="at">-Command</span> <span class="st">"Get-Content windows.qmd -TotalCount 10"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notice that a <code>.qmd</code> file is just readable text: ordinary Markdown, with <strong>code fences</strong> marking off the executable chunks.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What are “code fences”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Markdown, a <strong>code fence</strong> is a line of three backtick characters (<code>```</code>) that marks the beginning or end of a block of code. Anything between an opening fence and a closing fence is treated as literal code — rendered in a monospaced font, not interpreted as prose, and (in Quarto and similar tools) sometimes actually executed as a program. You can also write the language name after the opening fence, as in <code>```python</code> or <code>```bat</code>, so that the code is displayed with the correct syntax highlighting. Every code example in this walkthrough is written between a pair of code fences.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-9-cheatsheet-and-gotchas" class="level2">
+<h2 class="anchored" data-anchor-id="part-9-cheatsheet-and-gotchas">Part 9 — Cheatsheet and gotchas</h2>
+<section id="commands-you-now-know" class="level3">
+<h3 class="anchored" data-anchor-id="commands-you-now-know">Commands you now know</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>cd</code> (no argument)</td>
+<td>Print current directory</td>
+</tr>
+<tr class="even">
+<td><code>cd path</code></td>
+<td>Change directory. <code>cd ..</code> = up one. <code>cd %USERPROFILE%</code> = home.</td>
+</tr>
+<tr class="odd">
+<td><code>dir</code>, <code>dir /a</code></td>
+<td>List directory contents (<code>/a</code> includes hidden)</td>
+</tr>
+<tr class="even">
+<td><code>mkdir name</code>, <code>mkdir a\b\c</code></td>
+<td>Make a directory (parents created automatically)</td>
+</tr>
+<tr class="odd">
+<td><code>type nul &gt; name</code></td>
+<td>Create an empty file</td>
+</tr>
+<tr class="even">
+<td><code>ren old new</code></td>
+<td>Rename a file</td>
+</tr>
+<tr class="odd">
+<td><code>move src dst</code></td>
+<td>Move a file or directory</td>
+</tr>
+<tr class="even">
+<td><code>copy src dst</code></td>
+<td>Copy a single file</td>
+</tr>
+<tr class="odd">
+<td><code>xcopy /E /I src dst</code></td>
+<td>Copy a directory and everything inside it</td>
+</tr>
+<tr class="even">
+<td><code>del name</code></td>
+<td><strong>Permanently</strong> delete a file (no Recycle Bin)</td>
+</tr>
+<tr class="odd">
+<td><code>rmdir /s name</code></td>
+<td><strong>Permanently</strong> delete a directory and its contents</td>
+</tr>
+<tr class="even">
+<td><code>notepad file</code></td>
+<td>Edit a text file in Notepad</td>
+</tr>
+<tr class="odd">
+<td><code>type file</code></td>
+<td>Print a file to the terminal</td>
+</tr>
+<tr class="even">
+<td><code>powershell -Command "Get-Content f -TotalCount N"</code></td>
+<td>First N lines of a file</td>
+</tr>
+<tr class="odd">
+<td><code>more file</code></td>
+<td>Scroll through a file (<code>q</code> to quit)</td>
+</tr>
+<tr class="even">
+<td><code>find /c /v "" file</code></td>
+<td>Count lines</td>
+</tr>
+<tr class="odd">
+<td><code>curl -O url</code></td>
+<td>Download a file</td>
+</tr>
+<tr class="even">
+<td><code>findstr /s /n TEXT *.*</code></td>
+<td>Search recursively for <code>TEXT</code></td>
+</tr>
+<tr class="odd">
+<td><code>python -m http.server</code></td>
+<td>Start a local web server</td>
+</tr>
+<tr class="even">
+<td><code>Control + C</code></td>
+<td>Stop the running program</td>
+</tr>
+<tr class="odd">
+<td><code>Tab</code></td>
+<td>Autocomplete a name</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-gotchas" class="level3">
+<h3 class="anchored" data-anchor-id="common-gotchas">Common gotchas</h3>
+<ul>
+<li><strong><code>del</code> and <code>rmdir</code> have no undo, and no Recycle Bin.</strong> Read every deletion command twice.</li>
+<li><strong><code>&gt;</code> overwrites without warning.</strong> Use <code>&gt;&gt;</code> to append.</li>
+<li><strong><code>%USERPROFILE%</code> is different for each user.</strong> It always points at <em>your</em> home.</li>
+<li><strong>Relative paths depend on where you are.</strong> When something “cannot be found,” run <code>cd</code> (no argument) and check.</li>
+<li><strong>Tab-complete constantly.</strong> If Tab will not complete a name, that thing is not there.</li>
+<li><strong>Backslashes and forward slashes are not always interchangeable.</strong> Use <code>\</code> in Windows paths to be safe.</li>
+<li><strong>Filenames with spaces need quotes:</strong> <code>move "My File.txt" backup\</code> — or, better, avoid spaces in filenames you will handle from the command line.</li>
+<li><strong>Some commands take over your prompt.</strong> Ways to get unstuck: <code>q</code> (for <code>more</code>), close the window (for Notepad), <code>Control + C</code> (for most other running programs).</li>
+<li><strong>Anaconda Prompt is not PowerShell.</strong> Commands like <code>Get-Content</code>, <code>Select-Object</code>, and <code>ls</code> (in the PowerShell sense) do not work directly in Anaconda Prompt. When you need one, wrap it in <code>powershell -Command "..."</code>.</li>
+</ul>
+</section>
+<section id="you-now-know-enough-to" class="level3">
+<h3 class="anchored" data-anchor-id="you-now-know-enough-to">You now know enough to…</h3>
+<ul>
+<li>Follow along in a Python or R tutorial that says “open a terminal and run…”</li>
+<li>Download a project archive from the internet and explore its contents.</li>
+<li>Preview a Quarto site or run a Jupyter notebook.</li>
+<li>Fix minor project problems yourself by reading and searching files instead of asking someone else.</li>
+</ul>
+<p>Nice work. Close the Anaconda Prompt windows when you are ready — you did great.</p>
+<hr>
+</section>
+</section>
+<section id="part-10-check-your-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="part-10-check-your-understanding">Part 10 — Check your understanding</h2>
+<p>Thirty multiple-choice questions covering everything above. Try to answer each one from memory, then click to reveal the correct answer with a short explanation.</p>
+<section id="q1.-in-an-anaconda-prompt-how-do-you-print-the-current-directory" class="level3">
+<h3 class="anchored" data-anchor-id="q1.-in-an-anaconda-prompt-how-do-you-print-the-current-directory">Q1. In an Anaconda Prompt, how do you print the current directory?</h3>
+<ul>
+<li>A. <code>pwd</code></li>
+<li>B. <code>dir /c</code></li>
+<li>C. <code>cd</code> (with no argument)</li>
+<li>D. <code>where</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> On Windows, typing <code>cd</code> alone (no argument) prints the current directory. On Mac and Linux, the equivalent command is <code>pwd</code> — but that does not work in Anaconda Prompt.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q2.-in-a-filesystem-tree-which-of-these-is-true-about-userprofiledocuments-and-userprofile" class="level3">
+<h3 class="anchored" data-anchor-id="q2.-in-a-filesystem-tree-which-of-these-is-true-about-userprofiledocuments-and-userprofile">Q2. In a filesystem tree, which of these is true about <code>%USERPROFILE%\Documents</code> and <code>%USERPROFILE%</code>?</h3>
+<ul>
+<li>A. They are siblings.</li>
+<li>B. <code>%USERPROFILE%</code> is a child of <code>%USERPROFILE%\Documents</code>.</li>
+<li>C. <code>%USERPROFILE%\Documents</code> is a child of <code>%USERPROFILE%</code>.</li>
+<li>D. They are the same directory.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>%USERPROFILE%\Documents</code> lives inside <code>%USERPROFILE%</code>, so <code>%USERPROFILE%</code> is the parent and <code>%USERPROFILE%\Documents</code> is the child.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q3.-which-flag-makes-dir-show-hidden-files-as-well-as-ordinary-ones" class="level3">
+<h3 class="anchored" data-anchor-id="q3.-which-flag-makes-dir-show-hidden-files-as-well-as-ordinary-ones">Q3. Which flag makes <code>dir</code> show hidden files as well as ordinary ones?</h3>
+<ul>
+<li>A. <code>dir /h</code></li>
+<li>B. <code>dir /a</code></li>
+<li>C. <code>dir /s</code></li>
+<li>D. <code>dir /p</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> The <code>/a</code> flag stands for “all” — it tells <code>dir</code> to include files that would ordinarily be kept out of the listing.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q4.-what-does-userprofile-expand-to" class="level3">
+<h3 class="anchored" data-anchor-id="q4.-what-does-userprofile-expand-to">Q4. What does <code>%USERPROFILE%</code> expand to?</h3>
+<ul>
+<li>A. The root of the filesystem (<code>C:\</code>).</li>
+<li>B. The current working directory.</li>
+<li>C. Your home directory (typically <code>C:\Users\yourname</code>).</li>
+<li>D. The Desktop.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>%USERPROFILE%</code> is an environment variable that Windows sets to the path of the current user’s home directory.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q5.-you-are-in-cusersjsmithprojects.-which-of-the-following-is-a-relative-path" class="level3">
+<h3 class="anchored" data-anchor-id="q5.-you-are-in-cusersjsmithprojects.-which-of-the-following-is-a-relative-path">Q5. You are in <code>C:\Users\jsmith\Projects</code>. Which of the following is a <em>relative</em> path?</h3>
+<ul>
+<li>A. <code>C:\Users\jsmith\Projects\notes.txt</code></li>
+<li>B. <code>%USERPROFILE%\notes.txt</code></li>
+<li>C. <code>..\notes.txt</code></li>
+<li>D. <code>D:\backup\notes.txt</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Anything that does not start with a drive letter (and is not an environment variable that expands to an absolute path) is relative. <code>..\notes.txt</code> refers to a file in the parent directory of wherever you currently are.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q6.-which-command-sends-you-to-your-home-directory" class="level3">
+<h3 class="anchored" data-anchor-id="q6.-which-command-sends-you-to-your-home-directory">Q6. Which command sends you to your home directory?</h3>
+<ul>
+<li>A. <code>cd -</code></li>
+<li>B. <code>cd</code></li>
+<li>C. <code>cd %USERPROFILE%</code></li>
+<li>D. <code>home</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Unlike Mac and Linux, plain <code>cd</code> on Windows does <em>not</em> send you home — it prints the current directory. To go home, use <code>cd %USERPROFILE%</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q7.-what-does-mkdir-userprofileprojectscomputer-literacy-do-when-userprofileprojects-does-not-yet-exist" class="level3">
+<h3 class="anchored" data-anchor-id="q7.-what-does-mkdir-userprofileprojectscomputer-literacy-do-when-userprofileprojects-does-not-yet-exist">Q7. What does <code>mkdir %USERPROFILE%\Projects\computer-literacy</code> do when <code>%USERPROFILE%\Projects</code> does not yet exist?</h3>
+<ul>
+<li>A. It fails with an error.</li>
+<li>B. It creates <code>%USERPROFILE%\Projects</code> and then <code>%USERPROFILE%\Projects\computer-literacy</code> in one step.</li>
+<li>C. It creates only <code>%USERPROFILE%\Projects\computer-literacy</code> and leaves the parent missing.</li>
+<li>D. It prompts you to create the parent.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> On Windows, <code>mkdir</code> automatically creates any missing parent directories along the way. (On Mac and Linux you need to add a <code>-p</code> flag for the same behavior.)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q8.-what-does-the-tab-key-do-at-the-anaconda-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="q8.-what-does-the-tab-key-do-at-the-anaconda-prompt">Q8. What does the <code>Tab</code> key do at the Anaconda Prompt?</h3>
+<ul>
+<li>A. Inserts four spaces.</li>
+<li>B. Autocompletes filenames and directory names.</li>
+<li>C. Runs the current command.</li>
+<li>D. Switches between open windows.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> Tab completion is the single most useful time-saving feature of the shell. If Tab will not complete a name, that name probably does not exist where you think it does.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q9.-which-command-creates-an-empty-file-called-hello.txt-in-the-current-directory" class="level3">
+<h3 class="anchored" data-anchor-id="q9.-which-command-creates-an-empty-file-called-hello.txt-in-the-current-directory">Q9. Which command creates an empty file called <code>hello.txt</code> in the current directory?</h3>
+<ul>
+<li>A. <code>mkdir hello.txt</code></li>
+<li>B. <code>touch hello.txt</code></li>
+<li>C. <code>type nul &gt; hello.txt</code></li>
+<li>D. <code>notepad hello.txt</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-49" class="callout-49-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Windows has no <code>touch</code> command; the idiomatic way to create an empty file is to redirect the empty source <code>nul</code> into a new filename.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works-in-anaconda-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works-in-anaconda-prompt">Q10. You have a file called <code>draft.txt</code> and want to rename it to <code>final.txt</code>. Which command works in Anaconda Prompt?</h3>
+<ul>
+<li>A. <code>mv draft.txt final.txt</code></li>
+<li>B. <code>rename draft.txt final.txt</code></li>
+<li>C. <code>ren draft.txt final.txt</code></li>
+<li>D. <code>notepad rename</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-50" class="callout-50-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>ren</code> is the built-in Windows command for renaming a file in place. (Confusingly, <code>rename</code> also works in some versions of Windows, but <code>ren</code> is the classic form.)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q11.-what-does-the-.-refer-to-in-move-draftsreadme.txt-." class="level3">
+<h3 class="anchored" data-anchor-id="q11.-what-does-the-.-refer-to-in-move-draftsreadme.txt-.">Q11. What does the <code>.</code> refer to in <code>move drafts\readme.txt .</code>?</h3>
+<ul>
+<li>A. The parent directory.</li>
+<li>B. The home directory.</li>
+<li>C. The current directory.</li>
+<li>D. A hidden file.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-51" class="callout-51-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> A single dot always means “the current directory.” So this command moves <code>drafts\readme.txt</code> into wherever you are right now.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q12.-what-does-..-mean-in-a-path" class="level3">
+<h3 class="anchored" data-anchor-id="q12.-what-does-..-mean-in-a-path">Q12. What does <code>..</code> mean in a path?</h3>
+<ul>
+<li>A. The current directory.</li>
+<li>B. The home directory.</li>
+<li>C. The parent directory.</li>
+<li>D. The root of the drive.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-52" class="callout-52-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Two dots always mean “the parent directory.” <code>cd ..</code> moves up one level.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup" class="level3">
+<h3 class="anchored" data-anchor-id="q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup">Q13. Which command correctly copies an entire folder called <code>drafts</code> to a new folder called <code>drafts-backup</code>?</h3>
+<ul>
+<li>A. <code>copy drafts drafts-backup</code></li>
+<li>B. <code>xcopy /E /I drafts drafts-backup</code></li>
+<li>C. <code>move drafts drafts-backup</code></li>
+<li>D. <code>ren drafts drafts-backup</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-53-contents" aria-controls="callout-53" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-53" class="callout-53-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> Plain <code>copy</code> only handles single files. To copy a directory and everything inside it, use <code>xcopy</code> with <code>/E</code> (include all subdirectories) and <code>/I</code> (treat the destination as a directory).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q14.-what-is-the-biggest-danger-of-del-and-rmdir-s-in-anaconda-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="q14.-what-is-the-biggest-danger-of-del-and-rmdir-s-in-anaconda-prompt">Q14. What is the biggest danger of <code>del</code> (and <code>rmdir /s</code>) in Anaconda Prompt?</h3>
+<ul>
+<li>A. They require an internet connection.</li>
+<li>B. They are slow on large files.</li>
+<li>C. They delete files permanently — files do not go to the Recycle Bin.</li>
+<li>D. They only work on files inside your home directory.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-54-contents" aria-controls="callout-54" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-54" class="callout-54-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Unlike deleting a file in File Explorer, <code>del</code> and <code>rmdir /s</code> bypass the Recycle Bin entirely. There is no undo. Read every deletion command twice.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q15.-which-shortcut-saves-the-file-you-are-editing-in-notepad" class="level3">
+<h3 class="anchored" data-anchor-id="q15.-which-shortcut-saves-the-file-you-are-editing-in-notepad">Q15. Which shortcut saves the file you are editing in Notepad?</h3>
+<ul>
+<li>A. <code>Ctrl + O</code></li>
+<li>B. <code>Ctrl + W</code></li>
+<li>C. <code>Ctrl + S</code></li>
+<li>D. <code>Ctrl + X</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-55" class="callout-55-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Notepad uses the standard Windows save shortcut, <code>Ctrl + S</code>. Use <code>Alt + F4</code> (or click the red <code>X</code>) to close the window when you are done.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q16.-when-you-run-notepad-readme.txt-from-the-anaconda-prompt-what-happens" class="level3">
+<h3 class="anchored" data-anchor-id="q16.-when-you-run-notepad-readme.txt-from-the-anaconda-prompt-what-happens">Q16. When you run <code>notepad readme.txt</code> from the Anaconda Prompt, what happens?</h3>
+<ul>
+<li>A. The Anaconda Prompt freezes until Notepad is closed.</li>
+<li>B. Notepad opens in a separate window and the Anaconda Prompt remains usable.</li>
+<li>C. Notepad prints the contents of the file directly to the prompt.</li>
+<li>D. Nothing — <code>notepad</code> is not a valid command.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-56" class="callout-56-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>notepad</code> launches the graphical Notepad application in its own window. The Anaconda Prompt hands off control but does not block, so you could continue working there if you wanted.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q17.-why-should-you-avoid-running-type-on-a-large-csv-file" class="level3">
+<h3 class="anchored" data-anchor-id="q17.-why-should-you-avoid-running-type-on-a-large-csv-file">Q17. Why should you avoid running <code>type</code> on a large CSV file?</h3>
+<ul>
+<li>A. It will corrupt the file.</li>
+<li>B. It will dump thousands of lines into your terminal all at once.</li>
+<li>C. <code>type</code> does not work on CSV files.</li>
+<li>D. It requires a special password.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-57" class="callout-57-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>type</code> prints the entire file to the terminal. For a big file that is a flood of unreadable output. Use <code>more</code>, or a <code>powershell -Command "Get-Content ... -TotalCount N"</code> command, or <code>find /c /v ""</code> for a row count, instead.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q18.-you-are-stuck-inside-more-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="level3">
+<h3 class="anchored" data-anchor-id="q18.-you-are-stuck-inside-more-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q18. You are stuck inside <code>more</code> and want to get back to your normal prompt. What do you press?</h3>
+<ul>
+<li>A. <code>Control + C</code></li>
+<li>B. <code>q</code></li>
+<li>C. <code>Escape</code></li>
+<li>D. <code>Control + X</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-58" class="callout-58-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> In <code>more</code>, pressing <code>q</code> quits back to the shell.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q19.-what-does-find-c-v-data.csv-report" class="level3">
+<h3 class="anchored" data-anchor-id="q19.-what-does-find-c-v-data.csv-report">Q19. What does <code>find /c /v "" data.csv</code> report?</h3>
+<ul>
+<li>A. The number of words in the file.</li>
+<li>B. The number of characters in the file.</li>
+<li>C. The number of lines in the file.</li>
+<li>D. The file size in bytes.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-59" class="callout-59-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>find /v ""</code> matches every line that does not contain the empty string — which is every line — and <code>/c</code> says “count how many.” Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="level3">
+<h3 class="anchored" data-anchor-id="q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q20. Which command downloads a file from a URL and saves it using the filename from that URL?</h3>
+<ul>
+<li>A. <code>wget url</code></li>
+<li>B. <code>curl url</code></li>
+<li>C. <code>curl -O url</code></li>
+<li>D. <code>download url</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-60-contents" aria-controls="callout-60" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-60" class="callout-60-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Plain <code>curl url</code> prints the response to the terminal. The <code>-O</code> flag (capital O) tells <code>curl</code> to save the response as a file, using the name from the URL. Modern Windows includes <code>curl</code> as a built-in command.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q21.-what-is-a-csv-file" class="level3">
+<h3 class="anchored" data-anchor-id="q21.-what-is-a-csv-file">Q21. What is a CSV file?</h3>
+<ul>
+<li>A. A compressed archive of spreadsheets.</li>
+<li>B. A binary format for storing databases.</li>
+<li>C. A plain-text file where each row is a line and columns are separated by commas.</li>
+<li>D. A Microsoft Excel workbook.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-61-contents" aria-controls="callout-61" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-61" class="callout-61-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> “CSV” = comma-separated values. It is plain text, portable, and readable by virtually every data tool.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q22.-what-does-powershell--command-get-content-data.csv--totalcount-20-sample.csv-do" class="level3">
+<h3 class="anchored" data-anchor-id="q22.-what-does-powershell--command-get-content-data.csv--totalcount-20-sample.csv-do">Q22. What does <code>powershell -Command "Get-Content data.csv -TotalCount 20" &gt; sample.csv</code> do?</h3>
+<ul>
+<li>A. Prints the first 20 lines to the terminal <em>and</em> to <code>sample.csv</code>.</li>
+<li>B. Appends the first 20 lines of <code>data.csv</code> to <code>sample.csv</code>.</li>
+<li>C. Writes the first 20 lines of <code>data.csv</code> into <code>sample.csv</code>, overwriting <code>sample.csv</code> if it exists.</li>
+<li>D. Renames <code>data.csv</code> to <code>sample.csv</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-62-contents" aria-controls="callout-62" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-62" class="callout-62-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>&gt;</code> is the redirection symbol: send the output that would have printed into a file. It overwrites the target without warning — no confirmation prompt.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q23.-what-is-the-difference-between-and" class="level3">
+<h3 class="anchored" data-anchor-id="q23.-what-is-the-difference-between-and">Q23. What is the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</h3>
+<ul>
+<li>A. <code>&gt;</code> prints to the screen; <code>&gt;&gt;</code> writes to a file.</li>
+<li>B. <code>&gt;</code> overwrites the target file; <code>&gt;&gt;</code> appends to the target file.</li>
+<li>C. <code>&gt;</code> works on files; <code>&gt;&gt;</code> works on directories.</li>
+<li>D. They are identical.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-63-contents" aria-controls="callout-63" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-63" class="callout-63-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> Single <code>&gt;</code> overwrites without warning; double <code>&gt;&gt;</code> appends onto the end of an existing file (or creates it if it does not exist).</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q24.-which-command-searches-inside-the-current-folder-and-all-folders-inside-it-for-the-text-todo-showing-line-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="q24.-which-command-searches-inside-the-current-folder-and-all-folders-inside-it-for-the-text-todo-showing-line-numbers">Q24. Which command searches inside the current folder and all folders inside it for the text <code>TODO</code>, showing line numbers?</h3>
+<ul>
+<li>A. <code>findstr TODO</code></li>
+<li>B. <code>findstr /n TODO</code></li>
+<li>C. <code>findstr /s TODO *.*</code></li>
+<li>D. <code>findstr /s /n TODO *.*</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-64" class="callout-64-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>D.</strong> <code>/s</code> looks inside every subdirectory, <code>/n</code> adds line numbers, and <code>*.*</code> matches every file. Together these are how you find every leftover TODO in a project.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q25.-which-findstr-flag-makes-the-search-case-insensitive" class="level3">
+<h3 class="anchored" data-anchor-id="q25.-which-findstr-flag-makes-the-search-case-insensitive">Q25. Which <code>findstr</code> flag makes the search case-insensitive?</h3>
+<ul>
+<li>A. <code>/c</code></li>
+<li>B. <code>/i</code></li>
+<li>C. <code>/v</code></li>
+<li>D. <code>/x</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-65-contents" aria-controls="callout-65" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-65" class="callout-65-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>/i</code> makes the pattern case-insensitive, so <code>findstr /i todo</code> matches <code>TODO</code>, <code>Todo</code>, and <code>todo</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q26.-why-would-you-ever-want-two-anaconda-prompt-windows-open-at-the-same-time" class="level3">
+<h3 class="anchored" data-anchor-id="q26.-why-would-you-ever-want-two-anaconda-prompt-windows-open-at-the-same-time">Q26. Why would you ever want two Anaconda Prompt windows open at the same time?</h3>
+<ul>
+<li>A. To run commands faster in parallel (at the same time).</li>
+<li>B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work.</li>
+<li>C. Because Windows requires it.</li>
+<li>D. To share files between windows.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-66-contents" aria-controls="callout-66" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-66" class="callout-66-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> Commands that keep running for a long time — web servers, <code>quarto preview</code>, <code>jupyter lab</code>, <code>more</code>, and so on — keep the first terminal busy. A second window gives you a place to keep working.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q27.-what-is-localhost" class="level3">
+<h3 class="anchored" data-anchor-id="q27.-what-is-localhost">Q27. What is <code>localhost</code>?</h3>
+<ul>
+<li>A. A public web server you can share with others.</li>
+<li>B. A special name that always refers to <em>your own</em> computer.</li>
+<li>C. The name of the Anaconda Prompt application.</li>
+<li>D. Another word for <code>%USERPROFILE%</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-67-contents" aria-controls="callout-67" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-67" class="callout-67-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>localhost</code> (also written as <code>127.0.0.1</code>) means “this same machine.” A server running at <code>localhost:8000</code> is only reachable from your own computer.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q28.-you-are-running-python--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="level3">
+<h3 class="anchored" data-anchor-id="q28.-you-are-running-python--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q28. You are running <code>python -m http.server 8000</code> and want to stop it. What do you press?</h3>
+<ul>
+<li>A. <code>q</code></li>
+<li>B. <code>Control + X</code></li>
+<li>C. <code>Control + C</code></li>
+<li>D. <code>Escape</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-68-contents" aria-controls="callout-68" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-68" class="callout-68-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> <code>Control + C</code> sends a stop request — the standard way to tell a running command-line program to stop.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="level3">
+<h3 class="anchored" data-anchor-id="q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q29. Classic Jupyter Notebook and JupyterLab open which file extension?</h3>
+<ul>
+<li>A. <code>.qmd</code></li>
+<li>B. <code>.py</code></li>
+<li>C. <code>.ipynb</code></li>
+<li>D. <code>.html</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-69-contents" aria-controls="callout-69" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-69" class="callout-69-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> Both tools use the same <code>.ipynb</code> notebook file format — JupyterLab is essentially a more modern editor for the same files.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" class="level3">
+<h3 class="anchored" data-anchor-id="q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file">Q30. Why is it easier to see what changed between two versions of a <code>.qmd</code> file than between two versions of a <code>.ipynb</code> file?</h3>
+<ul>
+<li>A. Because Quarto is newer software.</li>
+<li>B. Because <code>.qmd</code> files are plain text (Markdown), while <code>.ipynb</code> files are stored as JSON.</li>
+<li>C. Because Quarto files are always smaller.</li>
+<li>D. Because Windows has a special mode for Quarto.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-70-contents" aria-controls="callout-70" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-70" class="callout-70-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> A <code>.qmd</code> file is Markdown — ordinary readable text with code fences. Comparing two versions produces a clear, line-by-line report of what changed. A <code>.ipynb</code> file is a JSON document that also stores hidden information about each cell and each run, so even a small visible change on screen can cause many invisible changes in the file, making the comparison noisy and hard to read.</p>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

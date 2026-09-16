@@ -4,29 +4,32 @@ title: "Windows Command-Line Walkthrough"
 
 This is a self-paced, ~2.5 hour hands-on walkthrough for Windows users. Work through the parts in order — later parts assume you have done the earlier ones.
 
-**Open the Anaconda Prompt now** before reading further: click the Start menu, begin typing `Anaconda Prompt`, and press `Enter` when you see it. A window with a text prompt appears. That is where you will type every command in this guide.
+**Open the Anaconda PowerShell Prompt now** before reading further: click the Start menu, begin typing `Anaconda PowerShell`, and press `Enter` when you see **Anaconda PowerShell Prompt**. A window with a text prompt appears. That is where you will type every command in this guide.
 
 ::: {.callout-important}
-## Use the Anaconda Prompt, not any of the other terminals
+## Use the Anaconda PowerShell Prompt, not any of the other terminals
 Windows comes with several different terminal programs, and they behave differently. You may have seen or heard of:
 
-- **Anaconda Prompt** — a specially configured command line that has Python and the `conda` tool ready to use. **This is the one you should use for this guide.**
-- **Command Prompt** (`cmd.exe`) — the classic Windows command line. Similar to Anaconda Prompt but without Python and conda preconfigured.
-- **PowerShell** — a newer, more powerful Windows shell. It uses different command names for many of the same operations.
-- **Windows Terminal** — a modern window that can host any of the three above.
+- **Anaconda PowerShell Prompt** — a PowerShell window that has Python and the `conda` tool ready to use. **This is the one you should use for this guide.**
+- **Anaconda Prompt** — installed right next to it, with a nearly identical name. It also has Python and conda ready to use, but it is built on the older Command Prompt, and many commands in this guide will not work there.
+- **Command Prompt** (`cmd.exe`) — the classic Windows command line.
+- **PowerShell** — a plain PowerShell window, without Python and conda preconfigured.
+- **Windows Terminal** — a modern window that can host any of the above.
 - **Git Bash** — a Unix-style shell installed alongside Git.
 
-When this guide says "at the prompt" or "in the terminal," always use the Anaconda Prompt.
+PowerShell shares many command names with the Mac terminal (`pwd`, `ls`, `cd`, `mv`, `cp`, `rm`, `cat`). That makes it easier to follow along with classmates who use Macs.
+
+When this guide says "at the prompt" or "in the terminal," always use the Anaconda PowerShell Prompt.
 :::
 
 ::: {.callout-note}
 ## What is a "prompt"?
-The **prompt** is the short bit of text the terminal shows when it is waiting for you to type your next command. In Anaconda Prompt, it typically looks something like `(base) C:\Users\yourname>`. The `(base)` at the start is telling you which conda environment is active; the `C:\Users\yourname` is your current directory; the `>` character marks the end of the prompt. Whenever this guide says "at the prompt," it means: type this command into the Anaconda Prompt window, then press `Enter`.
+The **prompt** is the short bit of text the terminal shows when it is waiting for you to type your next command. In Anaconda PowerShell Prompt, it typically looks something like `(base) PS C:\Users\yourname>`. The `(base)` at the start is telling you which conda environment is active; the `PS` tells you that you are in PowerShell; the `C:\Users\yourname` is your current directory; the `>` character marks the end of the prompt. **If you do not see `PS` in your prompt, you have opened the wrong program.** Close it and open Anaconda PowerShell Prompt instead. Whenever this guide says "at the prompt," it means: type this command into the Anaconda PowerShell Prompt window, then press `Enter`.
 :::
 
 ::: {.callout-note}
 ## Vocabulary as we go
-Words like *directory*, *parent*, *child*, `%USERPROFILE%`, and *absolute path* get introduced in short callouts the first time they appear. Do not skip the callouts — they are the point of this walkthrough.
+Words like *directory*, *parent*, *child*, *alias*, `~`, and *absolute path* get introduced in short callouts the first time they appear. Do not skip the callouts — they are the point of this walkthrough.
 :::
 
 ---
@@ -37,13 +40,13 @@ Words like *directory*, *parent*, *child*, `%USERPROFILE%`, and *absolute path* 
 
 Type this exactly and press `Enter`:
 
-```bat
-cd
+```powershell
+pwd
 ```
 
-At an Anaconda Prompt, `cd` with no argument does something specific and useful: it **prints the current directory** — the folder the terminal considers "where you are right now." Every command you type looks at that folder first, unless you tell it to look somewhere else.
+`pwd` stands for **"print working directory."** It prints the current directory — the folder the terminal considers "where you are right now." Every command you type looks at that folder first, unless you tell it to look somewhere else.
 
-You will see something like `C:\Users\yourname`. That is your **home directory**.
+You will see a short table with the heading `Path`, and underneath it something like `C:\Users\yourname`. That is your **home directory**.
 
 ::: {.callout-note}
 ## Folder = directory
@@ -51,73 +54,97 @@ You will see something like `C:\Users\yourname`. That is your **home directory**
 :::
 
 ::: {.callout-note}
-## What `%USERPROFILE%` means
-`%USERPROFILE%` is a Windows **environment variable** — a named shortcut, provided by the operating system, that stands in for your home directory. On most Windows machines it expands to `C:\Users\yourname`. Anywhere in a command that you could type your full home path, you can instead type `%USERPROFILE%` and Windows will substitute the real value for you. So `%USERPROFILE%\Desktop` and `C:\Users\yourname\Desktop` refer to exactly the same folder. Every user account on the machine has its own `%USERPROFILE%`.
+## What `~` means
+`~` (tilde) is PowerShell's shortcut for your home directory. On most Windows machines your home directory is `C:\Users\yourname`. Anywhere in a command that you could type your full home path, you can instead type `~` and PowerShell will substitute the real value for you. So `~\Desktop` and `C:\Users\yourname\Desktop` refer to exactly the same folder. Every user account on the machine has its own `~`.
+
+You may also see `$HOME` or `$env:USERPROFILE` in instructions you find online. In PowerShell, these usually hold the same path as `~`. The `%USERPROFILE%` spelling you may find in older Windows instructions belongs to Command Prompt and Anaconda Prompt. It does not work in PowerShell.
 :::
 
 ### 1.2 What is in here?
 
-```bat
-dir
+```powershell
+ls
 ```
 
-`dir` lists the contents of the current directory. You will see `Desktop`, `Documents`, `Downloads`, and so on, along with the size and last-modified date of each item.
+`ls` lists the contents of the current directory. You will see `Desktop`, `Documents`, `Downloads`, and so on, in a table with four columns. `Mode` describes each item (a `d` marks a directory). `LastWriteTime` shows when it was last modified. `Length` shows its size in bytes, and is left blank for directories. `Name` is the item's name.
 
-### 1.3 The `dir` flag worth memorizing
+::: {.callout-note}
+## What is an "alias"?
+PowerShell's own commands have longer names built from a verb and a noun, joined by a hyphen: `Get-Location`, `Get-ChildItem`, `Move-Item`. To make life easier for people coming from other terminals, PowerShell also provides **aliases**. An alias is a short nickname that stands in for a full command. `pwd` is an alias for `Get-Location`, and `ls` is an alias for `Get-ChildItem`. (`dir` is another alias for `Get-ChildItem`.) To see what any alias stands for, run:
+
+```powershell
+Get-Alias ls
+```
+
+Aliases give you the same *names* as the Mac and Linux commands, but not the same *flags*. A Mac command like `ls -lhra` produces an error here. This guide shows you the PowerShell flags that do the same jobs.
+:::
+
+### 1.3 The `ls` flag worth memorizing
 
 Try:
 
-```bat
-dir /a
+```powershell
+ls -Force
 ```
 
-Memorize that combination — `dir /a`. The `/a` flag tells `dir` to list **all** files, including hidden ones (files whose names would ordinarily be kept out of view).
+Memorize that combination — `ls -Force`. The `-Force` flag tells `ls` to list **all** files, including hidden ones (files whose names would ordinarily be kept out of view).
 
 Other flags worth knowing:
 
-- `dir /a` — show **all** files, including hidden ones
-- `dir /o:d` — order the listing by modification date (oldest first)
-- `dir /o:-d` — order by modification date, newest first (the minus sign reverses the order)
-- `dir /s` — recursively list contents of every subdirectory as well
-- `dir /p` — pause after each screenful (useful for long listings)
+- `ls -Force` — show **all** files, including hidden ones
+- `ls -Recurse` — also list the contents of every subdirectory
+- `ls -File` or `ls -Directory` — show only files, or only directories
+- `ls | Sort-Object LastWriteTime` — order the listing by modification date (oldest first)
+- `ls | Sort-Object LastWriteTime -Descending` — order by modification date, newest first
+- `ls | more` — pause after each screenful (useful for long listings)
 
 ::: {.callout-note}
 ## What is a "flag"?
-A **flag** (also sometimes called an *option* or a *switch*) is a short modifier you add after a command to change how that command behaves. On Windows, flags almost always begin with a forward slash: `/a`, `/s`, `/p`. (On Mac and Linux, flags begin with a hyphen instead. When you read Unix examples on the internet you will see `-a`, `-l`, `-r` — same idea, different punctuation.)
+A **flag** (also sometimes called an *option*, a *switch*, or in PowerShell a *parameter*) is a short modifier you add after a command to change how that command behaves. In PowerShell, flags begin with a hyphen and are usually whole words: `-Force`, `-Recurse`, `-File`. They are not case-sensitive, so `-force` works too. You can shorten a flag, as long as the shortened version could not be mistaken for a different flag, so `-Rec` works for `-Recurse`. Unlike on Mac and Linux, you cannot smoosh several flags together behind one hyphen the way `-lhra` does. (In Command Prompt and Anaconda Prompt, flags begin with a forward slash instead, as in `/a`. Those do not work here.)
+:::
+
+::: {.callout-note}
+## What is a "pipe"?
+The `|` character (on most keyboards, `Shift` plus the backslash key) is called a **pipe**. It sends the output of the command on its left into the command on its right. In `ls | Sort-Object LastWriteTime`, `ls` produces a listing, and the pipe hands that listing to `Sort-Object`, which puts it in order. You will use pipes again in Parts 4 and 6.
 :::
 
 ::: {.callout-note}
 ## Hidden files
-Any file or directory that has the **hidden** attribute set is kept out of the default `dir` listing. Files whose names start with a dot — such as `.gitconfig` — also tend to be hidden by convention when they are present. Plain `dir` will not show any of these; `dir /a` will.
+Windows marks some files and directories with a **hidden** attribute, which keeps them out of the default `ls` listing. `ls -Force` shows them, with an `h` in the `Mode` column. Files whose names start with a dot, such as `.gitconfig`, are hidden by convention on Mac and Linux. Windows does not hide them automatically, so you may see them even in a plain `ls`.
 :::
 
 ::: {.callout-tip collapse="true"}
 ## Try it: what hidden files are in your home directory?
-Run `dir /a %USERPROFILE%` and read the leftmost column of names. You may see items such as `AppData`, `.conda`, `.jupyter`, `.ipython`. These are configuration and system files — leave them alone for now, but know they exist.
+Run `ls -Force ~` and read the `Name` column. Items with an `h` in the `Mode` column, such as `AppData`, are hidden. You may also see oddly named entries such as `Application Data` or `My Documents`. These are compatibility links left over from older versions of Windows. You may also see items such as `.conda`, `.jupyter`, and `.ipython`. These are configuration and system files — leave them alone for now, but know they exist.
 :::
 
 ### 1.4 Moving around: `cd`
 
-`cd` stands for **"change directory."** Try each of these, one at a time, running `cd` (with no argument) after each so you can see which directory you end up in:
+`cd` stands for **"change directory."** Try each of these, one at a time, running `pwd` after each so you can see which directory you end up in:
 
-```bat
-cd %USERPROFILE%\Desktop
-cd
+```powershell
+cd ~\Desktop
+pwd
 cd ..
-cd
-cd %USERPROFILE%
-cd
+pwd
+cd ~
+pwd
 ```
 
 What each did:
 
-- `cd %USERPROFILE%\Desktop` — go to your Desktop.
+- `cd ~\Desktop` — go to your Desktop.
 - `cd ..` — go up one level to the **parent** directory. `..` always means "the parent of where I am."
-- `cd %USERPROFILE%` — go to your home directory.
+- `cd ~` — go to your home directory.
+
+::: {.callout-note}
+## If `cd ~\Desktop` does not work
+On many Windows computers, OneDrive stores the Desktop at `~\OneDrive\Desktop` instead of `~\Desktop`. If `cd ~\Desktop` reports that it cannot find the path, or if files you save to `~\Desktop` never appear on your actual desktop, try `cd ~\OneDrive\Desktop`. If that works, use `~\OneDrive\Desktop` everywhere this guide says `~\Desktop`.
+:::
 
 ::: {.callout-note}
 ## What is an "argument"?
-An **argument** is an extra word you type after a command to tell it what to act on. In `cd %USERPROFILE%\Desktop`, the string `%USERPROFILE%\Desktop` is the argument — it tells `cd` where to go. In `dir /a %USERPROFILE%`, the flag `/a` and the path `%USERPROFILE%` are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as `cd` alone falls back to reporting your current directory).
+An **argument** is an extra word you type after a command to tell it what to act on. In `cd ~\Desktop`, the string `~\Desktop` is the argument — it tells `cd` where to go. In `ls -Force ~`, the flag `-Force` and the path `~` are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as `ls` alone falls back to listing your current directory).
 :::
 
 ::: {.callout-note}
@@ -132,27 +159,29 @@ A **path** is the address of a file or a directory on your computer — the sequ
 
 ::: {.callout-note}
 ## Absolute vs. relative paths
-- An **absolute path** starts with a drive letter and a backslash (`C:\...`, `D:\...`) or with `%USERPROFILE%`, which is replaced by an absolute path. It works no matter where you currently are. Example: `C:\Users\jsmith\Desktop\notes.txt`.
-- A **relative path** does *not* start with a drive letter. It is understood in terms of your current working directory. If you are in `C:\Users\jsmith\Desktop`, then `notes.txt` refers to `C:\Users\jsmith\Desktop\notes.txt`.
+- An **absolute path** starts with a drive letter and a backslash (`C:\...`, `D:\...`) or with `~`, which PowerShell replaces with an absolute path. It works no matter where you currently are. Example: `C:\Users\jsmith\Desktop\notes.txt`.
+- A **relative path** does *not* start with a drive letter or `~`. It is understood in terms of your current working directory. If you are in `C:\Users\jsmith\Desktop`, then `notes.txt` refers to `C:\Users\jsmith\Desktop\notes.txt`.
 
 When a command "cannot find" a file, the most common reason is confusing relative and absolute paths.
 :::
 
 ::: {.callout-note}
 ## Slashes: `\` versus `/`
-On Windows, paths use the **backslash** `\` between directory names. On macOS and Linux, they use the **forward slash** `/`. The Anaconda Prompt is forgiving — it will often accept either — but every example in this guide uses `\` to match Windows conventions.
+On Windows, paths use the **backslash** `\` between directory names. On macOS and Linux, they use the **forward slash** `/`. PowerShell is forgiving — it will usually accept either — but every example in this guide uses `\` to match Windows conventions.
 :::
 
 ### 1.5 Tab completion — the most useful shortcut
 
 ::: {.callout-note}
 ## What is the "shell"?
-The **shell** is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. The Anaconda Prompt is a shell — technically, it is the classic Windows `cmd.exe` shell, with some environment variables set so that Python and conda are ready to use. When this guide says "the shell will complete it," it means the program listening to your keystrokes inside the Anaconda Prompt window.
+The **shell** is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. The Anaconda PowerShell Prompt is a shell. Technically, it is Windows PowerShell (version 5.1, which comes built into Windows), with conda set up so that Python and conda are ready to use. Microsoft also offers a separate, newer PowerShell 7. A few details differ between the two, and this guide is written for the version inside Anaconda PowerShell Prompt. When this guide says "the shell will complete it," it means the program listening to your keystrokes inside the Anaconda PowerShell Prompt window.
 :::
 
-Type `cd %USERPROFILE%\Doc` and then, before pressing Enter, press the **Tab** key. The shell will complete it to `%USERPROFILE%\Documents` for you.
+Type `cd ~\Doc` and then, before pressing Enter, press the **Tab** key. The shell will complete it to your `Documents` directory for you. (PowerShell may also spell out `~` as your full home path, such as `C:\Users\yourname\Documents`. That is the same place.)
 
 If there are multiple matches (e.g., `Documents` and `Downloads` both start with `Do`), pressing Tab repeatedly will cycle through the possibilities. Type another letter or two to narrow the choices, then Tab again.
+
+PowerShell can also complete command names and flags. Type `Get-Ali` and press Tab, or type `ls -Fo` and press Tab.
 
 **Use Tab constantly.** It prevents typos, and it is a check on reality: if Tab will not complete a name, that name does not exist where you think it does.
 
@@ -161,20 +190,20 @@ If there are multiple matches (e.g., `Documents` and `Downloads` both start with
 You will do all the rest of this walkthrough inside a dedicated practice folder so that early mistakes do not disturb anything else on your computer.
 
 ::: {.callout-tip collapse="true"}
-## Challenge: create `%USERPROFILE%\Projects\computer-literacy` and `cd` into it
+## Challenge: create `~\Projects\computer-literacy` and `cd` into it
 Two commands. Try to write them yourself before revealing.
 
-```bat
-mkdir %USERPROFILE%\Projects\computer-literacy
-cd %USERPROFILE%\Projects\computer-literacy
+```powershell
+mkdir ~\Projects\computer-literacy
+cd ~\Projects\computer-literacy
 ```
 
-`mkdir` = "make directory." On Windows, `mkdir` will automatically create any missing parent directories along the way — so if `%USERPROFILE%\Projects` does not exist yet, `mkdir` makes it too.
+`mkdir` = "make directory." In PowerShell, `mkdir` will automatically create any missing parent directories along the way — so if `~\Projects` does not exist yet, `mkdir` makes it too. If the directory already exists, PowerShell prints a red error message saying so. That error is harmless.
 
 Confirm you are in the right place:
 
-```bat
-cd
+```powershell
+pwd
 ```
 
 You should see `C:\Users\yourname\Projects\computer-literacy`.
@@ -184,42 +213,42 @@ You should see `C:\Users\yourname\Projects\computer-literacy`.
 
 ## Part 2 — Making, moving, renaming, deleting
 
-You are inside `%USERPROFILE%\Projects\computer-literacy`. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run `cd %USERPROFILE%\Projects\computer-literacy` to return to the practice folder.
+You are inside `~\Projects\computer-literacy`. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run `cd ~\Projects\computer-literacy` to return to the practice folder.
 
 ### 2.1 Create an empty file
 
-There is no single dedicated command for "create an empty file" in Anaconda Prompt, but this idiom works well:
+There is no `touch` command in PowerShell. Instead, use `New-Item`:
 
-```bat
-type nul > notes.txt
-dir
+```powershell
+New-Item notes.txt -ItemType File
+ls
 ```
 
-That command reads `nul` (a special empty source) and redirects the empty output into a new file called `notes.txt`. The result is a zero-byte file with the name you asked for.
+`New-Item` creates new things. The `-ItemType File` flag tells it to make a file, rather than a directory. PowerShell prints a short table describing the new file. The result is a zero-byte file with the name you asked for.
 
 ::: {.callout-note}
 ## File extensions
 The `.txt` at the end is a **file extension**. Extensions are naming conventions — the operating system looks at the extension to guess what kind of file it is and which program should open it. They are not magic: `notes.txt`, `notes.csv`, and `notes` are all just files with different names. But the convention matters, because tools (and humans) read the extension to decide what to expect. You will encounter `.txt`, `.csv`, `.md`, `.qmd`, `.ipynb`, `.py`, and `.html` in this guide.
 :::
 
-### 2.2 Rename with `ren`
+### 2.2 Rename with `mv`
 
-```bat
-ren notes.txt readme.txt
-dir
+```powershell
+mv notes.txt readme.txt
+ls
 ```
 
-`ren` is short for **"rename."** It changes the name of a file without moving it to a new folder.
+**`mv` means "move,"** but move and rename are the same operation — you are changing the file's path, which may involve changing its name, its location, or both. (`mv` is an alias for `Move-Item`. PowerShell also has `ren`, an alias for `Rename-Item`, which only renames.)
 
-### 2.3 Move into a child directory with `move`
+### 2.3 Move into a child directory with `mv`
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: create a `drafts` folder and move `readme.txt` into it
-```bat
+```powershell
 mkdir drafts
-move readme.txt drafts\
-dir
-dir drafts
+mv readme.txt drafts\
+ls
+ls drafts
 ```
 
 After this, `readme.txt` should appear inside `drafts\` and not in the current directory. The trailing `\` on `drafts\` is not required, but it signals "this is a folder" to your future self reading the command.
@@ -227,88 +256,88 @@ After this, `readme.txt` should appear inside `drafts\` and not in the current d
 
 ::: {.callout-note}
 ## Idea: watch the changes happen in File Explorer
-Open File Explorer alongside your Anaconda Prompt and navigate to `%USERPROFILE%\Projects\computer-literacy`. As you run `move`, `ren`, `mkdir`, `del`, and so on at the prompt, refresh File Explorer (press `F5`) to watch the same files appear, disappear, and change places. Seeing the command line and the point-and-click interface act on the same folder is one of the fastest ways to build a durable mental model.
+Open File Explorer alongside your Anaconda PowerShell Prompt and navigate to `~\Projects\computer-literacy`. You can also run `ii .` at the prompt, which opens the current directory in File Explorer. (`ii` is an alias for `Invoke-Item`, and `.` means the current directory, as you will see in 2.4.) As you run `mv`, `mkdir`, `rm`, and so on at the prompt, refresh File Explorer (press `F5`) to watch the same files appear, disappear, and change places. Seeing the command line and the point-and-click interface act on the same folder is one of the fastest ways to build a durable mental model.
 :::
 
 ### 2.4 Move a file from a child back to the current directory
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: move `readme.txt` from `drafts\` back to where you are now
-```bat
-move drafts\readme.txt .
-dir
+```powershell
+mv drafts\readme.txt .
+ls
 ```
 
-The `.` is not a typo. **`.` means "the current directory."** So `move drafts\readme.txt .` means "move the file `drafts\readme.txt` into the directory `.`" — that is, into wherever you are now.
+The `.` is not a typo. **`.` means "the current directory."** So `mv drafts\readme.txt .` means "move the file `drafts\readme.txt` into the directory `.`" — that is, into wherever you are now.
 :::
 
 ### 2.5 Move a file up to the parent
 
 ::: {.callout-tip collapse="true"}
-## Challenge: move `readme.txt` up to `%USERPROFILE%\Projects`, then back
-```bat
-move readme.txt ..
-dir
-dir ..
-move ..\readme.txt .
-dir
+## Challenge: move `readme.txt` up to `~\Projects`, then back
+```powershell
+mv readme.txt ..
+ls
+ls ..
+mv ..\readme.txt .
+ls
 ```
 
-`..` means "the parent directory," so `move readme.txt ..` moves the file up one level. Then `move ..\readme.txt .` brings it back.
+`..` means "the parent directory," so `mv readme.txt ..` moves the file up one level. Then `mv ..\readme.txt .` brings it back.
 :::
 
-### 2.6 Copy with `copy` and `xcopy`
+### 2.6 Copy with `cp`
 
-For a single file, use `copy`:
+For a single file:
 
-```bat
-copy readme.txt readme-backup.txt
-dir
+```powershell
+cp readme.txt readme-backup.txt
+ls
 ```
 
-For a directory (which contains other files, and possibly other directories inside it), use `xcopy` with two flags:
+For a directory (which contains other files, and possibly other directories inside it), add the `-Recurse` flag, because copying a folder means copying everything inside it too:
 
-```bat
-xcopy /E /I drafts drafts-backup
-dir
+```powershell
+cp -Recurse drafts drafts-backup
+ls
 ```
 
-- `/E` tells `xcopy` to copy every subdirectory, even empty ones.
-- `/I` tells `xcopy` to assume the target (`drafts-backup`) is meant to be a directory, so it does not stop and ask you.
+`cp` is an alias for `Copy-Item`. Without `-Recurse`, `cp` copies only the folder itself and leaves its contents behind.
 
-### 2.7 Delete with `del` and `rmdir` — **read this carefully**
+### 2.7 Delete with `rm` — **read this carefully**
 
 ::: {.callout-warning}
-## `del` and `rmdir` are permanent
-Files deleted with `del` or `rmdir` at the command line **do not go to the Recycle Bin**. There is no undo. Read every deletion command twice before pressing Enter, and never, ever run `rmdir /s /q C:\` or `del /s /q *` while you are still learning.
+## `rm` is permanent
+Files deleted with `rm` at the command line **do not go to the Recycle Bin**. There is no undo. Read every deletion command twice before pressing Enter, and never, ever run `rm -Recurse -Force C:\` or `rm -Recurse -Force *` while you are still learning.
 :::
 
 Delete a single file:
 
-```bat
-del readme-backup.txt
-dir
+```powershell
+rm readme-backup.txt
+ls
 ```
 
 Delete an entire directory (and everything inside it):
 
-```bat
-rmdir /s drafts-backup
+```powershell
+rm -Recurse drafts-backup
+ls
 ```
 
-The `/s` flag tells `rmdir` to recursively remove the directory and every file inside it. Windows will pause and ask you `Are you sure (Y/N)?` — type `Y` and press Enter to proceed. Leave `readme.txt` and `drafts\` alone — you will use them in Part 3.
+The `-Recurse` flag tells `rm` to remove the directory and every file inside it, without asking first. If you leave `-Recurse` off and the directory has anything inside it, PowerShell stops and asks whether you are sure. (`rm` is an alias for `Remove-Item`.) Mac and Linux tutorials often show `rm -rf`. That combined flag does not work in PowerShell. Leave `readme.txt` and `drafts\` alone — you will use them in Part 3.
 
 ---
 
 ## Part 3 — Editing text with Notepad
 
-Windows does not include the `nano` editor that Mac and Linux users often rely on. Instead, we will use **Notepad**, which ships with every copy of Windows and can be launched directly from the Anaconda Prompt. Open your `readme.txt`:
+Windows does not include the `nano` editor that Mac and Linux users often rely on. Instead, we will use **Notepad**, which ships with every copy of Windows and can be launched directly from the Anaconda PowerShell Prompt. Open your `readme.txt`:
 
-```bat
+```powershell
 notepad readme.txt
 ```
 
-A separate Notepad window appears. The Anaconda Prompt hands off control to Notepad but does *not* freeze — you can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).
+A separate Notepad window appears. The Anaconda PowerShell Prompt hands off control to Notepad but does *not* freeze — you can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).
 
 Type these exact lines into Notepad (you can copy them from your browser and paste with `Ctrl + V`):
 
@@ -318,25 +347,25 @@ Computer Literacy Practice
 This is my practice readme.
 
 TODO: add a list of my favorite CLI commands
-TODO: try findstr on this file later
+TODO: try Select-String on this file later
 ```
 
 Save the file with `Ctrl + S` and close the Notepad window (`Alt + F4` or click the red `X`). Now verify what you wrote:
 
-```bat
-type readme.txt
+```powershell
+cat readme.txt
 ```
 
-`type` prints a file's contents to the terminal. It is great for short files. **Do not `type` a huge file** — it will flood your terminal with output.
+`cat` prints a file's contents to the terminal. It is great for short files. **Do not `cat` a huge file** — it will flood your terminal with output.
 
 ::: {.callout-note}
 ## What does "concatenate" mean?
-On Mac and Linux, the command that plays the role Windows gives to `type` is called `cat`, which is short for *concatenate*. To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain" — so *concatenation* is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux `cat` command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
+`cat` is short for *concatenate*. On Mac and Linux, `cat` is a program that was originally designed to join several files together and print the joined result. In PowerShell, `cat` is an alias for `Get-Content`, which reads files. To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain" — so *concatenation* is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux `cat` command; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
 :::
 
 ::: {.callout-tip}
 ## The `TODO:` lines are on purpose
-You just added two `TODO` markers to your file. You will search for them with `findstr` in Part 6. Experienced developers leave `TODO` notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.
+You just added two `TODO` markers to your file. You will search for them with `Select-String` in Part 6. Experienced developers leave `TODO` notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.
 :::
 
 ---
@@ -345,31 +374,54 @@ You just added two `TODO` markers to your file. You will search for them with `f
 
 You will download three CSV files, then practice looking at them without opening a spreadsheet.
 
+::: {.callout-important}
+## One setup line before you work with data files
+Run this line once now, exactly as written:
+
+```powershell
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+```
+
+It tells PowerShell to use **UTF-8** whenever a command reads or writes a text file. UTF-8 is the standard text encoding that Excel, Python, R, and Macs all expect. Without this line, the Windows PowerShell inside Anaconda PowerShell Prompt reads and writes some text files in older formats. The CSV excerpts you make in Part 5 could then open incorrectly in Excel.
+
+In the line itself, `$PSDefaultParameterValues` is a PowerShell setting that stores default values for flags. `'*:Encoding'` means "the `-Encoding` flag of every command." `'utf8'` is the value to use. The setting lasts only until you close the window. **Run it again each time you open a new Anaconda PowerShell Prompt** before working with data files.
+:::
+
+::: {.callout-note}
+## What is "encoding"?
+A computer stores text as numbers. An **encoding** is the agreed-upon scheme for translating characters into those numbers and back again. When a file is written in one encoding and read in another, the result is garbled text. For a CSV, the result can be a spreadsheet that crams each whole row into a single column. **UTF-8** is the most widely used encoding in the world today, and it is the safe choice for data files.
+:::
+
 ### 4.1 Make a `data\` folder and go into it
 
-```bat
+```powershell
 mkdir data
 cd data
-cd
+pwd
 ```
 
-### 4.2 Download files with `curl`
+### 4.2 Download files with `curl.exe`
 
-Modern versions of Windows include `curl` as a built-in command. `curl -O` downloads a file from a URL and saves it using the filename from the URL. Run these three commands (each is one long line):
+Modern versions of Windows include `curl` as a built-in program. `curl -O` downloads a file from a URL and saves it using the filename from the URL. In the Anaconda PowerShell Prompt, type it as `curl.exe`. Run these three commands (each is one long line):
 
-```bat
-curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv
-curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt.csv
-curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books.csv
+```powershell
+curl.exe -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv
+curl.exe -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt.csv
+curl.exe -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books.csv
 ```
+
+::: {.callout-important}
+## Why `curl.exe` and not `curl`?
+In Windows PowerShell, `curl` is an alias for a different PowerShell command called `Invoke-WebRequest`. That command does not understand the `-O` flag, so plain `curl -O` produces an error. Typing `curl.exe` skips the alias and reaches the real curl program. Mac and Linux tutorials write plain `curl`, so watch for this whenever you copy a command from one.
+:::
 
 ### 4.3 See what you got
 
-```bat
-dir
+```powershell
+ls
 ```
 
-You will see three CSV files listed with their sizes in bytes. Which of the three CSVs is largest?
+You will see three CSV files listed with their sizes in bytes in the `Length` column. Which of the three CSVs is largest?
 
 ### 4.4 Peek at contents — the right way
 
@@ -390,26 +442,26 @@ When programmers describe a file format, a program, or a piece of code as **port
 **API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a **web API**: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
 :::
 
-Do **not** `type complaints-bank.csv` — it is big and will fill your terminal with noise. Instead, look at the first several lines. Windows has no direct built-in equivalent of the Unix `head` command, but we can borrow one command from PowerShell for this specific job. Run:
+Do **not** `cat complaints-bank.csv` — it is big and will fill your terminal with noise. Instead, look at the first several lines:
 
-```bat
-powershell -Command "Get-Content confident_fictional_books.csv -TotalCount 10"
+```powershell
+Get-Content confident_fictional_books.csv -Head 10
 ```
 
 That shows the first 10 lines. Change `10` to `5` to see only the first five:
 
-```bat
-powershell -Command "Get-Content confident_fictional_books.csv -TotalCount 5"
+```powershell
+Get-Content confident_fictional_books.csv -Head 5
 ```
 
 ::: {.callout-note}
-## We are borrowing one command from PowerShell
-Windows has two main shells: the older Anaconda Prompt / Command Prompt shell (which is what you have been typing into so far), and the newer **PowerShell**. PowerShell has richer commands for handling text and files. You can borrow a single PowerShell command from inside the Anaconda Prompt by writing `powershell -Command "..."`. We will use this trick a couple of times in this walkthrough because the equivalent Anaconda Prompt commands are clumsier.
+## `Get-Content` is PowerShell's file reader
+`Get-Content` reads a file one line at a time. On its own, it prints the whole file. In fact, `cat` is an alias for `Get-Content`. The `-Head` flag tells it to stop after the first however-many lines, which makes it PowerShell's version of the Mac `head` command. Its partner, `-Tail`, shows the *last* lines instead. Older instructions sometimes write `-TotalCount` instead of `-Head`. The two flags do the same thing.
 :::
 
 For scrolling through a larger file, use `more`:
 
-```bat
+```powershell
 more complaints-bank.csv
 ```
 
@@ -427,23 +479,31 @@ Some commands hand control over to a program (Notepad opens in its own window; `
 A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, a one-line command tells you in a fraction of a second whether you are looking at 50 rows, 50 thousand, or 50 million. That number changes what you will do next — whether it is safe to open the whole file at once in a program, whether you should take a smaller sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is an important habit for working with data.
 :::
 
-On Anaconda Prompt, the idiomatic way to count lines is with the built-in `find` command:
+In PowerShell, you count lines by reading the file with `Get-Content` and asking how many lines came back:
 
-```bat
-find /c /v "" complaints-bank.csv
+```powershell
+(Get-Content complaints-bank.csv).Count
 ```
 
-That reads a little oddly at first — but it works. `find /v ""` means "find every line that does not contain the empty string" (which is every line), and `/c` says "count how many." So the whole line reports the total number of lines in the file.
+The parentheses tell PowerShell to finish reading the file first. `.Count` then reports how many lines it read. So the whole line reports the total number of lines in the file.
 
-That first line is the CSV header, so the number of *data* rows is one less than what `find` reports.
+That first line is the CSV header, so the number of *data* rows is one less than what PowerShell reports.
 
-Try it on all three CSVs at once using a **wildcard**:
+Try looking at all three CSVs at once using a **wildcard**:
 
-```bat
-find /c /v "" *.csv
+```powershell
+ls *.csv
 ```
 
-The `*` matches any characters, so `*.csv` matches every file in the current directory ending in `.csv`. Wildcards are powerful — and dangerous when combined with `del`. Be extra careful whenever you combine `*` with a deleting command.
+The `*` matches any characters, so `*.csv` matches every file in the current directory ending in `.csv`. To count the lines in each of those files, pipe the list into `ForEach-Object`, which runs a small piece of code once for each file:
+
+```powershell
+ls *.csv | ForEach-Object { $_.Name; (Get-Content $_.FullName).Count }
+```
+
+Inside the curly braces, `$_` means "the file currently being handled." For each file, PowerShell prints the file's name and then its line count. You do not need to memorize this line yet. Just notice how the wildcard and the pipe work together.
+
+Wildcards are powerful — and dangerous when combined with `rm`. Be extra careful whenever you combine `*` with a deleting command.
 
 ---
 
@@ -451,73 +511,87 @@ The `*` matches any characters, so `*.csv` matches every file in the current dir
 
 Very often you want to *save* what a command prints, rather than just look at it. That is called **redirection**.
 
+::: {.callout-warning}
+## Did you run the setup line?
+The redirection in this part depends on the setup line from the start of Part 4. If you have opened a new Anaconda PowerShell Prompt since then, run it again now:
+
+```powershell
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
+```
+:::
+
 ### 5.1 The `>` operator
 
-```bat
-powershell -Command "Get-Content complaints-bank.csv -TotalCount 20" > %USERPROFILE%\Desktop\complaints-sample.csv
+```powershell
+Get-Content complaints-bank.csv -Head 20 > ~\Desktop\complaints-sample.csv
 ```
 
 Read that out loud: "Take the first 20 lines of `complaints-bank.csv`, and instead of printing them to the terminal, **redirect** them into a new file called `complaints-sample.csv` on my Desktop."
 
-Now open your Desktop in File Explorer (or run `explorer %USERPROFILE%\Desktop`) — you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
+Now open your Desktop in File Explorer (or run `ii ~\Desktop`) — you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
+
+::: {.callout-note}
+## Why the setup line matters here
+In the Windows PowerShell inside Anaconda PowerShell Prompt, `>` normally writes files in an encoding called UTF-16. Excel may display a UTF-16 CSV with each whole row crammed into a single column. The setup line switches `>` to UTF-8, so the excerpt opens as a proper spreadsheet.
+:::
 
 ::: {.callout-warning}
 ## `>` overwrites without warning
-If `%USERPROFILE%\Desktop\complaints-sample.csv` already existed, `>` would replace it without asking. There is no "are you sure?" prompt. If you want to *append* to a file instead of overwriting it, use `>>` (two greater-than signs).
+If `~\Desktop\complaints-sample.csv` already existed, `>` would replace it without asking. There is no "are you sure?" prompt. If you want to *append* to a file instead of overwriting it, use `>>` (two greater-than signs).
 :::
 
 ### 5.2 Try `>>`
 
-```bat
-powershell -Command "Get-Content mpg_excerpt.csv -TotalCount 3" >> %USERPROFILE%\Desktop\complaints-sample.csv
-type %USERPROFILE%\Desktop\complaints-sample.csv
+```powershell
+Get-Content mpg_excerpt.csv -Head 3 >> ~\Desktop\complaints-sample.csv
+cat ~\Desktop\complaints-sample.csv
 ```
 
 You just appended a few rows of a different CSV onto the end of the sample file. (In real work you would only append data that has the same columns — but the mechanics are worth seeing.)
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: make a 50-row sample of `mpg_excerpt.csv` on your Desktop
-```bat
-powershell -Command "Get-Content mpg_excerpt.csv -TotalCount 50" > %USERPROFILE%\Desktop\mpg-sample.csv
+```powershell
+Get-Content mpg_excerpt.csv -Head 50 > ~\Desktop\mpg-sample.csv
 ```
 :::
 
 ---
 
-## Part 6 — Searching with `findstr`
+## Part 6 — Searching with `Select-String`
 
-`findstr` searches for text inside files. It is the Anaconda Prompt equivalent of the Unix `grep` command, and it is one of the most useful text-searching tools on Windows.
+`Select-String` searches for text inside files. It is PowerShell's equivalent of the Unix `grep` command, and it is one of the most useful text-searching tools on Windows. Its short alias is `sls`.
 
 Go back up to your practice folder:
 
-```bat
-cd %USERPROFILE%\Projects\computer-literacy
-cd
+```powershell
+cd ~\Projects\computer-literacy
+pwd
 ```
 
 ### 6.1 Search in a single file
 
 You added `TODO:` markers to `readme.txt` back in Part 3. Find them:
 
-```bat
-findstr TODO readme.txt
+```powershell
+Select-String TODO readme.txt
 ```
 
-`findstr` prints every line in `readme.txt` that contains the string `TODO`. Add `/n` to include line numbers:
+`Select-String` prints every line in `readme.txt` that contains the string `TODO`. Unlike `grep` on a Mac, it automatically starts each match with the file name and the line number, in the form `readme.txt:5:TODO: add a list...`. The alias `sls` runs the same search with less typing:
 
-```bat
-findstr /n TODO readme.txt
+```powershell
+sls TODO readme.txt
 ```
 
 ### 6.2 Make a Python file with more TODOs
 
-Now let us give `findstr` a more realistic file to search through. Create a Python file with Notepad:
+Now let us give `Select-String` a more realistic file to search through. Create a Python file with Notepad:
 
-```bat
+```powershell
 notepad cleanup.py
 ```
 
-Type or paste in the following (this uses only Python's built-in features — you do not need to install anything, and you do not need to *run* it; you are just going to search it):
+If Notepad asks whether you want to create a new file, click **Yes**. Type or paste in the following (this uses only Python's built-in features — you do not need to install anything, and you do not need to *run* it; you are just going to search it):
 
 ```python
 # cleanup.py — a small script for tidying up a text file
@@ -567,8 +641,8 @@ Save with `Ctrl + S` and close the Notepad window.
 
 ### 6.3 Find all TODOs in one file
 
-```bat
-findstr /n TODO cleanup.py
+```powershell
+Select-String TODO cleanup.py
 ```
 
 You should see four TODO lines with their line numbers.
@@ -577,48 +651,52 @@ You should see four TODO lines with their line numbers.
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: search across every file in the current folder and all its subfolders
-```bat
-findstr /s /n TODO *.*
+```powershell
+ls -Recurse -File | Select-String TODO
 ```
 
-- `/s` means search *every subdirectory* under the current one, not just the current directory itself.
-- `/n` adds line numbers.
-- `*.*` matches every file in each directory that has both a name and an extension.
+- `ls -Recurse` lists every file in the current directory *and in every subdirectory* under it.
+- `-File` leaves the directories themselves out of the list, so only files get searched.
+- `|` is the pipe. It hands that list of files to `Select-String`.
+- `Select-String TODO` searches each file and reports every match, with its file name and line number.
 
 You should see hits from both `readme.txt` and `cleanup.py`. This is how you find every leftover TODO in a project.
 :::
 
-### 6.5 Case-insensitive search
+### 6.5 Case-sensitive search
 
-```bat
-findstr /s /n /i todo *.*
+On a Mac, `grep` pays attention to capital letters unless you tell it not to. `Select-String` works the other way around. It ignores capitalization by default. Compare these two commands:
+
+```powershell
+ls -Recurse -File | Select-String todo
+ls -Recurse -File | Select-String todo -CaseSensitive
 ```
 
-`/i` makes the match case-insensitive, so it would find `TODO`, `Todo`, and `todo` all at once.
+The first command finds `TODO`, `Todo`, and `todo` all at once. The second adds `-CaseSensitive`, so it matches only the exact lowercase `todo`. Your files contain only uppercase `TODO`, so the second command finds nothing.
 
 ---
 
 ## Part 7 — Multiple terminal sessions and local web servers
 
-Some commands **take over your prompt and do not give it back** until you stop them. This is normal, and it is why programmers who use the terminal often keep two or three Anaconda Prompt windows open at once.
+Some commands **take over your prompt and do not give it back** until you stop them. This is normal, and it is why programmers who use the terminal often keep two or three Anaconda PowerShell Prompt windows open at once.
 
-### 7.1 Open a second Anaconda Prompt window
+### 7.1 Open a second Anaconda PowerShell Prompt window
 
-Return to the Start menu and open Anaconda Prompt a second time, so that you now have two Anaconda Prompt windows on your screen at once. Each one is an independent terminal session, and each has its own current working directory.
+Return to the Start menu and open Anaconda PowerShell Prompt a second time, so that you now have two Anaconda PowerShell Prompt windows on your screen at once. Each one is an independent terminal session, and each has its own current working directory.
 
 Confirm this:
 
-- In the new window, run `cd`. It will probably say `C:\Users\yourname` — a newly opened Anaconda Prompt always starts at your home directory.
-- In the old window, run `cd`. It should show wherever you last navigated to.
+- In the new window, run `pwd`. It will probably say `C:\Users\yourname` — a newly opened Anaconda PowerShell Prompt always starts at your home directory.
+- In the old window, run `pwd`. It should show wherever you last navigated to.
 
 **Two windows, two directories, one machine.** Files you create in one are immediately visible from the other.
 
 ### 7.2 Start a mini web server
 
-In your original Anaconda Prompt, make sure you are in the practice folder, then run:
+In your original Anaconda PowerShell Prompt, make sure you are in the practice folder, then run:
 
-```bat
-cd %USERPROFILE%\Projects\computer-literacy
+```powershell
+cd ~\Projects\computer-literacy
 python -m http.server 8000
 ```
 
@@ -635,7 +713,7 @@ The first time you start a Python web server on Windows, the Windows Firewall ma
 
 ### 7.3 Why the second terminal matters
 
-Your first Anaconda Prompt is "busy" running the web server. If you want to keep working — running `dir`, `cd`, editing files — you *need* the second Anaconda Prompt window you opened in 7.1. Try it: switch to the second window and run `dir` in the practice folder. It works, because that terminal session is independent of the one running the server.
+Your first Anaconda PowerShell Prompt is "busy" running the web server. If you want to keep working — running `ls`, `cd`, editing files — you *need* the second Anaconda PowerShell Prompt window you opened in 7.1. Try it: switch to the second window and run `ls` in the practice folder. It works, because that terminal session is independent of the one running the server.
 
 ### 7.4 Stopping the server
 
@@ -655,7 +733,7 @@ A **notebook** is a document that mixes prose, code, and code output (numbers, t
 ### 8.1 Jupyter Notebook (classic)
 
 - **File extension:** `.ipynb`
-- **How you open it:** run `jupyter notebook` in an Anaconda Prompt; a browser tab opens.
+- **How you open it:** run `jupyter notebook` in an Anaconda PowerShell Prompt; a browser tab opens.
 - **Feel:** simple, one notebook per browser tab. The older interface.
 - **File format under the hood:** JSON. Not human-friendly to read as plain text, and hard to compare across versions.
 
@@ -677,7 +755,7 @@ Writers, researchers, and programmers routinely want to answer a very specific q
 ### 8.2 JupyterLab
 
 - **File extension:** *still* `.ipynb` — same file format as classic Jupyter.
-- **How you open it:** run `jupyter lab` in an Anaconda Prompt.
+- **How you open it:** run `jupyter lab` in an Anaconda PowerShell Prompt.
 - **Feel:** a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
 - **Same version-comparison problem** as classic Jupyter, because the underlying file format is identical.
 
@@ -689,7 +767,7 @@ Writers, researchers, and programmers routinely want to answer a very specific q
 ### 8.3 Quarto notebooks
 
 - **File extension:** `.qmd`
-- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in an Anaconda Prompt.
+- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in an Anaconda PowerShell Prompt.
 - **Feel:** plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
 - **Version-comparison-friendly:** because a `.qmd` file is plain text, comparing two versions of one is straightforward and readable.
 
@@ -708,10 +786,10 @@ Writers, researchers, and programmers routinely want to answer a very specific q
 ## Try it: peek at a `.qmd` file with commands you already know
 The pages you are reading are `.qmd` files. If you have downloaded the source of this website into a folder called `CompLitPractice`, try:
 
-```bat
-cd %USERPROFILE%\Projects\CompLitPractice
-dir /a
-powershell -Command "Get-Content windows.qmd -TotalCount 10"
+```powershell
+cd ~\Projects\CompLitPractice
+ls -Force
+Get-Content windows.qmd -Head 10
 ```
 
 Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.
@@ -719,7 +797,7 @@ Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code 
 
 ::: {.callout-note}
 ## What are "code fences"?
-In Markdown, a **code fence** is a line of three backtick characters (```` ``` ````) that marks the beginning or end of a block of code. Anything between an opening fence and a closing fence is treated as literal code — rendered in a monospaced font, not interpreted as prose, and (in Quarto and similar tools) sometimes actually executed as a program. You can also write the language name after the opening fence, as in ```` ```python ```` or ```` ```bat ````, so that the code is displayed with the correct syntax highlighting. Every code example in this walkthrough is written between a pair of code fences.
+In Markdown, a **code fence** is a line of three backtick characters (```` ``` ````) that marks the beginning or end of a block of code. Anything between an opening fence and a closing fence is treated as literal code — rendered in a monospaced font, not interpreted as prose, and (in Quarto and similar tools) sometimes actually executed as a program. You can also write the language name after the opening fence, as in ```` ```python ```` or ```` ```powershell ````, so that the code is displayed with the correct syntax highlighting. Every code example in this walkthrough is written between a pair of code fences.
 :::
 
 ---
@@ -730,39 +808,45 @@ In Markdown, a **code fence** is a line of three backtick characters (```` ``` `
 
 | Command | What it does |
 |---|---|
-| `cd` (no argument) | Print current directory |
-| `cd path` | Change directory. `cd ..` = up one. `cd %USERPROFILE%` = home. |
-| `dir`, `dir /a` | List directory contents (`/a` includes hidden) |
+| `pwd` | Print current directory |
+| `cd path` | Change directory. `cd ..` = up one. `cd ~` = home. |
+| `ls`, `ls -Force` | List directory contents (`-Force` includes hidden) |
+| `Get-Alias name` | Show which PowerShell command an alias stands for |
 | `mkdir name`, `mkdir a\b\c` | Make a directory (parents created automatically) |
-| `type nul > name` | Create an empty file |
-| `ren old new` | Rename a file |
-| `move src dst` | Move a file or directory |
-| `copy src dst` | Copy a single file |
-| `xcopy /E /I src dst` | Copy a directory and everything inside it |
-| `del name` | **Permanently** delete a file (no Recycle Bin) |
-| `rmdir /s name` | **Permanently** delete a directory and its contents |
+| `New-Item name -ItemType File` | Create an empty file |
+| `mv src dst` | Move or rename |
+| `cp src dst`, `cp -Recurse src dst` | Copy (files, or directories with `-Recurse`) |
+| `rm name`, `rm -Recurse name` | **Permanently** delete (no Recycle Bin) |
+| `ii path` | Open a folder or file with its usual program |
 | `notepad file` | Edit a text file in Notepad |
-| `type file` | Print a file to the terminal |
-| `powershell -Command "Get-Content f -TotalCount N"` | First N lines of a file |
+| `cat file` | Print a file to the terminal |
+| `Get-Content file -Head N` | First N lines of a file |
 | `more file` | Scroll through a file (`q` to quit) |
-| `find /c /v "" file` | Count lines |
-| `curl -O url` | Download a file |
-| `findstr /s /n TEXT *.*` | Search recursively for `TEXT` |
+| `(Get-Content file).Count` | Count lines |
+| `$PSDefaultParameterValues['*:Encoding'] = 'utf8'` | Read and write files as UTF-8 (run once per window) |
+| `curl.exe -O url` | Download a file |
+| `ls -Recurse -File | Select-String TEXT` | Search recursively for `TEXT` |
 | `python -m http.server` | Start a local web server |
 | `Control + C` | Stop the running program |
 | `Tab` | Autocomplete a name |
 
 ### Common gotchas
 
-- **`del` and `rmdir` have no undo, and no Recycle Bin.** Read every deletion command twice.
+- **`rm` has no undo, and no Recycle Bin.** Read every deletion command twice.
 - **`>` overwrites without warning.** Use `>>` to append.
-- **`%USERPROFILE%` is different for each user.** It always points at *your* home.
-- **Relative paths depend on where you are.** When something "cannot be found," run `cd` (no argument) and check.
+- **Run the setup line in every new window before redirecting data.** Without `$PSDefaultParameterValues['*:Encoding'] = 'utf8'`, files you make with `>` and `>>` may open garbled in Excel.
+- **Mac names, PowerShell flags.** `ls`, `cp`, and `rm` work, but Mac flags like `ls -lhra` and `rm -rf` do not. Use `ls -Force` and `rm -Recurse`.
+- **Type `curl.exe`, not `curl`.** Plain `curl` is an alias for a different command.
+- **`~` is different for each user.** It always points at *your* home. PowerShell commands understand `~`, but some outside programs do not. If a program like `curl.exe` cannot find a path that starts with `~`, use `$HOME` instead.
+- **`%USERPROFILE%` does not work here.** That spelling belongs to Command Prompt and Anaconda Prompt. Use `~` instead.
+- **Relative paths depend on where you are.** When something "cannot be found," run `pwd` and check.
 - **Tab-complete constantly.** If Tab will not complete a name, that thing is not there.
+- **`mv` will not overwrite an existing file.** On a Mac, `mv` silently replaces a file that already has the target name. PowerShell stops with an error instead.
+- **`Select-String` ignores capitalization by default.** Add `-CaseSensitive` when case matters.
 - **Backslashes and forward slashes are not always interchangeable.** Use `\` in Windows paths to be safe.
-- **Filenames with spaces need quotes:** `move "My File.txt" backup\` — or, better, avoid spaces in filenames you will handle from the command line.
+- **Filenames with spaces need quotes:** `mv "My File.txt" backup\` — or, better, avoid spaces in filenames you will handle from the command line.
 - **Some commands take over your prompt.** Ways to get unstuck: `q` (for `more`), close the window (for Notepad), `Control + C` (for most other running programs).
-- **Anaconda Prompt is not PowerShell.** Commands like `Get-Content`, `Select-Object`, and `ls` (in the PowerShell sense) do not work directly in Anaconda Prompt. When you need one, wrap it in `powershell -Command "..."`.
+- **Anaconda PowerShell Prompt is not Anaconda Prompt.** Check for `PS` in your prompt. Command Prompt instructions you find online, such as `dir /a` or `type nul > file`, do not work here.
 
 ### You now know enough to…
 
@@ -771,7 +855,7 @@ In Markdown, a **code fence** is a line of three backtick characters (```` ``` `
 - Preview a Quarto site or run a Jupyter notebook.
 - Fix minor project problems yourself by reading and searching files instead of asking someone else.
 
-Nice work. Close the Anaconda Prompt windows when you are ready — you did great.
+Nice work. Close the Anaconda PowerShell Prompt windows when you are ready — you did great.
 
 ---
 
@@ -779,43 +863,43 @@ Nice work. Close the Anaconda Prompt windows when you are ready — you did grea
 
 Thirty multiple-choice questions covering everything above. Try to answer each one from memory, then click to reveal the correct answer with a short explanation.
 
-### Q1. In an Anaconda Prompt, how do you print the current directory?
+### Q1. In an Anaconda PowerShell Prompt, how do you print the current directory?
 
-- A. `pwd`
-- B. `dir /c`
-- C. `cd` (with no argument)
+- A. `cd` (with no argument)
+- B. `pwd`
+- C. `dir /c`
 - D. `where`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** On Windows, typing `cd` alone (no argument) prints the current directory. On Mac and Linux, the equivalent command is `pwd` — but that does not work in Anaconda Prompt.
+**B.** `pwd` stands for "print working directory." In PowerShell it is an alias for `Get-Location`. Typing `cd` with no argument prints the current directory in the older Anaconda Prompt, but not in PowerShell.
 :::
 
-### Q2. In a filesystem tree, which of these is true about `%USERPROFILE%\Documents` and `%USERPROFILE%`?
+### Q2. In a filesystem tree, which of these is true about `~\Documents` and `~`?
 
 - A. They are siblings.
-- B. `%USERPROFILE%` is a child of `%USERPROFILE%\Documents`.
-- C. `%USERPROFILE%\Documents` is a child of `%USERPROFILE%`.
+- B. `~` is a child of `~\Documents`.
+- C. `~\Documents` is a child of `~`.
 - D. They are the same directory.
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** `%USERPROFILE%\Documents` lives inside `%USERPROFILE%`, so `%USERPROFILE%` is the parent and `%USERPROFILE%\Documents` is the child.
+**C.** `~\Documents` lives inside `~`, so `~` is the parent and `~\Documents` is the child.
 :::
 
-### Q3. Which flag makes `dir` show hidden files as well as ordinary ones?
+### Q3. Which flag makes `ls` show hidden files as well as ordinary ones?
 
-- A. `dir /h`
-- B. `dir /a`
-- C. `dir /s`
-- D. `dir /p`
+- A. `ls /a`
+- B. `ls -Force`
+- C. `ls -Recurse`
+- D. `ls -lhra`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** The `/a` flag stands for "all" — it tells `dir` to include files that would ordinarily be kept out of the listing.
+**B.** The `-Force` flag tells `ls` to include items that would ordinarily be kept out of the listing. `ls /a` is Command Prompt style, and `ls -lhra` is Mac style. Neither works in PowerShell. `-Recurse` lists the contents of subdirectories, not hidden files.
 :::
 
-### Q4. What does `%USERPROFILE%` expand to?
+### Q4. What does `~` expand to?
 
 - A. The root of the filesystem (`C:\`).
 - B. The current working directory.
@@ -824,49 +908,49 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** `%USERPROFILE%` is an environment variable that Windows sets to the path of the current user's home directory.
+**C.** `~` is PowerShell's shortcut for the path of the current user's home directory.
 :::
 
 ### Q5. You are in `C:\Users\jsmith\Projects`. Which of the following is a *relative* path?
 
 - A. `C:\Users\jsmith\Projects\notes.txt`
-- B. `%USERPROFILE%\notes.txt`
+- B. `~\notes.txt`
 - C. `..\notes.txt`
 - D. `D:\backup\notes.txt`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** Anything that does not start with a drive letter (and is not an environment variable that expands to an absolute path) is relative. `..\notes.txt` refers to a file in the parent directory of wherever you currently are.
+**C.** Anything that does not start with a drive letter (and does not start with `~`, which PowerShell replaces with an absolute path) is relative. `..\notes.txt` refers to a file in the parent directory of wherever you currently are.
 :::
 
 ### Q6. Which command sends you to your home directory?
 
 - A. `cd -`
-- B. `cd`
-- C. `cd %USERPROFILE%`
+- B. `cd %USERPROFILE%`
+- C. `cd ~`
 - D. `home`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** Unlike Mac and Linux, plain `cd` on Windows does *not* send you home — it prints the current directory. To go home, use `cd %USERPROFILE%`.
+**C.** `cd ~` takes you home. `%USERPROFILE%` is Command Prompt syntax, and PowerShell does not understand it. `cd -` works in the newer PowerShell 7, but not in the Windows PowerShell inside Anaconda PowerShell Prompt.
 :::
 
-### Q7. What does `mkdir %USERPROFILE%\Projects\computer-literacy` do when `%USERPROFILE%\Projects` does not yet exist?
+### Q7. What does `mkdir ~\Projects\computer-literacy` do when `~\Projects` does not yet exist?
 
 - A. It fails with an error.
-- B. It creates `%USERPROFILE%\Projects` and then `%USERPROFILE%\Projects\computer-literacy` in one step.
-- C. It creates only `%USERPROFILE%\Projects\computer-literacy` and leaves the parent missing.
+- B. It creates `~\Projects` and then `~\Projects\computer-literacy` in one step.
+- C. It creates only `~\Projects\computer-literacy` and leaves the parent missing.
 - D. It prompts you to create the parent.
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** On Windows, `mkdir` automatically creates any missing parent directories along the way. (On Mac and Linux you need to add a `-p` flag for the same behavior.)
+**B.** In PowerShell, `mkdir` automatically creates any missing parent directories along the way. (On Mac and Linux you need to add a `-p` flag for the same behavior.)
 :::
 
-### Q8. What does the `Tab` key do at the Anaconda Prompt?
+### Q8. What does the `Tab` key do at the Anaconda PowerShell Prompt?
 
 - A. Inserts four spaces.
-- B. Autocompletes filenames and directory names.
+- B. Autocompletes filenames, directory names, commands, and flags.
 - C. Runs the current command.
 - D. Switches between open windows.
 
@@ -879,27 +963,27 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 - A. `mkdir hello.txt`
 - B. `touch hello.txt`
-- C. `type nul > hello.txt`
+- C. `New-Item hello.txt -ItemType File`
 - D. `notepad hello.txt`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** Windows has no `touch` command; the idiomatic way to create an empty file is to redirect the empty source `nul` into a new filename.
+**C.** PowerShell has no `touch` command. `New-Item` creates new items, and `-ItemType File` tells it to make a file rather than a directory. (`mkdir hello.txt` would make a *directory* named `hello.txt`.)
 :::
 
-### Q10. You have a file called `draft.txt` and want to rename it to `final.txt`. Which command works in Anaconda Prompt?
+### Q10. You have a file called `draft.txt` and want to rename it to `final.txt`. Which command works in Anaconda PowerShell Prompt?
 
-- A. `mv draft.txt final.txt`
-- B. `rename draft.txt final.txt`
-- C. `ren draft.txt final.txt`
-- D. `notepad rename`
+- A. `rename draft.txt final.txt`
+- B. `cp draft.txt final.txt`
+- C. `mv draft.txt final.txt`
+- D. `ln draft.txt final.txt`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** `ren` is the built-in Windows command for renaming a file in place. (Confusingly, `rename` also works in some versions of Windows, but `ren` is the classic form.)
+**C.** `mv` handles both moving and renaming — renaming is just moving from one path to another in the same directory. PowerShell also offers `ren`, an alias for `Rename-Item`, which only renames. `cp` would leave the original in place and make a copy.
 :::
 
-### Q11. What does the `.` refer to in `move drafts\readme.txt .`?
+### Q11. What does the `.` refer to in `mv drafts\readme.txt .`?
 
 - A. The parent directory.
 - B. The home directory.
@@ -925,17 +1009,17 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ### Q13. Which command correctly copies an entire folder called `drafts` to a new folder called `drafts-backup`?
 
-- A. `copy drafts drafts-backup`
-- B. `xcopy /E /I drafts drafts-backup`
-- C. `move drafts drafts-backup`
-- D. `ren drafts drafts-backup`
+- A. `cp drafts drafts-backup`
+- B. `cp -Recurse drafts drafts-backup`
+- C. `mv drafts drafts-backup`
+- D. `New-Item drafts-backup`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** Plain `copy` only handles single files. To copy a directory and everything inside it, use `xcopy` with `/E` (include all subdirectories) and `/I` (treat the destination as a directory).
+**B.** Copying a directory requires `-Recurse`, because you are copying the folder *and everything inside it*. Without `-Recurse`, `cp` copies only the folder itself and leaves its contents behind.
 :::
 
-### Q14. What is the biggest danger of `del` (and `rmdir /s`) in Anaconda Prompt?
+### Q14. What is the biggest danger of `rm` (and `rm -Recurse`) in Anaconda PowerShell Prompt?
 
 - A. They require an internet connection.
 - B. They are slow on large files.
@@ -944,7 +1028,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** Unlike deleting a file in File Explorer, `del` and `rmdir /s` bypass the Recycle Bin entirely. There is no undo. Read every deletion command twice.
+**C.** Unlike deleting a file in File Explorer, `rm` bypasses the Recycle Bin entirely. There is no undo. Read every deletion command twice.
 :::
 
 ### Q15. Which shortcut saves the file you are editing in Notepad?
@@ -959,28 +1043,28 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** Notepad uses the standard Windows save shortcut, `Ctrl + S`. Use `Alt + F4` (or click the red `X`) to close the window when you are done.
 :::
 
-### Q16. When you run `notepad readme.txt` from the Anaconda Prompt, what happens?
+### Q16. When you run `notepad readme.txt` from the Anaconda PowerShell Prompt, what happens?
 
-- A. The Anaconda Prompt freezes until Notepad is closed.
-- B. Notepad opens in a separate window and the Anaconda Prompt remains usable.
+- A. The Anaconda PowerShell Prompt freezes until Notepad is closed.
+- B. Notepad opens in a separate window and the Anaconda PowerShell Prompt remains usable.
 - C. Notepad prints the contents of the file directly to the prompt.
 - D. Nothing — `notepad` is not a valid command.
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** `notepad` launches the graphical Notepad application in its own window. The Anaconda Prompt hands off control but does not block, so you could continue working there if you wanted.
+**B.** `notepad` launches the graphical Notepad application in its own window. The Anaconda PowerShell Prompt hands off control but does not block, so you could continue working there if you wanted.
 :::
 
-### Q17. Why should you avoid running `type` on a large CSV file?
+### Q17. Why should you avoid running `cat` on a large CSV file?
 
 - A. It will corrupt the file.
 - B. It will dump thousands of lines into your terminal all at once.
-- C. `type` does not work on CSV files.
+- C. `cat` does not work on CSV files.
 - D. It requires a special password.
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** `type` prints the entire file to the terminal. For a big file that is a flood of unreadable output. Use `more`, or a `powershell -Command "Get-Content ... -TotalCount N"` command, or `find /c /v ""` for a row count, instead.
+**B.** `cat` prints the entire file to the terminal. For a big file that is a flood of unreadable output. Use `Get-Content file -Head N` or `more` to look at the file, or `(Get-Content file).Count` for a row count, instead.
 :::
 
 ### Q18. You are stuck inside `more` and want to get back to your normal prompt. What do you press?
@@ -995,7 +1079,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** In `more`, pressing `q` quits back to the shell.
 :::
 
-### Q19. What does `find /c /v "" data.csv` report?
+### Q19. What does `(Get-Content data.csv).Count` report?
 
 - A. The number of words in the file.
 - B. The number of characters in the file.
@@ -1004,19 +1088,19 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** `find /v ""` matches every line that does not contain the empty string — which is every line — and `/c` says "count how many." Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).
+**C.** `Get-Content` reads the file one line at a time, and `.Count` reports how many lines it read. Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).
 :::
 
 ### Q20. Which command downloads a file from a URL and saves it using the filename from that URL?
 
 - A. `wget url`
 - B. `curl url`
-- C. `curl -O url`
+- C. `curl.exe -O url`
 - D. `download url`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**C.** Plain `curl url` prints the response to the terminal. The `-O` flag (capital O) tells `curl` to save the response as a file, using the name from the URL. Modern Windows includes `curl` as a built-in command.
+**C.** In Windows PowerShell, `curl` and `wget` are both aliases for a PowerShell command called `Invoke-WebRequest`, which does not understand the `-O` flag. Typing `curl.exe` reaches the real curl program. The `-O` flag (capital O) tells curl to save the response as a file, using the name from the URL.
 :::
 
 ### Q21. What is a CSV file?
@@ -1031,7 +1115,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** "CSV" = comma-separated values. It is plain text, portable, and readable by virtually every data tool.
 :::
 
-### Q22. What does `powershell -Command "Get-Content data.csv -TotalCount 20" > sample.csv` do?
+### Q22. What does `Get-Content data.csv -Head 20 > sample.csv` do?
 
 - A. Prints the first 20 lines to the terminal *and* to `sample.csv`.
 - B. Appends the first 20 lines of `data.csv` to `sample.csv`.
@@ -1057,29 +1141,29 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ### Q24. Which command searches inside the current folder and all folders inside it for the text `TODO`, showing line numbers?
 
-- A. `findstr TODO`
-- B. `findstr /n TODO`
-- C. `findstr /s TODO *.*`
-- D. `findstr /s /n TODO *.*`
+- A. `Select-String TODO`
+- B. `ls TODO`
+- C. `ls -Recurse -File | Select-String TODO`
+- D. `grep -rn TODO .`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**D.** `/s` looks inside every subdirectory, `/n` adds line numbers, and `*.*` matches every file. Together these are how you find every leftover TODO in a project.
+**C.** `ls -Recurse -File` lists every file in the current folder and all folders inside it, the pipe `|` hands that list to `Select-String`, and `Select-String` reports each match with its file name and line number. `grep` is not built into Windows.
 :::
 
-### Q25. Which `findstr` flag makes the search case-insensitive?
+### Q25. Which flag makes `Select-String` pay attention to capitalization?
 
-- A. `/c`
-- B. `/i`
-- C. `/v`
-- D. `/x`
+- A. `-i`
+- B. `-CaseSensitive`
+- C. `-Recurse`
+- D. `-n`
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** `/i` makes the pattern case-insensitive, so `findstr /i todo` matches `TODO`, `Todo`, and `todo`.
+**B.** `Select-String` ignores capitalization by default, so `Select-String todo` matches `TODO`, `Todo`, and `todo`. Add `-CaseSensitive` to match exactly. This is the reverse of `grep` on a Mac, which pays attention to capitalization unless you add `-i`.
 :::
 
-### Q26. Why would you ever want two Anaconda Prompt windows open at the same time?
+### Q26. Why would you ever want two Anaconda PowerShell Prompt windows open at the same time?
 
 - A. To run commands faster in parallel (at the same time).
 - B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work.
@@ -1095,8 +1179,8 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 - A. A public web server you can share with others.
 - B. A special name that always refers to *your own* computer.
-- C. The name of the Anaconda Prompt application.
-- D. Another word for `%USERPROFILE%`.
+- C. The name of the Anaconda PowerShell Prompt application.
+- D. Another word for `~`.
 
 ::: {.callout-tip collapse="true"}
 ## Answer

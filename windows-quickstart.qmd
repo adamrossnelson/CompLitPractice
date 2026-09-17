@@ -99,6 +99,16 @@ You do *not* need to write `cat ~\Desktop\notes.txt`. The shorter form works bec
 
 A quick rule of thumb: **if `pwd` already shows you are in the folder that contains the thing you want, you do not need `~`.**
 
+**Using the up arrow (Power move)**
+
+You can use the <kbd>↑</kbd> arrow key on your keyboard to scroll back through your previously executed commands. This is useful when:
+
+- You want to reuse a previous command.
+- A command you typed gave an error and you want to fix the previous command.
+- You need to recall previous actions and you are not sure what commands you issued.
+
+![Scroll back to your last command and also futher previous commands by using the up arrow.](images/meme_up_arrow.png){#fig-win-quick-up-arrow fig-alt="A two-panel vector-style cartoon illustration comparing different approaches to using a terminal command line. A scientist in a white lab coat as the central character in both scenarios. In the left panel, she is depicted as highly stressed, with sweat droplets and a panicked expression, hunched over a cluttered desk in a dim office. She is typing frantically, and as loose keyboard keys labeled A, S, and D pop off. The right panel contrasts this with the same scientist now sitting calmly and smiling in a clean, well-lit office, with an inset view showing her hand easily recalling previous commands using the up arrow."}
+
 ---
 
 ## 5. The running example

@@ -193,7 +193,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#move-a-file-from-a-child-back-to-the-current-directory" id="toc-move-a-file-from-a-child-back-to-the-current-directory" class="nav-link" data-scroll-target="#move-a-file-from-a-child-back-to-the-current-directory">2.4 Move a file from a child back to the current directory</a></li>
   <li><a href="#move-a-file-up-to-the-parent" id="toc-move-a-file-up-to-the-parent" class="nav-link" data-scroll-target="#move-a-file-up-to-the-parent">2.5 Move a file up to the parent</a></li>
   <li><a href="#copy-with-cp" id="toc-copy-with-cp" class="nav-link" data-scroll-target="#copy-with-cp">2.6 Copy with <code>cp</code></a></li>
-  <li><a href="#delete-with-rm-read-this-carefully" id="toc-delete-with-rm-read-this-carefully" class="nav-link" data-scroll-target="#delete-with-rm-read-this-carefully">2.7 Delete with <code>rm</code> — <strong>read this carefully</strong></a></li>
   </ul></li>
   <li><a href="#part-3-editing-text-with-nano" id="toc-part-3-editing-text-with-nano" class="nav-link" data-scroll-target="#part-3-editing-text-with-nano">Part 3 — Editing text with nano</a></li>
   <li><a href="#part-4-downloading-and-previewing-real-data" id="toc-part-4-downloading-and-previewing-real-data" class="nav-link" data-scroll-target="#part-4-downloading-and-previewing-real-data">Part 4 — Downloading and previewing real data</a>
@@ -246,29 +245,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#q5.-you-are-in-usersjsmithprojects.-which-of-the-following-is-a-relative-path" id="toc-q5.-you-are-in-usersjsmithprojects.-which-of-the-following-is-a-relative-path" class="nav-link" data-scroll-target="#q5.-you-are-in-usersjsmithprojects.-which-of-the-following-is-a-relative-path">Q5. You are in <code>/Users/jsmith/Projects</code>. Which of the following is a <em>relative</em> path?</a></li>
   <li><a href="#q6.-what-does-cd---do" id="toc-q6.-what-does-cd---do" class="nav-link" data-scroll-target="#q6.-what-does-cd---do">Q6. What does <code>cd -</code> do?</a></li>
   <li><a href="#q7.-you-want-to-create-projectscomputer-literacy-but-youre-not-sure-whether-projects-exists.-whats-the-safest-single-command" id="toc-q7.-you-want-to-create-projectscomputer-literacy-but-youre-not-sure-whether-projects-exists.-whats-the-safest-single-command" class="nav-link" data-scroll-target="#q7.-you-want-to-create-projectscomputer-literacy-but-youre-not-sure-whether-projects-exists.-whats-the-safest-single-command">Q7. You want to create <code>~/Projects/computer-literacy</code> but you’re not sure whether <code>~/Projects</code> exists. What’s the safest single command?</a></li>
-  <li><a href="#q8.-what-does-the-tab-key-do-at-the-shell-prompt" id="toc-q8.-what-does-the-tab-key-do-at-the-shell-prompt" class="nav-link" data-scroll-target="#q8.-what-does-the-tab-key-do-at-the-shell-prompt">Q8. What does the <code>Tab</code> key do at the shell prompt?</a></li>
+  <li><a href="#q8.-what-does-the-tab-key-do-at-the-terminal-prompt" id="toc-q8.-what-does-the-tab-key-do-at-the-terminal-prompt" class="nav-link" data-scroll-target="#q8.-what-does-the-tab-key-do-at-the-terminal-prompt">Q8. What does the <code>Tab</code> key do at the terminal prompt?</a></li>
   <li><a href="#q9.-which-command-creates-an-empty-file-called-hello.txt" id="toc-q9.-which-command-creates-an-empty-file-called-hello.txt" class="nav-link" data-scroll-target="#q9.-which-command-creates-an-empty-file-called-hello.txt">Q9. Which command creates an empty file called <code>hello.txt</code>?</a></li>
   <li><a href="#q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works" id="toc-q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works" class="nav-link" data-scroll-target="#q10.-you-have-a-file-called-draft.txt-and-want-to-rename-it-to-final.txt.-which-command-works">Q10. You have a file called <code>draft.txt</code> and want to rename it to <code>final.txt</code>. Which command works?</a></li>
   <li><a href="#q11.-what-does-the-.-refer-to-in-mv-draftsreadme.txt-." id="toc-q11.-what-does-the-.-refer-to-in-mv-draftsreadme.txt-." class="nav-link" data-scroll-target="#q11.-what-does-the-.-refer-to-in-mv-draftsreadme.txt-.">Q11. What does the <code>.</code> refer to in <code>mv drafts/readme.txt .</code>?</a></li>
   <li><a href="#q12.-what-does-..-mean-in-a-path" id="toc-q12.-what-does-..-mean-in-a-path" class="nav-link" data-scroll-target="#q12.-what-does-..-mean-in-a-path">Q12. What does <code>..</code> mean in a path?</a></li>
   <li><a href="#q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup" id="toc-q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup" class="nav-link" data-scroll-target="#q13.-which-command-correctly-copies-an-entire-folder-called-drafts-to-a-new-folder-called-drafts-backup">Q13. Which command correctly copies an entire folder called <code>drafts</code> to a new folder called <code>drafts-backup</code>?</a></li>
-  <li><a href="#q14.-what-is-the-biggest-danger-of-rm" id="toc-q14.-what-is-the-biggest-danger-of-rm" class="nav-link" data-scroll-target="#q14.-what-is-the-biggest-danger-of-rm">Q14. What is the biggest danger of <code>rm</code>?</a></li>
-  <li><a href="#q15.-in-nano-which-shortcut-saves-the-file" id="toc-q15.-in-nano-which-shortcut-saves-the-file" class="nav-link" data-scroll-target="#q15.-in-nano-which-shortcut-saves-the-file">Q15. In nano, which shortcut saves the file?</a></li>
-  <li><a href="#q16.-in-nanos-on-screen-help-what-does-the-symbol-mean" id="toc-q16.-in-nanos-on-screen-help-what-does-the-symbol-mean" class="nav-link" data-scroll-target="#q16.-in-nanos-on-screen-help-what-does-the-symbol-mean">Q16. In nano’s on-screen help, what does the <code>^</code> symbol mean?</a></li>
-  <li><a href="#q17.-why-should-you-avoid-running-cat-on-a-large-csv-file" id="toc-q17.-why-should-you-avoid-running-cat-on-a-large-csv-file" class="nav-link" data-scroll-target="#q17.-why-should-you-avoid-running-cat-on-a-large-csv-file">Q17. Why should you avoid running <code>cat</code> on a large CSV file?</a></li>
-  <li><a href="#q18.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" id="toc-q18.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="nav-link" data-scroll-target="#q18.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q18. You’re stuck inside <code>less</code> and want to get back to your normal prompt. What do you press?</a></li>
-  <li><a href="#q19.-what-does-wc--l-data.csv-report" id="toc-q19.-what-does-wc--l-data.csv-report" class="nav-link" data-scroll-target="#q19.-what-does-wc--l-data.csv-report">Q19. What does <code>wc -l data.csv</code> report?</a></li>
-  <li><a href="#q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" id="toc-q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="nav-link" data-scroll-target="#q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q20. Which command downloads a file from a URL and saves it using the filename from that URL?</a></li>
-  <li><a href="#q21.-what-is-a-csv-file" id="toc-q21.-what-is-a-csv-file" class="nav-link" data-scroll-target="#q21.-what-is-a-csv-file">Q21. What is a CSV file?</a></li>
-  <li><a href="#q22.-what-does-head--n-20-data.csv-sample.csv-do" id="toc-q22.-what-does-head--n-20-data.csv-sample.csv-do" class="nav-link" data-scroll-target="#q22.-what-does-head--n-20-data.csv-sample.csv-do">Q22. What does <code>head -n 20 data.csv &gt; sample.csv</code> do?</a></li>
-  <li><a href="#q23.-whats-the-difference-between-and" id="toc-q23.-whats-the-difference-between-and" class="nav-link" data-scroll-target="#q23.-whats-the-difference-between-and">Q23. What’s the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</a></li>
-  <li><a href="#q24.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" id="toc-q24.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" class="nav-link" data-scroll-target="#q24.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers">Q24. Which command searches recursively for the text <code>TODO</code> starting from the current directory, showing line numbers?</a></li>
-  <li><a href="#q25.-which-grep-flag-makes-the-search-case-insensitive" id="toc-q25.-which-grep-flag-makes-the-search-case-insensitive" class="nav-link" data-scroll-target="#q25.-which-grep-flag-makes-the-search-case-insensitive">Q25. Which <code>grep</code> flag makes the search case-insensitive?</a></li>
-  <li><a href="#q26.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" id="toc-q26.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" class="nav-link" data-scroll-target="#q26.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time">Q26. Why would you ever want two terminal windows open at the same time?</a></li>
-  <li><a href="#q27.-what-is-localhost" id="toc-q27.-what-is-localhost" class="nav-link" data-scroll-target="#q27.-what-is-localhost">Q27. What is <code>localhost</code>?</a></li>
-  <li><a href="#q28.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" id="toc-q28.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="nav-link" data-scroll-target="#q28.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q28. You’re running <code>python3 -m http.server 8000</code> and want to stop it. What do you press?</a></li>
-  <li><a href="#q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" id="toc-q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="nav-link" data-scroll-target="#q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q29. Classic Jupyter Notebook and JupyterLab open which file extension?</a></li>
-  <li><a href="#q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" id="toc-q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" class="nav-link" data-scroll-target="#q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file">Q30. Why is it easier to see what changed between two versions of a <code>.qmd</code> file than between two versions of a <code>.ipynb</code> file?</a></li>
+  <li><a href="#q14.-in-nano-which-shortcut-saves-the-file" id="toc-q14.-in-nano-which-shortcut-saves-the-file" class="nav-link" data-scroll-target="#q14.-in-nano-which-shortcut-saves-the-file">Q14. In nano, which shortcut saves the file?</a></li>
+  <li><a href="#q15.-in-nanos-on-screen-help-what-does-the-symbol-mean" id="toc-q15.-in-nanos-on-screen-help-what-does-the-symbol-mean" class="nav-link" data-scroll-target="#q15.-in-nanos-on-screen-help-what-does-the-symbol-mean">Q15. In nano’s on-screen help, what does the <code>^</code> symbol mean?</a></li>
+  <li><a href="#q16.-why-should-you-avoid-running-cat-on-a-large-csv-file" id="toc-q16.-why-should-you-avoid-running-cat-on-a-large-csv-file" class="nav-link" data-scroll-target="#q16.-why-should-you-avoid-running-cat-on-a-large-csv-file">Q16. Why should you avoid running <code>cat</code> on a large CSV file?</a></li>
+  <li><a href="#q17.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" id="toc-q17.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="nav-link" data-scroll-target="#q17.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q17. You’re stuck inside <code>less</code> and want to get back to your normal prompt. What do you press?</a></li>
+  <li><a href="#q20.-what-does-wc--l-data.csv-report" id="toc-q20.-what-does-wc--l-data.csv-report" class="nav-link" data-scroll-target="#q20.-what-does-wc--l-data.csv-report">Q20. What does <code>wc -l data.csv</code> report?</a></li>
+  <li><a href="#q21.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" id="toc-q21.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="nav-link" data-scroll-target="#q21.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q21. Which command downloads a file from a URL and saves it using the filename from that URL?</a></li>
+  <li><a href="#q22.-what-is-a-csv-file" id="toc-q22.-what-is-a-csv-file" class="nav-link" data-scroll-target="#q22.-what-is-a-csv-file">Q22. What is a CSV file?</a></li>
+  <li><a href="#q23.-what-does-head--n-20-data.csv-sample.csv-do" id="toc-q23.-what-does-head--n-20-data.csv-sample.csv-do" class="nav-link" data-scroll-target="#q23.-what-does-head--n-20-data.csv-sample.csv-do">Q23. What does <code>head -n 20 data.csv &gt; sample.csv</code> do?</a></li>
+  <li><a href="#q24.-whats-the-difference-between-and" id="toc-q24.-whats-the-difference-between-and" class="nav-link" data-scroll-target="#q24.-whats-the-difference-between-and">Q24. What’s the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</a></li>
+  <li><a href="#q25.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" id="toc-q25.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" class="nav-link" data-scroll-target="#q25.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers">Q25. Which command searches recursively for the text <code>TODO</code> starting from the current directory, showing line numbers?</a></li>
+  <li><a href="#q26.-which-grep-flag-makes-the-search-case-insensitive" id="toc-q26.-which-grep-flag-makes-the-search-case-insensitive" class="nav-link" data-scroll-target="#q26.-which-grep-flag-makes-the-search-case-insensitive">Q26. Which <code>grep</code> flag makes the search case-insensitive?</a></li>
+  <li><a href="#q27.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" id="toc-q27.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" class="nav-link" data-scroll-target="#q27.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time">Q27. Why would you ever want two terminal windows open at the same time?</a></li>
+  <li><a href="#q28.-what-is-localhost" id="toc-q28.-what-is-localhost" class="nav-link" data-scroll-target="#q28.-what-is-localhost">Q28. What is <code>localhost</code>?</a></li>
+  <li><a href="#q29.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" id="toc-q29.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="nav-link" data-scroll-target="#q29.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q29. You’re running <code>python3 -m http.server 8000</code> and want to stop it. What do you press?</a></li>
+  <li><a href="#q30.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" id="toc-q30.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="nav-link" data-scroll-target="#q30.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q30. Classic Jupyter Notebook and JupyterLab open which file extension?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -295,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This is a self-paced, ~2.5 hour hands-on walkthrough. Work through the parts in order — later parts assume you’ve done the earlier ones.</p>
+<p>This is a self-paced, ~2.5 hour hands-on walkthrough. Work through the parts in order. Later parts assume you’ve done the earlier ones.</p>
 <p><strong>Open the Terminal now</strong> before reading further: press <code>Cmd + Space</code> to open Spotlight, type <code>Terminal</code>, and hit <code>Return</code>. A window with a text prompt appears. That is where you’ll type every command in this guide.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -320,7 +317,7 @@ Vocabulary as we go
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Words like <em>directory</em>, <em>parent</em>, <em>child</em>, <code>~</code>, and <em>absolute path</em> get introduced in short callouts the first time they appear. Don’t skip the callouts — they’re the point.</p>
+<p>Words like <em>directory</em>, <em>parent</em>, <em>child</em>, <code>~</code>, and <em>absolute path</em> get introduced in short callouts the first time they appear. Don’t skip the callouts. The callouts are an important component of this walkthrough.</p>
 </div>
 </div>
 <hr>
@@ -330,7 +327,7 @@ Vocabulary as we go
 <h3 class="anchored" data-anchor-id="where-am-i">1.1 Where am I?</h3>
 <p>Type this exactly and press <code>Return</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>pwd</code> stands for <strong>“print working directory.”</strong> The terminal always has a <em>current working directory</em> — a folder it considers “where you are right now.” Every command you run acts relative to that location unless you tell it otherwise.</p>
+<p><code>pwd</code> stands for <strong>“print working directory.”</strong> The terminal always has a <em>current working directory</em>. The current working directory is a folder the terminal considers “where you are right now.” Every command you run acts relative to that location unless you tell it otherwise.</p>
 <p>You’ll see something like <code>/Users/yourname</code>. That’s your <strong>home directory</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -385,7 +382,7 @@ What is a “flag”?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>flag</strong> (also sometimes called an <em>option</em> or a <em>switch</em>) is a short modifier you add after a command to change how that command behaves. Flags almost always begin with a hyphen: <code>-l</code>, <code>-a</code>, <code>-r</code>, <code>-h</code>. When several single-letter flags are combined, they are usually written together after one hyphen — so <code>-lhra</code> is the same as writing <code>-l -h -r -a</code> separately. Learning a command means, in large part, learning which flags are worth memorizing.</p>
+<p>A <strong>flag</strong> (also sometimes called an <em>option</em> or a <em>switch</em>) is a short modifier you add after a command to change how that command behaves. Flags almost always begin with a hyphen: <code>-l</code>, <code>-a</code>, <code>-r</code>, <code>-h</code>. When several single-letter flags are combined, they are usually written together after one hyphen. This means <code>-lhra</code> is the same as writing <code>-l -h -r -a</code> separately. Learning a command means, in large part, learning which flags are worth memorizing.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -398,7 +395,7 @@ Hidden files
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Any file or directory whose name starts with a <code>.</code> is hidden by default. <code>.zshrc</code>, <code>.git</code>, <code>.DS_Store</code> are all hidden. Plain <code>ls</code> won’t show them — <code>ls -a</code> will.</p>
+<p>Any file or directory whose name starts with a <code>.</code> is hidden by default. <code>.zshrc</code>, <code>.git</code>, <code>.DS_Store</code> are all hidden. Plain <code>ls</code> won’t show them. Instead <code>ls -a</code> will show them.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -413,7 +410,7 @@ Try it: What hidden files are in your home directory?
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Run <code>ls -lhra ~</code> and read the leftmost column of names. You’ll likely see things like <code>.zshrc</code>, <code>.zsh_history</code>, <code>.gitconfig</code>, <code>.DS_Store</code>. These are configuration and system files — leave them alone for now, but know they exist.</p>
+<p>Run <code>ls -lhra ~</code> and read the leftmost column of names. You’ll likely see things like <code>.zshrc</code>, <code>.zsh_history</code>, <code>.gitconfig</code>, <code>.DS_Store</code>. These are configuration and system files. Leave the hidden configuration files alone for now, but know they exist.</p>
 </div>
 </div>
 </div>
@@ -446,7 +443,7 @@ What is an “argument”?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An <strong>argument</strong> is an extra word you type after a command to tell it what to act on. In <code>cd ~/Desktop</code>, the string <code>~/Desktop</code> is the argument — it tells <code>cd</code> where to go. In <code>ls -lhra ~</code>, the flags <code>-lhra</code> and the path <code>~</code> are both arguments. Some commands (like <code>pwd</code>) take no arguments at all; some accept several; some accept optional arguments and fall back to a default when none is given (as <code>cd</code> falls back to sending you home).</p>
+<p>An <strong>argument</strong> is an extra word you type after a command to tell it what to act on. In <code>cd ~/Desktop</code>, the string <code>~/Desktop</code> is the argument (a path argument to be more speciric). In this case the path argument tells <code>cd</code> where to go. In <code>ls -lhra ~</code>, the flags <code>-lhra</code> and the path <code>~</code> are both arguments. Some commands (like <code>pwd</code>) take no arguments at all; some accept several; some accept optional arguments and fall back to a default when none is given (as <code>cd</code> falls back to sending you home).</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -472,7 +469,7 @@ What is a “path”?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A <strong>path</strong> is the address of a file or a directory on your computer — the sequence of directory names, separated by slashes, that tells the system exactly where to find that item. <code>/Users/jsmith/Desktop/notes.txt</code> is a path; so is <code>drafts/readme.txt</code>; so is <code>..</code>. Almost every command that touches a file or folder takes a path as one of its arguments.</p>
+<p>A <strong>path</strong> is the address of a file or a directory on your computer. The sequence of directory names, separated by slashes (<code>/</code>), that tells the system exactly where to find that item. <code>/Users/jsmith/Desktop/notes.txt</code> is a path; so is <code>drafts/readme.txt</code>; so is <code>..</code>. Almost every command that touches a file or folder takes a path as one of its arguments.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -486,8 +483,8 @@ Absolute vs.&nbsp;relative paths
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>An <strong>absolute path</strong> starts with <code>/</code> (or <code>~</code>, which expands to an absolute path). It works no matter where you currently are. Example: <code>/Users/jsmith/Desktop/notes.txt</code>.</li>
-<li>A <strong>relative path</strong> does <em>not</em> start with <code>/</code>. It’s interpreted relative to your current working directory. If you’re in <code>~/Desktop</code>, then <code>notes.txt</code> refers to <code>~/Desktop/notes.txt</code>.</li>
+<li>An <strong>absolute path</strong> starts with <code>/</code>.</li>
+<li>A <strong>relative path</strong> does <em>not</em> start with <code>/</code>. It’s interpreted relative to your current working directory.</li>
 </ul>
 <p>When a command “can’t find” a file, the #1 cause is confusing relative and absolute paths.</p>
 </div>
@@ -495,42 +492,28 @@ Absolute vs.&nbsp;relative paths
 </section>
 <section id="tab-completion-the-single-best-trick" class="level3">
 <h3 class="anchored" data-anchor-id="tab-completion-the-single-best-trick">1.5 Tab completion — the single best trick</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What is the “shell”?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <strong>shell</strong> is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. When this guide says “the shell will complete it,” it means the program that is listening to your keystrokes. On modern macOS, the default shell is called <code>zsh</code>; on older Macs it was <code>bash</code>. The differences between shells matter to advanced users but hardly at all to beginners — for our purposes, “the shell” and “the terminal” can be used almost interchangeably.</p>
-</div>
-</div>
-<p>Type <code>cd ~/Doc</code> and then, before pressing Return, press the <strong>Tab</strong> key. The shell will complete it to <code>~/Documents/</code> for you.</p>
-<p>If there are multiple matches (e.g., <code>Documents</code> and <code>Downloads</code> both start with <code>Do</code>), the shell will beep. Press Tab <strong>twice</strong> and it lists all matches; type another letter or two to disambiguate, then Tab again.</p>
+<p>Type <code>cd ~/Doc</code> and then, before pressing Return, press the <strong>Tab</strong> key. The terminal will complete it to <code>~/Documents/</code> for you.</p>
+<p>If there are multiple matches (e.g., <code>Documents</code> and <code>Downloads</code> both start with <code>Do</code>), the terminal will beep. Press Tab <strong>twice</strong> and it lists all matches; type another letter or two to disambiguate, then Tab again.</p>
 <p><strong>Use Tab constantly.</strong> It prevents typos, and it’s a sanity check: if Tab won’t complete a name, that name doesn’t exist where you think it does.</p>
 </section>
 <section id="set-up-your-practice-folder" class="level3">
 <h3 class="anchored" data-anchor-id="set-up-your-practice-folder">1.6 Set up your practice folder</h3>
 <p>You’ll do all the rest of this walkthrough inside a dedicated practice folder so you don’t accidentally disturb anything else.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Challenge: create <code>~/Projects/computer-literacy</code> and <code>cd</code> into it
+Challenge: create <code>~/Projects/computer-literacy</code> and <code>cd</code> into it. Two commands. Try to write them yourself before revealing.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Two commands. Try to write them yourself before revealing.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/Projects/computer-literacy</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/computer-literacy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>mkdir</code> = “make directory.” The <code>-p</code> flag says “also create any missing parent directories” — so if <code>~/Projects</code> doesn’t exist yet, it makes that too.</p>
+<p><code>mkdir</code> = “make directory.” The <code>-p</code> flag says “also create any missing parent directories” (so if <code>~/Projects</code> doesn’t exist yet, it makes that too).</p>
 <p>Confirm you’re in the right place:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should see <code>/Users/yourname/Projects/computer-literacy</code>.</p>
@@ -542,7 +525,7 @@ Challenge: create <code>~/Projects/computer-literacy</code> and <code>cd</code> 
 </section>
 <section id="part-2-making-moving-renaming-deleting" class="level2">
 <h2 class="anchored" data-anchor-id="part-2-making-moving-renaming-deleting">Part 2 — Making, moving, renaming, deleting</h2>
-<p>You’re inside <code>~/Projects/computer-literacy</code>. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run <code>cd ~/Projects/computer-literacy</code> to come home.</p>
+<p>You’re inside <code>~/Projects/computer-literacy</code>. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run <code>cd ~/Projects/computer-literacy</code> to come back to this location.</p>
 <section id="create-an-empty-file" class="level3">
 <h3 class="anchored" data-anchor-id="create-an-empty-file">2.1 Create an empty file</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> notes.txt</span>
@@ -566,12 +549,12 @@ File extensions
 <h3 class="anchored" data-anchor-id="rename-with-mv">2.2 Rename with <code>mv</code></h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> notes.txt readme.txt</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong><code>mv</code> means “move,”</strong> but move and rename are the same operation — you’re changing the file’s path, which may involve changing its name, its location, or both.</p>
+<p><strong><code>mv</code> means “move,”</strong> but move and rename are (essentially) the same operation. Both moving and renaming a file involve changing the file’s path, which may involve changing its name, its location, or both.</p>
 </section>
 <section id="move-into-a-child-directory" class="level3">
 <h3 class="anchored" data-anchor-id="move-into-a-child-directory">2.3 Move into a child directory</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -580,7 +563,7 @@ Challenge: create a <code>drafts/</code> folder and move <code>readme.txt</code>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> drafts</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> readme.txt drafts/</span>
@@ -595,7 +578,7 @@ Challenge: create a <code>drafts/</code> folder and move <code>readme.txt</code>
 <h3 class="anchored" data-anchor-id="move-a-file-from-a-child-back-to-the-current-directory">2.4 Move a file from a child back to the current directory</h3>
 <p>Idea: Use your computer finder (the point and click desktop file navigator) to confirm that you’ve created the files and also that they move between directories as you perform the <code>mv</code> commands.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -604,7 +587,7 @@ Challenge: move <code>readme.txt</code> from <code>drafts/</code> back to where 
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> drafts/readme.txt .</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,7 +599,7 @@ Challenge: move <code>readme.txt</code> from <code>drafts/</code> back to where 
 <section id="move-a-file-up-to-the-parent" class="level3">
 <h3 class="anchored" data-anchor-id="move-a-file-up-to-the-parent">2.5 Move a file up to the parent</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -625,7 +608,7 @@ Challenge: move <code>readme.txt</code> up to <code>~/Projects</code>, then back
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> readme.txt ..</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
@@ -644,36 +627,14 @@ Challenge: move <code>readme.txt</code> up to <code>~/Projects</code>, then back
 <p>For directories, you need <code>-r</code> (recursive), because copying a folder means copying everything inside it too:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> drafts drafts-backup</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="delete-with-rm-read-this-carefully" class="level3">
-<h3 class="anchored" data-anchor-id="delete-with-rm-read-this-carefully">2.7 Delete with <code>rm</code> — <strong>read this carefully</strong></h3>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code>rm</code> is permanent
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There is <strong>no Trash</strong>. There is <strong>no undo</strong>. <code>rm</code> deletes files immediately and forever. Read every <code>rm</code> command twice before pressing Return, and never, ever run <code>rm -rf /</code> or <code>rm -rf ~</code> or <code>rm -rf *</code> while you’re still learning.</p>
-</div>
-</div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> readme-backup.txt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For directories, <code>rm -r</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> drafts-backup</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Leave <code>readme.txt</code> and <code>drafts/</code> alone — you’ll use them in Part 3.</p>
 <hr>
 </section>
 </section>
 <section id="part-3-editing-text-with-nano" class="level2">
 <h2 class="anchored" data-anchor-id="part-3-editing-text-with-nano">Part 3 — Editing text with nano</h2>
 <p><strong>nano</strong> is a beginner-friendly text editor that runs inside the terminal. Open your <code>readme.txt</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The file opens in an editor. The bottom of the screen shows shortcuts. The <code>^</code> symbol means the <code>Control</code> key — so <code>^O</code> means <code>Control + O</code>, and <code>^X</code> means <code>Control + X</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The file opens in an editor. The bottom of the screen shows shortcuts. The <code>^</code> symbol means the <kbd>Control</kbd> key — so <code>^O</code> means <kbd>Control</kbd> + <kbd>O</kbd>, and <code>^X</code> means <kbd>Control</kbd> + <kbd>X</kbd>.</p>
 <p>Type in these exact lines (you can copy-paste into the terminal):</p>
 <pre><code>Computer Literacy Practice
 ==========================
@@ -681,10 +642,16 @@ This is my practice readme.
 
 TODO: add a list of my favorite CLI commands
 TODO: try grep on this file later</code></pre>
-<p>Save the file: press <code>Control + O</code>, then <code>Return</code> to confirm the filename. Exit nano: press <code>Control + X</code>.</p>
-<p>Now verify what you wrote:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>cat</code> (short for “concatenate”) prints a file’s contents to the terminal. Great for short files. <strong>Don’t <code>cat</code> a huge file</strong> — it will flood your terminal.</p>
+<p>Save the file: press <kbd>Control</kbd> + <kbd>O</kbd>, then <kbd>Return</kbd> to confirm the filename.</p>
+<p>To exit nano: press <kbd>Control</kbd> + <kbd>X</kbd>.</p>
+<p>Now verify what you wrote and saved is there in <code>readme.txt</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>cat</code> (short for “concatenate”) prints a file’s contents to the terminal. Great for short files. <strong>Don’t <code>cat</code> a huge file</strong>. It will flood your terminal. Instead consider using <code>less</code>, <code>head</code>, or <code>tail</code> to view parts of the file.</p>
+<ul>
+<li><code>less</code> will let you scroll through a file page by page.</li>
+<li><code>head</code> will show you just the first few lines of a file.</li>
+<li><code>tail</code> will show you just the last few lines of a file.</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -695,7 +662,7 @@ What does “concatenate” mean?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To <strong>concatenate</strong> two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin <em>catena</em>, meaning “chain” — so <em>concatenation</em> is, literally, chaining things together. In computing you’ll meet the word most often in two places: (1) here, in the name of the <code>cat</code> command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where “string concatenation” means gluing two pieces of text together (for example, joining <code>"Hello, "</code> and <code>"world"</code> to produce <code>"Hello, world"</code>).</p>
+<p>To <strong>concatenate</strong> two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin <em>catena</em>, meaning “chain.” So <em>concatenation</em> is, literally, chaining things together. In computing you’ll meet the word most often in two places: (1) here, in the name of the <code>cat</code> command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where “string concatenation” means gluing two pieces of text together (for example, joining <code>"Hello, "</code> and <code>"world"</code> to produce <code>"Hello, world"</code>).</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -708,7 +675,7 @@ The <code>TODO:</code> lines are on purpose
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You just planted two <code>TODO</code> markers. You’ll search for them with <code>grep</code> in Part 6. Real developers scatter <code>TODO</code> comments through their code as reminders, and being able to find them across a project is a genuinely useful skill.</p>
+<p>You just planted two <code>TODO</code> markers. You’ll search for them with <code>grep</code> in Part 6. Developers scatter <code>TODO</code> comments through their code as reminders, and being able to find them across a project is a genuinely useful skill.</p>
 </div>
 </div>
 <hr>
@@ -718,21 +685,21 @@ The <code>TODO:</code> lines are on purpose
 <p>You’ll download three CSV files, then practice looking at them without opening a spreadsheet.</p>
 <section id="make-a-data-folder-and-go-into-it" class="level3">
 <h3 class="anchored" data-anchor-id="make-a-data-folder-and-go-into-it">4.1 Make a <code>data/</code> folder and go into it</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="download-files-with-curl" class="level3">
 <h3 class="anchored" data-anchor-id="download-files-with-curl">4.2 Download files with <code>curl</code></h3>
 <p><code>curl -O</code> downloads a file from a URL and saves it using the filename from the URL. Run these three commands (each is one long line):</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt.csv</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/complaints-bank.csv</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/mpg_excerpt.csv</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-O</span> https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/main/data/confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="see-what-you-got" class="level3">
 <h3 class="anchored" data-anchor-id="see-what-you-got">4.3 See what you got</h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lhra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now the <code>-h</code> in <code>-lhra</code> is doing real work — you can see file sizes in KB/MB instead of raw bytes. Which of the three CSVs is largest?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lhra</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now the <code>-h</code> in <code>-lhra</code> is doing important work. You can see file sizes in KB/MB instead of raw bytes. Which of the three CSVs is largest?</p>
 </section>
 <section id="peek-at-contents-the-right-way" class="level3">
 <h3 class="anchored" data-anchor-id="peek-at-contents-the-right-way">4.4 Peek at contents — the right way</h3>
@@ -746,8 +713,8 @@ What is a CSV file?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>CSV</strong> stands for <strong>comma-separated values</strong>. It’s the simplest, most portable format for <strong>tabular data</strong> — that is, data arranged in rows and columns, the way you’d lay it out in a spreadsheet or a printed table. Each row is one <em>observation</em> or <em>record</em> (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one <em>variable</em> or <em>field</em> (that respondent’s age, the transaction’s amount, the book’s title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a <strong>header</strong> listing the column names.</p>
-<p>CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself — no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.</p>
+<p><strong>CSV</strong> stands for <strong>comma-separated values</strong>. It’s the simplest, most portable format for <strong>tabular data</strong>. Tabular data is data that is arranged in rows and columns, the way you’d lay it out in a spreadsheet or a printed table. Each row is one <em>observation</em> or <em>record</em> (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one <em>variable</em> or <em>field</em> (that respondent’s age, the transaction’s amount, the book’s title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a <strong>header</strong> listing the column names.</p>
+<p>CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself such as no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -760,7 +727,7 @@ What does “portable” mean?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When programmers describe a file format, a program, or a piece of code as <strong>portable</strong>, they mean that it works well across many different systems and situations — the way a paperback book is portable in the everyday sense of “you can take it anywhere.” A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.</p>
+<p>When programmers describe a file format, a program, or a piece of code as <strong>portable</strong>, they mean that it works well across many different systems and situations. Similar to the way a paperback book is portable in the everyday sense of “you can take it anywhere.” A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -773,16 +740,16 @@ What is an API?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>API</strong> stands for <strong>application programming interface</strong>. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a <strong>web API</strong>: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.</p>
+<p><strong>API</strong> stands for <strong>application programming interface</strong>. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. Weather services, government statistics offices, universities, and social-media platforms all publish APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.</p>
 </div>
 </div>
-<p>Do <strong>not</strong> <code>cat complaints-bank.csv</code> — it’s big and will fill your terminal with noise. Instead:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Do <strong>not</strong> <code>cat complaints-bank.csv</code>. This is a big file and it will fill your terminal with noise. Instead:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>head</code> shows the <strong>first 10 lines</strong> by default. Add <code>-n 5</code> to see only the first 5:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 5 confident_fictional_books.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For scrolling through a larger file, use <code>less</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> complaints-bank.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You are now “inside” <code>less</code>. Use arrow keys or space bar to scroll. <strong>Press <code>q</code> to quit.</strong> Getting stuck in <code>less</code> is a rite of passage — remember <code>q</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> complaints-bank.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You are now “inside” <code>less</code>. Use arrow keys or space bar to scroll. <strong>Press <code>q</code> to quit.</strong> Getting stuck in <code>less</code> is a rite of passage… (remember <code>q</code> to exit).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -793,7 +760,7 @@ When a program “traps” your prompt
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Some commands hand control over to a program (nano, less, a running web server). Your normal shell prompt disappears until you exit the program. If you ever feel stuck: try <code>q</code> (for <code>less</code> and manual pages), <code>Control + X</code> (for nano), or <code>Control + C</code> (which sends an “interrupt” signal to most other programs).</p>
+<p>Some commands hand control over to a program (<code>nano</code>, <code>less</code>, a <code>quarto preview</code> or <code>jupyter lab</code>). Your normal terminal prompt disappears until you exit the program. If you ever feel stuck: try <code>q</code> (for <code>less</code> and <code>man</code> pages), <kbd>Control</kbd> + <kbd>X</kbd> (for <code>nano</code>), or <kbd>Control</kbd> + <kbd>C</kbd> (which sends an “interrupt” signal to most other programs).</p>
 </div>
 </div>
 </section>
@@ -809,14 +776,30 @@ Why count rows from the command line?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A row count is the fastest possible answer to a basic data-science question: <strong>how many observations (records) does this dataset have?</strong> Before you open a file in Python, R, or a spreadsheet, <code>wc -l</code> tells you in a fraction of a second whether you’re looking at 50 rows, 50 thousand, or 50 million. That number shapes everything that comes next: whether it’s safe to load the whole file into memory, whether you should take a sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is a habit that separates confident analysts from frustrated ones.</p>
+<p>A row count is the fastest possible answer to a basic data-science question: <strong>how many observations (records) does this dataset have?</strong> Before you open a file in Python, R, or a spreadsheet, <code>wc -l</code> tells you in a fraction of a second whether you’re looking at 50 rows, 50 thousand, or 50 million. That number shapes everything that comes next: whether it’s safe to load the whole file into memory, whether you should take a sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the terminal (sizes, row counts, first few lines) before jumping into a full analysis is a habit that separates confident scientists from frustrated scientists.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> complaints-bank.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> complaints-bank.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>wc</code> = “word count.” <code>-l</code> says “count lines.” That first line is the CSV header, so the number of <em>data</em> rows is one less than what <code>wc</code> reports.</p>
 <p>Try it on all three CSVs at once using a <strong>wildcard</strong>:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>*</code> matches any characters, so <code>*.csv</code> matches every file in the current directory ending in <code>.csv</code>. Wildcards are powerful — and dangerous with <code>rm</code>. Be extra careful when combining <code>*</code> with anything destructive.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wildcards are powerful + dangerous
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>*</code> wildcard can match any sequence of characters.</p>
+<p>For example, to find all <code>.csv</code> files on your desktop from any location on your computer enter: <code>ls ~\Desktop\*.csv</code></p>
+<p>To find all files that contain the word “report” in your downloads from any location on your computer enter: <code>ls ~\Downloads\*report*.*</code></p>
+<p>While useful for batch operations, it can also lead to unintended consequences if used carelessly. Always double-check your commands before executing them.</p>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -825,9 +808,9 @@ Why count rows from the command line?
 <p>Very often you want to <em>save</em> what a command prints, rather than just look at it. That’s called <strong>redirection</strong>.</p>
 <section id="the-operator" class="level3">
 <h3 class="anchored" data-anchor-id="the-operator">5.1 The <code>&gt;</code> operator</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 complaints-bank.csv <span class="op">&gt;</span> ~/Desktop/complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 20 complaints-bank.csv <span class="op">&gt;</span> ~/Desktop/complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Read that out loud: “Take the first 20 lines of <code>complaints-bank.csv</code>, and instead of printing them to the terminal, <strong>redirect</strong> them into a new file called <code>complaints-sample.csv</code> on my Desktop.”</p>
-<p>Now open your Desktop in Finder (or run <code>open ~/Desktop</code>) — you’ll see a small CSV file there. Double-click it to open in Numbers or Excel. This is a very common real-world workflow: <strong>make a small excerpt of a big data file so you can inspect it quickly.</strong></p>
+<p>Now open your Desktop in Finder (or run <code>open ~/Desktop</code>). After running the <code>head</code> command suggested above, you’ll see a small CSV file there. Double-click it to open in Numbers or Excel. This is a very common real-world workflow: <strong>make a small excerpt of a big data file so you can inspect it quickly.</strong></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -844,11 +827,11 @@ Why count rows from the command line?
 </section>
 <section id="try" class="level3">
 <h3 class="anchored" data-anchor-id="try">5.2 Try <code>&gt;&gt;</code></h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 mpg_excerpt.csv <span class="op">&gt;&gt;</span> ~/Desktop/complaints-sample.csv</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/Desktop/complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You just appended a few rows of a different CSV onto the end of the sample file. (In real work you’d only append data that has the same columns — but the mechanic is worth seeing.)</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 3 mpg_excerpt.csv <span class="op">&gt;&gt;</span> ~/Desktop/complaints-sample.csv</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/Desktop/complaints-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You just appended a few rows of a different CSV onto the end of the sample file. (In real work you’d only append data that has the same columns… but the mechanic is worth seeing.)</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -857,9 +840,9 @@ Challenge: make a 50-row sample of <code>mpg_excerpt.csv</code> on your Desktop
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 50 mpg_excerpt.csv <span class="op">&gt;</span> ~/Desktop/mpg-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 50 mpg_excerpt.csv <span class="op">&gt;</span> ~/Desktop/mpg-sample.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -870,72 +853,72 @@ Challenge: make a 50-row sample of <code>mpg_excerpt.csv</code> on your Desktop
 <h2 class="anchored" data-anchor-id="part-6-searching-with-grep">Part 6 — Searching with <code>grep</code></h2>
 <p><code>grep</code> searches text inside files. It’s one of the most-used commands in a working programmer’s life.</p>
 <p>Go back up to your practice folder:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/computer-literacy</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/computer-literacy</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="search-in-a-single-file" class="level3">
 <h3 class="anchored" data-anchor-id="search-in-a-single-file">6.1 Search in a single file</h3>
 <p>You planted <code>TODO:</code> markers in <code>readme.txt</code> back in Part 3. Find them:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>grep</code> prints every line in <code>readme.txt</code> that contains the string <code>TODO</code>. Add <code>-n</code> to include line numbers:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> TODO readme.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="make-a-python-file-with-more-todos" class="level3">
 <h3 class="anchored" data-anchor-id="make-a-python-file-with-more-todos">6.2 Make a Python file with more TODOs</h3>
 <p>Now let’s give <code>grep</code> something more realistic to hunt through. Create a Python file with <code>nano</code>:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Type or paste in the following (this uses only Python’s built-in features — you don’t need to install anything, and you don’t need to <em>run</em> it; you’re just going to search it):</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup.py — a small script for tidying up a text file</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: accept the input filename as a command-line argument</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>INPUT_FILE <span class="op">=</span> <span class="st">"notes.txt"</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE <span class="op">=</span> <span class="st">"notes-clean.txt"</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strip_blank_lines(lines):</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return only the non-empty lines."""</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line <span class="cf">for</span> line <span class="kw">in</span> lines <span class="cf">if</span> line.strip() <span class="op">!=</span> <span class="st">""</span>]</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lowercase_all(lines):</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: preserve proper nouns instead of lowercasing everything</span></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line.lower() <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(INPUT_FILE):</span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No such file: </span><span class="sc">{</span>INPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>        sys.exit(<span class="dv">1</span>)</span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(INPUT_FILE) <span class="im">as</span> f:</span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>        lines <span class="op">=</span> f.readlines()</span>
-<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> strip_blank_lines(lines)</span>
-<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> lowercase_all(lines)</span>
-<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: also remove duplicate lines before writing out</span></span>
-<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(OUTPUT_FILE, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
-<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>        f.writelines(lines)</span>
-<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Wrote </span><span class="sc">{</span><span class="bu">len</span>(lines)<span class="sc">}</span><span class="ss"> lines to </span><span class="sc">{</span>OUTPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: report how many blank lines were removed</span></span>
-<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Save with <code>Control + O</code>, <code>Return</code>, then exit with <code>Control + X</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Type or paste in the following (this uses only Python’s built-in features You don’t need to install anything, and you don’t need to <em>run</em> it; you’re just going to search it):</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cleanup.py — a small script for tidying up a text file</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: accept the input filename as a command-line argument</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>INPUT_FILE <span class="op">=</span> <span class="st">"notes.txt"</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>OUTPUT_FILE <span class="op">=</span> <span class="st">"notes-clean.txt"</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> strip_blank_lines(lines):</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Return only the non-empty lines."""</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line <span class="cf">for</span> line <span class="kw">in</span> lines <span class="cf">if</span> line.strip() <span class="op">!=</span> <span class="st">""</span>]</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lowercase_all(lines):</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: preserve proper nouns instead of lowercasing everything</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [line.lower() <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(INPUT_FILE):</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"No such file: </span><span class="sc">{</span>INPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a>        sys.exit(<span class="dv">1</span>)</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(INPUT_FILE) <span class="im">as</span> f:</span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>        lines <span class="op">=</span> f.readlines()</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> strip_blank_lines(lines)</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> lowercase_all(lines)</span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: also remove duplicate lines before writing out</span></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(OUTPUT_FILE, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a>        f.writelines(lines)</span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Wrote </span><span class="sc">{</span><span class="bu">len</span>(lines)<span class="sc">}</span><span class="ss"> lines to </span><span class="sc">{</span>OUTPUT_FILE<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># </span><span class="al">TODO</span><span class="co">: report how many blank lines were removed</span></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Save with <kbd>Control</kbd> + <kbd>O</kbd>, <kbd>Return</kbd>, then exit with <kbd>Control</kbd> + <kbd>X</kbd>.</p>
 </section>
 <section id="find-all-todos-in-one-file" class="level3">
 <h3 class="anchored" data-anchor-id="find-all-todos-in-one-file">6.3 Find all TODOs in one file</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> TODO cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> TODO cleanup.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should see four TODO lines with their line numbers.</p>
 </section>
 <section id="find-todos-across-every-file-in-the-folder" class="level3">
 <h3 class="anchored" data-anchor-id="find-todos-across-every-file-in-the-folder">6.4 Find TODOs across every file in the folder</h3>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -944,11 +927,11 @@ Challenge: search <em>recursively</em> for <code>TODO</code> starting at the cur
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> TODO .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> TODO .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><code>-r</code> means <strong>recursive</strong> — descend into subdirectories.</li>
+<li><code>-r</code> means <strong>recursive</strong> (descend into subdirectories).</li>
 <li><code>-n</code> adds line numbers.</li>
 <li><code>.</code> is the starting point (current directory).</li>
 </ul>
@@ -959,7 +942,7 @@ Challenge: search <em>recursively</em> for <code>TODO</code> starting at the cur
 </section>
 <section id="case-insensitive-search" class="level3">
 <h3 class="anchored" data-anchor-id="case-insensitive-search">6.5 Case-insensitive search</h3>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rni</span> todo .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rni</span> todo .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-i</code> makes the match case-insensitive, so it would find <code>TODO</code>, <code>Todo</code>, and <code>todo</code> all at once.</p>
 <hr>
 </section>
@@ -969,10 +952,10 @@ Challenge: search <em>recursively</em> for <code>TODO</code> starting at the cur
 <p>Some commands <strong>take over your prompt and don’t give it back</strong> until you stop them. This is normal, and it’s why real developers usually have two or three terminal windows open at once.</p>
 <section id="open-a-second-terminal-window" class="level3">
 <h3 class="anchored" data-anchor-id="open-a-second-terminal-window">7.1 Open a second terminal window</h3>
-<p>In the Terminal app, press <code>Cmd + N</code> for a new window (or <code>Cmd + T</code> for a new tab in the same window). You now have two independent shells. Each has its own current working directory.</p>
+<p>In the Terminal app, press <kbd>Cmd</kbd> + <kbd>N</kbd> for a new window (or <kbd>Cmd</kbd> + <kbd>T</kbd> for a new tab in the same window). You now have two independent terminals. Each has its own current working directory.</p>
 <p>Confirm:</p>
 <ul>
-<li>In the new window, run <code>pwd</code>. It probably says <code>/Users/yourname</code> — a fresh shell always starts at your home directory.</li>
+<li>In the new window, run <code>pwd</code>. It probably says <code>/Users/yourname</code> — a fresh terminal always starts at your home directory.</li>
 <li>In the old window, run <code>pwd</code>. It’s wherever you last <code>cd</code>’d to.</li>
 </ul>
 <p><strong>Two windows, two locations, one machine.</strong> Files you create in one are immediately visible from the other.</p>
@@ -980,9 +963,9 @@ Challenge: search <em>recursively</em> for <code>TODO</code> starting at the cur
 <section id="start-a-mini-web-server" class="level3">
 <h3 class="anchored" data-anchor-id="start-a-mini-web-server">7.2 Start a mini web server</h3>
 <p>In your original terminal, make sure you’re in the practice folder, then run:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/computer-literacy</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You’ll see something like <code>Serving HTTP on :: port 8000</code>. <strong>Your prompt is gone</strong> — Python is now running a small web server that serves the files in this folder over the network.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/computer-literacy</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> http.server 8000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You’ll see something like <code>Serving HTTP on :: port 8000</code>. <strong>Your prompt is gone</strong>. Python is now running a small web server that serves the files in this folder over the network.</p>
 <p>Open a web browser and go to <a href="http://localhost:8000" class="uri">http://localhost:8000</a>. You’ll see a listing of your practice folder — click <code>readme.txt</code> to view it, click into <code>data/</code> to see the CSVs, etc.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -995,16 +978,17 @@ What is <code>localhost</code>?
 </div>
 <div class="callout-body-container callout-body">
 <p><code>localhost</code> (a.k.a. <code>127.0.0.1</code>) is a special network name that always means <strong>“this same computer.”</strong> When a program serves at <code>localhost:8000</code>, it’s only reachable from your own machine — nobody on the internet can see it. That’s why local previews are safe.</p>
+<p>In practice <code>python3 -m http.server 8000</code> is not common for data scientists. However, <code>quarto preview</code> and <code>jupyter lab</code> (both commonly used by data scientists) behave similarly.</p>
 </div>
 </div>
 </section>
 <section id="why-the-second-terminal-matters" class="level3">
 <h3 class="anchored" data-anchor-id="why-the-second-terminal-matters">7.3 Why the second terminal matters</h3>
-<p>Your first terminal is “busy” running the web server. If you want to keep working — <code>ls</code>, <code>cd</code>, edit files — you <em>need</em> the second terminal window from 7.1. Try it: switch to the second window and run <code>ls</code> in the practice folder. It works, because that shell is independent.</p>
+<p>Your first terminal is “busy” running the web server. If you want to keep working. To use common commands including <code>ls</code>, <code>cd</code>, or to edit files you <em>need</em> the second terminal window from 7.1. Try it: switch to the second window and run <code>ls</code> in the practice folder. It works, because that terminal is independent.</p>
 </section>
 <section id="stopping-the-server" class="level3">
 <h3 class="anchored" data-anchor-id="stopping-the-server">7.4 Stopping the server</h3>
-<p>Switch back to the terminal running the server and press <strong><code>Control + C</code></strong>. The server stops, and your prompt returns. <code>Control + C</code> sends an “interrupt” signal — it’s the universal “please stop, program” keystroke.</p>
+<p>Switch back to the terminal running the server and press <kbd>Control</kbd> + <kbd>C</kbd>. The server stops, and your prompt returns. <kbd>Control</kbd> + <kbd>C</kbd> sends an “interrupt” signal — it’s the universal “please stop, program” keystroke.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1015,7 +999,7 @@ The same pattern applies to <code>quarto preview</code> and <code>jupyter lab</c
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>When you run <code>quarto preview</code> on a Quarto project (like this website), or <code>jupyter lab</code> / <code>jupyter notebook</code> to open notebooks, those tools <strong>also</strong> start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use <code>Control + C</code> to shut the server down when you’re done.</p>
+<p>When you run <code>quarto preview</code> on a Quarto project (like this website), or <code>jupyter lab</code> / <code>jupyter notebook</code> to open notebooks, those tools <strong>also</strong> start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use <kbd>Control</kbd> + <kbd>C</kbd> to shut the server down when you’re done.</p>
 </div>
 </div>
 <hr>
@@ -1023,62 +1007,34 @@ The same pattern applies to <code>quarto preview</code> and <code>jupyter lab</c
 </section>
 <section id="part-8-three-flavors-of-notebook" class="level2">
 <h2 class="anchored" data-anchor-id="part-8-three-flavors-of-notebook">Part 8 — Three flavors of notebook</h2>
-<p>A <strong>notebook</strong> is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague’s screen.</p>
+<p>A <strong>notebook</strong> (either Quarto or Jupyter) is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague’s screen.</p>
 <section id="jupyter-notebook-classic" class="level3">
 <h3 class="anchored" data-anchor-id="jupyter-notebook-classic">8.1 Jupyter Notebook (classic)</h3>
 <ul>
 <li><strong>File extension:</strong> <code>.ipynb</code></li>
-<li><strong>How you open it:</strong> run <code>jupyter notebook</code> in a terminal; a browser tab opens.</li>
-<li><strong>Feel:</strong> simple, one notebook per browser tab. The older interface.</li>
-<li><strong>File format under the hood:</strong> JSON. Not human-friendly to read as plain text, and hard to compare across versions.</li>
+<li><strong>How you open it:</strong> run <code>jupyter notebook</code> in a terminal; a browser tab opens opens with an empty notebook ready to edit.</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What does “under the hood” mean?
+Jupyter Notebook vs JupyterLab
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>“<strong>Under the hood</strong>” is an idiom borrowed from car mechanics. The <em>hood</em> of a car is the metal cover over the engine; to look “under the hood” is to see how the machine actually works, hidden from the ordinary driver. In writing about software, “under the hood” describes the internal mechanism of something — how a program actually stores its data, or how a feature is actually implemented — as opposed to the polished surface the user sees. When this guide says a <code>.ipynb</code> file is JSON <em>under the hood</em>, it means: the friendly notebook you see in your browser is, at bottom, stored on disk as a JSON document.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What is JSON?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>JSON</strong> (pronounced <em>jay-son</em>) stands for <strong>JavaScript Object Notation</strong>. It is a plain-text format for storing structured data — data with named fields, nested lists, and hierarchies. A JSON file looks something like <code>{"name": "Ada", "age": 36, "skills": ["math", "engineering"]}</code>. It is designed to be read and written by programs rather than by humans, and although it <em>is</em> technically plain text, a large JSON file is tedious to read directly. JSON is one of the two most common formats (alongside CSV) that programs and web services use to exchange data.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What does it mean to “compare across versions”?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Writers, researchers, and programmers routinely want to answer a very specific question: <strong>what changed between the earlier version of this file and the current one?</strong> Specialized tools produce a side-by-side or line-by-line report of the differences — such a report is often called a <em>diff</em>, from the word <em>difference</em>. Files that are stored as clean plain text (a <code>.qmd</code> file, a Python script, a Markdown document) produce readable diffs: you can see, line by line, exactly what was added, removed, or changed. Files that are stored in complicated binary or nested formats (a Jupyter <code>.ipynb</code> file, a Word document, a Photoshop file) produce diffs full of noise, because a small visible change on screen can cause many invisible changes in the underlying storage.</p>
+<p><strong>Jupyter Notebook</strong> (the “classic” interface) and <strong>JupyterLab</strong> are two different ways to use the same underlying notebook system.</p>
+<p>In practice it is now less common to use <code>jupyter notebook</code>. Instead focus your efforts on learning <code>jupyter lab</code>.</p>
 </div>
 </div>
 </section>
 <section id="jupyterlab" class="level3">
 <h3 class="anchored" data-anchor-id="jupyterlab">8.2 JupyterLab</h3>
 <ul>
-<li><strong>File extension:</strong> <em>still</em> <code>.ipynb</code> — same file format as classic Jupyter.</li>
+<li><strong>File extension:</strong> <em>still</em> <code>.ipynb</code> (same file format as classic Jupyter).</li>
 <li><strong>How you open it:</strong> run <code>jupyter lab</code> in a terminal.</li>
-<li><strong>Feel:</strong> a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.</li>
-<li><strong>Same version-comparison problem</strong> as classic Jupyter, because the underlying file format is identical.</li>
+<li><strong>Feels:</strong> more modern, IDE-like layout. File browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1090,7 +1046,8 @@ What is an IDE?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>IDE</strong> stands for <strong>Integrated Development Environment</strong>. It is a single application that bundles together the several tools a programmer typically needs — a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more — into one coordinated window. Popular IDEs you may encounter include Visual Studio Code, PyCharm, RStudio, and Xcode. JupyterLab is described as <em>IDE-like</em> because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.</p>
+<p><strong>IDE</strong> stands for <strong>Integrated Development Environment</strong>. It is a single application that bundles together the several tools a programmer typically needs such as a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more.</p>
+<p>Popular IDEs you may encounter include Devin, Cursor, Visual Studio Code, PyCharm, RStudio, and Xcode. JupyterLab is described as <em>IDE-like</em> because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.</p>
 </div>
 </div>
 </section>
@@ -1098,9 +1055,8 @@ What is an IDE?
 <h3 class="anchored" data-anchor-id="quarto-notebooks">8.3 Quarto notebooks</h3>
 <ul>
 <li><strong>File extension:</strong> <code>.qmd</code></li>
-<li><strong>How you open it:</strong> any text editor. To <em>render</em> it into a webpage or PDF, run <code>quarto render</code> or <code>quarto preview</code> in a terminal.</li>
-<li><strong>Feel:</strong> plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from <code>.qmd</code> files.</li>
-<li><strong>Version-comparison-friendly:</strong> because a <code>.qmd</code> file is plain text, comparing two versions of one is straightforward and readable.</li>
+<li><strong>How you open it:</strong> any text editor. To <em>render</em> it into a webpage or PDF, run <code>quarto render</code> or <code>quarto preview</code> in a terminal. During editing and building <code>quarto preview</code> is the superior choice because it gives you a live preview of your edits.</li>
+<li><strong>Feel:</strong> plain text considting of Markdown prose interleaved with code blocks. The website you are reading right now is built from <code>.qmd</code> files.</li>
 </ul>
 </section>
 <section id="quick-comparison" class="level3">
@@ -1159,26 +1115,6 @@ What is an IDE?
 </tr>
 </tbody>
 </table>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Try it: peek at a <code>.qmd</code> file with commands you already know
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-35" class="callout-35-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The pages you are reading are <code>.qmd</code> files. If you have downloaded the source of this website into a folder called <code>CompLitPractice</code>, try:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/CompLitPractice</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lhra</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> macos-extended.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Notice that a <code>.qmd</code> file is just readable text: ordinary Markdown, with <strong>code fences</strong> marking off the executable chunks.</p>
-</div>
-</div>
-</div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1323,7 +1259,7 @@ What are “code fences”?
 <li>D. Prints the previous working directory</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1332,7 +1268,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>B.</strong> <code>pwd</code> stands for “print working directory” — it tells you where you currently are in the filesystem.</p>
 </div>
@@ -1348,7 +1284,7 @@ Answer
 <li>D. They are the same directory</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1357,7 +1293,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> <code>~/Documents</code> lives inside <code>~</code>, so <code>~</code> is the parent and <code>~/Documents</code> is the child.</p>
 </div>
@@ -1373,7 +1309,7 @@ Answer
 <li>D. <code>ls -R</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1382,7 +1318,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> <code>-l</code> long form, <code>-h</code> human-readable sizes, <code>-r</code> reverse order, <code>-a</code> all files.</p>
 </div>
@@ -1398,7 +1334,7 @@ Answer
 <li>D. The Desktop</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1407,7 +1343,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> <code>~</code> is a shortcut for the current user’s home directory, e.g., <code>/Users/yourname</code>.</p>
 </div>
@@ -1423,7 +1359,7 @@ Answer
 <li>D. <code>/etc/hosts</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1432,7 +1368,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> Anything that doesn’t start with <code>/</code> (and isn’t <code>~</code>, which expands to an absolute path) is relative. <code>../notes.txt</code> refers to a file in the parent directory of wherever you currently are.</p>
 </div>
@@ -1448,7 +1384,7 @@ Answer
 <li>D. Prints an error — <code>-</code> is not a valid path</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1457,7 +1393,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> <code>cd -</code> jumps back to the last directory you were in, making it easy to hop between two locations.</p>
 </div>
@@ -1473,7 +1409,7 @@ Answer
 <li>D. <code>cd ~/Projects/computer-literacy</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1482,15 +1418,15 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>B.</strong> The <code>-p</code> flag tells <code>mkdir</code> to also create any missing parent directories, so it will make <code>~/Projects</code> for you if needed.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q8.-what-does-the-tab-key-do-at-the-shell-prompt" class="level3">
-<h3 class="anchored" data-anchor-id="q8.-what-does-the-tab-key-do-at-the-shell-prompt">Q8. What does the <code>Tab</code> key do at the shell prompt?</h3>
+<section id="q8.-what-does-the-tab-key-do-at-the-terminal-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="q8.-what-does-the-tab-key-do-at-the-terminal-prompt">Q8. What does the <code>Tab</code> key do at the terminal prompt?</h3>
 <ul>
 <li>A. Inserts four spaces</li>
 <li>B. Autocompletes filenames and command names</li>
@@ -1498,7 +1434,7 @@ Answer
 <li>D. Switches to another open terminal window</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1507,9 +1443,9 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-44" class="callout-44-contents callout-collapse collapse">
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> Tab completion is the single biggest quality-of-life feature of the shell. If Tab won’t complete a name, that name probably doesn’t exist where you think it does.</p>
+<p><strong>B.</strong> Tab completion is the single biggest quality-of-life feature of the terminal. If Tab won’t complete a name, that name probably doesn’t exist where you think it does.</p>
 </div>
 </div>
 </div>
@@ -1523,7 +1459,7 @@ Answer
 <li>D. <code>nano hello.txt</code> (without saving)</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1532,7 +1468,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>B.</strong> <code>touch</code> creates an empty file if the file doesn’t already exist.</p>
 </div>
@@ -1548,7 +1484,7 @@ Answer
 <li>D. <code>ln draft.txt final.txt</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1557,7 +1493,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> <code>mv</code> handles both moving and renaming — renaming is just moving from one path to another in the same directory.</p>
 </div>
@@ -1573,7 +1509,7 @@ Answer
 <li>D. A hidden file</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1582,7 +1518,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> A single dot always means “the current directory.” So this command moves <code>drafts/readme.txt</code> into wherever you are right now.</p>
 </div>
@@ -1598,7 +1534,7 @@ Answer
 <li>D. The root of the filesystem</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1607,7 +1543,7 @@ Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><strong>C.</strong> Two dots always mean “the parent directory.” <code>cd ..</code> moves up one level.</p>
 </div>
@@ -1623,6 +1559,106 @@ Answer
 <li>D. <code>touch drafts-backup</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> Copying a directory requires <code>-r</code> (recursive), because you’re copying the folder <em>and everything inside it</em>. Plain <code>cp</code> only works on individual files.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q14.-in-nano-which-shortcut-saves-the-file" class="level3">
+<h3 class="anchored" data-anchor-id="q14.-in-nano-which-shortcut-saves-the-file">Q14. In nano, which shortcut saves the file?</h3>
+<ul>
+<li>A. <code>Cmd + S</code></li>
+<li>B. <code>Control + S</code></li>
+<li>C. <code>Control + O</code></li>
+<li>D. <code>Control + X</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>C.</strong> In nano, <code>^O</code> (Control + O) writes the file — think “O for output.” <code>^X</code> exits.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q15.-in-nanos-on-screen-help-what-does-the-symbol-mean" class="level3">
+<h3 class="anchored" data-anchor-id="q15.-in-nanos-on-screen-help-what-does-the-symbol-mean">Q15. In nano’s on-screen help, what does the <code>^</code> symbol mean?</h3>
+<ul>
+<li>A. The Shift key</li>
+<li>B. The Control key</li>
+<li>C. The Option key</li>
+<li>D. The up arrow</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>^</code> is the traditional Unix shorthand for the Control key. So <code>^X</code> means Control + X.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q16.-why-should-you-avoid-running-cat-on-a-large-csv-file" class="level3">
+<h3 class="anchored" data-anchor-id="q16.-why-should-you-avoid-running-cat-on-a-large-csv-file">Q16. Why should you avoid running <code>cat</code> on a large CSV file?</h3>
+<ul>
+<li>A. It will corrupt the file</li>
+<li>B. It will dump thousands of lines into your terminal all at once</li>
+<li>C. <code>cat</code> doesn’t work on CSV files</li>
+<li>D. It will require administrator privileges</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-48" class="callout-48-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>B.</strong> <code>cat</code> prints the entire file to the terminal. For a big file that’s a flood of unreadable output. Use <code>head</code>, <code>less</code>, or <code>wc -l</code> instead.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="q17.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="level3">
+<h3 class="anchored" data-anchor-id="q17.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q17. You’re stuck inside <code>less</code> and want to get back to your normal prompt. What do you press?</h3>
+<ul>
+<li>A. <code>Control + C</code></li>
+<li>B. <code>q</code></li>
+<li>C. <code>Escape</code></li>
+<li>D. <code>Control + X</code></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1634,18 +1670,18 @@ Answer
 </div>
 <div id="callout-49" class="callout-49-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> Copying a directory requires <code>-r</code> (recursive), because you’re copying the folder <em>and everything inside it</em>. Plain <code>cp</code> only works on individual files.</p>
+<p><strong>B.</strong> In <code>less</code> (and in <code>man</code> pages, which use the same viewer), pressing <code>q</code> quits back to the terminal.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q14.-what-is-the-biggest-danger-of-rm" class="level3">
-<h3 class="anchored" data-anchor-id="q14.-what-is-the-biggest-danger-of-rm">Q14. What is the biggest danger of <code>rm</code>?</h3>
+<section id="q20.-what-does-wc--l-data.csv-report" class="level3">
+<h3 class="anchored" data-anchor-id="q20.-what-does-wc--l-data.csv-report">Q20. What does <code>wc -l data.csv</code> report?</h3>
 <ul>
-<li>A. It requires an internet connection</li>
-<li>B. It’s slow on large files</li>
-<li>C. It permanently deletes files with no Trash and no undo</li>
-<li>D. It only works on files inside your home directory</li>
+<li>A. The number of words in the file</li>
+<li>B. The number of characters in the file</li>
+<li>C. The number of lines in the file</li>
+<li>D. The file size in bytes</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
@@ -1659,18 +1695,18 @@ Answer
 </div>
 <div id="callout-50" class="callout-50-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> <code>rm</code> bypasses the Trash entirely. There is no undo. Read every <code>rm</code> command twice.</p>
+<p><strong>C.</strong> <code>wc</code> is “word count,” and the <code>-l</code> flag switches it to counting lines. Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q15.-in-nano-which-shortcut-saves-the-file" class="level3">
-<h3 class="anchored" data-anchor-id="q15.-in-nano-which-shortcut-saves-the-file">Q15. In nano, which shortcut saves the file?</h3>
+<section id="q21.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="level3">
+<h3 class="anchored" data-anchor-id="q21.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q21. Which command downloads a file from a URL and saves it using the filename from that URL?</h3>
 <ul>
-<li>A. <code>Cmd + S</code></li>
-<li>B. <code>Control + S</code></li>
-<li>C. <code>Control + O</code></li>
-<li>D. <code>Control + X</code></li>
+<li>A. <code>wget url</code></li>
+<li>B. <code>curl url</code></li>
+<li>C. <code>curl -O url</code></li>
+<li>D. <code>download url</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
@@ -1684,18 +1720,18 @@ Answer
 </div>
 <div id="callout-51" class="callout-51-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> In nano, <code>^O</code> (Control + O) writes the file — think “O for output.” <code>^X</code> exits.</p>
+<p><strong>C.</strong> Plain <code>curl url</code> prints the response to the terminal. The <code>-O</code> flag (capital O) tells <code>curl</code> to save the response as a file, using the name from the URL.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q16.-in-nanos-on-screen-help-what-does-the-symbol-mean" class="level3">
-<h3 class="anchored" data-anchor-id="q16.-in-nanos-on-screen-help-what-does-the-symbol-mean">Q16. In nano’s on-screen help, what does the <code>^</code> symbol mean?</h3>
+<section id="q22.-what-is-a-csv-file" class="level3">
+<h3 class="anchored" data-anchor-id="q22.-what-is-a-csv-file">Q22. What is a CSV file?</h3>
 <ul>
-<li>A. The Shift key</li>
-<li>B. The Control key</li>
-<li>C. The Option key</li>
-<li>D. The up arrow</li>
+<li>A. A compressed archive of spreadsheets</li>
+<li>B. A binary format for storing databases</li>
+<li>C. A plain-text file where each row is a line and columns are separated by commas</li>
+<li>D. A Microsoft Excel workbook</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
@@ -1709,18 +1745,18 @@ Answer
 </div>
 <div id="callout-52" class="callout-52-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> <code>^</code> is the traditional Unix shorthand for the Control key. So <code>^X</code> means Control + X.</p>
+<p><strong>C.</strong> “CSV” = comma-separated values. It’s plain text, portable, and readable by virtually every data tool.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q17.-why-should-you-avoid-running-cat-on-a-large-csv-file" class="level3">
-<h3 class="anchored" data-anchor-id="q17.-why-should-you-avoid-running-cat-on-a-large-csv-file">Q17. Why should you avoid running <code>cat</code> on a large CSV file?</h3>
+<section id="q23.-what-does-head--n-20-data.csv-sample.csv-do" class="level3">
+<h3 class="anchored" data-anchor-id="q23.-what-does-head--n-20-data.csv-sample.csv-do">Q23. What does <code>head -n 20 data.csv &gt; sample.csv</code> do?</h3>
 <ul>
-<li>A. It will corrupt the file</li>
-<li>B. It will dump thousands of lines into your terminal all at once</li>
-<li>C. <code>cat</code> doesn’t work on CSV files</li>
-<li>D. It will require administrator privileges</li>
+<li>A. Prints the first 20 lines to the terminal <em>and</em> to <code>sample.csv</code></li>
+<li>B. Appends the first 20 lines of <code>data.csv</code> to <code>sample.csv</code></li>
+<li>C. Writes the first 20 lines of <code>data.csv</code> into <code>sample.csv</code>, overwriting <code>sample.csv</code> if it exists</li>
+<li>D. Renames <code>data.csv</code> to <code>sample.csv</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-53-contents" aria-controls="callout-53" aria-expanded="false" aria-label="Toggle callout">
@@ -1734,18 +1770,18 @@ Answer
 </div>
 <div id="callout-53" class="callout-53-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> <code>cat</code> prints the entire file to the terminal. For a big file that’s a flood of unreadable output. Use <code>head</code>, <code>less</code>, or <code>wc -l</code> instead.</p>
+<p><strong>C.</strong> <code>&gt;</code> is the redirection operator: send the output that would have printed into a file. It overwrites the target silently — no confirmation prompt.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q18.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press" class="level3">
-<h3 class="anchored" data-anchor-id="q18.-youre-stuck-inside-less-and-want-to-get-back-to-your-normal-prompt.-what-do-you-press">Q18. You’re stuck inside <code>less</code> and want to get back to your normal prompt. What do you press?</h3>
+<section id="q24.-whats-the-difference-between-and" class="level3">
+<h3 class="anchored" data-anchor-id="q24.-whats-the-difference-between-and">Q24. What’s the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</h3>
 <ul>
-<li>A. <code>Control + C</code></li>
-<li>B. <code>q</code></li>
-<li>C. <code>Escape</code></li>
-<li>D. <code>Control + X</code></li>
+<li>A. <code>&gt;</code> prints to the screen; <code>&gt;&gt;</code> writes to a file</li>
+<li>B. <code>&gt;</code> overwrites the target file; <code>&gt;&gt;</code> appends to the target file</li>
+<li>C. <code>&gt;</code> works on files; <code>&gt;&gt;</code> works on directories</li>
+<li>D. They are identical</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-54-contents" aria-controls="callout-54" aria-expanded="false" aria-label="Toggle callout">
@@ -1759,18 +1795,18 @@ Answer
 </div>
 <div id="callout-54" class="callout-54-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> In <code>less</code> (and in <code>man</code> pages, which use the same viewer), pressing <code>q</code> quits back to the shell.</p>
+<p><strong>B.</strong> Single <code>&gt;</code> overwrites (silently!); double <code>&gt;&gt;</code> appends onto the end of an existing file (or creates it if it doesn’t exist).</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q19.-what-does-wc--l-data.csv-report" class="level3">
-<h3 class="anchored" data-anchor-id="q19.-what-does-wc--l-data.csv-report">Q19. What does <code>wc -l data.csv</code> report?</h3>
+<section id="q25.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="q25.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers">Q25. Which command searches recursively for the text <code>TODO</code> starting from the current directory, showing line numbers?</h3>
 <ul>
-<li>A. The number of words in the file</li>
-<li>B. The number of characters in the file</li>
-<li>C. The number of lines in the file</li>
-<li>D. The file size in bytes</li>
+<li>A. <code>grep TODO</code></li>
+<li>B. <code>grep -n TODO</code></li>
+<li>C. <code>grep -r TODO</code></li>
+<li>D. <code>grep -rn TODO .</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
@@ -1784,18 +1820,18 @@ Answer
 </div>
 <div id="callout-55" class="callout-55-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> <code>wc</code> is “word count,” and the <code>-l</code> flag switches it to counting lines. Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).</p>
+<p><strong>D.</strong> <code>-r</code> recursive, <code>-n</code> line numbers, <code>.</code> = start from the current directory. Together these are how you find every leftover TODO in a project.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url" class="level3">
-<h3 class="anchored" data-anchor-id="q20.-which-command-downloads-a-file-from-a-url-and-saves-it-using-the-filename-from-that-url">Q20. Which command downloads a file from a URL and saves it using the filename from that URL?</h3>
+<section id="q26.-which-grep-flag-makes-the-search-case-insensitive" class="level3">
+<h3 class="anchored" data-anchor-id="q26.-which-grep-flag-makes-the-search-case-insensitive">Q26. Which <code>grep</code> flag makes the search case-insensitive?</h3>
 <ul>
-<li>A. <code>wget url</code></li>
-<li>B. <code>curl url</code></li>
-<li>C. <code>curl -O url</code></li>
-<li>D. <code>download url</code></li>
+<li>A. <code>-c</code></li>
+<li>B. <code>-i</code></li>
+<li>C. <code>-v</code></li>
+<li>D. <code>-x</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
@@ -1809,18 +1845,18 @@ Answer
 </div>
 <div id="callout-56" class="callout-56-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> Plain <code>curl url</code> prints the response to the terminal. The <code>-O</code> flag (capital O) tells <code>curl</code> to save the response as a file, using the name from the URL.</p>
+<p><strong>B.</strong> <code>-i</code> makes the pattern case-insensitive, so <code>grep -i todo</code> matches <code>TODO</code>, <code>Todo</code>, and <code>todo</code>.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q21.-what-is-a-csv-file" class="level3">
-<h3 class="anchored" data-anchor-id="q21.-what-is-a-csv-file">Q21. What is a CSV file?</h3>
+<section id="q27.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" class="level3">
+<h3 class="anchored" data-anchor-id="q27.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time">Q27. Why would you ever want two terminal windows open at the same time?</h3>
 <ul>
-<li>A. A compressed archive of spreadsheets</li>
-<li>B. A binary format for storing databases</li>
-<li>C. A plain-text file where each row is a line and columns are separated by commas</li>
-<li>D. A Microsoft Excel workbook</li>
+<li>A. To run commands faster in parallel (at the same time)</li>
+<li>B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work</li>
+<li>C. Because macOS requires it</li>
+<li>D. To share files between windows</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
@@ -1834,18 +1870,18 @@ Answer
 </div>
 <div id="callout-57" class="callout-57-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> “CSV” = comma-separated values. It’s plain text, portable, and readable by virtually every data tool.</p>
+<p><strong>B.</strong> Long-running processes — web servers, <code>quarto preview</code>, <code>jupyter lab</code>, <code>less</code>, nano — keep the first terminal busy. A second window gives you a place to keep working.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q22.-what-does-head--n-20-data.csv-sample.csv-do" class="level3">
-<h3 class="anchored" data-anchor-id="q22.-what-does-head--n-20-data.csv-sample.csv-do">Q22. What does <code>head -n 20 data.csv &gt; sample.csv</code> do?</h3>
+<section id="q28.-what-is-localhost" class="level3">
+<h3 class="anchored" data-anchor-id="q28.-what-is-localhost">Q28. What is <code>localhost</code>?</h3>
 <ul>
-<li>A. Prints the first 20 lines to the terminal <em>and</em> to <code>sample.csv</code></li>
-<li>B. Appends the first 20 lines of <code>data.csv</code> to <code>sample.csv</code></li>
-<li>C. Writes the first 20 lines of <code>data.csv</code> into <code>sample.csv</code>, overwriting <code>sample.csv</code> if it exists</li>
-<li>D. Renames <code>data.csv</code> to <code>sample.csv</code></li>
+<li>A. A public web server you can share with others</li>
+<li>B. A special name that always refers to <em>your own</em> computer</li>
+<li>C. The name of the terminal application</li>
+<li>D. Another word for <code>~</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
@@ -1859,18 +1895,18 @@ Answer
 </div>
 <div id="callout-58" class="callout-58-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>C.</strong> <code>&gt;</code> is the redirection operator: send the output that would have printed into a file. It overwrites the target silently — no confirmation prompt.</p>
+<p><strong>B.</strong> <code>localhost</code> (a.k.a. <code>127.0.0.1</code>) means “this same machine.” A server running at <code>localhost:8000</code> is only reachable from your own computer.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q23.-whats-the-difference-between-and" class="level3">
-<h3 class="anchored" data-anchor-id="q23.-whats-the-difference-between-and">Q23. What’s the difference between <code>&gt;</code> and <code>&gt;&gt;</code>?</h3>
+<section id="q29.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="level3">
+<h3 class="anchored" data-anchor-id="q29.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q29. You’re running <code>python3 -m http.server 8000</code> and want to stop it. What do you press?</h3>
 <ul>
-<li>A. <code>&gt;</code> prints to the screen; <code>&gt;&gt;</code> writes to a file</li>
-<li>B. <code>&gt;</code> overwrites the target file; <code>&gt;&gt;</code> appends to the target file</li>
-<li>C. <code>&gt;</code> works on files; <code>&gt;&gt;</code> works on directories</li>
-<li>D. They are identical</li>
+<li>A. <code>q</code></li>
+<li>B. <code>Control + X</code></li>
+<li>C. <code>Control + C</code></li>
+<li>D. <code>Escape</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
@@ -1884,18 +1920,18 @@ Answer
 </div>
 <div id="callout-59" class="callout-59-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>B.</strong> Single <code>&gt;</code> overwrites (silently!); double <code>&gt;&gt;</code> appends onto the end of an existing file (or creates it if it doesn’t exist).</p>
+<p><strong>C.</strong> <code>Control + C</code> sends an “interrupt” signal — the universal “please stop, program” keystroke for most running commands.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="q24.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers" class="level3">
-<h3 class="anchored" data-anchor-id="q24.-which-command-searches-recursively-for-the-text-todo-starting-from-the-current-directory-showing-line-numbers">Q24. Which command searches recursively for the text <code>TODO</code> starting from the current directory, showing line numbers?</h3>
+<section id="q30.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="level3">
+<h3 class="anchored" data-anchor-id="q30.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q30. Classic Jupyter Notebook and JupyterLab open which file extension?</h3>
 <ul>
-<li>A. <code>grep TODO</code></li>
-<li>B. <code>grep -n TODO</code></li>
-<li>C. <code>grep -r TODO</code></li>
-<li>D. <code>grep -rn TODO .</code></li>
+<li>A. <code>.qmd</code></li>
+<li>B. <code>.py</code></li>
+<li>C. <code>.ipynb</code></li>
+<li>D. <code>.html</code></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-60-contents" aria-controls="callout-60" aria-expanded="false" aria-label="Toggle callout">
@@ -1909,157 +1945,7 @@ Answer
 </div>
 <div id="callout-60" class="callout-60-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>D.</strong> <code>-r</code> recursive, <code>-n</code> line numbers, <code>.</code> = start from the current directory. Together these are how you find every leftover TODO in a project.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q25.-which-grep-flag-makes-the-search-case-insensitive" class="level3">
-<h3 class="anchored" data-anchor-id="q25.-which-grep-flag-makes-the-search-case-insensitive">Q25. Which <code>grep</code> flag makes the search case-insensitive?</h3>
-<ul>
-<li>A. <code>-c</code></li>
-<li>B. <code>-i</code></li>
-<li>C. <code>-v</code></li>
-<li>D. <code>-x</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-61-contents" aria-controls="callout-61" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-61" class="callout-61-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>B.</strong> <code>-i</code> makes the pattern case-insensitive, so <code>grep -i todo</code> matches <code>TODO</code>, <code>Todo</code>, and <code>todo</code>.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q26.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time" class="level3">
-<h3 class="anchored" data-anchor-id="q26.-why-would-you-ever-want-two-terminal-windows-open-at-the-same-time">Q26. Why would you ever want two terminal windows open at the same time?</h3>
-<ul>
-<li>A. To run commands faster in parallel (at the same time)</li>
-<li>B. Because some commands (like a local web server) take over the prompt, so you need a second shell for other work</li>
-<li>C. Because macOS requires it</li>
-<li>D. To share files between windows</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-62-contents" aria-controls="callout-62" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-62" class="callout-62-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>B.</strong> Long-running processes — web servers, <code>quarto preview</code>, <code>jupyter lab</code>, <code>less</code>, nano — keep the first terminal busy. A second window gives you a place to keep working.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q27.-what-is-localhost" class="level3">
-<h3 class="anchored" data-anchor-id="q27.-what-is-localhost">Q27. What is <code>localhost</code>?</h3>
-<ul>
-<li>A. A public web server you can share with others</li>
-<li>B. A special name that always refers to <em>your own</em> computer</li>
-<li>C. The name of the terminal application</li>
-<li>D. Another word for <code>~</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-63-contents" aria-controls="callout-63" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-63" class="callout-63-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>B.</strong> <code>localhost</code> (a.k.a. <code>127.0.0.1</code>) means “this same machine.” A server running at <code>localhost:8000</code> is only reachable from your own computer.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q28.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press" class="level3">
-<h3 class="anchored" data-anchor-id="q28.-youre-running-python3--m-http.server-8000-and-want-to-stop-it.-what-do-you-press">Q28. You’re running <code>python3 -m http.server 8000</code> and want to stop it. What do you press?</h3>
-<ul>
-<li>A. <code>q</code></li>
-<li>B. <code>Control + X</code></li>
-<li>C. <code>Control + C</code></li>
-<li>D. <code>Escape</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-64" class="callout-64-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>C.</strong> <code>Control + C</code> sends an “interrupt” signal — the universal “please stop, program” keystroke for most running commands.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension" class="level3">
-<h3 class="anchored" data-anchor-id="q29.-classic-jupyter-notebook-and-jupyterlab-open-which-file-extension">Q29. Classic Jupyter Notebook and JupyterLab open which file extension?</h3>
-<ul>
-<li>A. <code>.qmd</code></li>
-<li>B. <code>.py</code></li>
-<li>C. <code>.ipynb</code></li>
-<li>D. <code>.html</code></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-65-contents" aria-controls="callout-65" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-65" class="callout-65-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <p><strong>C.</strong> Both tools use the same <code>.ipynb</code> notebook file format — JupyterLab is essentially a more modern editor for the same files.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file" class="level3">
-<h3 class="anchored" data-anchor-id="q30.-why-is-it-easier-to-see-what-changed-between-two-versions-of-a-.qmd-file-than-between-two-versions-of-a-.ipynb-file">Q30. Why is it easier to see what changed between two versions of a <code>.qmd</code> file than between two versions of a <code>.ipynb</code> file?</h3>
-<ul>
-<li>A. Because Quarto is newer software.</li>
-<li>B. Because <code>.qmd</code> files are plain text (Markdown), while <code>.ipynb</code> files are stored as JSON.</li>
-<li>C. Because Quarto files are always smaller.</li>
-<li>D. Because macOS has a special mode for Quarto.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-66-contents" aria-controls="callout-66" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-66" class="callout-66-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>B.</strong> A <code>.qmd</code> file is Markdown — ordinary readable text with code fences. Comparing two versions produces a clear, line-by-line report of what changed. A <code>.ipynb</code> file is a JSON document that also stores hidden information about each cell and each run, so even a small visible change on screen can cause many invisible changes in the file, making the comparison noisy and hard to read.</p>
 </div>
 </div>
 </div>

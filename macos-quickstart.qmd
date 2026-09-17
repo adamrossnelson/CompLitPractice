@@ -17,13 +17,13 @@ Press `Cmd + Space` to open Spotlight search (the magnifying-glass icon at the t
 When Terminal first opens you will see a line of text that looks something like this:
 
 ```
-yourname@Adams-MacBook-Pro ~ %
+yourname@Your-MacBook-Pro ~ %
 ```
 
 Reading it left to right:
 
 - `yourname` — the account you are logged in as.
-- `Adams-MacBook-Pro` — the name of your machine.
+- `Your-MacBook-Pro` — the name of your machine.
 - `~` — the current directory. `~` (a tilde) always means *your home directory*, which on macOS is `/Users/yourname`.
 - `%` — the end of the prompt. Everything you type will appear after it, on the same line.
 
@@ -258,3 +258,255 @@ Almost everything you do in the Terminal benefits from <kbd>Tab</kbd> completion
 ---
 
 That is the quick start. If you want deeper explanations of every command, more challenges, and a 30-question review, work through the [Extended walkthrough](macos-extended.qmd).
+
+---
+
+## 7. Check your understanding
+
+Twenty multiple-choice questions covering everything above. Try to answer each one from memory, then click to reveal the correct answer with a short explanation.
+
+### Q1. How do you open the Terminal on macOS?
+
+- A. Right-click on the Desktop and choose "New Terminal."
+- B. Press <kbd>Cmd</kbd> + <kbd>Space</kbd>, type `Terminal`, and press <kbd>Return</kbd>.
+- C. Double-click any file in Finder.
+- D. Open System Preferences and click the terminal icon.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Spotlight search is the fastest way to launch any macOS application, including Terminal.
+:::
+
+### Q2. What does the `~` symbol stand for in a path?
+
+- A. The Desktop folder.
+- B. The current working directory.
+- C. Your home directory (`/Users/yourname`).
+- D. The root of the filesystem.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `~` is a shortcut for your home directory. Every user account on the machine has its own `~`.
+:::
+
+### Q3. What does `pwd` do?
+
+- A. Prompts you for a password.
+- B. Prints the path of the current working directory.
+- C. Prints the contents of the current directory.
+- D. Changes your password.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `pwd` stands for "print working directory." It tells you which folder you are currently sitting in.
+:::
+
+### Q4. What does `ls` do?
+
+- A. Lists the contents of the current directory.
+- B. Logs you out of the shell.
+- C. Locks the screen.
+- D. Loads a saved session.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**A.** `ls` is short for "list." It shows every file and folder in the current directory.
+:::
+
+### Q5. What does the `-a` flag add to `ls -lhra`?
+
+- A. It sorts alphabetically.
+- B. It shows all files, including hidden ones (names starting with `.`).
+- C. It archives the output.
+- D. It shows only files, not folders.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `-a` stands for "all." Without it, files and folders whose names start with a dot are kept out of the listing.
+:::
+
+### Q6. What does the <kbd>Tab</kbd> key do at the shell prompt?
+
+- A. Inserts four spaces of indentation.
+- B. Autocompletes the file or folder name you have started typing.
+- C. Switches to another open Terminal tab.
+- D. Runs the command on the current line.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** <kbd>Tab</kbd> autocompletion is the single most useful time-saving feature of the shell.
+:::
+
+### Q7. You type `cat notepa` and press <kbd>Tab</kbd>. Nothing happens. What is the most likely reason?
+
+- A. Your keyboard is broken.
+- B. There is no file starting with `notepa` in the current directory.
+- C. `cat` does not support tab completion.
+- D. You need to press <kbd>Tab</kbd> twice.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** If <kbd>Tab</kbd> refuses to complete a name, the file or folder is not where you think it is. <kbd>Tab</kbd> is a check on reality as much as a shortcut.
+:::
+
+### Q8. You are already inside `~/Desktop` and want to preview a file called `notes.txt` that lives there. Which of these is the *simplest* correct command?
+
+- A. `cat ~/Desktop/notes.txt`
+- B. `cat notes.txt`
+- C. `cat /Users/yourname/Desktop/notes.txt`
+- D. `cat ../Desktop/notes.txt`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** When the file you want lives inside the directory you are already in, no path prefix is needed. All four commands would work, but only B takes advantage of the relative path.
+:::
+
+### Q9. What is a relative path?
+
+- A. A path that starts with `/`.
+- B. A path understood in terms of your current working directory.
+- C. A path that only works on your own machine.
+- D. A path that has been recently modified.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** A relative path is measured from wherever you currently are. `notes.txt` and `drafts/readme.txt` are relative paths.
+:::
+
+### Q10. Which command creates a new folder called `quick_look` inside the current directory?
+
+- A. `touch quick_look`
+- B. `cd quick_look`
+- C. `mkdir quick_look`
+- D. `ls quick_look`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `mkdir` stands for "make directory."
+:::
+
+### Q11. You are inside `~/Desktop/quick_look` and want to move up one level to `~/Desktop`. What is the shortest way?
+
+- A. `cd ~/Desktop`
+- B. `cd ..`
+- C. `cd /Users/yourname/Desktop`
+- D. `cd -`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `..` always means "the parent of where I am now." `cd ..` is shorter, more general, and works no matter what the parent folder happens to be called.
+:::
+
+### Q12. In nano, which shortcut *saves* the file you are editing?
+
+- A. <kbd>Cmd</kbd> + <kbd>S</kbd>
+- B. <kbd>Control</kbd> + <kbd>S</kbd>
+- C. <kbd>Control</kbd> + <kbd>O</kbd>
+- D. <kbd>Control</kbd> + <kbd>X</kbd>
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** In nano, `^O` (<kbd>Control</kbd> + <kbd>O</kbd>) writes the file to disk. Think "O for output."
+:::
+
+### Q13. In nano, which shortcut *exits* the editor and returns you to the shell?
+
+- A. <kbd>Cmd</kbd> + <kbd>Q</kbd>
+- B. <kbd>Control</kbd> + <kbd>C</kbd>
+- C. <kbd>Control</kbd> + <kbd>X</kbd>
+- D. <kbd>Escape</kbd>
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `^X` (<kbd>Control</kbd> + <kbd>X</kbd>) exits nano. If you have unsaved changes, nano will prompt you to save first.
+:::
+
+### Q14. What does `cat ReadMe.txt` do?
+
+- A. Opens the file in nano for editing.
+- B. Copies the file to a new location.
+- C. Prints the contents of the file straight to the Terminal.
+- D. Displays a picture of a cat.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `cat` is the fastest way to preview a short file's contents without opening any editor.
+:::
+
+### Q15. Besides nano, which of these commands would *also* open `ReadMe.txt` in an editor?
+
+- A. `open -e ReadMe.txt`
+- B. `code ReadMe.txt`
+- C. `vim ReadMe.txt`
+- D. All of the above.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**D.** `open -e` launches TextEdit (built into macOS), `code` launches Visual Studio Code (if installed), and `vim` launches Vim (also built into macOS). nano is just the friendliest choice for a beginner.
+:::
+
+### Q16. Which command moves a folder called `quick_look` from your Desktop to `~/Projects`?
+
+- A. `cp quick_look ~/Projects/`
+- B. `mv quick_look ~/Projects/`
+- C. `mkdir ~/Projects/quick_look`
+- D. `ls ~/Projects/quick_look`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `mv` moves (or renames) files and folders. `cp` would leave a copy behind on the Desktop.
+:::
+
+### Q17. Which command searches every file in the current folder and all folders inside it for `TODO`, `Todo`, or `todo`, and shows the line number of each match?
+
+- A. `grep TODO .`
+- B. `grep -n TODO .`
+- C. `grep -r TODO .`
+- D. `grep -rni todo .`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**D.** `-r` searches recursively, `-n` includes line numbers, `-i` makes the match case-insensitive, and `.` starts the search at the current directory.
+:::
+
+### Q18. You run a recursive TODO search and see this line of output:
+
+```
+./ReadMe.txt:5:TODO: figure out what this project does
+```
+
+What does the `5` mean?
+
+- A. There are 5 total matches in this file.
+- B. The match is on line 5 of `ReadMe.txt`.
+- C. The file is 5 kilobytes.
+- D. The match happened 5 seconds ago.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** The output format is *filename*`:`*line number*`:`*matching line*. That is exactly the information you need to jump to the right place in your editor.
+:::
+
+### Q19. Why would you ever want two or three Terminal tabs open at the same time?
+
+- A. To make the Terminal window look bigger.
+- B. Because some commands (such as `quarto preview` or `jupyter lab`) take over the prompt while they run, so you need another tab for other work.
+- C. Because macOS requires it.
+- D. To duplicate your files.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Long-running commands keep the tab that started them busy until you stop them. Additional tabs give you a place to keep working in the meantime.
+:::
+
+### Q20. You have `quarto preview` running in Tab 2 and want to stop it. What do you press?
+
+- A. <kbd>q</kbd>
+- B. <kbd>Cmd</kbd> + <kbd>Q</kbd>
+- C. <kbd>Control</kbd> + <kbd>C</kbd>
+- D. <kbd>Escape</kbd>
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** <kbd>Control</kbd> + <kbd>C</kbd> sends a stop request. It is the standard way to tell any running command-line program to stop.
+:::

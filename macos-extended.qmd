@@ -2,7 +2,7 @@
 title: "MacOS Command-Line Walkthrough Extended"
 ---
 
-This is a self-paced, ~2.5 hour hands-on walkthrough. Work through the parts in order — later parts assume you've done the earlier ones.
+This is a self-paced, ~2.5 hour hands-on walkthrough. Work through the parts in order. Later parts assume you've done the earlier ones.
 
 **Open the Terminal now** before reading further: press `Cmd + Space` to open Spotlight, type `Terminal`, and hit `Return`. A window with a text prompt appears. That is where you'll type every command in this guide.
 
@@ -13,7 +13,7 @@ The **prompt** is the short bit of text the terminal shows when it is waiting fo
 
 ::: {.callout-note}
 ## Vocabulary as we go
-Words like *directory*, *parent*, *child*, `~`, and *absolute path* get introduced in short callouts the first time they appear. Don't skip the callouts — they're the point.
+Words like *directory*, *parent*, *child*, `~`, and *absolute path* get introduced in short callouts the first time they appear. Don't skip the callouts. The callouts are an important component of this walkthrough.
 :::
 
 ---
@@ -28,7 +28,7 @@ Type this exactly and press `Return`:
 pwd
 ```
 
-`pwd` stands for **"print working directory."** The terminal always has a *current working directory* — a folder it considers "where you are right now." Every command you run acts relative to that location unless you tell it otherwise.
+`pwd` stands for **"print working directory."** The terminal always has a *current working directory*. The current working directory is a folder the terminal considers "where you are right now." Every command you run acts relative to that location unless you tell it otherwise.
 
 You'll see something like `/Users/yourname`. That's your **home directory**.
 
@@ -67,17 +67,17 @@ Memorize that combination — `-lhra`. It's four flags smooshed together:
 
 ::: {.callout-note}
 ## What is a "flag"?
-A **flag** (also sometimes called an *option* or a *switch*) is a short modifier you add after a command to change how that command behaves. Flags almost always begin with a hyphen: `-l`, `-a`, `-r`, `-h`. When several single-letter flags are combined, they are usually written together after one hyphen — so `-lhra` is the same as writing `-l -h -r -a` separately. Learning a command means, in large part, learning which flags are worth memorizing.
+A **flag** (also sometimes called an *option* or a *switch*) is a short modifier you add after a command to change how that command behaves. Flags almost always begin with a hyphen: `-l`, `-a`, `-r`, `-h`. When several single-letter flags are combined, they are usually written together after one hyphen. This means `-lhra` is the same as writing `-l -h -r -a` separately. Learning a command means, in large part, learning which flags are worth memorizing.
 :::
 
 ::: {.callout-note}
 ## Hidden files
-Any file or directory whose name starts with a `.` is hidden by default. `.zshrc`, `.git`, `.DS_Store` are all hidden. Plain `ls` won't show them — `ls -a` will.
+Any file or directory whose name starts with a `.` is hidden by default. `.zshrc`, `.git`, `.DS_Store` are all hidden. Plain `ls` won't show them. Instead `ls -a` will show them.
 :::
 
 ::: {.callout-tip collapse="true"}
 ## Try it: What hidden files are in your home directory?
-Run `ls -lhra ~` and read the leftmost column of names. You'll likely see things like `.zshrc`, `.zsh_history`, `.gitconfig`, `.DS_Store`. These are configuration and system files — leave them alone for now, but know they exist.
+Run `ls -lhra ~` and read the leftmost column of names. You'll likely see things like `.zshrc`, `.zsh_history`, `.gitconfig`, `.DS_Store`. These are configuration and system files. Leave the hidden configuration files alone for now, but know they exist.
 :::
 
 ### 1.4 Moving around: `cd`
@@ -104,7 +104,7 @@ What each did:
 
 ::: {.callout-note}
 ## What is an "argument"?
-An **argument** is an extra word you type after a command to tell it what to act on. In `cd ~/Desktop`, the string `~/Desktop` is the argument — it tells `cd` where to go. In `ls -lhra ~`, the flags `-lhra` and the path `~` are both arguments. Some commands (like `pwd`) take no arguments at all; some accept several; some accept optional arguments and fall back to a default when none is given (as `cd` falls back to sending you home).
+An **argument** is an extra word you type after a command to tell it what to act on. In `cd ~/Desktop`, the string `~/Desktop` is the argument (a path argument to be more speciric). In this case the path argument tells `cd` where to go. In `ls -lhra ~`, the flags `-lhra` and the path `~` are both arguments. Some commands (like `pwd`) take no arguments at all; some accept several; some accept optional arguments and fall back to a default when none is given (as `cd` falls back to sending you home).
 :::
 
 ::: {.callout-note}
@@ -114,27 +114,22 @@ Directories form a **tree**. If `Desktop` lives inside `/Users/jsmith`, then `/U
 
 ::: {.callout-note}
 ## What is a "path"?
-A **path** is the address of a file or a directory on your computer — the sequence of directory names, separated by slashes, that tells the system exactly where to find that item. `/Users/jsmith/Desktop/notes.txt` is a path; so is `drafts/readme.txt`; so is `..`. Almost every command that touches a file or folder takes a path as one of its arguments.
+A **path** is the address of a file or a directory on your computer. The sequence of directory names, separated by slashes (`/`), that tells the system exactly where to find that item. `/Users/jsmith/Desktop/notes.txt` is a path; so is `drafts/readme.txt`; so is `..`. Almost every command that touches a file or folder takes a path as one of its arguments.
 :::
 
 ::: {.callout-note}
 ## Absolute vs. relative paths
-- An **absolute path** starts with `/` (or `~`, which expands to an absolute path). It works no matter where you currently are. Example: `/Users/jsmith/Desktop/notes.txt`.
-- A **relative path** does *not* start with `/`. It's interpreted relative to your current working directory. If you're in `~/Desktop`, then `notes.txt` refers to `~/Desktop/notes.txt`.
+- An **absolute path** starts with `/`.
+- A **relative path** does *not* start with `/`. It's interpreted relative to your current working directory.
 
 When a command "can't find" a file, the #1 cause is confusing relative and absolute paths.
 :::
 
 ### 1.5 Tab completion — the single best trick
 
-::: {.callout-note}
-## What is the "shell"?
-The **shell** is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. When this guide says "the shell will complete it," it means the program that is listening to your keystrokes. On modern macOS, the default shell is called `zsh`; on older Macs it was `bash`. The differences between shells matter to advanced users but hardly at all to beginners — for our purposes, "the shell" and "the terminal" can be used almost interchangeably.
-:::
+Type `cd ~/Doc` and then, before pressing Return, press the **Tab** key. The terminal will complete it to `~/Documents/` for you.
 
-Type `cd ~/Doc` and then, before pressing Return, press the **Tab** key. The shell will complete it to `~/Documents/` for you.
-
-If there are multiple matches (e.g., `Documents` and `Downloads` both start with `Do`), the shell will beep. Press Tab **twice** and it lists all matches; type another letter or two to disambiguate, then Tab again.
+If there are multiple matches (e.g., `Documents` and `Downloads` both start with `Do`), the terminal will beep. Press Tab **twice** and it lists all matches; type another letter or two to disambiguate, then Tab again.
 
 **Use Tab constantly.** It prevents typos, and it's a sanity check: if Tab won't complete a name, that name doesn't exist where you think it does.
 
@@ -143,15 +138,14 @@ If there are multiple matches (e.g., `Documents` and `Downloads` both start with
 You'll do all the rest of this walkthrough inside a dedicated practice folder so you don't accidentally disturb anything else.
 
 ::: {.callout-tip collapse="true"}
-## Challenge: create `~/Projects/computer-literacy` and `cd` into it
-Two commands. Try to write them yourself before revealing.
+## Challenge: create `~/Projects/computer-literacy` and `cd` into it. Two commands. Try to write them yourself before revealing.
 
 ```bash
 mkdir -p ~/Projects/computer-literacy
 cd ~/Projects/computer-literacy
 ```
 
-`mkdir` = "make directory." The `-p` flag says "also create any missing parent directories" — so if `~/Projects` doesn't exist yet, it makes that too.
+`mkdir` = "make directory." The `-p` flag says "also create any missing parent directories" (so if `~/Projects` doesn't exist yet, it makes that too).
 
 Confirm you're in the right place:
 
@@ -166,7 +160,7 @@ You should see `/Users/yourname/Projects/computer-literacy`.
 
 ## Part 2 — Making, moving, renaming, deleting
 
-You're inside `~/Projects/computer-literacy`. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run `cd ~/Projects/computer-literacy` to come home.
+You're inside `~/Projects/computer-literacy`. Everything from here happens in this folder unless stated otherwise. If you ever get lost, run `cd ~/Projects/computer-literacy` to come back to this location.
 
 ### 2.1 Create an empty file
 
@@ -189,7 +183,7 @@ mv notes.txt readme.txt
 ls
 ```
 
-**`mv` means "move,"** but move and rename are the same operation — you're changing the file's path, which may involve changing its name, its location, or both.
+**`mv` means "move,"** but move and rename are (essentially) the same operation. Both moving and renaming a file involve changing the file's path, which may involve changing its name, its location, or both.
 
 ### 2.3 Move into a child directory
 
@@ -248,27 +242,6 @@ cp -r drafts drafts-backup
 ls
 ```
 
-### 2.7 Delete with `rm` — **read this carefully**
-
-::: {.callout-warning}
-## `rm` is permanent
-There is **no Trash**. There is **no undo**. `rm` deletes files immediately and forever. Read every `rm` command twice before pressing Return, and never, ever run `rm -rf /` or `rm -rf ~` or `rm -rf *` while you're still learning.
-:::
-
-```bash
-rm readme-backup.txt
-ls
-```
-
-For directories, `rm -r`:
-
-```bash
-rm -r drafts-backup
-ls
-```
-
-Leave `readme.txt` and `drafts/` alone — you'll use them in Part 3.
-
 ---
 
 ## Part 3 — Editing text with nano
@@ -279,7 +252,7 @@ Leave `readme.txt` and `drafts/` alone — you'll use them in Part 3.
 nano readme.txt
 ```
 
-The file opens in an editor. The bottom of the screen shows shortcuts. The `^` symbol means the `Control` key — so `^O` means `Control + O`, and `^X` means `Control + X`.
+The file opens in an editor. The bottom of the screen shows shortcuts. The `^` symbol means the <kbd>Control</kbd> key — so `^O` means <kbd>Control</kbd> + <kbd>O</kbd>, and `^X` means <kbd>Control</kbd> + <kbd>X</kbd>.
 
 Type in these exact lines (you can copy-paste into the terminal):
 
@@ -292,25 +265,30 @@ TODO: add a list of my favorite CLI commands
 TODO: try grep on this file later
 ```
 
-Save the file: press `Control + O`, then `Return` to confirm the filename.
-Exit nano: press `Control + X`.
+Save the file: press <kbd>Control</kbd> + <kbd>O</kbd>, then <kbd>Return</kbd> to confirm the filename.
 
-Now verify what you wrote:
+To exit nano: press <kbd>Control</kbd> + <kbd>X</kbd>.
+
+Now verify what you wrote and saved is there in `readme.txt`:
 
 ```bash
 cat readme.txt
 ```
 
-`cat` (short for "concatenate") prints a file's contents to the terminal. Great for short files. **Don't `cat` a huge file** — it will flood your terminal.
+`cat` (short for "concatenate") prints a file's contents to the terminal. Great for short files. **Don't `cat` a huge file**. It will flood your terminal. Instead consider using `less`, `head`, or `tail` to view parts of the file.
+
+- `less` will let you scroll through a file page by page.
+- `head` will show you just the first few lines of a file.
+- `tail` will show you just the last few lines of a file.
 
 ::: {.callout-note}
 ## What does "concatenate" mean?
-To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain" — so *concatenation* is, literally, chaining things together. In computing you'll meet the word most often in two places: (1) here, in the name of the `cat` command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
+To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain." So *concatenation* is, literally, chaining things together. In computing you'll meet the word most often in two places: (1) here, in the name of the `cat` command, which was originally designed to join several files together and print the joined result; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
 :::
 
 ::: {.callout-tip}
 ## The `TODO:` lines are on purpose
-You just planted two `TODO` markers. You'll search for them with `grep` in Part 6. Real developers scatter `TODO` comments through their code as reminders, and being able to find them across a project is a genuinely useful skill.
+You just planted two `TODO` markers. You'll search for them with `grep` in Part 6. Developers scatter `TODO` comments through their code as reminders, and being able to find them across a project is a genuinely useful skill.
 :::
 
 ---
@@ -343,28 +321,28 @@ curl -O https://raw.githubusercontent.com/adamrossnelson/confident/refs/heads/ma
 ls -lhra
 ```
 
-Now the `-h` in `-lhra` is doing real work — you can see file sizes in KB/MB instead of raw bytes. Which of the three CSVs is largest?
+Now the `-h` in `-lhra` is doing important work. You can see file sizes in KB/MB instead of raw bytes. Which of the three CSVs is largest?
 
 ### 4.4 Peek at contents — the right way
 
 ::: {.callout-note}
 ## What is a CSV file?
-**CSV** stands for **comma-separated values**. It's the simplest, most portable format for **tabular data** — that is, data arranged in rows and columns, the way you'd lay it out in a spreadsheet or a printed table. Each row is one *observation* or *record* (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one *variable* or *field* (that respondent's age, the transaction's amount, the book's title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a **header** listing the column names.
+**CSV** stands for **comma-separated values**. It's the simplest, most portable format for **tabular data**. Tabular data is data that is arranged in rows and columns, the way you'd lay it out in a spreadsheet or a printed table. Each row is one *observation* or *record* (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one *variable* or *field* (that respondent's age, the transaction's amount, the book's title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a **header** listing the column names.
 
-CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself — no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.
+CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself such as no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.
 :::
 
 ::: {.callout-note}
 ## What does "portable" mean?
-When programmers describe a file format, a program, or a piece of code as **portable**, they mean that it works well across many different systems and situations — the way a paperback book is portable in the everyday sense of "you can take it anywhere." A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.
+When programmers describe a file format, a program, or a piece of code as **portable**, they mean that it works well across many different systems and situations. Similar to the way a paperback book is portable in the everyday sense of "you can take it anywhere." A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.
 :::
 
 ::: {.callout-note}
 ## What is an API?
-**API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a **web API**: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
+**API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. Weather services, government statistics offices, universities, and social-media platforms all publish APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
 :::
 
-Do **not** `cat complaints-bank.csv` — it's big and will fill your terminal with noise. Instead:
+Do **not** `cat complaints-bank.csv`. This is a big file and it will fill your terminal with noise. Instead:
 
 ```bash
 head confident_fictional_books.csv
@@ -382,18 +360,18 @@ For scrolling through a larger file, use `less`:
 less complaints-bank.csv
 ```
 
-You are now "inside" `less`. Use arrow keys or space bar to scroll. **Press `q` to quit.** Getting stuck in `less` is a rite of passage — remember `q`.
+You are now "inside" `less`. Use arrow keys or space bar to scroll. **Press `q` to quit.** Getting stuck in `less` is a rite of passage... (remember `q` to exit).
 
 ::: {.callout-note}
 ## When a program "traps" your prompt
-Some commands hand control over to a program (nano, less, a running web server). Your normal shell prompt disappears until you exit the program. If you ever feel stuck: try `q` (for `less` and manual pages), `Control + X` (for nano), or `Control + C` (which sends an "interrupt" signal to most other programs).
+Some commands hand control over to a program (`nano`, `less`, a `quarto preview` or `jupyter lab`). Your normal terminal prompt disappears until you exit the program. If you ever feel stuck: try `q` (for `less` and `man` pages), <kbd>Control</kbd> + <kbd>X</kbd> (for `nano`), or <kbd>Control</kbd> + <kbd>C</kbd> (which sends an "interrupt" signal to most other programs).
 :::
 
 ### 4.5 Count rows
 
 ::: {.callout-note}
 ## Why count rows from the command line?
-A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, `wc -l` tells you in a fraction of a second whether you're looking at 50 rows, 50 thousand, or 50 million. That number shapes everything that comes next: whether it's safe to load the whole file into memory, whether you should take a sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is a habit that separates confident analysts from frustrated ones.
+A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, `wc -l` tells you in a fraction of a second whether you're looking at 50 rows, 50 thousand, or 50 million. That number shapes everything that comes next: whether it's safe to load the whole file into memory, whether you should take a sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the terminal (sizes, row counts, first few lines) before jumping into a full analysis is a habit that separates confident scientists from frustrated scientists.
 :::
 
 ```bash
@@ -410,6 +388,17 @@ wc -l *.csv
 
 The `*` matches any characters, so `*.csv` matches every file in the current directory ending in `.csv`. Wildcards are powerful — and dangerous with `rm`. Be extra careful when combining `*` with anything destructive.
 
+::: {.callout-tip}
+## Wildcards are powerful + dangerous
+The `*` wildcard can match any sequence of characters. 
+
+For example, to find all `.csv` files on your desktop from any location on your computer enter: `ls ~\Desktop\*.csv`
+
+To find all files that contain the word "report" in your downloads from any location on your computer enter: `ls ~\Downloads\*report*.*`
+
+While useful for batch operations, it can also lead to unintended consequences if used carelessly. Always double-check your commands before executing them.
+:::
+
 ---
 
 ## Part 5 — Redirection: saving output to a file
@@ -424,7 +413,7 @@ head -n 20 complaints-bank.csv > ~/Desktop/complaints-sample.csv
 
 Read that out loud: "Take the first 20 lines of `complaints-bank.csv`, and instead of printing them to the terminal, **redirect** them into a new file called `complaints-sample.csv` on my Desktop."
 
-Now open your Desktop in Finder (or run `open ~/Desktop`) — you'll see a small CSV file there. Double-click it to open in Numbers or Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
+Now open your Desktop in Finder (or run `open ~/Desktop`). After running the `head` command suggested above, you'll see a small CSV file there. Double-click it to open in Numbers or Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
 
 ::: {.callout-warning}
 ## `>` silently overwrites
@@ -438,7 +427,7 @@ head -n 3 mpg_excerpt.csv >> ~/Desktop/complaints-sample.csv
 cat ~/Desktop/complaints-sample.csv
 ```
 
-You just appended a few rows of a different CSV onto the end of the sample file. (In real work you'd only append data that has the same columns — but the mechanic is worth seeing.)
+You just appended a few rows of a different CSV onto the end of the sample file. (In real work you'd only append data that has the same columns... but the mechanic is worth seeing.)
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: make a 50-row sample of `mpg_excerpt.csv` on your Desktop
@@ -482,7 +471,7 @@ Now let's give `grep` something more realistic to hunt through. Create a Python 
 nano cleanup.py
 ```
 
-Type or paste in the following (this uses only Python's built-in features — you don't need to install anything, and you don't need to *run* it; you're just going to search it):
+Type or paste in the following (this uses only Python's built-in features You don't need to install anything, and you don't need to *run* it; you're just going to search it):
 
 ```python
 # cleanup.py — a small script for tidying up a text file
@@ -528,7 +517,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Save with `Control + O`, `Return`, then exit with `Control + X`.
+Save with <kbd>Control</kbd> + <kbd>O</kbd>, <kbd>Return</kbd>, then exit with <kbd>Control</kbd> + <kbd>X</kbd>.
 
 ### 6.3 Find all TODOs in one file
 
@@ -546,7 +535,7 @@ You should see four TODO lines with their line numbers.
 grep -rn TODO .
 ```
 
-- `-r` means **recursive** — descend into subdirectories.
+- `-r` means **recursive** (descend into subdirectories).
 - `-n` adds line numbers.
 - `.` is the starting point (current directory).
 
@@ -569,11 +558,11 @@ Some commands **take over your prompt and don't give it back** until you stop th
 
 ### 7.1 Open a second terminal window
 
-In the Terminal app, press `Cmd + N` for a new window (or `Cmd + T` for a new tab in the same window). You now have two independent shells. Each has its own current working directory.
+In the Terminal app, press <kbd>Cmd</kbd> + <kbd>N</kbd> for a new window (or <kbd>Cmd</kbd> + <kbd>T</kbd> for a new tab in the same window). You now have two independent terminals. Each has its own current working directory.
 
 Confirm:
 
-- In the new window, run `pwd`. It probably says `/Users/yourname` — a fresh shell always starts at your home directory.
+- In the new window, run `pwd`. It probably says `/Users/yourname` — a fresh terminal always starts at your home directory.
 - In the old window, run `pwd`. It's wherever you last `cd`'d to.
 
 **Two windows, two locations, one machine.** Files you create in one are immediately visible from the other.
@@ -587,74 +576,66 @@ cd ~/Projects/computer-literacy
 python3 -m http.server 8000
 ```
 
-You'll see something like `Serving HTTP on :: port 8000`. **Your prompt is gone** — Python is now running a small web server that serves the files in this folder over the network.
+You'll see something like `Serving HTTP on :: port 8000`. **Your prompt is gone**. Python is now running a small web server that serves the files in this folder over the network.
 
 Open a web browser and go to <http://localhost:8000>. You'll see a listing of your practice folder — click `readme.txt` to view it, click into `data/` to see the CSVs, etc.
 
 ::: {.callout-note}
 ## What is `localhost`?
 `localhost` (a.k.a. `127.0.0.1`) is a special network name that always means **"this same computer."** When a program serves at `localhost:8000`, it's only reachable from your own machine — nobody on the internet can see it. That's why local previews are safe.
+
+In practice `python3 -m http.server 8000` is not common for data scientists. However, `quarto preview` and `jupyter lab` (both commonly used by data scientists) behave similarly.
 :::
 
 ### 7.3 Why the second terminal matters
 
-Your first terminal is "busy" running the web server. If you want to keep working — `ls`, `cd`, edit files — you *need* the second terminal window from 7.1. Try it: switch to the second window and run `ls` in the practice folder. It works, because that shell is independent.
+Your first terminal is "busy" running the web server. If you want to keep working. To use common commands including `ls`, `cd`, or to edit files you *need* the second terminal window from 7.1. Try it: switch to the second window and run `ls` in the practice folder. It works, because that terminal is independent.
 
 ### 7.4 Stopping the server
 
-Switch back to the terminal running the server and press **`Control + C`**. The server stops, and your prompt returns. `Control + C` sends an "interrupt" signal — it's the universal "please stop, program" keystroke.
+Switch back to the terminal running the server and press <kbd>Control</kbd> + <kbd>C</kbd>. The server stops, and your prompt returns. <kbd>Control</kbd> + <kbd>C</kbd> sends an "interrupt" signal — it's the universal "please stop, program" keystroke.
 
 ::: {.callout-tip}
 ## The same pattern applies to `quarto preview` and `jupyter lab`
-When you run `quarto preview` on a Quarto project (like this website), or `jupyter lab` / `jupyter notebook` to open notebooks, those tools **also** start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use `Control + C` to shut the server down when you're done.
+When you run `quarto preview` on a Quarto project (like this website), or `jupyter lab` / `jupyter notebook` to open notebooks, those tools **also** start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use <kbd>Control</kbd> + <kbd>C</kbd> to shut the server down when you're done.
 :::
 
 ---
 
 ## Part 8 — Three flavors of notebook
 
-A **notebook** is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague's screen.
+A **notebook** (either Quarto or Jupyter) is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague's screen.
 
 ### 8.1 Jupyter Notebook (classic)
 
 - **File extension:** `.ipynb`
-- **How you open it:** run `jupyter notebook` in a terminal; a browser tab opens.
-- **Feel:** simple, one notebook per browser tab. The older interface.
-- **File format under the hood:** JSON. Not human-friendly to read as plain text, and hard to compare across versions.
+- **How you open it:** run `jupyter notebook` in a terminal; a browser tab opens opens with an empty notebook ready to edit.
 
-::: {.callout-note}
-## What does "under the hood" mean?
-"**Under the hood**" is an idiom borrowed from car mechanics. The *hood* of a car is the metal cover over the engine; to look "under the hood" is to see how the machine actually works, hidden from the ordinary driver. In writing about software, "under the hood" describes the internal mechanism of something — how a program actually stores its data, or how a feature is actually implemented — as opposed to the polished surface the user sees. When this guide says a `.ipynb` file is JSON *under the hood*, it means: the friendly notebook you see in your browser is, at bottom, stored on disk as a JSON document.
-:::
+::: {.callout-important}
+## Jupyter Notebook vs JupyterLab
+**Jupyter Notebook** (the "classic" interface) and **JupyterLab** are two different ways to use the same underlying notebook system.
 
-::: {.callout-note}
-## What is JSON?
-**JSON** (pronounced *jay-son*) stands for **JavaScript Object Notation**. It is a plain-text format for storing structured data — data with named fields, nested lists, and hierarchies. A JSON file looks something like `{"name": "Ada", "age": 36, "skills": ["math", "engineering"]}`. It is designed to be read and written by programs rather than by humans, and although it *is* technically plain text, a large JSON file is tedious to read directly. JSON is one of the two most common formats (alongside CSV) that programs and web services use to exchange data.
-:::
-
-::: {.callout-note}
-## What does it mean to "compare across versions"?
-Writers, researchers, and programmers routinely want to answer a very specific question: **what changed between the earlier version of this file and the current one?** Specialized tools produce a side-by-side or line-by-line report of the differences — such a report is often called a *diff*, from the word *difference*. Files that are stored as clean plain text (a `.qmd` file, a Python script, a Markdown document) produce readable diffs: you can see, line by line, exactly what was added, removed, or changed. Files that are stored in complicated binary or nested formats (a Jupyter `.ipynb` file, a Word document, a Photoshop file) produce diffs full of noise, because a small visible change on screen can cause many invisible changes in the underlying storage.
+In practice it is now less common to use `jupyter notebook`. Instead focus your efforts on learning `jupyter lab`.
 :::
 
 ### 8.2 JupyterLab
 
-- **File extension:** *still* `.ipynb` — same file format as classic Jupyter.
+- **File extension:** *still* `.ipynb` (same file format as classic Jupyter).
 - **How you open it:** run `jupyter lab` in a terminal.
-- **Feel:** a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
-- **Same version-comparison problem** as classic Jupyter, because the underlying file format is identical.
+- **Feels:** more modern, IDE-like layout. File browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
 
 ::: {.callout-note}
 ## What is an IDE?
-**IDE** stands for **Integrated Development Environment**. It is a single application that bundles together the several tools a programmer typically needs — a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more — into one coordinated window. Popular IDEs you may encounter include Visual Studio Code, PyCharm, RStudio, and Xcode. JupyterLab is described as *IDE-like* because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.
+**IDE** stands for **Integrated Development Environment**. It is a single application that bundles together the several tools a programmer typically needs such as a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more. 
+
+Popular IDEs you may encounter include Devin, Cursor, Visual Studio Code, PyCharm, RStudio, and Xcode. JupyterLab is described as *IDE-like* because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.
 :::
 
 ### 8.3 Quarto notebooks
 
 - **File extension:** `.qmd`
-- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in a terminal.
-- **Feel:** plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
-- **Version-comparison-friendly:** because a `.qmd` file is plain text, comparing two versions of one is straightforward and readable.
+- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in a terminal. During editing and building `quarto preview` is the superior choice because it gives you a live preview of your edits.
+- **Feel:** plain text considting of Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
 
 ### 8.4 Quick comparison
 
@@ -666,19 +647,6 @@ Writers, researchers, and programmers routinely want to answer a very specific q
 | Runs a local web server? | Yes | Yes | Yes (for `preview`) |
 | Good for | Quick exploration | Multi-file projects | Websites, reports, books |
 | Comparing versions | Painful | Painful | Clean |
-
-::: {.callout-tip collapse="true"}
-## Try it: peek at a `.qmd` file with commands you already know
-The pages you are reading are `.qmd` files. If you have downloaded the source of this website into a folder called `CompLitPractice`, try:
-
-```bash
-cd ~/Projects/CompLitPractice
-ls -lhra
-head macos-extended.qmd
-```
-
-Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.
-:::
 
 ::: {.callout-note}
 ## What are "code fences"?
@@ -725,7 +693,7 @@ In Markdown, a **code fence** is a line of three backtick characters (```` ``` `
 
 ### You now know enough to…
 
-- Follow along in a Python or R tutorial that says "open a terminal and run…"
+- Follow along in a Python or R tutorial that says "open a terminal and run..."
 - Download a project archive from the internet and explore its contents.
 - Preview a Quarto site or run a Jupyter notebook.
 - Fix minor project problems yourself by reading and searching files instead of asking someone else.
@@ -822,7 +790,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** The `-p` flag tells `mkdir` to also create any missing parent directories, so it will make `~/Projects` for you if needed.
 :::
 
-### Q8. What does the `Tab` key do at the shell prompt?
+### Q8. What does the `Tab` key do at the terminal prompt?
 
 - A. Inserts four spaces
 - B. Autocompletes filenames and command names
@@ -831,7 +799,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** Tab completion is the single biggest quality-of-life feature of the shell. If Tab won't complete a name, that name probably doesn't exist where you think it does.
+**B.** Tab completion is the single biggest quality-of-life feature of the terminal. If Tab won't complete a name, that name probably doesn't exist where you think it does.
 :::
 
 ### Q9. Which command creates an empty file called `hello.txt`?
@@ -894,19 +862,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Copying a directory requires `-r` (recursive), because you're copying the folder *and everything inside it*. Plain `cp` only works on individual files.
 :::
 
-### Q14. What is the biggest danger of `rm`?
-
-- A. It requires an internet connection
-- B. It's slow on large files
-- C. It permanently deletes files with no Trash and no undo
-- D. It only works on files inside your home directory
-
-::: {.callout-tip collapse="true"}
-## Answer
-**C.** `rm` bypasses the Trash entirely. There is no undo. Read every `rm` command twice.
-:::
-
-### Q15. In nano, which shortcut saves the file?
+### Q14. In nano, which shortcut saves the file?
 
 - A. `Cmd + S`
 - B. `Control + S`
@@ -918,7 +874,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** In nano, `^O` (Control + O) writes the file — think "O for output." `^X` exits.
 :::
 
-### Q16. In nano's on-screen help, what does the `^` symbol mean?
+### Q15. In nano's on-screen help, what does the `^` symbol mean?
 
 - A. The Shift key
 - B. The Control key
@@ -930,7 +886,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `^` is the traditional Unix shorthand for the Control key. So `^X` means Control + X.
 :::
 
-### Q17. Why should you avoid running `cat` on a large CSV file?
+### Q16. Why should you avoid running `cat` on a large CSV file?
 
 - A. It will corrupt the file
 - B. It will dump thousands of lines into your terminal all at once
@@ -942,7 +898,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `cat` prints the entire file to the terminal. For a big file that's a flood of unreadable output. Use `head`, `less`, or `wc -l` instead.
 :::
 
-### Q18. You're stuck inside `less` and want to get back to your normal prompt. What do you press?
+### Q17. You're stuck inside `less` and want to get back to your normal prompt. What do you press?
 
 - A. `Control + C`
 - B. `q`
@@ -951,10 +907,10 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** In `less` (and in `man` pages, which use the same viewer), pressing `q` quits back to the shell.
+**B.** In `less` (and in `man` pages, which use the same viewer), pressing `q` quits back to the terminal.
 :::
 
-### Q19. What does `wc -l data.csv` report?
+### Q20. What does `wc -l data.csv` report?
 
 - A. The number of words in the file
 - B. The number of characters in the file
@@ -966,7 +922,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `wc` is "word count," and the `-l` flag switches it to counting lines. Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).
 :::
 
-### Q20. Which command downloads a file from a URL and saves it using the filename from that URL?
+### Q21. Which command downloads a file from a URL and saves it using the filename from that URL?
 
 - A. `wget url`
 - B. `curl url`
@@ -978,7 +934,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** Plain `curl url` prints the response to the terminal. The `-O` flag (capital O) tells `curl` to save the response as a file, using the name from the URL.
 :::
 
-### Q21. What is a CSV file?
+### Q22. What is a CSV file?
 
 - A. A compressed archive of spreadsheets
 - B. A binary format for storing databases
@@ -990,7 +946,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** "CSV" = comma-separated values. It's plain text, portable, and readable by virtually every data tool.
 :::
 
-### Q22. What does `head -n 20 data.csv > sample.csv` do?
+### Q23. What does `head -n 20 data.csv > sample.csv` do?
 
 - A. Prints the first 20 lines to the terminal *and* to `sample.csv`
 - B. Appends the first 20 lines of `data.csv` to `sample.csv`
@@ -1002,7 +958,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `>` is the redirection operator: send the output that would have printed into a file. It overwrites the target silently — no confirmation prompt.
 :::
 
-### Q23. What's the difference between `>` and `>>`?
+### Q24. What's the difference between `>` and `>>`?
 
 - A. `>` prints to the screen; `>>` writes to a file
 - B. `>` overwrites the target file; `>>` appends to the target file
@@ -1014,7 +970,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Single `>` overwrites (silently!); double `>>` appends onto the end of an existing file (or creates it if it doesn't exist).
 :::
 
-### Q24. Which command searches recursively for the text `TODO` starting from the current directory, showing line numbers?
+### Q25. Which command searches recursively for the text `TODO` starting from the current directory, showing line numbers?
 
 - A. `grep TODO`
 - B. `grep -n TODO`
@@ -1026,7 +982,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **D.** `-r` recursive, `-n` line numbers, `.` = start from the current directory. Together these are how you find every leftover TODO in a project.
 :::
 
-### Q25. Which `grep` flag makes the search case-insensitive?
+### Q26. Which `grep` flag makes the search case-insensitive?
 
 - A. `-c`
 - B. `-i`
@@ -1038,10 +994,10 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `-i` makes the pattern case-insensitive, so `grep -i todo` matches `TODO`, `Todo`, and `todo`.
 :::
 
-### Q26. Why would you ever want two terminal windows open at the same time?
+### Q27. Why would you ever want two terminal windows open at the same time?
 
 - A. To run commands faster in parallel (at the same time)
-- B. Because some commands (like a local web server) take over the prompt, so you need a second shell for other work
+- B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work
 - C. Because macOS requires it
 - D. To share files between windows
 
@@ -1050,7 +1006,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Long-running processes — web servers, `quarto preview`, `jupyter lab`, `less`, nano — keep the first terminal busy. A second window gives you a place to keep working.
 :::
 
-### Q27. What is `localhost`?
+### Q28. What is `localhost`?
 
 - A. A public web server you can share with others
 - B. A special name that always refers to *your own* computer
@@ -1062,7 +1018,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `localhost` (a.k.a. `127.0.0.1`) means "this same machine." A server running at `localhost:8000` is only reachable from your own computer.
 :::
 
-### Q28. You're running `python3 -m http.server 8000` and want to stop it. What do you press?
+### Q29. You're running `python3 -m http.server 8000` and want to stop it. What do you press?
 
 - A. `q`
 - B. `Control + X`
@@ -1074,7 +1030,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `Control + C` sends an "interrupt" signal — the universal "please stop, program" keystroke for most running commands.
 :::
 
-### Q29. Classic Jupyter Notebook and JupyterLab open which file extension?
+### Q30. Classic Jupyter Notebook and JupyterLab open which file extension?
 
 - A. `.qmd`
 - B. `.py`
@@ -1086,15 +1042,4 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** Both tools use the same `.ipynb` notebook file format — JupyterLab is essentially a more modern editor for the same files.
 :::
 
-### Q30. Why is it easier to see what changed between two versions of a `.qmd` file than between two versions of a `.ipynb` file?
-
-- A. Because Quarto is newer software.
-- B. Because `.qmd` files are plain text (Markdown), while `.ipynb` files are stored as JSON.
-- C. Because Quarto files are always smaller.
-- D. Because macOS has a special mode for Quarto.
-
-::: {.callout-tip collapse="true"}
-## Answer
-**B.** A `.qmd` file is Markdown — ordinary readable text with code fences. Comparing two versions produces a clear, line-by-line report of what changed. A `.ipynb` file is a JSON document that also stores hidden information about each cell and each run, so even a small visible change on screen can cause many invisible changes in the file, making the comparison noisy and hard to read.
-:::
 

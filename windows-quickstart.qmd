@@ -277,3 +277,249 @@ Almost everything you do in windows 1, 2, and 3 benefits from <kbd>Tab</kbd> com
 ---
 
 That is the quick start. If you want deeper explanations of every command, more challenges, and a 30-question review, work through the [Extended walkthrough](windows-extended.qmd).
+
+---
+
+## 7. Check your understanding
+
+Twenty multiple-choice questions covering everything above. Try to answer each one from memory, then click to reveal the correct answer with a short explanation.
+
+### Q1. Which terminal should you open for this walkthrough (or generally speaking)?
+
+- A. Command Prompt.
+- B. Anaconda Prompt.
+- C. Anaconda PowerShell Prompt.
+- D. Git Bash.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Anaconda PowerShell Prompt is a PowerShell window with conda activated. It supports the Unix-style shortcuts (such as `~`) that appear throughout this guide.
+:::
+
+### Q2. The Anaconda installer creates two similarly-named entries in your Start menu. How can you tell them apart at a glance once each one is open?
+
+- A. Anaconda Prompt has a green title bar; PowerShell Prompt is blue.
+- B. Anaconda PowerShell Prompt shows `PS` in the prompt; Anaconda Prompt does not.
+- C. Anaconda Prompt runs slower than PowerShell.
+- D. There is no difference between them.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** The `PS` (short for PowerShell) in the prompt is the reliable way to confirm you opened the right one. If you do not see `PS`, close it and open Anaconda PowerShell Prompt instead.
+:::
+
+### Q3. What does the `(base)` at the beginning of the prompt mean?
+
+- A. Your machine is running on battery power.
+- B. You are logged in as the base user.
+- C. The active conda environment is called `base`.
+- D. This is the base directory of the filesystem.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `(base)` is the default conda environment. Later in your programming career you may create separate environments for different projects and switch between them.
+:::
+
+### Q4. In Anaconda PowerShell Prompt, which command prints the current directory?
+
+- A. `cd` (with no argument)
+- B. `pwd`
+- C. `dir`
+- D. `where`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `pwd` is a PowerShell alias for `Get-Location`. Unlike in the older Anaconda Prompt, typing `cd` alone in PowerShell sends you to your home directory instead of printing where you are.
+:::
+
+### Q5. Which flag makes `ls` include hidden files in its output?
+
+- A. `-a`
+- B. `-Hidden`
+- C. `-Force`
+- D. `-All`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** In PowerShell, `-Force` is the flag that reveals hidden files. The `-a` flag you may have seen in macOS or Linux tutorials does not work here.
+:::
+
+### Q6. What does the <kbd>Tab</kbd> key do at the Anaconda PowerShell Prompt?
+
+- A. Inserts four spaces of indentation.
+- B. Autocompletes the file or folder name you have started typing.
+- C. Switches between open Anaconda PowerShell Prompt windows.
+- D. Runs the command on the current line.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** <kbd>Tab</kbd> autocompletion is the single most useful time-saving feature of the shell.
+:::
+
+### Q7. You type `cat notepa` and press <kbd>Tab</kbd>. Nothing happens. What is the most likely reason?
+
+- A. Your keyboard is broken.
+- B. There is no file starting with `notepa` in the current directory.
+- C. `cat` does not support tab completion.
+- D. You need to press <kbd>Tab</kbd> twice.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** If <kbd>Tab</kbd> refuses to complete a name, the file or folder is not where you think it is. <kbd>Tab</kbd> is a check on reality as much as a shortcut.
+:::
+
+### Q8. What does `~` mean in a PowerShell path?
+
+- A. The Desktop folder.
+- B. The current working directory.
+- C. Your home directory (`C:\Users\yourname`).
+- D. The root of the C: drive.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** PowerShell expands `~` to your home directory whenever it appears in a path. The `%USERPROFILE%` spelling you may see in older Command Prompt tutorials does not work here.
+:::
+
+### Q9. You are already inside `~\Desktop` and want to preview a file called `notes.txt` that lives there. Which of these is the *simplest* correct command?
+
+- A. `cat ~\Desktop\notes.txt`
+- B. `cat notes.txt`
+- C. `cat C:\Users\yourname\Desktop\notes.txt`
+- D. `cat ..\Desktop\notes.txt`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** When the file you want lives inside the directory you are already in, no path prefix is needed. All four commands would work, but only B takes advantage of the relative path.
+:::
+
+### Q10. What is a relative path?
+
+- A. A path that starts with `C:\`.
+- B. A path understood in terms of your current working directory.
+- C. A path that only works on your own machine.
+- D. A path that has been recently modified.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** A relative path is measured from wherever you currently are. `notes.txt` and `drafts\readme.txt` are relative paths.
+:::
+
+### Q11. Which command creates a new folder called `quick_look` inside the current directory?
+
+- A. `ni quick_look`
+- B. `mkdir quick_look`
+- C. `cd quick_look`
+- D. `ls quick_look`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `mkdir` stands for "make directory."
+:::
+
+### Q12. You are inside `~\Desktop\quick_look` and want to move up one level to `~\Desktop`. What is the shortest way?
+
+- A. `cd ~\Desktop`
+- B. `cd ..`
+- C. `cd C:\Users\yourname\Desktop`
+- D. `cd -`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `..` always means "the parent of where I am now." `cd ..` is shorter, more general, and works no matter what the parent folder happens to be called.
+:::
+
+### Q13. Which shortcut saves the file you are editing in Notepad?
+
+- A. <kbd>Ctrl</kbd> + <kbd>O</kbd>
+- B. <kbd>Ctrl</kbd> + <kbd>W</kbd>
+- C. <kbd>Ctrl</kbd> + <kbd>S</kbd>
+- D. <kbd>Ctrl</kbd> + <kbd>X</kbd>
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** Notepad uses the standard Windows save shortcut, <kbd>Ctrl</kbd> + <kbd>S</kbd>. Use <kbd>Alt</kbd> + <kbd>F4</kbd> (or click the red <kbd>X</kbd>) to close the window when you are done.
+:::
+
+### Q14. When you run `notepad ReadMe.txt` from the Anaconda PowerShell Prompt, what happens?
+
+- A. The Anaconda PowerShell Prompt freezes until Notepad is closed.
+- B. Notepad opens in a separate window and the Anaconda PowerShell Prompt remains usable.
+- C. Notepad prints the contents of the file directly to the prompt.
+- D. Nothing. `notepad` is not a valid command.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `notepad` launches the graphical Notepad application in its own window. The Anaconda PowerShell Prompt hands off control but does not block, so you could continue working there if you wanted.
+:::
+
+### Q15. What does `cat ReadMe.txt` do?
+
+- A. Opens the file in Notepad for editing.
+- B. Copies the file to a new location.
+- C. Prints the contents of the file straight to the terminal.
+- D. Displays a picture of a cat.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** `cat` is a PowerShell alias for `Get-Content`. It is the fastest way to preview a short file's contents without opening any editor. `type` also works.
+:::
+
+### Q16. Besides Notepad, which of these commands would *also* open `ReadMe.txt` in an editor (assuming you have that editor installed)?
+
+- A. `code ReadMe.txt`
+- B. `move ReadMe.txt`
+- C. `del ReadMe.txt`
+- D. `dir ReadMe.txt`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**A.** `code` launches Visual Studio Code if it is installed. Notepad is just the friendliest choice for a beginner because it ships with every copy of Windows.
+:::
+
+### Q17. Which command moves a folder called `quick_look` from your Desktop to `~\Projects`?
+
+- A. `cp quick_look ~\Projects\`
+- B. `mv quick_look ~\Projects\`
+- C. `mkdir ~\Projects\quick_look`
+- D. `ls ~\Projects\quick_look`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** `mv` is a PowerShell alias for `Move-Item`. It moves (or renames) files and folders. `cp` would leave a copy behind on the Desktop.
+:::
+
+### Q18. Which command searches every file in the current folder and all folders inside it for `TODO`, `Todo`, or `todo`, and shows the line number of each match?
+
+- A. `findstr todo *.*`
+- B. `findstr /n todo *.*`
+- C. `findstr /s todo *.*`
+- D. `findstr /s /n /i todo *.*`
+
+::: {.callout-tip collapse="true"}
+## Answer
+**D.** `/s` searches recursively into every subfolder, `/n` includes line numbers, `/i` makes the match case-insensitive, and `*.*` matches every file that has a name and an extension.
+:::
+
+### Q19. Why would you ever want two or three Anaconda PowerShell Prompt windows open at the same time?
+
+- A. To make each window look bigger.
+- B. Because some commands (such as `quarto preview` or `jupyter lab`) take over the prompt while they run, so you need another window for other work.
+- C. Because Windows requires it.
+- D. To duplicate your files.
+
+::: {.callout-tip collapse="true"}
+## Answer
+**B.** Long-running commands keep the window that started them busy until you stop them. Additional windows give you a place to keep working in the meantime.
+:::
+
+### Q20. You have `quarto preview` running in a second window and want to stop it. What do you press?
+
+- A. <kbd>q</kbd>
+- B. <kbd>Alt</kbd> + <kbd>F4</kbd>
+- C. <kbd>Ctrl</kbd> + <kbd>C</kbd>
+- D. <kbd>Escape</kbd>
+
+::: {.callout-tip collapse="true"}
+## Answer
+**C.** <kbd>Ctrl</kbd> + <kbd>C</kbd> sends a stop request. It is the standard way to tell any running command-line program to stop.
+:::

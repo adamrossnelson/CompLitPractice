@@ -2,7 +2,7 @@
 title: "Windows Command-Line Walkthrough Extended"
 ---
 
-This is a self-paced, ~2.5 hour hands-on walkthrough for Windows users. Work through the parts in order — later parts assume you have done the earlier ones.
+This is a self-paced, ~2.5 hour hands-on walkthrough for Windows users. Work through the parts in order. Later parts assume you have done the earlier ones.
 
 **Open the Anaconda PowerShell Prompt now** before reading further: click the Start menu, begin typing `Anaconda PowerShell`, and press `Enter` when you see **Anaconda PowerShell Prompt**. A window with a text prompt appears. That is where you will type every command in this guide.
 
@@ -29,7 +29,7 @@ The **prompt** is the short bit of text the terminal shows when it is waiting fo
 
 ::: {.callout-note}
 ## Vocabulary as we go
-Words like *directory*, *parent*, *child*, *alias*, `~`, and *absolute path* get introduced in short callouts the first time they appear. Do not skip the callouts — they are the point of this walkthrough.
+Words like *directory*, *parent*, *child*, *alias*, `~`, and *absolute path* get introduced in short callouts the first time they appear. Do not skip the callouts. The callouts are an important component of this walkthrough.
 :::
 
 ---
@@ -44,7 +44,7 @@ Type this exactly and press `Enter`:
 pwd
 ```
 
-`pwd` stands for **"print working directory."** It prints the current directory — the folder the terminal considers "where you are right now." Every command you type looks at that folder first, unless you tell it to look somewhere else.
+`pwd` stands for **"print working directory."** It prints the current directory. The current working directory is the folder the terminal considers "where you are right now." Every command you type looks at that folder first, unless you tell it to look somewhere else.
 
 You will see a short table with the heading `Path`, and underneath it something like `C:\Users\yourname`. That is your **home directory**.
 
@@ -100,7 +100,7 @@ Other flags worth knowing:
 
 ::: {.callout-note}
 ## What is a "flag"?
-A **flag** (also sometimes called an *option*, a *switch*, or in PowerShell a *parameter*) is a short modifier you add after a command to change how that command behaves. In PowerShell, flags begin with a hyphen and are usually whole words: `-Force`, `-Recurse`, `-File`. They are not case-sensitive, so `-force` works too. You can shorten a flag, as long as the shortened version could not be mistaken for a different flag, so `-Rec` works for `-Recurse`. Unlike on Mac and Linux, you cannot smoosh several flags together behind one hyphen the way `-lhra` does. (In Command Prompt and Anaconda Prompt, flags begin with a forward slash instead, as in `/a`. Those do not work here.)
+A **flag** (also sometimes called an *option*, a *switch*, or in PowerShell a *parameter*) is a short modifier you add after a command to change how that command behaves. In PowerShell, flags begin with a hyphen and are usually whole words: `-Force`, `-Recurse`, `-File`. They are not case-sensitive, so `-force` works too. You can shorten a flag, as long as the shortened version could not be mistaken for a different flag. This means `-Rec` works for `-Recurse`. Unlike on Mac and Linux, you cannot smoosh several flags together behind one hyphen the way `-lhra` does. (In Command Prompt and Anaconda Prompt, flags begin with a forward slash instead, as in `/a`. Those do not work here.)
 :::
 
 ::: {.callout-note}
@@ -115,7 +115,7 @@ Windows marks some files and directories with a **hidden** attribute, which keep
 
 ::: {.callout-tip collapse="true"}
 ## Try it: what hidden files are in your home directory?
-Run `ls -Force ~` and read the `Name` column. Items with an `h` in the `Mode` column, such as `AppData`, are hidden. You may also see oddly named entries such as `Application Data` or `My Documents`. These are compatibility links left over from older versions of Windows. You may also see items such as `.conda`, `.jupyter`, and `.ipython`. These are configuration and system files — leave them alone for now, but know they exist.
+Run `ls -Force ~` and read the `Name` column. Items with an `h` in the `Mode` column, such as `AppData`, are hidden. You may also see oddly named entries such as `Application Data` or `My Documents`. These are compatibility links left over from older versions of Windows. You may also see items such as `.conda`, `.jupyter`, and `.ipython`. These are configuration and system files. Leave the hidden configuration files alone for now, but know they exist.
 :::
 
 ### 1.4 Moving around: `cd`
@@ -144,7 +144,7 @@ On many Windows computers, OneDrive stores the Desktop at `~\OneDrive\Desktop` i
 
 ::: {.callout-note}
 ## What is an "argument"?
-An **argument** is an extra word you type after a command to tell it what to act on. In `cd ~\Desktop`, the string `~\Desktop` is the argument — it tells `cd` where to go. In `ls -Force ~`, the flag `-Force` and the path `~` are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as `ls` alone falls back to listing your current directory).
+An **argument** is an extra word you type after a command to tell it what to act on. In `cd ~\Desktop`, the string `~\Desktop` is the argument (a path argument to be more specific). In this case the path argument tells `cd` where to go. In `ls -Force ~`, the flag `-Force` and the path `~` are both arguments. Some commands take no arguments at all; some accept several; some have optional arguments and behave in a default way when none is given (as `ls` alone falls back to listing your current directory).
 :::
 
 ::: {.callout-note}
@@ -154,30 +154,25 @@ Directories form a **tree**. If `Desktop` lives inside `C:\Users\jsmith`, then `
 
 ::: {.callout-note}
 ## What is a "path"?
-A **path** is the address of a file or a directory on your computer — the sequence of directory names, separated by backslashes on Windows, that tells the system exactly where to find that item. `C:\Users\jsmith\Desktop\notes.txt` is a path; so is `drafts\readme.txt`; so is `..`. Almost every command that touches a file or folder takes a path as one of its arguments.
+A **path** is the address of a file or a directory on your computer. The sequence of directory names, separated by backslashes (`\`) on Windows, that tells the system exactly where to find that item. `C:\Users\jsmith\Desktop\notes.txt` is a path; so is `drafts\readme.txt`; so is `..`. Almost every command that touches a file or folder takes a path as one of its arguments.
 :::
 
 ::: {.callout-note}
 ## Absolute vs. relative paths
-- An **absolute path** starts with a drive letter and a backslash (`C:\...`, `D:\...`) or with `~`, which PowerShell replaces with an absolute path. It works no matter where you currently are. Example: `C:\Users\jsmith\Desktop\notes.txt`.
-- A **relative path** does *not* start with a drive letter or `~`. It is understood in terms of your current working directory. If you are in `C:\Users\jsmith\Desktop`, then `notes.txt` refers to `C:\Users\jsmith\Desktop\notes.txt`.
+- An **absolute path** starts with a drive letter and a backslash (`C:\...`, `D:\...`) or with `~`.
+- A **relative path** does *not* start with a drive letter or `~`. It is understood in terms of your current working directory.
 
 When a command "cannot find" a file, the most common reason is confusing relative and absolute paths.
 :::
 
 ::: {.callout-note}
 ## Slashes: `\` versus `/`
-On Windows, paths use the **backslash** `\` between directory names. On macOS and Linux, they use the **forward slash** `/`. PowerShell is forgiving — it will usually accept either — but every example in this guide uses `\` to match Windows conventions.
+On Windows, paths use the **backslash** `\` between directory names. On macOS and Linux, they use the **forward slash** `/`. PowerShell is forgiving (it will usually accept either), but every example in this guide uses `\` to match Windows conventions.
 :::
 
 ### 1.5 Tab completion — the most useful shortcut
 
-::: {.callout-note}
-## What is the "shell"?
-The **shell** is the program running inside the terminal window that reads what you type, interprets your commands, and shows the results. The Anaconda PowerShell Prompt is a shell. Technically, it is Windows PowerShell (version 5.1, which comes built into Windows), with conda set up so that Python and conda are ready to use. Microsoft also offers a separate, newer PowerShell 7. A few details differ between the two, and this guide is written for the version inside Anaconda PowerShell Prompt. When this guide says "the shell will complete it," it means the program listening to your keystrokes inside the Anaconda PowerShell Prompt window.
-:::
-
-Type `cd ~\Doc` and then, before pressing Enter, press the **Tab** key. The shell will complete it to your `Documents` directory for you. (PowerShell may also spell out `~` as your full home path, such as `C:\Users\yourname\Documents`. That is the same place.)
+Type `cd ~\Doc` and then, before pressing Enter, press the **Tab** key. The terminal will complete it to your `Documents` directory for you. (PowerShell may also spell out `~` as your full home path, such as `C:\Users\yourname\Documents`. That is the same place.)
 
 If there are multiple matches (e.g., `Documents` and `Downloads` both start with `Do`), pressing Tab repeatedly will cycle through the possibilities. Type another letter or two to narrow the choices, then Tab again.
 
@@ -190,15 +185,14 @@ PowerShell can also complete command names and flags. Type `Get-Ali` and press T
 You will do all the rest of this walkthrough inside a dedicated practice folder so that early mistakes do not disturb anything else on your computer.
 
 ::: {.callout-tip collapse="true"}
-## Challenge: create `~\Projects\computer-literacy` and `cd` into it
-Two commands. Try to write them yourself before revealing.
+## Challenge: create `~\Projects\computer-literacy` and `cd` into it. Two commands. Try to write them yourself before revealing.
 
 ```powershell
 mkdir ~\Projects\computer-literacy
 cd ~\Projects\computer-literacy
 ```
 
-`mkdir` = "make directory." In PowerShell, `mkdir` will automatically create any missing parent directories along the way — so if `~\Projects` does not exist yet, `mkdir` makes it too. If the directory already exists, PowerShell prints a red error message saying so. That error is harmless.
+`mkdir` = "make directory." In PowerShell, `mkdir` will automatically create any missing parent directories along the way (so if `~\Projects` does not exist yet, `mkdir` makes it too). If the directory already exists, PowerShell prints a red error message saying so. That error is harmless.
 
 Confirm you are in the right place:
 
@@ -238,7 +232,7 @@ mv notes.txt readme.txt
 ls
 ```
 
-**`mv` means "move,"** but move and rename are the same operation — you are changing the file's path, which may involve changing its name, its location, or both. (`mv` is an alias for `Move-Item`. PowerShell also has `ren`, an alias for `Rename-Item`, which only renames.)
+**`mv` means "move,"** but move and rename are (essentially) the same operation. Both moving and renaming a file involve changing the file's path, which may involve changing its name, its location, or both. (`mv` is an alias for `Move-Item`. PowerShell also has `ren`, an alias for `Rename-Item`, which only renames.)
 
 ### 2.3 Move into a child directory with `mv`
 
@@ -268,7 +262,7 @@ mv drafts\readme.txt .
 ls
 ```
 
-The `.` is not a typo. **`.` means "the current directory."** So `mv drafts\readme.txt .` means "move the file `drafts\readme.txt` into the directory `.`" — that is, into wherever you are now.
+The `.` is not a typo. **`.` means "the current directory."** So `mv drafts\readme.txt .` means "move the file `drafts\readme.txt` into the directory `.`" (that is, into wherever you are now).
 :::
 
 ### 2.5 Move a file up to the parent
@@ -304,29 +298,6 @@ ls
 
 `cp` is an alias for `Copy-Item`. Without `-Recurse`, `cp` copies only the folder itself and leaves its contents behind.
 
-### 2.7 Delete with `rm` — **read this carefully**
-
-::: {.callout-warning}
-## `rm` is permanent
-Files deleted with `rm` at the command line **do not go to the Recycle Bin**. There is no undo. Read every deletion command twice before pressing Enter, and never, ever run `rm -Recurse -Force C:\` or `rm -Recurse -Force *` while you are still learning.
-:::
-
-Delete a single file:
-
-```powershell
-rm readme-backup.txt
-ls
-```
-
-Delete an entire directory (and everything inside it):
-
-```powershell
-rm -Recurse drafts-backup
-ls
-```
-
-The `-Recurse` flag tells `rm` to remove the directory and every file inside it, without asking first. If you leave `-Recurse` off and the directory has anything inside it, PowerShell stops and asks whether you are sure. (`rm` is an alias for `Remove-Item`.) Mac and Linux tutorials often show `rm -rf`. That combined flag does not work in PowerShell. Leave `readme.txt` and `drafts\` alone — you will use them in Part 3.
-
 ---
 
 ## Part 3 — Editing text with Notepad
@@ -337,9 +308,9 @@ Windows does not include the `nano` editor that Mac and Linux users often rely o
 notepad readme.txt
 ```
 
-A separate Notepad window appears. The Anaconda PowerShell Prompt hands off control to Notepad but does *not* freeze — you can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).
+A separate Notepad window appears. The Anaconda PowerShell Prompt hands off control to Notepad but does *not* freeze. You can even keep typing commands in the prompt while Notepad is open (though it is cleaner to finish editing first).
 
-Type these exact lines into Notepad (you can copy them from your browser and paste with `Ctrl + V`):
+Type these exact lines into Notepad (you can copy them from your browser and paste with <kbd>Ctrl</kbd> + <kbd>V</kbd>):
 
 ```
 Computer Literacy Practice
@@ -350,22 +321,30 @@ TODO: add a list of my favorite CLI commands
 TODO: try Select-String on this file later
 ```
 
-Save the file with `Ctrl + S` and close the Notepad window (`Alt + F4` or click the red `X`). Now verify what you wrote:
+Save the file with <kbd>Ctrl</kbd> + <kbd>S</kbd>.
+
+To close the Notepad window press <kbd>Alt</kbd> + <kbd>F4</kbd> or click the red <kbd>X</kbd>.
+
+Now verify what you wrote and saved is there in `readme.txt`:
 
 ```powershell
 cat readme.txt
 ```
 
-`cat` prints a file's contents to the terminal. It is great for short files. **Do not `cat` a huge file** — it will flood your terminal with output.
+`cat` prints a file's contents to the terminal. It is great for short files. **Do not `cat` a huge file**. It will flood your terminal with output. Instead consider using `more`, `Get-Content -Head`, or `Get-Content -Tail` to view parts of the file.
+
+- `more` will let you scroll through a file page by page.
+- `Get-Content file -Head N` will show you just the first N lines of a file.
+- `Get-Content file -Tail N` will show you just the last N lines of a file.
 
 ::: {.callout-note}
 ## What does "concatenate" mean?
-`cat` is short for *concatenate*. On Mac and Linux, `cat` is a program that was originally designed to join several files together and print the joined result. In PowerShell, `cat` is an alias for `Get-Content`, which reads files. To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain" — so *concatenation* is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux `cat` command; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
+`cat` is short for *concatenate*. On Mac and Linux, `cat` is a program that was originally designed to join several files together and print the joined result. In PowerShell, `cat` is an alias for `Get-Content`, which reads files. To **concatenate** two or more things is to join them end-to-end into a single, longer thing. The word comes from the Latin *catena*, meaning "chain." So *concatenation* is, literally, chaining things together. In computing you will meet the word most often in two places: (1) in the Mac/Linux `cat` command; and (2) in almost every programming language, where "string concatenation" means gluing two pieces of text together (for example, joining `"Hello, "` and `"world"` to produce `"Hello, world"`).
 :::
 
 ::: {.callout-tip}
 ## The `TODO:` lines are on purpose
-You just added two `TODO` markers to your file. You will search for them with `Select-String` in Part 6. Experienced developers leave `TODO` notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.
+You just added two `TODO` markers to your file. You will search for them with `Select-String` in Part 6. Developers leave `TODO` notes throughout their code as reminders, and being able to find those markers across an entire project is a genuinely useful skill.
 :::
 
 ---
@@ -427,22 +406,22 @@ You will see three CSV files listed with their sizes in bytes in the `Length` co
 
 ::: {.callout-note}
 ## What is a CSV file?
-**CSV** stands for **comma-separated values**. It is the simplest, most portable format for **tabular data** — that is, data arranged in rows and columns, the way you would lay it out in a spreadsheet or a printed table. Each row is one *observation* or *record* (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one *variable* or *field* (that respondent's age, the transaction's amount, the book's title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a **header** listing the column names.
+**CSV** stands for **comma-separated values**. It is the simplest, most portable format for **tabular data**. Tabular data is data that is arranged in rows and columns, the way you would lay it out in a spreadsheet or a printed table. Each row is one *observation* or *record* (one respondent in a survey, one transaction in a bank ledger, one book in a library catalog); each column is one *variable* or *field* (that respondent's age, the transaction's amount, the book's title). Inside the file itself, each line is one row, and the values within a row are separated by commas. The very first line of a CSV is usually a **header** listing the column names.
 
-CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself — no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.
+CSVs are everywhere in data science because they are plain text (so any program on any system can read them), lightweight (they store nothing but the data itself such as no fonts, no colors, no formulas), and language-agnostic (Python, R, Excel, and even a plain text editor can all open the same file). When you download data from a government open-data site, a research repository, or an API, it very often arrives as a CSV.
 :::
 
 ::: {.callout-note}
 ## What does "portable" mean?
-When programmers describe a file format, a program, or a piece of code as **portable**, they mean that it works well across many different systems and situations — the way a paperback book is portable in the everyday sense of "you can take it anywhere." A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.
+When programmers describe a file format, a program, or a piece of code as **portable**, they mean that it works well across many different systems and situations. Similar to the way a paperback book is portable in the everyday sense of "you can take it anywhere." A portable file format opens on a Mac, a Windows PC, a Linux server, and a Chromebook, in software written by many different companies, without needing conversion. Plain-text formats such as CSV, JSON, and Markdown are among the most portable formats in existence, which is a large part of why they have endured for decades.
 :::
 
 ::: {.callout-note}
 ## What is an API?
-**API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. For our purposes, the most common kind of API is a **web API**: a service somewhere on the internet that you (or a program) can send a request to, and that sends structured data back in response — very often as a CSV or JSON file. Weather services, government statistics offices, universities, and social-media platforms all publish web APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
+**API** stands for **application programming interface**. In broad terms, an API is a well-defined set of rules that lets one piece of software request information or services from another. Weather services, government statistics offices, universities, and social-media platforms all publish APIs that researchers use to gather data. You are not expected to use an API in this walkthrough; the term appears here only because CSVs are one of the most common formats that APIs return.
 :::
 
-Do **not** `cat complaints-bank.csv` — it is big and will fill your terminal with noise. Instead, look at the first several lines:
+Do **not** `cat complaints-bank.csv`. This is a big file and it will fill your terminal with noise. Instead, look at the first several lines:
 
 ```powershell
 Get-Content confident_fictional_books.csv -Head 10
@@ -465,18 +444,18 @@ For scrolling through a larger file, use `more`:
 more complaints-bank.csv
 ```
 
-You are now "inside" `more`. Press the space bar to advance one screen at a time. **Press `q` to quit.** Getting stuck inside `more` is a common frustration for beginners — remember `q`.
+You are now "inside" `more`. Press the space bar to advance one screen at a time. **Press `q` to quit.** Getting stuck inside `more` is a common frustration for beginners... (remember `q` to exit).
 
 ::: {.callout-note}
 ## When a program takes over your prompt
-Some commands hand control over to a program (Notepad opens in its own window; `more` and running Python servers stay inside the terminal). Your normal prompt disappears until you exit the program. If you ever feel stuck: try `q` (for `more`), close the window (for Notepad), or press `Control + C` (which sends a stop request to most other running programs).
+Some commands hand control over to a program (Notepad opens in its own window; `more`, `quarto preview`, `jupyter lab`, and running Python servers stay inside the terminal). Your normal terminal prompt disappears until you exit the program. If you ever feel stuck: try `q` (for `more`), close the window (for Notepad), or press <kbd>Control</kbd> + <kbd>C</kbd> (which sends a stop request to most other running programs).
 :::
 
 ### 4.5 Count rows
 
 ::: {.callout-note}
 ## Why count rows from the command line?
-A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, a one-line command tells you in a fraction of a second whether you are looking at 50 rows, 50 thousand, or 50 million. That number changes what you will do next — whether it is safe to open the whole file at once in a program, whether you should take a smaller sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the shell — sizes, row counts, first few lines — before jumping into a full analysis is an important habit for working with data.
+A row count is the fastest possible answer to a basic data-science question: **how many observations (records) does this dataset have?** Before you open a file in Python, R, or a spreadsheet, a one-line command tells you in a fraction of a second whether you are looking at 50 rows, 50 thousand, or 50 million. That number changes what you will do next: whether it is safe to open the whole file at once in a program, whether you should take a smaller sample first, and whether the file actually contains what someone told you it did. Getting used to inspecting data at the terminal (sizes, row counts, first few lines) before jumping into a full analysis is a habit that separates confident scientists from frustrated scientists.
 :::
 
 In PowerShell, you count lines by reading the file with `Get-Content` and asking how many lines came back:
@@ -503,7 +482,18 @@ ls *.csv | ForEach-Object { $_.Name; (Get-Content $_.FullName).Count }
 
 Inside the curly braces, `$_` means "the file currently being handled." For each file, PowerShell prints the file's name and then its line count. You do not need to memorize this line yet. Just notice how the wildcard and the pipe work together.
 
-Wildcards are powerful — and dangerous when combined with `rm`. Be extra careful whenever you combine `*` with a deleting command.
+Wildcards are powerful and dangerous when combined with `rm`. Be extra careful whenever you combine `*` with a deleting command.
+
+::: {.callout-tip}
+## Wildcards are powerful + dangerous
+The `*` wildcard can match any sequence of characters.
+
+For example, to find all `.csv` files on your desktop from any location on your computer enter: `ls ~\Desktop\*.csv`
+
+To find all files that contain the word "report" in your downloads from any location on your computer enter: `ls ~\Downloads\*report*.*`
+
+While useful for batch operations, it can also lead to unintended consequences if used carelessly. Always double-check your commands before executing them.
+:::
 
 ---
 
@@ -528,7 +518,7 @@ Get-Content complaints-bank.csv -Head 20 > ~\Desktop\complaints-sample.csv
 
 Read that out loud: "Take the first 20 lines of `complaints-bank.csv`, and instead of printing them to the terminal, **redirect** them into a new file called `complaints-sample.csv` on my Desktop."
 
-Now open your Desktop in File Explorer (or run `ii ~\Desktop`) — you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
+Now open your Desktop in File Explorer (or run `ii ~\Desktop`). After running the `Get-Content` command suggested above, you will see a small CSV file there. Double-click it to open in Excel. This is a very common real-world workflow: **make a small excerpt of a big data file so you can inspect it quickly.**
 
 ::: {.callout-note}
 ## Why the setup line matters here
@@ -547,7 +537,7 @@ Get-Content mpg_excerpt.csv -Head 3 >> ~\Desktop\complaints-sample.csv
 cat ~\Desktop\complaints-sample.csv
 ```
 
-You just appended a few rows of a different CSV onto the end of the sample file. (In real work you would only append data that has the same columns — but the mechanics are worth seeing.)
+You just appended a few rows of a different CSV onto the end of the sample file. (In real work you would only append data that has the same columns... but the mechanics are worth seeing.)
 
 ::: {.callout-tip collapse="true"}
 ## Challenge: make a 50-row sample of `mpg_excerpt.csv` on your Desktop
@@ -591,7 +581,7 @@ Now let us give `Select-String` a more realistic file to search through. Create 
 notepad cleanup.py
 ```
 
-If Notepad asks whether you want to create a new file, click **Yes**. Type or paste in the following (this uses only Python's built-in features — you do not need to install anything, and you do not need to *run* it; you are just going to search it):
+If Notepad asks whether you want to create a new file, click **Yes**. Type or paste in the following (this uses only Python's built-in features. You do not need to install anything, and you do not need to *run* it; you are just going to search it):
 
 ```python
 # cleanup.py — a small script for tidying up a text file
@@ -637,7 +627,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Save with `Ctrl + S` and close the Notepad window.
+Save with <kbd>Ctrl</kbd> + <kbd>S</kbd> and close the Notepad window.
 
 ### 6.3 Find all TODOs in one file
 
@@ -655,7 +645,7 @@ You should see four TODO lines with their line numbers.
 ls -Recurse -File | Select-String TODO
 ```
 
-- `ls -Recurse` lists every file in the current directory *and in every subdirectory* under it.
+- `ls -Recurse` lists every file in the current directory (and in every subdirectory under it).
 - `-File` leaves the directories themselves out of the list, so only files get searched.
 - `|` is the pipe. It hands that list of files to `Select-String`.
 - `Select-String TODO` searches each file and reports every match, with its file name and line number.
@@ -686,7 +676,7 @@ Return to the Start menu and open Anaconda PowerShell Prompt a second time, so t
 
 Confirm this:
 
-- In the new window, run `pwd`. It will probably say `C:\Users\yourname` — a newly opened Anaconda PowerShell Prompt always starts at your home directory.
+- In the new window, run `pwd`. It will probably say `C:\Users\yourname`. A newly opened Anaconda PowerShell Prompt always starts at your home directory.
 - In the old window, run `pwd`. It should show wherever you last navigated to.
 
 **Two windows, two directories, one machine.** Files you create in one are immediately visible from the other.
@@ -700,76 +690,68 @@ cd ~\Projects\computer-literacy
 python -m http.server 8000
 ```
 
-You will see something like `Serving HTTP on :: port 8000`. **Your prompt is gone** — Python is now running a small web server that makes the files in this folder available to a web browser on your own computer.
+You will see something like `Serving HTTP on :: port 8000`. **Your prompt is gone**. Python is now running a small web server that makes the files in this folder available to a web browser on your own computer.
 
 Open a web browser and go to <http://localhost:8000>. You will see a listing of your practice folder — click `readme.txt` to view it, click into `data/` to see the CSVs, and so on.
 
 ::: {.callout-note}
 ## What is `localhost`?
 `localhost` (also written as `127.0.0.1`) is a special network name that always means **"this same computer."** When a program serves at `localhost:8000`, it is only reachable from your own machine — nobody on the internet can see it. That is why local previews are safe: they are visible only to you.
+
+In practice `python -m http.server 8000` is not common for data scientists. However, `quarto preview` and `jupyter lab` (both commonly used by data scientists) behave similarly.
 :::
 
-The first time you start a Python web server on Windows, the Windows Firewall may pop up a dialog asking whether to allow Python to accept network connections. Since we are only using `localhost`, you can safely dismiss it in either direction — the local preview will work regardless.
+The first time you start a Python web server on Windows, the Windows Firewall may pop up a dialog asking whether to allow Python to accept network connections. Since we are only using `localhost`, you can safely dismiss it in either direction. The local preview will work regardless.
 
 ### 7.3 Why the second terminal matters
 
-Your first Anaconda PowerShell Prompt is "busy" running the web server. If you want to keep working — running `ls`, `cd`, editing files — you *need* the second Anaconda PowerShell Prompt window you opened in 7.1. Try it: switch to the second window and run `ls` in the practice folder. It works, because that terminal session is independent of the one running the server.
+Your first Anaconda PowerShell Prompt is "busy" running the web server. If you want to keep working. To use common commands including `ls`, `cd`, or to edit files you *need* the second Anaconda PowerShell Prompt window you opened in 7.1. Try it: switch to the second window and run `ls` in the practice folder. It works, because that terminal session is independent of the one running the server.
 
 ### 7.4 Stopping the server
 
-Switch back to the terminal running the server and press **`Control + C`**. The server stops, and your prompt returns. `Control + C` sends a stop request — it is the standard way to tell a running command-line program to stop.
+Switch back to the terminal running the server and press <kbd>Control</kbd> + <kbd>C</kbd>. The server stops, and your prompt returns. <kbd>Control</kbd> + <kbd>C</kbd> sends a stop request. It is the standard way to tell a running command-line program to stop.
 
 ::: {.callout-tip}
 ## The same pattern applies to `quarto preview` and `jupyter lab`
-When you run `quarto preview` on a Quarto project (like the site you are reading right now), or `jupyter lab` / `jupyter notebook` to open notebooks, those tools **also** start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use `Control + C` to shut the server down when you are done.
+When you run `quarto preview` on a Quarto project (like the site you are reading right now), or `jupyter lab` / `jupyter notebook` to open notebooks, those tools **also** start a local web server. Same idea: the terminal becomes busy, you open a second terminal for other work, and you use <kbd>Control</kbd> + <kbd>C</kbd> to shut the server down when you are done.
 :::
 
 ---
 
 ## Part 8 — Three flavors of notebook
 
-A **notebook** is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague's screen.
+A **notebook** (either Quarto or Jupyter) is a document that mixes prose, code, and code output (numbers, tables, plots) in one file. Three tools you are likely to meet in a graduate-level data-science setting are Jupyter Notebook, JupyterLab, and Quarto. You do not need to install or open any of them in this walkthrough; the goal of this section is to give you enough vocabulary that you will recognize each one when you meet it in a later course or on a colleague's screen.
 
 ### 8.1 Jupyter Notebook (classic)
 
 - **File extension:** `.ipynb`
-- **How you open it:** run `jupyter notebook` in an Anaconda PowerShell Prompt; a browser tab opens.
-- **Feel:** simple, one notebook per browser tab. The older interface.
-- **File format under the hood:** JSON. Not human-friendly to read as plain text, and hard to compare across versions.
+- **How you open it:** run `jupyter notebook` in an Anaconda PowerShell Prompt; a browser tab opens with an empty notebook ready to edit.
 
-::: {.callout-note}
-## What does "under the hood" mean?
-"**Under the hood**" is an idiom borrowed from car mechanics. The *hood* of a car is the metal cover over the engine; to look "under the hood" is to see how the machine actually works, hidden from the ordinary driver. In writing about software, "under the hood" describes the internal mechanism of something — how a program actually stores its data, or how a feature is actually implemented — as opposed to the polished surface the user sees. When this guide says a `.ipynb` file is JSON *under the hood*, it means: the friendly notebook you see in your browser is, at bottom, stored on disk as a JSON document.
-:::
+::: {.callout-important}
+## Jupyter Notebook vs JupyterLab
+**Jupyter Notebook** (the "classic" interface) and **JupyterLab** are two different ways to use the same underlying notebook system.
 
-::: {.callout-note}
-## What is JSON?
-**JSON** (pronounced *jay-son*) stands for **JavaScript Object Notation**. It is a plain-text format for storing structured data — data with named fields, nested lists, and hierarchies. A JSON file looks something like `{"name": "Ada", "age": 36, "skills": ["math", "engineering"]}`. It is designed to be read and written by programs rather than by humans, and although it *is* technically plain text, a large JSON file is tedious to read directly. JSON is one of the two most common formats (alongside CSV) that programs and web services use to exchange data.
-:::
-
-::: {.callout-note}
-## What does it mean to "compare across versions"?
-Writers, researchers, and programmers routinely want to answer a very specific question: **what changed between the earlier version of this file and the current one?** Specialized tools produce a side-by-side or line-by-line report of the differences — such a report is often called a *diff*, from the word *difference*. Files that are stored as clean plain text (a `.qmd` file, a Python script, a Markdown document) produce readable diffs: you can see, line by line, exactly what was added, removed, or changed. Files that are stored in complicated binary or nested formats (a Jupyter `.ipynb` file, a Word document, a Photoshop file) produce diffs full of noise, because a small visible change on screen can cause many invisible changes in the underlying storage.
+In practice it is now less common to use `jupyter notebook`. Instead focus your efforts on learning `jupyter lab`.
 :::
 
 ### 8.2 JupyterLab
 
-- **File extension:** *still* `.ipynb` — same file format as classic Jupyter.
+- **File extension:** *still* `.ipynb` (same file format as classic Jupyter).
 - **How you open it:** run `jupyter lab` in an Anaconda PowerShell Prompt.
-- **Feel:** a more modern, IDE-like layout — file browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
-- **Same version-comparison problem** as classic Jupyter, because the underlying file format is identical.
+- **Feels:** more modern, IDE-like layout. File browser on the left, tabs across the top, and the ability to open several notebooks and terminals side by side. The same notebook file, in a nicer environment.
 
 ::: {.callout-note}
 ## What is an IDE?
-**IDE** stands for **Integrated Development Environment**. It is a single application that bundles together the several tools a programmer typically needs — a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more — into one coordinated window. Popular IDEs you may encounter include Visual Studio Code, PyCharm, RStudio, and Spyder (which itself ships with Anaconda). JupyterLab is described as *IDE-like* because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.
+**IDE** stands for **Integrated Development Environment**. It is a single application that bundles together the several tools a programmer typically needs such as a text editor for writing code, a file browser for navigating a project, a terminal for running commands, a debugger for inspecting a running program, and often more.
+
+Popular IDEs you may encounter include Devin, Cursor, Visual Studio Code, PyCharm, RStudio, and Spyder (which itself ships with Anaconda). JupyterLab is described as *IDE-like* because, although it is really a notebook interface, it borrows the multi-panel, tabbed layout that IDEs use.
 :::
 
 ### 8.3 Quarto notebooks
 
 - **File extension:** `.qmd`
-- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in an Anaconda PowerShell Prompt.
-- **Feel:** plain text — Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
-- **Version-comparison-friendly:** because a `.qmd` file is plain text, comparing two versions of one is straightforward and readable.
+- **How you open it:** any text editor. To *render* it into a webpage or PDF, run `quarto render` or `quarto preview` in an Anaconda PowerShell Prompt. During editing and building `quarto preview` is the superior choice because it gives you a live preview of your edits.
+- **Feel:** plain text consisting of Markdown prose interleaved with code blocks. The website you are reading right now is built from `.qmd` files.
 
 ### 8.4 Quick comparison
 
@@ -781,19 +763,6 @@ Writers, researchers, and programmers routinely want to answer a very specific q
 | Runs a local web server? | Yes | Yes | Yes (for `preview`) |
 | Good for | Quick exploration | Multi-file projects | Websites, reports, books |
 | Comparing versions | Painful | Painful | Clean |
-
-::: {.callout-tip collapse="true"}
-## Try it: peek at a `.qmd` file with commands you already know
-The pages you are reading are `.qmd` files. If you have downloaded the source of this website into a folder called `CompLitPractice`, try:
-
-```powershell
-cd ~\Projects\CompLitPractice
-ls -Force
-Get-Content windows-extended.qmd -Head 10
-```
-
-Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.
-:::
 
 ::: {.callout-note}
 ## What are "code fences"?
@@ -844,18 +813,18 @@ In Markdown, a **code fence** is a line of three backtick characters (```` ``` `
 - **`mv` will not overwrite an existing file.** On a Mac, `mv` silently replaces a file that already has the target name. PowerShell stops with an error instead.
 - **`Select-String` ignores capitalization by default.** Add `-CaseSensitive` when case matters.
 - **Backslashes and forward slashes are not always interchangeable.** Use `\` in Windows paths to be safe.
-- **Filenames with spaces need quotes:** `mv "My File.txt" backup\` — or, better, avoid spaces in filenames you will handle from the command line.
-- **Some commands take over your prompt.** Ways to get unstuck: `q` (for `more`), close the window (for Notepad), `Control + C` (for most other running programs).
+- **Filenames with spaces need quotes:** `mv "My File.txt" backup\`. Better still, avoid spaces in filenames you will handle from the command line.
+- **Some commands take over your prompt.** Ways to get unstuck: `q` (for `more`), close the window (for Notepad), <kbd>Control</kbd> + <kbd>C</kbd> (for most other running programs).
 - **Anaconda PowerShell Prompt is not Anaconda Prompt.** Check for `PS` in your prompt. Command Prompt instructions you find online, such as `dir /a` or `type nul > file`, do not work here.
 
 ### You now know enough to…
 
-- Follow along in a Python or R tutorial that says "open a terminal and run…"
+- Follow along in a Python or R tutorial that says "open a terminal and run..."
 - Download a project archive from the internet and explore its contents.
 - Preview a Quarto site or run a Jupyter notebook.
 - Fix minor project problems yourself by reading and searching files instead of asking someone else.
 
-Nice work. Close the Anaconda PowerShell Prompt windows when you are ready — you did great.
+Nice work. Close the Anaconda PowerShell Prompt windows when you are ready. You did great.
 
 ---
 
@@ -956,7 +925,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** Tab completion is the single most useful time-saving feature of the shell. If Tab will not complete a name, that name probably does not exist where you think it does.
+**B.** Tab completion is the single most useful time-saving feature of the terminal. If Tab will not complete a name, that name probably does not exist where you think it does.
 :::
 
 ### Q9. Which command creates an empty file called `hello.txt` in the current directory?
@@ -1019,19 +988,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Copying a directory requires `-Recurse`, because you are copying the folder *and everything inside it*. Without `-Recurse`, `cp` copies only the folder itself and leaves its contents behind.
 :::
 
-### Q14. What is the biggest danger of `rm` (and `rm -Recurse`) in Anaconda PowerShell Prompt?
-
-- A. They require an internet connection.
-- B. They are slow on large files.
-- C. They delete files permanently — files do not go to the Recycle Bin.
-- D. They only work on files inside your home directory.
-
-::: {.callout-tip collapse="true"}
-## Answer
-**C.** Unlike deleting a file in File Explorer, `rm` bypasses the Recycle Bin entirely. There is no undo. Read every deletion command twice.
-:::
-
-### Q15. Which shortcut saves the file you are editing in Notepad?
+### Q14. Which shortcut saves the file you are editing in Notepad?
 
 - A. `Ctrl + O`
 - B. `Ctrl + W`
@@ -1043,7 +1000,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** Notepad uses the standard Windows save shortcut, `Ctrl + S`. Use `Alt + F4` (or click the red `X`) to close the window when you are done.
 :::
 
-### Q16. When you run `notepad readme.txt` from the Anaconda PowerShell Prompt, what happens?
+### Q15. When you run `notepad readme.txt` from the Anaconda PowerShell Prompt, what happens?
 
 - A. The Anaconda PowerShell Prompt freezes until Notepad is closed.
 - B. Notepad opens in a separate window and the Anaconda PowerShell Prompt remains usable.
@@ -1055,7 +1012,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `notepad` launches the graphical Notepad application in its own window. The Anaconda PowerShell Prompt hands off control but does not block, so you could continue working there if you wanted.
 :::
 
-### Q17. Why should you avoid running `cat` on a large CSV file?
+### Q16. Why should you avoid running `cat` on a large CSV file?
 
 - A. It will corrupt the file.
 - B. It will dump thousands of lines into your terminal all at once.
@@ -1067,7 +1024,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `cat` prints the entire file to the terminal. For a big file that is a flood of unreadable output. Use `Get-Content file -Head N` or `more` to look at the file, or `(Get-Content file).Count` for a row count, instead.
 :::
 
-### Q18. You are stuck inside `more` and want to get back to your normal prompt. What do you press?
+### Q17. You are stuck inside `more` and want to get back to your normal prompt. What do you press?
 
 - A. `Control + C`
 - B. `q`
@@ -1076,10 +1033,10 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-**B.** In `more`, pressing `q` quits back to the shell.
+**B.** In `more`, pressing `q` quits back to the terminal.
 :::
 
-### Q19. What does `(Get-Content data.csv).Count` report?
+### Q20. What does `(Get-Content data.csv).Count` report?
 
 - A. The number of words in the file.
 - B. The number of characters in the file.
@@ -1091,7 +1048,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `Get-Content` reads the file one line at a time, and `.Count` reports how many lines it read. Handy for quickly estimating how many rows are in a CSV (remember: subtract 1 for the header).
 :::
 
-### Q20. Which command downloads a file from a URL and saves it using the filename from that URL?
+### Q21. Which command downloads a file from a URL and saves it using the filename from that URL?
 
 - A. `wget url`
 - B. `curl url`
@@ -1103,7 +1060,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** In Windows PowerShell, `curl` and `wget` are both aliases for a PowerShell command called `Invoke-WebRequest`, which does not understand the `-O` flag. Typing `curl.exe` reaches the real curl program. The `-O` flag (capital O) tells curl to save the response as a file, using the name from the URL.
 :::
 
-### Q21. What is a CSV file?
+### Q22. What is a CSV file?
 
 - A. A compressed archive of spreadsheets.
 - B. A binary format for storing databases.
@@ -1115,7 +1072,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** "CSV" = comma-separated values. It is plain text, portable, and readable by virtually every data tool.
 :::
 
-### Q22. What does `Get-Content data.csv -Head 20 > sample.csv` do?
+### Q23. What does `Get-Content data.csv -Head 20 > sample.csv` do?
 
 - A. Prints the first 20 lines to the terminal *and* to `sample.csv`.
 - B. Appends the first 20 lines of `data.csv` to `sample.csv`.
@@ -1127,7 +1084,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `>` is the redirection symbol: send the output that would have printed into a file. It overwrites the target without warning — no confirmation prompt.
 :::
 
-### Q23. What is the difference between `>` and `>>`?
+### Q24. What is the difference between `>` and `>>`?
 
 - A. `>` prints to the screen; `>>` writes to a file.
 - B. `>` overwrites the target file; `>>` appends to the target file.
@@ -1139,7 +1096,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Single `>` overwrites without warning; double `>>` appends onto the end of an existing file (or creates it if it does not exist).
 :::
 
-### Q24. Which command searches inside the current folder and all folders inside it for the text `TODO`, showing line numbers?
+### Q25. Which command searches inside the current folder and all folders inside it for the text `TODO`, showing line numbers?
 
 - A. `Select-String TODO`
 - B. `ls TODO`
@@ -1151,7 +1108,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `ls -Recurse -File` lists every file in the current folder and all folders inside it, the pipe `|` hands that list to `Select-String`, and `Select-String` reports each match with its file name and line number. `grep` is not built into Windows.
 :::
 
-### Q25. Which flag makes `Select-String` pay attention to capitalization?
+### Q26. Which flag makes `Select-String` pay attention to capitalization?
 
 - A. `-i`
 - B. `-CaseSensitive`
@@ -1163,7 +1120,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `Select-String` ignores capitalization by default, so `Select-String todo` matches `TODO`, `Todo`, and `todo`. Add `-CaseSensitive` to match exactly. This is the reverse of `grep` on a Mac, which pays attention to capitalization unless you add `-i`.
 :::
 
-### Q26. Why would you ever want two Anaconda PowerShell Prompt windows open at the same time?
+### Q27. Why would you ever want two Anaconda PowerShell Prompt windows open at the same time?
 
 - A. To run commands faster in parallel (at the same time).
 - B. Because some commands (like a local web server) take over the prompt, so you need a second terminal for other work.
@@ -1175,7 +1132,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** Commands that keep running for a long time — web servers, `quarto preview`, `jupyter lab`, `more`, and so on — keep the first terminal busy. A second window gives you a place to keep working.
 :::
 
-### Q27. What is `localhost`?
+### Q28. What is `localhost`?
 
 - A. A public web server you can share with others.
 - B. A special name that always refers to *your own* computer.
@@ -1187,7 +1144,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **B.** `localhost` (also written as `127.0.0.1`) means "this same machine." A server running at `localhost:8000` is only reachable from your own computer.
 :::
 
-### Q28. You are running `python -m http.server 8000` and want to stop it. What do you press?
+### Q29. You are running `python -m http.server 8000` and want to stop it. What do you press?
 
 - A. `q`
 - B. `Control + X`
@@ -1199,7 +1156,7 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** `Control + C` sends a stop request — the standard way to tell a running command-line program to stop.
 :::
 
-### Q29. Classic Jupyter Notebook and JupyterLab open which file extension?
+### Q30. Classic Jupyter Notebook and JupyterLab open which file extension?
 
 - A. `.qmd`
 - B. `.py`
@@ -1211,14 +1168,4 @@ Thirty multiple-choice questions covering everything above. Try to answer each o
 **C.** Both tools use the same `.ipynb` notebook file format — JupyterLab is essentially a more modern editor for the same files.
 :::
 
-### Q30. Why is it easier to see what changed between two versions of a `.qmd` file than between two versions of a `.ipynb` file?
 
-- A. Because Quarto is newer software.
-- B. Because `.qmd` files are plain text (Markdown), while `.ipynb` files are stored as JSON.
-- C. Because Quarto files are always smaller.
-- D. Because Windows has a special mode for Quarto.
-
-::: {.callout-tip collapse="true"}
-## Answer
-**B.** A `.qmd` file is Markdown — ordinary readable text with code fences. Comparing two versions produces a clear, line-by-line report of what changed. A `.ipynb` file is a JSON document that also stores hidden information about each cell and each run, so even a small visible change on screen can cause many invisible changes in the file, making the comparison noisy and hard to read.
-:::

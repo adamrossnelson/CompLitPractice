@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Windows Command-Line Walkthrough Quick Start – Computer Literacy Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Computer Literacy Practice</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-macos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">MacOS</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-macos">    
+        <li>
+    <a class="dropdown-item" href="./macos-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./macos-extended.html">
+ <span class="dropdown-text">Extended</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-windows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Windows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-windows">    
+        <li>
+    <a class="dropdown-item" href="./windows-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./windows-extended.html">
+ <span class="dropdown-text">Extended</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#finding-and-opening-the-anaconda-powershell-prompt" id="toc-finding-and-opening-the-anaconda-powershell-prompt" class="nav-link active" data-scroll-target="#finding-and-opening-the-anaconda-powershell-prompt">1. Finding and opening the Anaconda PowerShell Prompt</a></li>
+  <li><a href="#what-the-prompt-looks-like" id="toc-what-the-prompt-looks-like" class="nav-link" data-scroll-target="#what-the-prompt-looks-like">2. What the prompt looks like</a></li>
+  <li><a href="#get-oriented-where-am-i-what-is-here" id="toc-get-oriented-where-am-i-what-is-here" class="nav-link" data-scroll-target="#get-oriented-where-am-i-what-is-here">3. Get oriented: where am I, what is here?</a></li>
+  <li><a href="#when-to-use-and-when-it-is-not-necessary" id="toc-when-to-use-and-when-it-is-not-necessary" class="nav-link" data-scroll-target="#when-to-use-and-when-it-is-not-necessary">4. When to use <code>~</code> (and when it is not necessary)</a></li>
+  <li><a href="#the-running-example" id="toc-the-running-example" class="nav-link" data-scroll-target="#the-running-example">5. The running example</a>
+  <ul class="collapse">
+  <li><a href="#create-a-quick_look-folder-on-your-desktop" id="toc-create-a-quick_look-folder-on-your-desktop" class="nav-link" data-scroll-target="#create-a-quick_look-folder-on-your-desktop">5.1 Create a <code>quick_look</code> folder on your Desktop</a></li>
+  <li><a href="#create-and-edit-readme.txt" id="toc-create-and-edit-readme.txt" class="nav-link" data-scroll-target="#create-and-edit-readme.txt">5.2 Create and edit <code>ReadMe.txt</code></a></li>
+  <li><a href="#move-the-whole-project-from-desktop-to-projects" id="toc-move-the-whole-project-from-desktop-to-projects" class="nav-link" data-scroll-target="#move-the-whole-project-from-desktop-to-projects">5.3 Move the whole project from Desktop to <code>~\Projects</code></a></li>
+  <li><a href="#find-every-todo-in-the-project" id="toc-find-every-todo-in-the-project" class="nav-link" data-scroll-target="#find-every-todo-in-the-project">5.4 Find every TODO in the project</a></li>
+  </ul></li>
+  <li><a href="#multiple-anaconda-powershell-prompt-sessions-at-the-same-time" id="toc-multiple-anaconda-powershell-prompt-sessions-at-the-same-time" class="nav-link" data-scroll-target="#multiple-anaconda-powershell-prompt-sessions-at-the-same-time">6. Multiple Anaconda PowerShell Prompt sessions at the same time</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Windows Command-Line Walkthrough Quick Start</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This is a focused, ~30–45 minute walkthrough for Windows users that covers the handful of Anaconda PowerShell Prompt commands you will use most often. It is organized around a single running example so that the commands connect into a workflow, rather than sitting as isolated tricks. If you want the leisurely, deeply-annotated version (with full vocabulary callouts and a 30-question review), see the <a href="./windows-extended.html">Extended walkthrough</a>.</p>
+<hr>
+<section id="finding-and-opening-the-anaconda-powershell-prompt" class="level2">
+<h2 class="anchored" data-anchor-id="finding-and-opening-the-anaconda-powershell-prompt">1. Finding and opening the Anaconda PowerShell Prompt</h2>
+<p>Click the Start menu, begin typing <code>Anaconda PowerShell Prompt</code>, and press <kbd>Enter</kbd> when you see it in the results. A window opens with a text prompt inside it. That window is where you will type every command in this walkthrough.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Use Anaconda <strong>PowerShell</strong> Prompt, not any of the other terminals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Anaconda distribution actually installs two terminals in your Start menu, and their names are easy to confuse:</p>
+<ul>
+<li><strong>Anaconda Prompt</strong> — a classic <code>cmd.exe</code> window with conda activated.</li>
+<li><strong>Anaconda PowerShell Prompt</strong> — a PowerShell window with conda activated. <strong>This is the one you want.</strong></li>
+</ul>
+<p>Windows also comes with several other terminal programs (Command Prompt, PowerShell, Windows Terminal, Git Bash). For this walkthrough, always open <strong>Anaconda PowerShell Prompt</strong>. It comes preconfigured with Python and the <code>conda</code> tool ready to use, and it supports the Unix-style shortcuts (such as <code>~</code> for your home directory) that appear later in this guide.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="what-the-prompt-looks-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-prompt-looks-like">2. What the prompt looks like</h2>
+<p>When Anaconda PowerShell Prompt first opens you will see a line of text that looks something like this:</p>
+<pre><code>(base) PS C:\Users\yourname&gt;</code></pre>
+<p>Reading it left to right:</p>
+<ul>
+<li><code>(base)</code> — the active <strong>conda environment</strong>. <code>base</code> is the default one and is fine for now.</li>
+<li><code>PS</code> — short for <strong>PowerShell</strong>, confirming which shell you are typing into.</li>
+<li><code>C:\Users\yourname</code> — the current directory. This is your <strong>home directory</strong>, the folder Windows sets up for you when you create your account.</li>
+<li><code>&gt;</code> — the end of the prompt. Everything you type will appear after it, on the same line.</li>
+</ul>
+<p>Whenever this guide says “at the prompt,” it means: type this into the Anaconda PowerShell Prompt window, then press <kbd>Enter</kbd>.</p>
+<hr>
+</section>
+<section id="get-oriented-where-am-i-what-is-here" class="level2">
+<h2 class="anchored" data-anchor-id="get-oriented-where-am-i-what-is-here">3. Get oriented: where am I, what is here?</h2>
+<p>Type these two commands, one at a time:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwd</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>pwd</code> — <strong>“print working directory.”</strong> Tells you which folder you are currently sitting in.</li>
+<li><code>ls</code> — <strong>“list.”</strong> Shows the contents of that folder in a table with columns for mode, last-write time, size, and name.</li>
+</ul>
+<p>For a listing that also includes hidden files, add the <code>-Force</code> flag:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">-</span>Force</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Two other flags worth knowing about:</p>
+<ul>
+<li><code>-Force</code> — show all files, including hidden ones</li>
+<li><code>-Recurse</code> — list contents of every subdirectory as well</li>
+<li><code>-Filter *.csv</code> (or another pattern) — show only files that match</li>
+</ul>
+<p>Memorize <code>ls -Force</code>. It is the single most useful flag for the everyday case where you suspect there are hidden files you cannot see.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>ls</code> versus <code>dir</code> in PowerShell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Anaconda PowerShell Prompt, both <code>ls</code> and <code>dir</code> do the same thing. Both are shorter names for the underlying <code>Get-ChildItem</code> command. Pick whichever feels more natural. This guide uses <code>ls</code> because it matches what you see in most Unix and macOS documentation.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tab completion, reminder #1: start using it right now
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Whenever you type a file or folder name, type only the first few letters and then press the <kbd>Tab</kbd> key. The Anaconda PowerShell Prompt will fill in the rest for you. This prevents typos, saves keystrokes, and confirms that the thing you are typing actually exists. If <kbd>Tab</kbd> refuses to complete a name, the file or folder is not where you think it is. <strong>You will see this reminder several more times. That is on purpose.</strong></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="when-to-use-and-when-it-is-not-necessary" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-and-when-it-is-not-necessary">4. When to use <code>~</code> (and when it is not necessary)</h2>
+<p><code>~</code> (a tilde) is a shortcut for your home directory (<code>C:\Users\yourname</code>). PowerShell expands it automatically whenever you use it in a path. Use it whenever you need to write a path that starts from home:</p>
+<ul>
+<li><code>cd ~\Desktop</code> — go to the Desktop</li>
+<li><code>ls ~\Documents</code> — list the contents of Documents</li>
+<li><code>cat ~\Projects\quick_look\ReadMe.txt</code> — read a file that lives many folders below home</li>
+</ul>
+<p>You do <strong>not</strong> need <code>~</code> when the file or folder you are referring to is already inside the directory you are standing in. For example, if you are already inside <code>~\Desktop</code> and want to look at a file called <code>notes.txt</code> that lives there, this is enough:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> notes<span class="op">.</span><span class="fu">txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You do <em>not</em> need to write <code>cat ~\Desktop\notes.txt</code>. The shorter form works because <code>notes.txt</code> is a <strong>relative path</strong> (understood relative to your current directory, whatever that happens to be). Reach for <code>~</code> only when the path you want does not begin at your current location.</p>
+<p>A quick rule of thumb: <strong>if <code>pwd</code> already shows you are in the folder that contains the thing you want, you do not need <code>~</code>.</strong></p>
+<hr>
+</section>
+<section id="the-running-example" class="level2">
+<h2 class="anchored" data-anchor-id="the-running-example">5. The running example</h2>
+<p>The rest of this walkthrough follows one continuous scenario. You have decided to take a quick look at some new code (or a new dataset) and want a scratch folder on your Desktop to work in.</p>
+<section id="create-a-quick_look-folder-on-your-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-quick_look-folder-on-your-desktop">5.1 Create a <code>quick_look</code> folder on your Desktop</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> <span class="op">~</span>\Desktop</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mkdir quick_look</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> quick_look</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>pwd</code> at the end confirms you are now inside <code>C:\Users\yourname\Desktop\quick_look</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tab completion, reminder #2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When typing <code>cd ~\Desktop</code>, you can type <code>cd ~\Des</code> and then press <kbd>Tab</kbd>. Every long path in this walkthrough is a good excuse to practice this.</p>
+</div>
+</div>
+</section>
+<section id="create-and-edit-readme.txt" class="level3">
+<h3 class="anchored" data-anchor-id="create-and-edit-readme.txt">5.2 Create and edit <code>ReadMe.txt</code></h3>
+<p>Open a new <code>ReadMe.txt</code> file in <strong>Notepad</strong>, the simple text editor that ships with Windows:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>notepad ReadMe<span class="op">.</span><span class="fu">txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Notepad will ask whether you want to create the file, since it does not yet exist. Click <code>Yes</code> at that prompt. A separate Notepad window opens. Type in these lines (you can copy-paste from your browser with <kbd>Ctrl</kbd> + <kbd>V</kbd>):</p>
+<pre><code>Quick Look project
+==================
+Poking around at some new code.
+
+TODO: figure out what this project actually does
+TODO: write down my first impressions</code></pre>
+<p>Save the file with <kbd>Ctrl</kbd> + <kbd>S</kbd> and close the Notepad window (<kbd>Alt</kbd> + <kbd>F4</kbd>, or click the red <kbd>X</kbd>).</p>
+<p>Now preview what you wrote <em>without</em> opening any editor at all:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ReadMe<span class="op">.</span><span class="fu">txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>cat</code> prints the contents of a file straight to the terminal. For short files it is the fastest possible way to remind yourself what is inside without waiting for an editor to open.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Notepad is not your only choice
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notepad is one of the friendliest editors for a beginner because it ships with every copy of Windows and needs no setup. Another option that would have worked instead is:</p>
+<ul>
+<li><code>code ReadMe.txt</code> — opens the file in <strong>Visual Studio Code</strong>, if you have it installed.</li>
+</ul>
+<p>For the rest of this walkthrough we will stay with <code>notepad</code>, because it is the option that works everywhere with no setup.</p>
+</div>
+</div>
+</section>
+<section id="move-the-whole-project-from-desktop-to-projects" class="level3">
+<h3 class="anchored" data-anchor-id="move-the-whole-project-from-desktop-to-projects">5.3 Move the whole project from Desktop to <code>~\Projects</code></h3>
+<p>You have decided the Desktop is not the right home for this after all. It belongs in <code>~\Projects</code> alongside your other work.</p>
+<p>First, back out of the folder you are about to move. You cannot move a folder while your Anaconda PowerShell Prompt is still standing inside it:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> <span class="op">..</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is a good moment to <em>not</em> reach for <code>~</code>. Since you are currently inside <code>~\Desktop\quick_look</code>, the parent folder is simply <code>~\Desktop</code>, and <code>..</code> is the shortcut that always means “the parent of where I am now.” Writing <code>cd ..</code> is shorter, more general, and works no matter what the parent happens to be called. Confirm that you moved up one level:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should see <code>C:\Users\yourname\Desktop</code>.</p>
+<p>Consider checking whether the <code>~\Projects</code> folder already exists. A command that can test if <code>~\Projects</code> exists is:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">~</span>\Projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the command returns an error, the folder does not exist and you should create it:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mkdir <span class="op">~</span>\Projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If the folder already exists, <code>mkdir</code> will report an error. That error is harmless in this case, and you can carry on.</p>
+<p>Now move the whole <code>quick_look</code> folder in a single command:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> quick_look <span class="op">~</span>\Projects\</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>mv</code> moves (or renames) files and folders. Confirm the move worked:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">~</span>\Projects</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once you confirm the <code>quick_look</code> folder now resides in <code>~\Projects</code>, navigate into the new location:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cd</span> <span class="op">~</span>\Projects\quick_look</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tab completion, reminder #3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Try typing <code>cd ~\Pro</code>, <kbd>Tab</kbd>, <code>qui</code>, <kbd>Tab</kbd>. You just navigated two directories with about six keystrokes.</p>
+</div>
+</div>
+</section>
+<section id="find-every-todo-in-the-project" class="level3">
+<h3 class="anchored" data-anchor-id="find-every-todo-in-the-project">5.4 Find every TODO in the project</h3>
+<p>Fast-forward: days, weeks, or months later, <code>quick_look</code> has grown into a real project with many files. Along the way you have been leaving <code>TODO:</code> markers scattered here and there as reminders. Despite your best efforts to keep things consistent, they appear in several different capitalizations across the project, including <code>TODO:</code>, <code>Todo:</code>, and <code>todo:</code>.</p>
+<p>Now you want a single list of every todo item, including which file it lives in and which line number of that file.</p>
+<p>From inside the project folder:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>findstr <span class="op">/</span>s <span class="op">/</span>n <span class="op">/</span>i todo <span class="op">*.*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>/s</code> — search this folder and every folder inside it</li>
+<li><code>/n</code> — include the line number of each match</li>
+<li><code>/i</code> — case-insensitive, so <code>TODO</code>, <code>Todo</code>, and <code>todo</code> all match</li>
+<li><code>*.*</code> — every file in each directory that has both a name and an extension</li>
+</ul>
+<p>You will get one line of output for every match, in this shape:</p>
+<pre><code>ReadMe.txt:5:TODO: figure out what this project actually does</code></pre>
+<p>Read that as: <em>file <code>ReadMe.txt</code>, line 5, containing the text <code>TODO: figure out what this project actually does</code></em>. This is how programmers keep track of loose ends across a whole project without opening every file by hand.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>findstr</code> is a Windows program, not a PowerShell command
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>findstr</code> is one of the classic Windows text-searching tools that has shipped with the operating system for decades. It runs fine from inside Anaconda PowerShell Prompt because PowerShell can call any Windows program, but it is not itself a PowerShell command. PowerShell has its own more powerful text-searching tool called <code>Select-String</code> (aliased <code>sls</code>) that you may see used in other Windows tutorials. For this walkthrough we stay with <code>findstr</code> because its output format lines up cleanly with what programmers on every operating system are used to reading.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tab completion, reminder #4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want to search inside one specific file (for example, <code>findstr /n /i todo ReadMe.txt</code>), type the first few letters of the filename and press <kbd>Tab</kbd>.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="multiple-anaconda-powershell-prompt-sessions-at-the-same-time" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-anaconda-powershell-prompt-sessions-at-the-same-time">6. Multiple Anaconda PowerShell Prompt sessions at the same time</h2>
+<p>Some commands take over your prompt and do not give it back until you stop them. Two you will meet often:</p>
+<ul>
+<li><code>quarto preview</code> — starts a local preview of a Quarto site and keeps running until you stop it.</li>
+<li><code>jupyter lab</code> — starts a JupyterLab session in your browser and keeps running until you stop it.</li>
+</ul>
+<p>If either of those is running in your only Anaconda PowerShell Prompt window, you cannot use that window for anything else. Commands like <code>ls</code>, <code>cd</code>, and <code>findstr</code> all have to wait until the long-running command releases the prompt. The fix is simply to open more than one Anaconda PowerShell Prompt session.</p>
+<p>Return to the Start menu and open <strong>Anaconda PowerShell Prompt</strong> a second (or third) time. Each new window is an independent terminal session with its own current directory.</p>
+<p>A common working setup uses three windows at once:</p>
+<ul>
+<li><strong>Window 1</strong> — a general-purpose Anaconda PowerShell Prompt for editing files, <code>ls</code>, <code>cd</code>, <code>cat</code>, <code>findstr</code>, and everything else in this walkthrough.</li>
+<li><strong>Window 2</strong> — running <code>quarto preview</code> so that your Quarto website reloads in the browser every time you save a <code>.qmd</code> file.</li>
+<li><strong>Window 3</strong> — running <code>jupyter lab</code> so that your notebooks are always open and ready in the browser.</li>
+</ul>
+<p>To stop a long-running command (in any window), press <kbd>Ctrl</kbd> + <kbd>C</kbd>. That keystroke sends a stop request and returns you to a normal prompt.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tab completion, reminder #5
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Almost everything you do in windows 1, 2, and 3 benefits from <kbd>Tab</kbd> completion. It is not a coincidence that the fastest command-line users press <kbd>Tab</kbd> constantly.</p>
+</div>
+</div>
+<hr>
+<p>That is the quick start. If you want deeper explanations of every command, more challenges, and a 30-question review, work through the <a href="./windows-extended.html">Extended walkthrough</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/adamrossnelson\.github\.io\/CompLitPractice\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

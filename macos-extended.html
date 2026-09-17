@@ -126,14 +126,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./macos.html" aria-current="page"> 
-<span class="menu-text">macOS</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-macos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">MacOS</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-macos">    
+        <li>
+    <a class="dropdown-item" href="./macos-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./windows.html"> 
-<span class="menu-text">Windows</span></a>
+        <li>
+    <a class="dropdown-item" href="./macos-extended.html">
+ <span class="dropdown-text">Extended</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-windows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Windows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-windows">    
+        <li>
+    <a class="dropdown-item" href="./windows-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./windows-extended.html">
+ <span class="dropdown-text">Extended</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
@@ -1152,7 +1174,7 @@ Try it: peek at a <code>.qmd</code> file with commands you already know
 <p>The pages you are reading are <code>.qmd</code> files. If you have downloaded the source of this website into a folder called <code>CompLitPractice</code>, try:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Projects/CompLitPractice</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lhra</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> macos.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> macos-extended.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Notice that a <code>.qmd</code> file is just readable text: ordinary Markdown, with <strong>code fences</strong> marking off the executable chunks.</p>
 </div>
 </div>
@@ -2137,7 +2159,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/adamrossnelson\.github\.io\/CompLitPractice\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

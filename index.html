@@ -92,14 +92,36 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./macos.html"> 
-<span class="menu-text">macOS</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-macos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">MacOS</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-macos">    
+        <li>
+    <a class="dropdown-item" href="./macos-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./windows.html"> 
-<span class="menu-text">Windows</span></a>
+        <li>
+    <a class="dropdown-item" href="./macos-extended.html">
+ <span class="dropdown-text">Extended</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-windows" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Windows</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-windows">    
+        <li>
+    <a class="dropdown-item" href="./windows-quickstart.html">
+ <span class="dropdown-text">Quick Start</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./windows-extended.html">
+ <span class="dropdown-text">Extended</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
@@ -115,8 +137,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#macos" id="toc-macos" class="nav-link active" data-scroll-target="#macos">MacOS</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -140,15 +169,25 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>A self-guided, hands-on walkthrough for building command-line literacy. Plan on about <strong>2.5 hours</strong> from start to finish.</p>
-<p>Pick the page that matches your machine:</p>
+<p>A self-guided, hands-on collection of walkthroughs for building command-line literacy. Pick the version that matches both your machine and the amount of time you have to spend.</p>
+<section id="macos" class="level2">
+<h2 class="anchored" data-anchor-id="macos">MacOS</h2>
 <ul>
-<li><a href="./macos.html"><strong>macOS walkthrough</strong></a> — for MacBooks and iMacs. Uses the built-in <strong>Terminal</strong> app.</li>
-<li><a href="./windows.html"><strong>Windows walkthrough</strong></a> — uses the <strong>Anaconda Prompt</strong>.</li>
+<li><a href="./macos-quickstart.html"><strong>Quick Start</strong></a> — a focused, ~30–45 minute tour of the handful of command-line moves you will use most often, organized around a single running example.</li>
+<li><a href="./macos-extended.html"><strong>Extended</strong></a> — a full ~2.5 hour walkthrough with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.</li>
 </ul>
-<p>Each challenge shows a prompt, and the answer is hidden behind a <strong>Click to reveal answer</strong> panel. Try the challenge on your own first; only reveal the answer when you’re stuck or want to check your work.</p>
+</section>
+<section id="windows" class="level2">
+<h2 class="anchored" data-anchor-id="windows">Windows</h2>
+<ul>
+<li><a href="./windows-quickstart.html"><strong>Quick Start</strong></a> — a focused, ~30–45 minute tour built for the <strong>Anaconda Prompt</strong>, organized around a single running example.</li>
+<li><a href="./windows-extended.html"><strong>Extended</strong></a> — a full ~2.5 hour walkthrough built for the <strong>Anaconda PowerShell Prompt</strong>, with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.</li>
+</ul>
+<hr>
+<p>Each walkthrough shows a prompt, and the answer to every challenge is hidden behind a <strong>Click to reveal answer</strong> panel. Try the challenge on your own first; only reveal the answer when you are stuck or want to check your work.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

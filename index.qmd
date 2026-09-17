@@ -11,8 +11,8 @@ A self-guided, hands-on collection of walkthroughs for building command-line lit
 
 ## Windows
 
-- [**Quick Start**](windows-quickstart.qmd) — a focused, ~30–45 minute tour built for the **Anaconda Prompt**, organized around a single running example.
-- [**Extended**](windows-extended.qmd) — a full ~2.5 hour walkthrough built for the **Anaconda PowerShell Prompt**, with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.
+- [**Quick Start**](windows-quickstart.qmd) — a focused, ~30–45 minute tour built for the Anaconda PowerShell Prompt, organized around a single running example.
+- [**Extended**](windows-extended.qmd) — a full ~2.5 hour walkthrough built for the Anaconda PowerShell Prompt, with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.
 
 ---
 

@@ -77,6 +77,8 @@ In Anaconda PowerShell Prompt, both `ls` and `dir` do the same thing. Both are s
 Whenever you type a file or folder name, type only the first few letters and then press the <kbd>Tab</kbd> key. The Anaconda PowerShell Prompt will fill in the rest for you. This prevents typos, saves keystrokes, and confirms that the thing you are typing actually exists. If <kbd>Tab</kbd> refuses to complete a name, the file or folder is not where you think it is. **You will see this reminder several more times. That is on purpose.**
 :::
 
+![The single keystroke that separates the frustrated command-line user from the confident one.](images/meme_tab_key.png){#fig-win-qs-tab fig-alt="A widescreen meme-style photograph of a deep desert canyon with reddish-brown rock walls under a hazy sky. Two scientists in white lab coats stand on opposite rims of the canyon. A giant monolithic gray keycap labeled 'TAB' with a right-facing arrow spans the gap between them like a bridge. Bold blue text at the top of the image reads 'The Difference Between The Furstrated Scientist, And The Confident Scientist!' (the word 'frustrated' is misspelled in the original image). White text at the bottom reads 'One key. Tab.'"}
+
 ---
 
 ## 4. When to use `~` (and when it is not necessary)
@@ -146,7 +148,9 @@ Now preview what you wrote *without* opening any editor at all:
 cat ReadMe.txt
 ```
 
-`cat` prints the contents of a file straight to the terminal. For short files it is the fastest possible way to remind yourself what is inside without waiting for an editor to open.
+`cat` prints the contents of a file straight to the terminal. For short files it is the fastest possible way to remind yourself what is inside without waiting for an editor to open. For a big file, though, `cat` will flood your terminal with output. The [Extended walkthrough](windows-extended.qmd) introduces `Get-Content file -Head N`, a sibling command that prints only the first N lines of any file.
+
+![Why previewing a file's first few lines beats opening the whole thing in Excel. The `head -n 10` command shown on the door in the meme belongs to Mac and Linux. The PowerShell equivalent, `Get-Content file -Head 10`, is covered in the [Extended walkthrough](windows-extended.qmd).](images/meme_head_10.png){#fig-win-qs-head fig-alt="A two-panel cartoon. On the left, a scientist in a white lab coat is buried up to the shoulders in a huge pile of printed spreadsheets, each stack labeled 'Excel/Spreadsheet 2 GB.' The macOS spinning rainbow beachball cursor glows above the pile. The scientist looks overwhelmed and is reaching one hand up above the papers. On the right, the same scientist stands calmly outside a tall office door. A monospace sign on the door reads 'head -n 10.' The scientist holds a coffee mug in one hand and leans close to the keyhole in the door. A small thought bubble beside the scientist shows a preview of three rows of tabular data with columns of numbers. The letters 'IYKYK' (an internet abbreviation for 'if you know, you know') appear in bold blue capitals in the corner."}
 
 ::: {.callout-note}
 ## Notepad is not your only choice
@@ -237,6 +241,8 @@ ReadMe.txt:5:TODO: figure out what this project actually does
 ```
 
 Read that as: *file `ReadMe.txt`, line 5, containing the text `TODO: figure out what this project actually does`*. This is how programmers keep track of loose ends across a whole project without opening every file by hand.
+
+![Finding every leftover `TODO` in a project by hand versus letting a recursive search gather them for you. The `grep -rni todo` command shown on the magnet in the meme belongs to Mac and Linux. On Windows we accomplish the same job with `findstr /s /n /i todo *.*`.](images/meme_grep_rni_todo.png){#fig-win-qs-grep fig-alt="A two-panel cartoon. On the left, a frustrated scientist in a white lab coat sits cross-legged on an office floor, arms raised in exasperation, surrounded by hundreds of yellow sticky notes labeled 'TODO.' More sticky notes fall from the air, and folders around them spill loose papers and additional TODO notes. On the right, a calm scientist in a lab coat stands in a bright, tidy room and holds up a large red-and-white horseshoe magnet labeled 'grep -rni todo.' The magnet pulls the loose yellow TODO sticky notes out of the air and into a neat stack. The command 'grep -rni todo:' is written in monospace text at the top of the right panel."}
 
 ::: {.callout-note}
 ## `findstr` is a Windows program, not a PowerShell command

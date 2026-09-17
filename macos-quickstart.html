@@ -312,6 +312,23 @@ Figure&nbsp;1: The single keystroke that separates the frustrated command-line u
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> notes.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You do <em>not</em> need to write <code>cat ~/Desktop/notes.txt</code>. The shorter form works because <code>notes.txt</code> is a <strong>relative path</strong> (understood relative to your current directory, whatever that happens to be). Reach for <code>~</code> only when the path you want does not begin at your current location.</p>
 <p>A quick rule of thumb: <strong>if <code>pwd</code> already shows you are in the folder that contains the thing you want, you do not need <code>~</code>.</strong></p>
+<p><strong>Using the up arrow (Power move)</strong></p>
+<p>You can use the <kbd>↑</kbd> arrow key on your keyboard to scroll back through your previously executed commands. This is useful when:</p>
+<ul>
+<li>You want to reuse a previous command.</li>
+<li>A command you typed gave an error and you want to fix the previous command.</li>
+<li>You need to recall previous actions and you are not sure what commands you issued.</li>
+</ul>
+<div id="fig-win-quick-up-arrow" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A two-panel vector-style cartoon illustration comparing different approaches to using a terminal command line. A scientist in a white lab coat as the central character in both scenarios. In the left panel, she is depicted as highly stressed, with sweat droplets and a panicked expression, hunched over a cluttered desk in a dim office. She is typing frantically, and as loose keyboard keys labeled A, S, and D pop off. The right panel contrasts this with the same scientist now sitting calmly and smiling in a clean, well-lit office, with an inset view showing her hand easily recalling previous commands using the up arrow.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-quick-up-arrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/meme_up_arrow.png" class="img-fluid figure-img" alt="A two-panel vector-style cartoon illustration comparing different approaches to using a terminal command line. A scientist in a white lab coat as the central character in both scenarios. In the left panel, she is depicted as highly stressed, with sweat droplets and a panicked expression, hunched over a cluttered desk in a dim office. She is typing frantically, and as loose keyboard keys labeled A, S, and D pop off. The right panel contrasts this with the same scientist now sitting calmly and smiling in a clean, well-lit office, with an inset view showing her hand easily recalling previous commands using the up arrow.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-quick-up-arrow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Scroll back to your last command and also futher previous commands by using the up arrow.
+</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 <section id="the-running-example" class="level2">
@@ -360,7 +377,7 @@ Exit nano: press <kbd>Ctrl</kbd> + <kbd>X</kbd>.</p>
 <img src="images/meme_head_10.png" class="img-fluid figure-img" alt="A two-panel cartoon. On the left, a scientist in a white lab coat is buried up to the shoulders in a huge pile of printed spreadsheets, each stack labeled 'Excel/Spreadsheet 2 GB.' The macOS spinning rainbow beachball cursor glows above the pile. The scientist looks overwhelmed and is reaching one hand up above the papers. On the right, the same scientist stands calmly outside a tall office door. A monospace sign on the door reads 'head -n 10.' The scientist holds a coffee mug in one hand and leans close to the keyhole in the door. A small thought bubble beside the scientist shows a preview of three rows of tabular data with columns of numbers. The letters 'IYKYK' (an internet abbreviation for 'if you know, you know') appear in bold blue capitals in the corner.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-qs-head-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Why previewing a file’s first few lines with <code>head</code> beats opening the whole thing in a spreadsheet application. <code>head</code> is covered in the <a href="./macos-extended.html">Extended walkthrough</a>.
+Figure&nbsp;3: Why previewing a file’s first few lines with <code>head</code> beats opening the whole thing in a spreadsheet application. <code>head</code> is covered in the <a href="./macos-extended.html">Extended walkthrough</a>.
 </figcaption>
 </figure>
 </div>
@@ -438,7 +455,7 @@ Tab completion, reminder #3
 <img src="images/meme_grep_rni_todo.png" class="img-fluid figure-img" alt="A two-panel cartoon. On the left, a frustrated scientist in a white lab coat sits cross-legged on an office floor, arms raised in exasperation, surrounded by hundreds of yellow sticky notes labeled 'TODO.' More sticky notes fall from the air, and folders around them spill loose papers and additional TODO notes. On the right, a calm scientist in a lab coat stands in a bright, tidy room and holds up a large red-and-white horseshoe magnet labeled 'grep -rni todo.' The magnet pulls the loose yellow TODO sticky notes out of the air and into a neat stack. The command 'grep -rni todo:' is written in monospace text at the top of the right panel.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-qs-grep-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Finding every leftover <code>TODO</code> in a project by hand versus letting <code>grep -rni todo</code> gather them for you.
+Figure&nbsp;4: Finding every leftover <code>TODO</code> in a project by hand versus letting <code>grep -rni todo</code> gather them for you.
 </figcaption>
 </figure>
 </div>

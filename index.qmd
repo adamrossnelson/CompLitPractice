@@ -2,11 +2,18 @@
 title: "Computer Literacy Practice"
 ---
 
-A self-guided, hands-on walkthrough for building command-line literacy. Plan on about **2.5 hours** from start to finish.
+A self-guided, hands-on collection of walkthroughs for building command-line literacy. Pick the version that matches both your machine and the amount of time you have to spend.
 
-Pick the page that matches your machine:
+## MacOS
 
-- [**macOS walkthrough**](macos.qmd) — for MacBooks and iMacs. Uses the built-in **Terminal** app.
-- [**Windows walkthrough**](windows.qmd) — uses the **Anaconda Prompt**.
+- [**Quick Start**](macos-quickstart.qmd) — a focused, ~30–45 minute tour of the handful of command-line moves you will use most often, organized around a single running example.
+- [**Extended**](macos-extended.qmd) — a full ~2.5 hour walkthrough with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.
 
-Each challenge shows a prompt, and the answer is hidden behind a **Click to reveal answer** panel. Try the challenge on your own first; only reveal the answer when you're stuck or want to check your work.
+## Windows
+
+- [**Quick Start**](windows-quickstart.qmd) — a focused, ~30–45 minute tour built for the **Anaconda Prompt**, organized around a single running example.
+- [**Extended**](windows-extended.qmd) — a full ~2.5 hour walkthrough built for the **Anaconda PowerShell Prompt**, with deep vocabulary callouts, comprehension challenges, and a 30-question review at the end.
+
+---
+
+Each walkthrough shows a prompt, and the answer to every challenge is hidden behind a **Click to reveal answer** panel. Try the challenge on your own first; only reveal the answer when you are stuck or want to check your work.

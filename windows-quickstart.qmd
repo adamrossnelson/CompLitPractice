@@ -1,0 +1,279 @@
+---
+title: "Windows Command-Line Walkthrough Quick Start"
+---
+
+This is a focused, ~30–45 minute walkthrough for Windows users that covers the handful of Anaconda PowerShell Prompt commands you will use most often. It is organized around a single running example so that the commands connect into a workflow, rather than sitting as isolated tricks. If you want the leisurely, deeply-annotated version (with full vocabulary callouts and a 30-question review), see the [Extended walkthrough](windows-extended.qmd).
+
+---
+
+## 1. Finding and opening the Anaconda PowerShell Prompt
+
+Click the Start menu, begin typing `Anaconda PowerShell Prompt`, and press <kbd>Enter</kbd> when you see it in the results. A window opens with a text prompt inside it. That window is where you will type every command in this walkthrough.
+
+::: {.callout-important}
+## Use Anaconda **PowerShell** Prompt, not any of the other terminals
+The Anaconda distribution actually installs two terminals in your Start menu, and their names are easy to confuse:
+
+- **Anaconda Prompt** — a classic `cmd.exe` window with conda activated.
+- **Anaconda PowerShell Prompt** — a PowerShell window with conda activated. **This is the one you want.**
+
+Windows also comes with several other terminal programs (Command Prompt, PowerShell, Windows Terminal, Git Bash). For this walkthrough, always open **Anaconda PowerShell Prompt**. It comes preconfigured with Python and the `conda` tool ready to use, and it supports the Unix-style shortcuts (such as `~` for your home directory) that appear later in this guide.
+:::
+
+---
+
+## 2. What the prompt looks like
+
+When Anaconda PowerShell Prompt first opens you will see a line of text that looks something like this:
+
+```
+(base) PS C:\Users\yourname>
+```
+
+Reading it left to right:
+
+- `(base)` — the active **conda environment**. `base` is the default one and is fine for now.
+- `PS` — short for **PowerShell**, confirming which shell you are typing into.
+- `C:\Users\yourname` — the current directory. This is your **home directory**, the folder Windows sets up for you when you create your account.
+- `>` — the end of the prompt. Everything you type will appear after it, on the same line.
+
+Whenever this guide says "at the prompt," it means: type this into the Anaconda PowerShell Prompt window, then press <kbd>Enter</kbd>.
+
+---
+
+## 3. Get oriented: where am I, what is here?
+
+Type these two commands, one at a time:
+
+```powershell
+pwd
+ls
+```
+
+- `pwd` — **"print working directory."** Tells you which folder you are currently sitting in.
+- `ls` — **"list."** Shows the contents of that folder in a table with columns for mode, last-write time, size, and name.
+
+For a listing that also includes hidden files, add the `-Force` flag:
+
+```powershell
+ls -Force
+```
+
+Two other flags worth knowing about:
+
+- `-Force` — show all files, including hidden ones
+- `-Recurse` — list contents of every subdirectory as well
+- `-Filter *.csv` (or another pattern) — show only files that match
+
+Memorize `ls -Force`. It is the single most useful flag for the everyday case where you suspect there are hidden files you cannot see.
+
+::: {.callout-note}
+## `ls` versus `dir` in PowerShell
+In Anaconda PowerShell Prompt, both `ls` and `dir` do the same thing. Both are shorter names for the underlying `Get-ChildItem` command. Pick whichever feels more natural. This guide uses `ls` because it matches what you see in most Unix and macOS documentation.
+:::
+
+::: {.callout-tip}
+## Tab completion, reminder #1: start using it right now
+Whenever you type a file or folder name, type only the first few letters and then press the <kbd>Tab</kbd> key. The Anaconda PowerShell Prompt will fill in the rest for you. This prevents typos, saves keystrokes, and confirms that the thing you are typing actually exists. If <kbd>Tab</kbd> refuses to complete a name, the file or folder is not where you think it is. **You will see this reminder several more times. That is on purpose.**
+:::
+
+---
+
+## 4. When to use `~` (and when it is not necessary)
+
+`~` (a tilde) is a shortcut for your home directory (`C:\Users\yourname`). PowerShell expands it automatically whenever you use it in a path. Use it whenever you need to write a path that starts from home:
+
+- `cd ~\Desktop` — go to the Desktop
+- `ls ~\Documents` — list the contents of Documents
+- `cat ~\Projects\quick_look\ReadMe.txt` — read a file that lives many folders below home
+
+You do **not** need `~` when the file or folder you are referring to is already inside the directory you are standing in. For example, if you are already inside `~\Desktop` and want to look at a file called `notes.txt` that lives there, this is enough:
+
+```powershell
+cat notes.txt
+```
+
+You do *not* need to write `cat ~\Desktop\notes.txt`. The shorter form works because `notes.txt` is a **relative path** (understood relative to your current directory, whatever that happens to be). Reach for `~` only when the path you want does not begin at your current location.
+
+A quick rule of thumb: **if `pwd` already shows you are in the folder that contains the thing you want, you do not need `~`.**
+
+---
+
+## 5. The running example
+
+The rest of this walkthrough follows one continuous scenario. You have decided to take a quick look at some new code (or a new dataset) and want a scratch folder on your Desktop to work in.
+
+### 5.1 Create a `quick_look` folder on your Desktop
+
+```powershell
+cd ~\Desktop
+mkdir quick_look
+cd quick_look
+pwd
+```
+
+The `pwd` at the end confirms you are now inside `C:\Users\yourname\Desktop\quick_look`.
+
+::: {.callout-tip}
+## Tab completion, reminder #2
+When typing `cd ~\Desktop`, you can type `cd ~\Des` and then press <kbd>Tab</kbd>. Every long path in this walkthrough is a good excuse to practice this.
+:::
+
+### 5.2 Create and edit `ReadMe.txt`
+
+Open a new `ReadMe.txt` file in **Notepad**, the simple text editor that ships with Windows:
+
+```powershell
+notepad ReadMe.txt
+```
+
+Notepad will ask whether you want to create the file, since it does not yet exist. Click `Yes` at that prompt. A separate Notepad window opens. Type in these lines (you can copy-paste from your browser with <kbd>Ctrl</kbd> + <kbd>V</kbd>):
+
+```
+Quick Look project
+==================
+Poking around at some new code.
+
+TODO: figure out what this project actually does
+TODO: write down my first impressions
+```
+
+Save the file with <kbd>Ctrl</kbd> + <kbd>S</kbd> and close the Notepad window (<kbd>Alt</kbd> + <kbd>F4</kbd>, or click the red <kbd>X</kbd>).
+
+Now preview what you wrote *without* opening any editor at all:
+
+```powershell
+cat ReadMe.txt
+```
+
+`cat` prints the contents of a file straight to the terminal. For short files it is the fastest possible way to remind yourself what is inside without waiting for an editor to open.
+
+::: {.callout-note}
+## Notepad is not your only choice
+Notepad is one of the friendliest editors for a beginner because it ships with every copy of Windows and needs no setup. Another option that would have worked instead is:
+
+- `code ReadMe.txt` — opens the file in **Visual Studio Code**, if you have it installed.
+
+For the rest of this walkthrough we will stay with `notepad`, because it is the option that works everywhere with no setup.
+:::
+
+### 5.3 Move the whole project from Desktop to `~\Projects`
+
+You have decided the Desktop is not the right home for this after all. It belongs in `~\Projects` alongside your other work.
+
+First, back out of the folder you are about to move. You cannot move a folder while your Anaconda PowerShell Prompt is still standing inside it:
+
+```powershell
+cd ..
+```
+
+This is a good moment to *not* reach for `~`. Since you are currently inside `~\Desktop\quick_look`, the parent folder is simply `~\Desktop`, and `..` is the shortcut that always means "the parent of where I am now." Writing `cd ..` is shorter, more general, and works no matter what the parent happens to be called. Confirm that you moved up one level:
+
+```powershell
+pwd
+```
+
+You should see `C:\Users\yourname\Desktop`.
+
+Consider checking whether the `~\Projects` folder already exists. A command that can test if `~\Projects` exists is:
+
+```powershell
+ls ~\Projects
+```
+
+If the command returns an error, the folder does not exist and you should create it:
+
+```powershell
+mkdir ~\Projects
+```
+
+If the folder already exists, `mkdir` will report an error. That error is harmless in this case, and you can carry on.
+
+Now move the whole `quick_look` folder in a single command:
+
+```powershell
+mv quick_look ~\Projects\
+```
+
+`mv` moves (or renames) files and folders. Confirm the move worked:
+
+```powershell
+ls ~\Projects
+```
+
+Once you confirm the `quick_look` folder now resides in `~\Projects`, navigate into the new location:
+
+```powershell
+cd ~\Projects\quick_look
+pwd
+```
+
+::: {.callout-tip}
+## Tab completion, reminder #3
+Try typing `cd ~\Pro`, <kbd>Tab</kbd>, `qui`, <kbd>Tab</kbd>. You just navigated two directories with about six keystrokes.
+:::
+
+### 5.4 Find every TODO in the project
+
+Fast-forward: days, weeks, or months later, `quick_look` has grown into a real project with many files. Along the way you have been leaving `TODO:` markers scattered here and there as reminders. Despite your best efforts to keep things consistent, they appear in several different capitalizations across the project, including `TODO:`, `Todo:`, and `todo:`.
+
+Now you want a single list of every todo item, including which file it lives in and which line number of that file.
+
+From inside the project folder:
+
+```powershell
+findstr /s /n /i todo *.*
+```
+
+- `/s` — search this folder and every folder inside it
+- `/n` — include the line number of each match
+- `/i` — case-insensitive, so `TODO`, `Todo`, and `todo` all match
+- `*.*` — every file in each directory that has both a name and an extension
+
+You will get one line of output for every match, in this shape:
+
+```
+ReadMe.txt:5:TODO: figure out what this project actually does
+```
+
+Read that as: *file `ReadMe.txt`, line 5, containing the text `TODO: figure out what this project actually does`*. This is how programmers keep track of loose ends across a whole project without opening every file by hand.
+
+::: {.callout-note}
+## `findstr` is a Windows program, not a PowerShell command
+`findstr` is one of the classic Windows text-searching tools that has shipped with the operating system for decades. It runs fine from inside Anaconda PowerShell Prompt because PowerShell can call any Windows program, but it is not itself a PowerShell command. PowerShell has its own more powerful text-searching tool called `Select-String` (aliased `sls`) that you may see used in other Windows tutorials. For this walkthrough we stay with `findstr` because its output format lines up cleanly with what programmers on every operating system are used to reading.
+:::
+
+::: {.callout-tip}
+## Tab completion, reminder #4
+If you want to search inside one specific file (for example, `findstr /n /i todo ReadMe.txt`), type the first few letters of the filename and press <kbd>Tab</kbd>.
+:::
+
+---
+
+## 6. Multiple Anaconda PowerShell Prompt sessions at the same time
+
+Some commands take over your prompt and do not give it back until you stop them. Two you will meet often:
+
+- `quarto preview` — starts a local preview of a Quarto site and keeps running until you stop it.
+- `jupyter lab` — starts a JupyterLab session in your browser and keeps running until you stop it.
+
+If either of those is running in your only Anaconda PowerShell Prompt window, you cannot use that window for anything else. Commands like `ls`, `cd`, and `findstr` all have to wait until the long-running command releases the prompt. The fix is simply to open more than one Anaconda PowerShell Prompt session.
+
+Return to the Start menu and open **Anaconda PowerShell Prompt** a second (or third) time. Each new window is an independent terminal session with its own current directory.
+
+A common working setup uses three windows at once:
+
+- **Window 1** — a general-purpose Anaconda PowerShell Prompt for editing files, `ls`, `cd`, `cat`, `findstr`, and everything else in this walkthrough.
+- **Window 2** — running `quarto preview` so that your Quarto website reloads in the browser every time you save a `.qmd` file.
+- **Window 3** — running `jupyter lab` so that your notebooks are always open and ready in the browser.
+
+To stop a long-running command (in any window), press <kbd>Ctrl</kbd> + <kbd>C</kbd>. That keystroke sends a stop request and returns you to a normal prompt.
+
+::: {.callout-tip}
+## Tab completion, reminder #5
+Almost everything you do in windows 1, 2, and 3 benefits from <kbd>Tab</kbd> completion. It is not a coincidence that the fastest command-line users press <kbd>Tab</kbd> constantly.
+:::
+
+---
+
+That is the quick start. If you want deeper explanations of every command, more challenges, and a 30-question review, work through the [Extended walkthrough](windows-extended.qmd).

@@ -1,5 +1,5 @@
 ---
-title: "macOS Command-Line Walkthrough"
+title: "MacOS Command-Line Walkthrough Extended"
 ---
 
 This is a self-paced, ~2.5 hour hands-on walkthrough. Work through the parts in order — later parts assume you've done the earlier ones.
@@ -674,7 +674,7 @@ The pages you are reading are `.qmd` files. If you have downloaded the source of
 ```bash
 cd ~/Projects/CompLitPractice
 ls -lhra
-head macos.qmd
+head macos-extended.qmd
 ```
 
 Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.

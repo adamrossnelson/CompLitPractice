@@ -1,5 +1,8 @@
 ---
 title: "About"
+author: "Adam Ross Nelson JD PhD"
 ---
 
-About this site
+This site is a general-purpose computer literacy tutorial resource. It offers self-guided, hands-on walkthroughs designed to help learners build practical, transferable skills for working with computers. From navigating the command line, to understanding files and directories, to previewing and manipulating data, to recognizing the tools of a modern data-science workflow.
+
+The material is intended for students, early-career professionals, and anyone else who is new to programming and wants a patient, plain-language introduction to the everyday habits and vocabulary of computer-based work. Each walkthrough is written to stand on its own, with clear step-by-step challenges, click-to-reveal answers, and short vocabulary notes that explain terminology as it arises.

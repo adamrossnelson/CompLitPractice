@@ -789,7 +789,7 @@ The pages you are reading are `.qmd` files. If you have downloaded the source of
 ```powershell
 cd ~\Projects\CompLitPractice
 ls -Force
-Get-Content windows.qmd -Head 10
+Get-Content windows-extended.qmd -Head 10
 ```
 
 Notice that a `.qmd` file is just readable text: ordinary Markdown, with **code fences** marking off the executable chunks.

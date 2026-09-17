@@ -7,10 +7,18 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: macos.qmd
-        text: macOS
-      - href: windows.qmd
-        text: Windows
+      - text: MacOS
+        menu:
+          - href: macos-quickstart.qmd
+            text: Quick Start
+          - href: macos-extended.qmd
+            text: Extended
+      - text: Windows
+        menu:
+          - href: windows-quickstart.qmd
+            text: Quick Start
+          - href: windows-extended.qmd
+            text: Extended
       - about.qmd
 
 format:
